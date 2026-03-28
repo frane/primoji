@@ -1,0 +1,987 @@
+{"action": "remove_overlap", "emoji": "🏠", "name": "house", "reason": "Duplicates primitive emoji"}
+{"action": "remove_overlap", "emoji": "🔶", "name": "large orange diamond", "reason": "Duplicates primitive emoji"}
+{"action": "remove_overlap", "emoji": "🧩", "name": "puzzle piece", "reason": "Duplicates primitive emoji"}
+{"action": "remove_overlap", "emoji": "🎨", "name": "artist palette", "reason": "Duplicates primitive emoji"}
+{"action": "remove_overlap", "emoji": "👉", "name": "backhand index pointing right", "reason": "Duplicates primitive emoji"}
+{"action": "remove_overlap", "emoji": "📊", "name": "bar chart", "reason": "Duplicates primitive emoji"}
+{"action": "remove_overlap", "emoji": "🔋", "name": "battery", "reason": "Duplicates primitive emoji"}
+{"action": "remove_overlap", "emoji": "🔆", "name": "bright button", "reason": "Duplicates primitive emoji"}
+{"action": "remove_overlap", "emoji": "📈", "name": "chart increasing", "reason": "Duplicates primitive emoji"}
+{"action": "remove_overlap", "emoji": "📋", "name": "clipboard", "reason": "Duplicates primitive emoji"}
+{"action": "remove_overlap", "emoji": "💥", "name": "collision", "reason": "Duplicates primitive emoji"}
+{"action": "remove_overlap", "emoji": "💨", "name": "dashing away", "reason": "Duplicates primitive emoji"}
+{"action": "remove_overlap", "emoji": "💫", "name": "dizzy", "reason": "Duplicates primitive emoji"}
+{"action": "remove_overlap", "emoji": "🔽", "name": "downwards button", "reason": "Duplicates primitive emoji"}
+{"action": "remove_overlap", "emoji": "💧", "name": "droplet", "reason": "Duplicates primitive emoji"}
+{"action": "remove_overlap", "emoji": "⏪", "name": "fast reverse button", "reason": "Duplicates primitive emoji"}
+{"action": "remove_overlap", "emoji": "⏫", "name": "fast up button", "reason": "Duplicates primitive emoji"}
+{"action": "remove_overlap", "emoji": "⏩", "name": "fast-forward button", "reason": "Duplicates primitive emoji"}
+{"action": "remove_overlap", "emoji": "🔥", "name": "fire", "reason": "Duplicates primitive emoji"}
+{"action": "remove_overlap", "emoji": "💪", "name": "flexed biceps", "reason": "Duplicates primitive emoji"}
+{"action": "remove_overlap", "emoji": "🎲", "name": "game die", "reason": "Duplicates primitive emoji"}
+{"action": "remove_overlap", "emoji": "🌍", "name": "globe showing Europe-Africa", "reason": "Duplicates primitive emoji"}
+{"action": "remove_overlap", "emoji": "🌐", "name": "globe with meridians", "reason": "Duplicates primitive emoji"}
+{"action": "remove_overlap", "emoji": "🤝", "name": "handshake", "reason": "Duplicates primitive emoji"}
+{"action": "remove_overlap", "emoji": "🪦", "name": "headstone", "reason": "Duplicates primitive emoji"}
+{"action": "remove_overlap", "emoji": "⚡", "name": "high voltage", "reason": "Duplicates primitive emoji"}
+{"action": "remove_overlap", "emoji": "⏳", "name": "hourglass not done", "reason": "Duplicates primitive emoji"}
+{"action": "remove_overlap", "emoji": "📥", "name": "inbox tray", "reason": "Duplicates primitive emoji"}
+{"action": "remove_overlap", "emoji": "🔤", "name": "input latin letters", "reason": "Duplicates primitive emoji"}
+{"action": "remove_overlap", "emoji": "🔢", "name": "input numbers", "reason": "Duplicates primitive emoji"}
+{"action": "remove_overlap", "emoji": "🫙", "name": "jar", "reason": "Duplicates primitive emoji"}
+{"action": "remove_overlap", "emoji": "🔗", "name": "link", "reason": "Duplicates primitive emoji"}
+{"action": "remove_overlap", "emoji": "🔎", "name": "magnifying glass tilted right", "reason": "Duplicates primitive emoji"}
+{"action": "remove_overlap", "emoji": "🪞", "name": "mirror", "reason": "Duplicates primitive emoji"}
+{"action": "remove_overlap", "emoji": "📛", "name": "name badge", "reason": "Duplicates primitive emoji"}
+{"action": "remove_overlap", "emoji": "👴", "name": "old man", "reason": "Duplicates primitive emoji"}
+{"action": "remove_overlap", "emoji": "📤", "name": "outbox tray", "reason": "Duplicates primitive emoji"}
+{"action": "remove_overlap", "emoji": "📦", "name": "package", "reason": "Duplicates primitive emoji"}
+{"action": "remove_overlap", "emoji": "🤲", "name": "palms up together", "reason": "Duplicates primitive emoji"}
+{"action": "remove_overlap", "emoji": "🐾", "name": "paw prints", "reason": "Duplicates primitive emoji"}
+{"action": "remove_overlap", "emoji": "🧑", "name": "person", "reason": "Duplicates primitive emoji"}
+{"action": "remove_overlap", "emoji": "🤏", "name": "pinching hand", "reason": "Duplicates primitive emoji"}
+{"action": "remove_overlap", "emoji": "🚫", "name": "prohibited", "reason": "Duplicates primitive emoji"}
+{"action": "remove_overlap", "emoji": "📌", "name": "pushpin", "reason": "Duplicates primitive emoji"}
+{"action": "remove_overlap", "emoji": "🔘", "name": "radio button", "reason": "Duplicates primitive emoji"}
+{"action": "remove_overlap", "emoji": "✊", "name": "raised fist", "reason": "Duplicates primitive emoji"}
+{"action": "remove_overlap", "emoji": "❓", "name": "red question mark", "reason": "Duplicates primitive emoji"}
+{"action": "remove_overlap", "emoji": "🔁", "name": "repeat button", "reason": "Duplicates primitive emoji"}
+{"action": "remove_overlap", "emoji": "🪨", "name": "rock", "reason": "Duplicates primitive emoji"}
+{"action": "remove_overlap", "emoji": "📍", "name": "round pushpin", "reason": "Duplicates primitive emoji"}
+{"action": "remove_overlap", "emoji": "📜", "name": "scroll", "reason": "Duplicates primitive emoji"}
+{"action": "remove_overlap", "emoji": "🔀", "name": "shuffle tracks button", "reason": "Duplicates primitive emoji"}
+{"action": "remove_overlap", "emoji": "💬", "name": "speech balloon", "reason": "Duplicates primitive emoji"}
+{"action": "remove_overlap", "emoji": "📏", "name": "straight ruler", "reason": "Duplicates primitive emoji"}
+{"action": "remove_overlap", "emoji": "💭", "name": "thought balloon", "reason": "Duplicates primitive emoji"}
+{"action": "remove_overlap", "emoji": "📐", "name": "triangular ruler", "reason": "Duplicates primitive emoji"}
+{"action": "remove_overlap", "emoji": "🔼", "name": "upwards button", "reason": "Duplicates primitive emoji"}
+{"action": "remove_overlap", "emoji": "🌿", "name": "herb", "reason": "Duplicates primitive emoji"}
+{"action": "remove_overlap", "emoji": "🌱", "name": "seedling", "reason": "Duplicates primitive emoji"}
+{"action": "remove_overlap", "emoji": "📚", "name": "books", "reason": "Duplicates primitive emoji"}
+{"action": "remove_overlap", "emoji": "📸", "name": "camera with flash", "reason": "Duplicates primitive emoji"}
+{"action": "remove_overlap", "emoji": "🔃", "name": "clockwise vertical arrows", "reason": "Duplicates primitive emoji"}
+{"action": "remove_overlap", "emoji": "🔄", "name": "counterclockwise arrows button", "reason": "Duplicates primitive emoji"}
+{"action": "remove_overlap", "emoji": "🔨", "name": "hammer", "reason": "Duplicates primitive emoji"}
+{"action": "remove_overlap", "emoji": "🕐", "name": "one o’clock", "reason": "Duplicates primitive emoji"}
+{"action": "remove_overlap", "emoji": "📖", "name": "open book", "reason": "Duplicates primitive emoji"}
+{"action": "remove_overlap", "emoji": "🫗", "name": "pouring liquid", "reason": "Duplicates primitive emoji"}
+{"action": "remove_overlap", "emoji": "🔧", "name": "wrench", "reason": "Duplicates primitive emoji"}
+{"action": "remove_overlap", "emoji": "👶", "name": "baby", "reason": "Duplicates primitive emoji"}
+{"action": "remove_overlap", "emoji": "🙅", "name": "person gesturing NO", "reason": "Duplicates primitive emoji"}
+{"action": "remove_overlap", "emoji": "🔵", "name": "blue circle", "reason": "Duplicates primitive emoji"}
+{"action": "remove_overlap", "emoji": "🏹", "name": "bow and arrow", "reason": "Duplicates primitive emoji"}
+{"action": "remove_overlap", "emoji": "✅", "name": "check mark button", "reason": "Duplicates primitive emoji"}
+{"action": "remove_overlap", "emoji": "❌", "name": "cross mark", "reason": "Duplicates primitive emoji"}
+{"action": "remove_overlap", "emoji": "📩", "name": "envelope with arrow", "reason": "Duplicates primitive emoji"}
+{"action": "remove_overlap", "emoji": "⭕", "name": "hollow red circle", "reason": "Duplicates primitive emoji"}
+{"action": "remove_overlap", "emoji": "🔛", "name": "ON! arrow", "reason": "Duplicates primitive emoji"}
+{"action": "remove_overlap", "emoji": "🔺", "name": "red triangle pointed up", "reason": "Duplicates primitive emoji"}
+{"action": "remove_overlap", "emoji": "🔹", "name": "small blue diamond", "reason": "Duplicates primitive emoji"}
+{"action": "remove_overlap", "emoji": "👤", "name": "bust in silhouette", "reason": "Duplicates primitive emoji"}
+{"action": "remove_overlap", "emoji": "👥", "name": "busts in silhouette", "reason": "Duplicates primitive emoji"}
+{"action": "remove_overlap", "emoji": "🌑", "name": "new moon", "reason": "Duplicates primitive emoji"}
+{"action": "recategorize", "emoji": "🐔", "name": "chicken", "old": "animal", "new": "misc"}
+{"action": "recategorize", "emoji": "🍻", "name": "clinking beer mugs", "old": "animal", "new": "people"}
+{"action": "recategorize", "emoji": "😿", "name": "crying cat", "old": "animal", "new": "emotion"}
+{"action": "recategorize", "emoji": "🍆", "name": "eggplant", "old": "animal", "new": "food"}
+{"action": "recategorize", "emoji": "😽", "name": "kissing cat", "old": "animal", "new": "emotion"}
+{"action": "recategorize", "emoji": "🕰", "name": "mantelpiece clock", "old": "animal", "new": "people"}
+{"action": "recategorize", "emoji": "🐽", "name": "pig nose", "old": "animal", "new": "people"}
+{"action": "recategorize", "emoji": "🪴", "name": "potted plant", "old": "animal", "new": "nature"}
+{"action": "recategorize", "emoji": "😾", "name": "pouting cat", "old": "animal", "new": "emotion"}
+{"action": "recategorize", "emoji": "🫃", "name": "pregnant man", "old": "animal", "new": "people"}
+{"action": "recategorize", "emoji": "🫄", "name": "pregnant person", "old": "animal", "new": "people"}
+{"action": "recategorize", "emoji": "🤰", "name": "pregnant woman", "old": "animal", "new": "people"}
+{"action": "recategorize", "emoji": "🎅", "name": "Santa Claus", "old": "animal", "new": "people"}
+{"action": "recategorize", "emoji": "🐳", "name": "spouting whale", "old": "animal", "new": "emotion"}
+{"action": "recategorize", "emoji": "🏗", "name": "building construction", "old": "building", "new": "transport"}
+{"action": "recategorize", "emoji": "🤭", "name": "face with hand over mouth", "old": "emotion", "new": "people"}
+{"action": "recategorize", "emoji": "🤦‍♂", "name": "man facepalming", "old": "emotion", "new": "people"}
+{"action": "recategorize", "emoji": "🤦", "name": "person facepalming", "old": "emotion", "new": "people"}
+{"action": "recategorize", "emoji": "🤦‍♀", "name": "woman facepalming", "old": "emotion", "new": "people"}
+{"action": "recategorize", "emoji": "🍖", "name": "meat on bone", "old": "food", "new": "people"}
+{"action": "recategorize", "emoji": "🪺", "name": "nest with eggs", "old": "food", "new": "animal"}
+{"action": "recategorize", "emoji": "🥇", "name": "1st place medal", "old": "misc", "new": "sport"}
+{"action": "recategorize", "emoji": "🥈", "name": "2nd place medal", "old": "misc", "new": "sport"}
+{"action": "recategorize", "emoji": "🥉", "name": "3rd place medal", "old": "misc", "new": "sport"}
+{"action": "recategorize", "emoji": "🅰", "name": "A button (blood type)", "old": "misc", "new": "people"}
+{"action": "recategorize", "emoji": "🆎", "name": "AB button (blood type)", "old": "misc", "new": "people"}
+{"action": "recategorize", "emoji": "🪗", "name": "accordion", "old": "misc", "new": "music"}
+{"action": "recategorize", "emoji": "🩹", "name": "adhesive bandage", "old": "misc", "new": "medical"}
+{"action": "recategorize", "emoji": "🚡", "name": "aerial tramway", "old": "misc", "new": "transport"}
+{"action": "recategorize", "emoji": "🚑", "name": "ambulance", "old": "misc", "new": "transport"}
+{"action": "recategorize", "emoji": "🏈", "name": "american football", "old": "misc", "new": "people"}
+{"action": "recategorize", "emoji": "⚓", "name": "anchor", "old": "misc", "new": "transport"}
+{"action": "recategorize", "emoji": "⚛", "name": "atom symbol", "old": "misc", "new": "science"}
+{"action": "recategorize", "emoji": "🛺", "name": "auto rickshaw", "old": "misc", "new": "transport"}
+{"action": "recategorize", "emoji": "🥑", "name": "avocado", "old": "misc", "new": "food"}
+{"action": "recategorize", "emoji": "🅱", "name": "B button (blood type)", "old": "misc", "new": "people"}
+{"action": "recategorize", "emoji": "👇", "name": "backhand index pointing down", "old": "misc", "new": "people"}
+{"action": "recategorize", "emoji": "👈", "name": "backhand index pointing left", "old": "misc", "new": "people"}
+{"action": "recategorize", "emoji": "👆", "name": "backhand index pointing up", "old": "misc", "new": "people"}
+{"action": "recategorize", "emoji": "🎒", "name": "backpack", "old": "misc", "new": "clothing"}
+{"action": "recategorize", "emoji": "🥓", "name": "bacon", "old": "misc", "new": "food"}
+{"action": "recategorize", "emoji": "🦡", "name": "badger", "old": "misc", "new": "animal"}
+{"action": "recategorize", "emoji": "🏸", "name": "badminton", "old": "misc", "new": "sport"}
+{"action": "recategorize", "emoji": "🥯", "name": "bagel", "old": "misc", "new": "food"}
+{"action": "recategorize", "emoji": "🛄", "name": "baggage claim", "old": "misc", "new": "clothing"}
+{"action": "recategorize", "emoji": "🦲", "name": "bald", "old": "misc", "new": "people"}
+{"action": "recategorize", "emoji": "🩰", "name": "ballet shoes", "old": "misc", "new": "clothing"}
+{"action": "recategorize", "emoji": "🪕", "name": "banjo", "old": "misc", "new": "music"}
+{"action": "recategorize", "emoji": "🏦", "name": "bank", "old": "misc", "new": "building"}
+{"action": "recategorize", "emoji": "⚾", "name": "baseball", "old": "misc", "new": "sport"}
+{"action": "recategorize", "emoji": "🏀", "name": "basketball", "old": "misc", "new": "sport"}
+{"action": "recategorize", "emoji": "🦇", "name": "bat", "old": "misc", "new": "animal"}
+{"action": "recategorize", "emoji": "🛁", "name": "bathtub", "old": "misc", "new": "animal"}
+{"action": "recategorize", "emoji": "🏖", "name": "beach with umbrella", "old": "misc", "new": "weather"}
+{"action": "recategorize", "emoji": "🫑", "name": "bell pepper", "old": "misc", "new": "food"}
+{"action": "recategorize", "emoji": "🍱", "name": "bento box", "old": "misc", "new": "food"}
+{"action": "recategorize", "emoji": "🧃", "name": "beverage box", "old": "misc", "new": "food"}
+{"action": "recategorize", "emoji": "👙", "name": "bikini", "old": "misc", "new": "clothing"}
+{"action": "recategorize", "emoji": "🧢", "name": "billed cap", "old": "misc", "new": "clothing"}
+{"action": "recategorize", "emoji": "🦬", "name": "bison", "old": "misc", "new": "animal"}
+{"action": "recategorize", "emoji": "🫦", "name": "biting lip", "old": "misc", "new": "people"}
+{"action": "recategorize", "emoji": "🦴", "name": "bone", "old": "misc", "new": "people"}
+{"action": "recategorize", "emoji": "🍾", "name": "bottle with popping cork", "old": "misc", "new": "food"}
+{"action": "recategorize", "emoji": "💐", "name": "bouquet", "old": "misc", "new": "nature"}
+{"action": "recategorize", "emoji": "🥣", "name": "bowl with spoon", "old": "misc", "new": "food"}
+{"action": "recategorize", "emoji": "🎳", "name": "bowling", "old": "misc", "new": "animal"}
+{"action": "recategorize", "emoji": "🥊", "name": "boxing glove", "old": "misc", "new": "emotion"}
+{"action": "recategorize", "emoji": "🤱", "name": "breast-feeding", "old": "misc", "new": "people"}
+{"action": "recategorize", "emoji": "💼", "name": "briefcase", "old": "misc", "new": "clothing"}
+{"action": "recategorize", "emoji": "🥦", "name": "broccoli", "old": "misc", "new": "food"}
+{"action": "recategorize", "emoji": "🌯", "name": "burrito", "old": "misc", "new": "food"}
+{"action": "recategorize", "emoji": "🧈", "name": "butter", "old": "misc", "new": "food"}
+{"action": "recategorize", "emoji": "🤙", "name": "call me hand", "old": "misc", "new": "people"}
+{"action": "recategorize", "emoji": "🐪", "name": "camel", "old": "misc", "new": "animal"}
+{"action": "recategorize", "emoji": "🏕", "name": "camping", "old": "misc", "new": "nature"}
+{"action": "recategorize", "emoji": "🍬", "name": "candy", "old": "misc", "new": "food"}
+{"action": "recategorize", "emoji": "🥫", "name": "canned food", "old": "misc", "new": "food"}
+{"action": "recategorize", "emoji": "🛶", "name": "canoe", "old": "misc", "new": "transport"}
+{"action": "recategorize", "emoji": "♑", "name": "Capricorn", "old": "misc", "new": "food"}
+{"action": "recategorize", "emoji": "🪑", "name": "chair", "old": "misc", "new": "people"}
+{"action": "recategorize", "emoji": "📉", "name": "chart decreasing", "old": "misc", "new": "music"}
+{"action": "recategorize", "emoji": "💹", "name": "chart increasing with yen", "old": "misc", "new": "music"}
+{"action": "recategorize", "emoji": "♟", "name": "chess pawn", "old": "misc", "new": "animal"}
+{"action": "recategorize", "emoji": "🌰", "name": "chestnut", "old": "misc", "new": "food"}
+{"action": "recategorize", "emoji": "🐿", "name": "chipmunk", "old": "misc", "new": "animal"}
+{"action": "recategorize", "emoji": "🍫", "name": "chocolate bar", "old": "misc", "new": "food"}
+{"action": "recategorize", "emoji": "🥢", "name": "chopsticks", "old": "misc", "new": "food"}
+{"action": "recategorize", "emoji": "🏙", "name": "cityscape", "old": "misc", "new": "clothing"}
+{"action": "recategorize", "emoji": "🌆", "name": "cityscape at dusk", "old": "misc", "new": "clothing"}
+{"action": "recategorize", "emoji": "👏", "name": "clapping hands", "old": "misc", "new": "people"}
+{"action": "recategorize", "emoji": "🥂", "name": "clinking glasses", "old": "misc", "new": "people"}
+{"action": "recategorize", "emoji": "🌂", "name": "closed umbrella", "old": "misc", "new": "weather"}
+{"action": "recategorize", "emoji": "👝", "name": "clutch bag", "old": "misc", "new": "clothing"}
+{"action": "recategorize", "emoji": "🧥", "name": "coat", "old": "misc", "new": "clothing"}
+{"action": "recategorize", "emoji": "🪳", "name": "cockroach", "old": "misc", "new": "animal"}
+{"action": "recategorize", "emoji": "🍸", "name": "cocktail glass", "old": "misc", "new": "food"}
+{"action": "recategorize", "emoji": "🥥", "name": "coconut", "old": "misc", "new": "food"}
+{"action": "recategorize", "emoji": "☄", "name": "comet", "old": "misc", "new": "weather"}
+{"action": "recategorize", "emoji": "🚧", "name": "construction", "old": "misc", "new": "transport"}
+{"action": "recategorize", "emoji": "👷", "name": "construction worker", "old": "misc", "new": "transport"}
+{"action": "recategorize", "emoji": "🏪", "name": "convenience store", "old": "misc", "new": "building"}
+{"action": "recategorize", "emoji": "🍳", "name": "cooking", "old": "misc", "new": "people"}
+{"action": "recategorize", "emoji": "🪸", "name": "coral", "old": "misc", "new": "animal"}
+{"action": "recategorize", "emoji": "🦀", "name": "crab", "old": "misc", "new": "animal"}
+{"action": "recategorize", "emoji": "🦗", "name": "cricket", "old": "misc", "new": "animal"}
+{"action": "recategorize", "emoji": "🏏", "name": "cricket game", "old": "misc", "new": "animal"}
+{"action": "recategorize", "emoji": "🐊", "name": "crocodile", "old": "misc", "new": "animal"}
+{"action": "recategorize", "emoji": "🩼", "name": "crutch", "old": "misc", "new": "medical"}
+{"action": "recategorize", "emoji": "🔮", "name": "crystal ball", "old": "misc", "new": "emotion"}
+{"action": "recategorize", "emoji": "🥒", "name": "cucumber", "old": "misc", "new": "food"}
+{"action": "recategorize", "emoji": "🥤", "name": "cup with straw", "old": "misc", "new": "food"}
+{"action": "recategorize", "emoji": "🦱", "name": "curly hair", "old": "misc", "new": "people"}
+{"action": "recategorize", "emoji": "🌀", "name": "cyclone", "old": "misc", "new": "weather"}
+{"action": "recategorize", "emoji": "🧏‍♂", "name": "deaf man", "old": "misc", "new": "people"}
+{"action": "recategorize", "emoji": "🧏", "name": "deaf person", "old": "misc", "new": "people"}
+{"action": "recategorize", "emoji": "🧏‍♀", "name": "deaf woman", "old": "misc", "new": "people"}
+{"action": "recategorize", "emoji": "🦌", "name": "deer", "old": "misc", "new": "animal"}
+{"action": "recategorize", "emoji": "🚚", "name": "delivery truck", "old": "misc", "new": "transport"}
+{"action": "recategorize", "emoji": "🏬", "name": "department store", "old": "misc", "new": "building"}
+{"action": "recategorize", "emoji": "🏜", "name": "desert", "old": "misc", "new": "nature"}
+{"action": "recategorize", "emoji": "🏝", "name": "desert island", "old": "misc", "new": "nature"}
+{"action": "recategorize", "emoji": "🕵", "name": "detective", "old": "misc", "new": "people"}
+{"action": "recategorize", "emoji": "🤿", "name": "diving mask", "old": "misc", "new": "emotion"}
+{"action": "recategorize", "emoji": "🧬", "name": "dna", "old": "misc", "new": "medical"}
+{"action": "recategorize", "emoji": "💵", "name": "dollar banknote", "old": "misc", "new": "building"}
+{"action": "recategorize", "emoji": "🍩", "name": "doughnut", "old": "misc", "new": "food"}
+{"action": "recategorize", "emoji": "🕊", "name": "dove", "old": "misc", "new": "animal"}
+{"action": "recategorize", "emoji": "🐉", "name": "dragon", "old": "misc", "new": "animal"}
+{"action": "recategorize", "emoji": "👗", "name": "dress", "old": "misc", "new": "clothing"}
+{"action": "recategorize", "emoji": "🩸", "name": "drop of blood", "old": "misc", "new": "people"}
+{"action": "recategorize", "emoji": "🥁", "name": "drum", "old": "misc", "new": "music"}
+{"action": "recategorize", "emoji": "🦆", "name": "duck", "old": "misc", "new": "animal"}
+{"action": "recategorize", "emoji": "🥟", "name": "dumpling", "old": "misc", "new": "food"}
+{"action": "recategorize", "emoji": "🦅", "name": "eagle", "old": "misc", "new": "animal"}
+{"action": "recategorize", "emoji": "🔌", "name": "electric plug", "old": "misc", "new": "science"}
+{"action": "recategorize", "emoji": "🧝", "name": "elf", "old": "misc", "new": "people"}
+{"action": "recategorize", "emoji": "🪹", "name": "empty nest", "old": "misc", "new": "animal"}
+{"action": "recategorize", "emoji": "💶", "name": "euro banknote", "old": "misc", "new": "building"}
+{"action": "recategorize", "emoji": "🧚", "name": "fairy", "old": "misc", "new": "people"}
+{"action": "recategorize", "emoji": "🪶", "name": "feather", "old": "misc", "new": "animal"}
+{"action": "recategorize", "emoji": "🎡", "name": "ferris wheel", "old": "misc", "new": "clothing"}
+{"action": "recategorize", "emoji": "⛴", "name": "ferry", "old": "misc", "new": "transport"}
+{"action": "recategorize", "emoji": "📁", "name": "file folder", "old": "misc", "new": "people"}
+{"action": "recategorize", "emoji": "🫆", "name": "fingerprint", "old": "misc", "new": "people"}
+{"action": "recategorize", "emoji": "🚒", "name": "fire engine", "old": "misc", "new": "transport"}
+{"action": "recategorize", "emoji": "🦩", "name": "flamingo", "old": "misc", "new": "animal"}
+{"action": "recategorize", "emoji": "🥿", "name": "flat shoe", "old": "misc", "new": "clothing"}
+{"action": "recategorize", "emoji": "🪰", "name": "fly", "old": "misc", "new": "animal"}
+{"action": "recategorize", "emoji": "🥏", "name": "flying disc", "old": "misc", "new": "animal"}
+{"action": "recategorize", "emoji": "🛸", "name": "flying saucer", "old": "misc", "new": "animal"}
+{"action": "recategorize", "emoji": "🌫", "name": "fog", "old": "misc", "new": "weather"}
+{"action": "recategorize", "emoji": "🌁", "name": "foggy", "old": "misc", "new": "weather"}
+{"action": "recategorize", "emoji": "🙏", "name": "folded hands", "old": "misc", "new": "people"}
+{"action": "recategorize", "emoji": "🪭", "name": "folding hand fan", "old": "misc", "new": "people"}
+{"action": "recategorize", "emoji": "🫕", "name": "fondue", "old": "misc", "new": "food"}
+{"action": "recategorize", "emoji": "🦶", "name": "foot", "old": "misc", "new": "people"}
+{"action": "recategorize", "emoji": "👣", "name": "footprints", "old": "misc", "new": "people"}
+{"action": "recategorize", "emoji": "🦊", "name": "fox", "old": "misc", "new": "animal"}
+{"action": "recategorize", "emoji": "🍟", "name": "french fries", "old": "misc", "new": "food"}
+{"action": "recategorize", "emoji": "🍤", "name": "fried shrimp", "old": "misc", "new": "animal"}
+{"action": "recategorize", "emoji": "⛽", "name": "fuel pump", "old": "misc", "new": "transport"}
+{"action": "recategorize", "emoji": "🧄", "name": "garlic", "old": "misc", "new": "food"}
+{"action": "recategorize", "emoji": "🧞", "name": "genie", "old": "misc", "new": "people"}
+{"action": "recategorize", "emoji": "👻", "name": "ghost", "old": "misc", "new": "emotion"}
+{"action": "recategorize", "emoji": "🦒", "name": "giraffe", "old": "misc", "new": "animal"}
+{"action": "recategorize", "emoji": "👓", "name": "glasses", "old": "misc", "new": "food"}
+{"action": "recategorize", "emoji": "🌎", "name": "globe showing Americas", "old": "misc", "new": "animal"}
+{"action": "recategorize", "emoji": "🌏", "name": "globe showing Asia-Australia", "old": "misc", "new": "animal"}
+{"action": "recategorize", "emoji": "🧤", "name": "gloves", "old": "misc", "new": "emotion"}
+{"action": "recategorize", "emoji": "🐐", "name": "goat", "old": "misc", "new": "animal"}
+{"action": "recategorize", "emoji": "🥽", "name": "goggles", "old": "misc", "new": "clothing"}
+{"action": "recategorize", "emoji": "🦍", "name": "gorilla", "old": "misc", "new": "animal"}
+{"action": "recategorize", "emoji": "🎓", "name": "graduation cap", "old": "misc", "new": "clothing"}
+{"action": "recategorize", "emoji": "🥗", "name": "green salad", "old": "misc", "new": "food"}
+{"action": "recategorize", "emoji": "💂", "name": "guard", "old": "misc", "new": "people"}
+{"action": "recategorize", "emoji": "🎸", "name": "guitar", "old": "misc", "new": "music"}
+{"action": "recategorize", "emoji": "🪮", "name": "hair pick", "old": "misc", "new": "people"}
+{"action": "recategorize", "emoji": "🫈", "name": "hairy creature", "old": "misc", "new": "people"}
+{"action": "recategorize", "emoji": "🐹", "name": "hamster", "old": "misc", "new": "animal"}
+{"action": "recategorize", "emoji": "🖐", "name": "hand with fingers splayed", "old": "misc", "new": "people"}
+{"action": "recategorize", "emoji": "👜", "name": "handbag", "old": "misc", "new": "clothing"}
+{"action": "recategorize", "emoji": "🐣", "name": "hatching chick", "old": "misc", "new": "animal"}
+{"action": "recategorize", "emoji": "🙂‍↔", "name": "head shaking horizontally", "old": "misc", "new": "people"}
+{"action": "recategorize", "emoji": "🙂‍↕", "name": "head shaking vertically", "old": "misc", "new": "people"}
+{"action": "recategorize", "emoji": "🧑‍⚕", "name": "health worker", "old": "misc", "new": "medical"}
+{"action": "recategorize", "emoji": "🦔", "name": "hedgehog", "old": "misc", "new": "animal"}
+{"action": "recategorize", "emoji": "🌺", "name": "hibiscus", "old": "misc", "new": "nature"}
+{"action": "recategorize", "emoji": "👠", "name": "high-heeled shoe", "old": "misc", "new": "clothing"}
+{"action": "recategorize", "emoji": "🥾", "name": "hiking boot", "old": "misc", "new": "people"}
+{"action": "recategorize", "emoji": "🛕", "name": "hindu temple", "old": "misc", "new": "building"}
+{"action": "recategorize", "emoji": "🦛", "name": "hippopotamus", "old": "misc", "new": "animal"}
+{"action": "recategorize", "emoji": "🍯", "name": "honey pot", "old": "misc", "new": "food"}
+{"action": "recategorize", "emoji": "🚥", "name": "horizontal traffic light", "old": "misc", "new": "transport"}
+{"action": "recategorize", "emoji": "☕", "name": "hot beverage", "old": "misc", "new": "food"}
+{"action": "recategorize", "emoji": "🌶", "name": "hot pepper", "old": "misc", "new": "food"}
+{"action": "recategorize", "emoji": "🏨", "name": "hotel", "old": "misc", "new": "building"}
+{"action": "recategorize", "emoji": "⌛", "name": "hourglass done", "old": "misc", "new": "food"}
+{"action": "recategorize", "emoji": "💯", "name": "hundred points", "old": "misc", "new": "people"}
+{"action": "recategorize", "emoji": "🛖", "name": "hut", "old": "misc", "new": "building"}
+{"action": "recategorize", "emoji": "🍨", "name": "ice cream", "old": "misc", "new": "food"}
+{"action": "recategorize", "emoji": "⛸", "name": "ice skate", "old": "misc", "new": "sport"}
+{"action": "recategorize", "emoji": "🫵", "name": "index pointing at the viewer", "old": "misc", "new": "people"}
+{"action": "recategorize", "emoji": "☝", "name": "index pointing up", "old": "misc", "new": "people"}
+{"action": "recategorize", "emoji": "🉑", "name": "Japanese acceptable button", "old": "misc", "new": "building"}
+{"action": "recategorize", "emoji": "🉐", "name": "Japanese bargain button", "old": "misc", "new": "building"}
+{"action": "recategorize", "emoji": "㊗", "name": "Japanese congratulations button", "old": "misc", "new": "animal"}
+{"action": "recategorize", "emoji": "🈹", "name": "Japanese discount button", "old": "misc", "new": "building"}
+{"action": "recategorize", "emoji": "🎎", "name": "Japanese dolls", "old": "misc", "new": "building"}
+{"action": "recategorize", "emoji": "🈚", "name": "Japanese free of charge button", "old": "misc", "new": "building"}
+{"action": "recategorize", "emoji": "🈁", "name": "Japanese here button", "old": "misc", "new": "building"}
+{"action": "recategorize", "emoji": "🈷", "name": "Japanese monthly amount button", "old": "misc", "new": "building"}
+{"action": "recategorize", "emoji": "🈵", "name": "Japanese no vacancy button", "old": "misc", "new": "building"}
+{"action": "recategorize", "emoji": "🈶", "name": "Japanese not free of charge button", "old": "misc", "new": "building"}
+{"action": "recategorize", "emoji": "🈴", "name": "Japanese passing grade button", "old": "misc", "new": "building"}
+{"action": "recategorize", "emoji": "🏣", "name": "Japanese post office", "old": "misc", "new": "building"}
+{"action": "recategorize", "emoji": "🈲", "name": "Japanese prohibited button", "old": "misc", "new": "building"}
+{"action": "recategorize", "emoji": "🈯", "name": "Japanese reserved button", "old": "misc", "new": "building"}
+{"action": "recategorize", "emoji": "㊙", "name": "Japanese secret button", "old": "misc", "new": "building"}
+{"action": "recategorize", "emoji": "🈂", "name": "Japanese service charge button", "old": "misc", "new": "building"}
+{"action": "recategorize", "emoji": "🔰", "name": "Japanese symbol for beginner", "old": "misc", "new": "building"}
+{"action": "recategorize", "emoji": "🈳", "name": "Japanese vacancy button", "old": "misc", "new": "building"}
+{"action": "recategorize", "emoji": "👖", "name": "jeans", "old": "misc", "new": "clothing"}
+{"action": "recategorize", "emoji": "🦘", "name": "kangaroo", "old": "misc", "new": "animal"}
+{"action": "recategorize", "emoji": "🪯", "name": "khanda", "old": "misc", "new": "people"}
+{"action": "recategorize", "emoji": "🛴", "name": "kick scooter", "old": "misc", "new": "transport"}
+{"action": "recategorize", "emoji": "👘", "name": "kimono", "old": "misc", "new": "clothing"}
+{"action": "recategorize", "emoji": "💏", "name": "kiss", "old": "misc", "new": "emotion"}
+{"action": "recategorize", "emoji": "💋", "name": "kiss mark", "old": "misc", "new": "emotion"}
+{"action": "recategorize", "emoji": "🥝", "name": "kiwi fruit", "old": "misc", "new": "food"}
+{"action": "recategorize", "emoji": "🥼", "name": "lab coat", "old": "misc", "new": "clothing"}
+{"action": "recategorize", "emoji": "🏷", "name": "label", "old": "misc", "new": "science"}
+{"action": "recategorize", "emoji": "🤛", "name": "left-facing fist", "old": "misc", "new": "people"}
+{"action": "recategorize", "emoji": "🫲", "name": "leftwards hand", "old": "misc", "new": "people"}
+{"action": "recategorize", "emoji": "🫷", "name": "leftwards pushing hand", "old": "misc", "new": "people"}
+{"action": "recategorize", "emoji": "🦵", "name": "leg", "old": "misc", "new": "people"}
+{"action": "recategorize", "emoji": "🐆", "name": "leopard", "old": "misc", "new": "animal"}
+{"action": "recategorize", "emoji": "🖇", "name": "linked paperclips", "old": "misc", "new": "people"}
+{"action": "recategorize", "emoji": "🦁", "name": "lion", "old": "misc", "new": "animal"}
+{"action": "recategorize", "emoji": "💄", "name": "lipstick", "old": "misc", "new": "people"}
+{"action": "recategorize", "emoji": "🦙", "name": "llama", "old": "misc", "new": "animal"}
+{"action": "recategorize", "emoji": "🦞", "name": "lobster", "old": "misc", "new": "animal"}
+{"action": "recategorize", "emoji": "🍭", "name": "lollipop", "old": "misc", "new": "people"}
+{"action": "recategorize", "emoji": "🪘", "name": "long drum", "old": "misc", "new": "music"}
+{"action": "recategorize", "emoji": "🧴", "name": "lotion bottle", "old": "misc", "new": "food"}
+{"action": "recategorize", "emoji": "🪷", "name": "lotus", "old": "misc", "new": "nature"}
+{"action": "recategorize", "emoji": "📢", "name": "loudspeaker", "old": "misc", "new": "music"}
+{"action": "recategorize", "emoji": "🏩", "name": "love hotel", "old": "misc", "new": "building"}
+{"action": "recategorize", "emoji": "💌", "name": "love letter", "old": "misc", "new": "emotion"}
+{"action": "recategorize", "emoji": "🤟", "name": "love-you gesture", "old": "misc", "new": "emotion"}
+{"action": "recategorize", "emoji": "🪫", "name": "low battery", "old": "misc", "new": "animal"}
+{"action": "recategorize", "emoji": "🫁", "name": "lungs", "old": "misc", "new": "people"}
+{"action": "recategorize", "emoji": "🧙", "name": "mage", "old": "misc", "new": "people"}
+{"action": "recategorize", "emoji": "🧲", "name": "magnet", "old": "misc", "new": "science"}
+{"action": "recategorize", "emoji": "🔍", "name": "magnifying glass tilted left", "old": "misc", "new": "food"}
+{"action": "recategorize", "emoji": "🀄", "name": "mahjong red dragon", "old": "misc", "new": "animal"}
+{"action": "recategorize", "emoji": "🦣", "name": "mammoth", "old": "misc", "new": "animal"}
+{"action": "recategorize", "emoji": "👨", "name": "man", "old": "misc", "new": "people"}
+{"action": "recategorize", "emoji": "🥭", "name": "mango", "old": "misc", "new": "people"}
+{"action": "recategorize", "emoji": "🦽", "name": "manual wheelchair", "old": "misc", "new": "people"}
+{"action": "recategorize", "emoji": "👞", "name": "man’s shoe", "old": "misc", "new": "people"}
+{"action": "recategorize", "emoji": "🪇", "name": "maracas", "old": "misc", "new": "music"}
+{"action": "recategorize", "emoji": "🥋", "name": "martial arts uniform", "old": "misc", "new": "sport"}
+{"action": "recategorize", "emoji": "🧉", "name": "mate", "old": "misc", "new": "food"}
+{"action": "recategorize", "emoji": "🦿", "name": "mechanical leg", "old": "misc", "new": "people"}
+{"action": "recategorize", "emoji": "🍈", "name": "melon", "old": "misc", "new": "food"}
+{"action": "recategorize", "emoji": "👬", "name": "men holding hands", "old": "misc", "new": "people"}
+{"action": "recategorize", "emoji": "🤼‍♂", "name": "men wrestling", "old": "misc", "new": "sport"}
+{"action": "recategorize", "emoji": "🧜‍♀", "name": "mermaid", "old": "misc", "new": "people"}
+{"action": "recategorize", "emoji": "🧜‍♂", "name": "merman", "old": "misc", "new": "people"}
+{"action": "recategorize", "emoji": "🧜", "name": "merperson", "old": "misc", "new": "people"}
+{"action": "recategorize", "emoji": "🚇", "name": "metro", "old": "misc", "new": "transport"}
+{"action": "recategorize", "emoji": "🦠", "name": "microbe", "old": "misc", "new": "animal"}
+{"action": "recategorize", "emoji": "🔬", "name": "microscope", "old": "misc", "new": "medical"}
+{"action": "recategorize", "emoji": "🖕", "name": "middle finger", "old": "misc", "new": "people"}
+{"action": "recategorize", "emoji": "🪖", "name": "military helmet", "old": "misc", "new": "clothing"}
+{"action": "recategorize", "emoji": "🎖", "name": "military medal", "old": "misc", "new": "sport"}
+{"action": "recategorize", "emoji": "💰", "name": "money bag", "old": "misc", "new": "clothing"}
+{"action": "recategorize", "emoji": "💸", "name": "money with wings", "old": "misc", "new": "animal"}
+{"action": "recategorize", "emoji": "🚝", "name": "monorail", "old": "misc", "new": "transport"}
+{"action": "recategorize", "emoji": "🫎", "name": "moose", "old": "misc", "new": "animal"}
+{"action": "recategorize", "emoji": "🕌", "name": "mosque", "old": "misc", "new": "building"}
+{"action": "recategorize", "emoji": "🦟", "name": "mosquito", "old": "misc", "new": "animal"}
+{"action": "recategorize", "emoji": "🛵", "name": "motor scooter", "old": "misc", "new": "transport"}
+{"action": "recategorize", "emoji": "🏍", "name": "motorcycle", "old": "misc", "new": "transport"}
+{"action": "recategorize", "emoji": "🦼", "name": "motorized wheelchair", "old": "misc", "new": "people"}
+{"action": "recategorize", "emoji": "⛰", "name": "mountain", "old": "misc", "new": "nature"}
+{"action": "recategorize", "emoji": "🚠", "name": "mountain cableway", "old": "misc", "new": "nature"}
+{"action": "recategorize", "emoji": "🚞", "name": "mountain railway", "old": "misc", "new": "transport"}
+{"action": "recategorize", "emoji": "👄", "name": "mouth", "old": "misc", "new": "people"}
+{"action": "recategorize", "emoji": "🎵", "name": "musical note", "old": "misc", "new": "music"}
+{"action": "recategorize", "emoji": "🎶", "name": "musical notes", "old": "misc", "new": "music"}
+{"action": "recategorize", "emoji": "🎼", "name": "musical score", "old": "misc", "new": "music"}
+{"action": "recategorize", "emoji": "🔇", "name": "muted speaker", "old": "misc", "new": "music"}
+{"action": "recategorize", "emoji": "🏞", "name": "national park", "old": "misc", "new": "nature"}
+{"action": "recategorize", "emoji": "👔", "name": "necktie", "old": "misc", "new": "clothing"}
+{"action": "recategorize", "emoji": "🪆", "name": "nesting dolls", "old": "misc", "new": "animal"}
+{"action": "recategorize", "emoji": "🥷", "name": "ninja", "old": "misc", "new": "people"}
+{"action": "recategorize", "emoji": "🚭", "name": "no smoking", "old": "misc", "new": "people"}
+{"action": "recategorize", "emoji": "👃", "name": "nose", "old": "misc", "new": "people"}
+{"action": "recategorize", "emoji": "🅾", "name": "O button (blood type)", "old": "misc", "new": "people"}
+{"action": "recategorize", "emoji": "🐙", "name": "octopus", "old": "misc", "new": "animal"}
+{"action": "recategorize", "emoji": "🧑‍💼", "name": "office worker", "old": "misc", "new": "building"}
+{"action": "recategorize", "emoji": "🛢", "name": "oil drum", "old": "misc", "new": "music"}
+{"action": "recategorize", "emoji": "👌", "name": "OK hand", "old": "misc", "new": "people"}
+{"action": "recategorize", "emoji": "👵", "name": "old woman", "old": "misc", "new": "people"}
+{"action": "recategorize", "emoji": "🧓", "name": "older person", "old": "misc", "new": "people"}
+{"action": "recategorize", "emoji": "👊", "name": "oncoming fist", "old": "misc", "new": "people"}
+{"action": "recategorize", "emoji": "🚖", "name": "oncoming taxi", "old": "misc", "new": "transport"}
+{"action": "recategorize", "emoji": "🧅", "name": "onion", "old": "misc", "new": "food"}
+{"action": "recategorize", "emoji": "🦧", "name": "orangutan", "old": "misc", "new": "animal"}
+{"action": "recategorize", "emoji": "🦦", "name": "otter", "old": "misc", "new": "animal"}
+{"action": "recategorize", "emoji": "🦉", "name": "owl", "old": "misc", "new": "animal"}
+{"action": "recategorize", "emoji": "🫳", "name": "palm down hand", "old": "misc", "new": "people"}
+{"action": "recategorize", "emoji": "🫴", "name": "palm up hand", "old": "misc", "new": "people"}
+{"action": "recategorize", "emoji": "📎", "name": "paperclip", "old": "misc", "new": "people"}
+{"action": "recategorize", "emoji": "🪂", "name": "parachute", "old": "misc", "new": "building"}
+{"action": "recategorize", "emoji": "🦜", "name": "parrot", "old": "misc", "new": "animal"}
+{"action": "recategorize", "emoji": "🍑", "name": "peach", "old": "misc", "new": "food"}
+{"action": "recategorize", "emoji": "🦚", "name": "peacock", "old": "misc", "new": "animal"}
+{"action": "recategorize", "emoji": "🥜", "name": "peanuts", "old": "misc", "new": "food"}
+{"action": "recategorize", "emoji": "🧫", "name": "petri dish", "old": "misc", "new": "medical"}
+{"action": "recategorize", "emoji": "🛻", "name": "pickup truck", "old": "misc", "new": "transport"}
+{"action": "recategorize", "emoji": "💊", "name": "pill", "old": "misc", "new": "medical"}
+{"action": "recategorize", "emoji": "🤌", "name": "pinched fingers", "old": "misc", "new": "people"}
+{"action": "recategorize", "emoji": "🎍", "name": "pine decoration", "old": "misc", "new": "animal"}
+{"action": "recategorize", "emoji": "🏓", "name": "ping pong", "old": "misc", "new": "sport"}
+{"action": "recategorize", "emoji": "👮", "name": "police officer", "old": "misc", "new": "transport"}
+{"action": "recategorize", "emoji": "🐩", "name": "poodle", "old": "misc", "new": "animal"}
+{"action": "recategorize", "emoji": "🍿", "name": "popcorn", "old": "misc", "new": "food"}
+{"action": "recategorize", "emoji": "🏤", "name": "post office", "old": "misc", "new": "building"}
+{"action": "recategorize", "emoji": "🍲", "name": "pot of food", "old": "misc", "new": "food"}
+{"action": "recategorize", "emoji": "🥔", "name": "potato", "old": "misc", "new": "food"}
+{"action": "recategorize", "emoji": "🍗", "name": "poultry leg", "old": "misc", "new": "people"}
+{"action": "recategorize", "emoji": "💷", "name": "pound banknote", "old": "misc", "new": "building"}
+{"action": "recategorize", "emoji": "🥨", "name": "pretzel", "old": "misc", "new": "food"}
+{"action": "recategorize", "emoji": "🤴", "name": "prince", "old": "misc", "new": "people"}
+{"action": "recategorize", "emoji": "👸", "name": "princess", "old": "misc", "new": "people"}
+{"action": "recategorize", "emoji": "👛", "name": "purse", "old": "misc", "new": "clothing"}
+{"action": "recategorize", "emoji": "📻", "name": "radio", "old": "misc", "new": "music"}
+{"action": "recategorize", "emoji": "☢", "name": "radioactive", "old": "misc", "new": "music"}
+{"action": "recategorize", "emoji": "🛤", "name": "railway track", "old": "misc", "new": "transport"}
+{"action": "recategorize", "emoji": "🤚", "name": "raised back of hand", "old": "misc", "new": "people"}
+{"action": "recategorize", "emoji": "✋", "name": "raised hand", "old": "misc", "new": "people"}
+{"action": "recategorize", "emoji": "🙌", "name": "raising hands", "old": "misc", "new": "people"}
+{"action": "recategorize", "emoji": "🐀", "name": "rat", "old": "misc", "new": "animal"}
+{"action": "recategorize", "emoji": "🦰", "name": "red hair", "old": "misc", "new": "people"}
+{"action": "recategorize", "emoji": "🔂", "name": "repeat single button", "old": "misc", "new": "music"}
+{"action": "recategorize", "emoji": "⛑", "name": "rescue worker’s helmet", "old": "misc", "new": "clothing"}
+{"action": "recategorize", "emoji": "🦏", "name": "rhinoceros", "old": "misc", "new": "animal"}
+{"action": "recategorize", "emoji": "🤜", "name": "right-facing fist", "old": "misc", "new": "people"}
+{"action": "recategorize", "emoji": "🫱", "name": "rightwards hand", "old": "misc", "new": "people"}
+{"action": "recategorize", "emoji": "🫸", "name": "rightwards pushing hand", "old": "misc", "new": "people"}
+{"action": "recategorize", "emoji": "🍠", "name": "roasted sweet potato", "old": "misc", "new": "food"}
+{"action": "recategorize", "emoji": "🤖", "name": "robot", "old": "misc", "new": "science"}
+{"action": "recategorize", "emoji": "🤣", "name": "rolling on the floor laughing", "old": "misc", "new": "emotion"}
+{"action": "recategorize", "emoji": "🐓", "name": "rooster", "old": "misc", "new": "animal"}
+{"action": "recategorize", "emoji": "🏉", "name": "rugby football", "old": "misc", "new": "sport"}
+{"action": "recategorize", "emoji": "🎽", "name": "running shirt", "old": "misc", "new": "sport"}
+{"action": "recategorize", "emoji": "👟", "name": "running shoe", "old": "misc", "new": "sport"}
+{"action": "recategorize", "emoji": "🦺", "name": "safety vest", "old": "misc", "new": "clothing"}
+{"action": "recategorize", "emoji": "🍶", "name": "sake", "old": "misc", "new": "food"}
+{"action": "recategorize", "emoji": "🧂", "name": "salt", "old": "misc", "new": "food"}
+{"action": "recategorize", "emoji": "🥪", "name": "sandwich", "old": "misc", "new": "food"}
+{"action": "recategorize", "emoji": "🥻", "name": "sari", "old": "misc", "new": "clothing"}
+{"action": "recategorize", "emoji": "🛰", "name": "satellite", "old": "misc", "new": "transport"}
+{"action": "recategorize", "emoji": "🦂", "name": "scorpion", "old": "misc", "new": "animal"}
+{"action": "recategorize", "emoji": "🪛", "name": "screwdriver", "old": "misc", "new": "nature"}
+{"action": "recategorize", "emoji": "🦭", "name": "seal", "old": "misc", "new": "animal"}
+{"action": "recategorize", "emoji": "🤳", "name": "selfie", "old": "misc", "new": "people"}
+{"action": "recategorize", "emoji": "🪡", "name": "sewing needle", "old": "misc", "new": "animal"}
+{"action": "recategorize", "emoji": "🥘", "name": "shallow pan of food", "old": "misc", "new": "food"}
+{"action": "recategorize", "emoji": "☘", "name": "shamrock", "old": "misc", "new": "nature"}
+{"action": "recategorize", "emoji": "🦈", "name": "shark", "old": "misc", "new": "animal"}
+{"action": "recategorize", "emoji": "🛍", "name": "shopping bags", "old": "misc", "new": "clothing"}
+{"action": "recategorize", "emoji": "🩳", "name": "shorts", "old": "misc", "new": "clothing"}
+{"action": "recategorize", "emoji": "🦐", "name": "shrimp", "old": "misc", "new": "animal"}
+{"action": "recategorize", "emoji": "🧑‍🎤", "name": "singer", "old": "misc", "new": "music"}
+{"action": "recategorize", "emoji": "🛹", "name": "skateboard", "old": "misc", "new": "transport"}
+{"action": "recategorize", "emoji": "💀", "name": "skull", "old": "misc", "new": "emotion"}
+{"action": "recategorize", "emoji": "🦨", "name": "skunk", "old": "misc", "new": "animal"}
+{"action": "recategorize", "emoji": "🛷", "name": "sled", "old": "misc", "new": "transport"}
+{"action": "recategorize", "emoji": "🦥", "name": "sloth", "old": "misc", "new": "animal"}
+{"action": "recategorize", "emoji": "⚽", "name": "soccer ball", "old": "misc", "new": "sport"}
+{"action": "recategorize", "emoji": "🧦", "name": "socks", "old": "misc", "new": "clothing"}
+{"action": "recategorize", "emoji": "🍦", "name": "soft ice cream", "old": "misc", "new": "food"}
+{"action": "recategorize", "emoji": "🍝", "name": "spaghetti", "old": "misc", "new": "food"}
+{"action": "recategorize", "emoji": "🔊", "name": "speaker high volume", "old": "misc", "new": "music"}
+{"action": "recategorize", "emoji": "🔈", "name": "speaker low volume", "old": "misc", "new": "music"}
+{"action": "recategorize", "emoji": "🔉", "name": "speaker medium volume", "old": "misc", "new": "music"}
+{"action": "recategorize", "emoji": "🗣", "name": "speaking head", "old": "misc", "new": "people"}
+{"action": "recategorize", "emoji": "🗒", "name": "spiral notepad", "old": "misc", "new": "music"}
+{"action": "recategorize", "emoji": "🥄", "name": "spoon", "old": "misc", "new": "food"}
+{"action": "recategorize", "emoji": "🚙", "name": "sport utility vehicle", "old": "misc", "new": "transport"}
+{"action": "recategorize", "emoji": "🏅", "name": "sports medal", "old": "misc", "new": "sport"}
+{"action": "recategorize", "emoji": "🦑", "name": "squid", "old": "misc", "new": "animal"}
+{"action": "recategorize", "emoji": "🩺", "name": "stethoscope", "old": "misc", "new": "medical"}
+{"action": "recategorize", "emoji": "🛑", "name": "stop sign", "old": "misc", "new": "transport"}
+{"action": "recategorize", "emoji": "🍓", "name": "strawberry", "old": "misc", "new": "food"}
+{"action": "recategorize", "emoji": "🦸", "name": "superhero", "old": "misc", "new": "people"}
+{"action": "recategorize", "emoji": "🦹", "name": "supervillain", "old": "misc", "new": "people"}
+{"action": "recategorize", "emoji": "🍣", "name": "sushi", "old": "misc", "new": "food"}
+{"action": "recategorize", "emoji": "🦢", "name": "swan", "old": "misc", "new": "animal"}
+{"action": "recategorize", "emoji": "💦", "name": "sweat droplets", "old": "misc", "new": "emotion"}
+{"action": "recategorize", "emoji": "🕍", "name": "synagogue", "old": "misc", "new": "building"}
+{"action": "recategorize", "emoji": "👕", "name": "t-shirt", "old": "misc", "new": "clothing"}
+{"action": "recategorize", "emoji": "🫔", "name": "tamale", "old": "misc", "new": "food"}
+{"action": "recategorize", "emoji": "🚕", "name": "taxi", "old": "misc", "new": "transport"}
+{"action": "recategorize", "emoji": "🔭", "name": "telescope", "old": "misc", "new": "science"}
+{"action": "recategorize", "emoji": "🎾", "name": "tennis", "old": "misc", "new": "sport"}
+{"action": "recategorize", "emoji": "🧪", "name": "test tube", "old": "misc", "new": "medical"}
+{"action": "recategorize", "emoji": "🌡", "name": "thermometer", "old": "misc", "new": "medical"}
+{"action": "recategorize", "emoji": "🩴", "name": "thong sandal", "old": "misc", "new": "clothing"}
+{"action": "recategorize", "emoji": "👎", "name": "thumbs down", "old": "misc", "new": "people"}
+{"action": "recategorize", "emoji": "👍", "name": "thumbs up", "old": "misc", "new": "people"}
+{"action": "recategorize", "emoji": "🐅", "name": "tiger", "old": "misc", "new": "animal"}
+{"action": "recategorize", "emoji": "🍅", "name": "tomato", "old": "misc", "new": "food"}
+{"action": "recategorize", "emoji": "👅", "name": "tongue", "old": "misc", "new": "people"}
+{"action": "recategorize", "emoji": "🦷", "name": "tooth", "old": "misc", "new": "people"}
+{"action": "recategorize", "emoji": "🪥", "name": "toothbrush", "old": "misc", "new": "people"}
+{"action": "recategorize", "emoji": "🎩", "name": "top hat", "old": "misc", "new": "clothing"}
+{"action": "recategorize", "emoji": "🚊", "name": "tram", "old": "misc", "new": "transport"}
+{"action": "recategorize", "emoji": "🧌", "name": "troll", "old": "misc", "new": "people"}
+{"action": "recategorize", "emoji": "🪊", "name": "trombone", "old": "misc", "new": "people"}
+{"action": "recategorize", "emoji": "🏆", "name": "trophy", "old": "misc", "new": "sport"}
+{"action": "recategorize", "emoji": "🍹", "name": "tropical drink", "old": "misc", "new": "food"}
+{"action": "recategorize", "emoji": "🎺", "name": "trumpet", "old": "misc", "new": "music"}
+{"action": "recategorize", "emoji": "🥃", "name": "tumbler glass", "old": "misc", "new": "food"}
+{"action": "recategorize", "emoji": "🐫", "name": "two-hump camel", "old": "misc", "new": "animal"}
+{"action": "recategorize", "emoji": "☂", "name": "umbrella", "old": "misc", "new": "weather"}
+{"action": "recategorize", "emoji": "⛱", "name": "umbrella on ground", "old": "misc", "new": "weather"}
+{"action": "recategorize", "emoji": "🦄", "name": "unicorn", "old": "misc", "new": "food"}
+{"action": "recategorize", "emoji": "🧛", "name": "vampire", "old": "misc", "new": "people"}
+{"action": "recategorize", "emoji": "🚦", "name": "vertical traffic light", "old": "misc", "new": "transport"}
+{"action": "recategorize", "emoji": "📳", "name": "vibration mode", "old": "misc", "new": "animal"}
+{"action": "recategorize", "emoji": "✌", "name": "victory hand", "old": "misc", "new": "people"}
+{"action": "recategorize", "emoji": "🎻", "name": "violin", "old": "misc", "new": "music"}
+{"action": "recategorize", "emoji": "🌋", "name": "volcano", "old": "misc", "new": "nature"}
+{"action": "recategorize", "emoji": "🏐", "name": "volleyball", "old": "misc", "new": "sport"}
+{"action": "recategorize", "emoji": "🧇", "name": "waffle", "old": "misc", "new": "food"}
+{"action": "recategorize", "emoji": "🌊", "name": "water wave", "old": "misc", "new": "people"}
+{"action": "recategorize", "emoji": "🍉", "name": "watermelon", "old": "misc", "new": "food"}
+{"action": "recategorize", "emoji": "👋", "name": "waving hand", "old": "misc", "new": "people"}
+{"action": "recategorize", "emoji": "🛞", "name": "wheel", "old": "misc", "new": "clothing"}
+{"action": "recategorize", "emoji": "☸", "name": "wheel of dharma", "old": "misc", "new": "clothing"}
+{"action": "recategorize", "emoji": "♿", "name": "wheelchair symbol", "old": "misc", "new": "people"}
+{"action": "recategorize", "emoji": "🦯", "name": "white cane", "old": "misc", "new": "people"}
+{"action": "recategorize", "emoji": "🦳", "name": "white hair", "old": "misc", "new": "people"}
+{"action": "recategorize", "emoji": "🪽", "name": "wing", "old": "misc", "new": "animal"}
+{"action": "recategorize", "emoji": "🐺", "name": "wolf", "old": "misc", "new": "animal"}
+{"action": "recategorize", "emoji": "👩", "name": "woman", "old": "misc", "new": "people"}
+{"action": "recategorize", "emoji": "👢", "name": "woman’s boot", "old": "misc", "new": "people"}
+{"action": "recategorize", "emoji": "👚", "name": "woman’s clothes", "old": "misc", "new": "people"}
+{"action": "recategorize", "emoji": "👒", "name": "woman’s hat", "old": "misc", "new": "people"}
+{"action": "recategorize", "emoji": "👡", "name": "woman’s sandal", "old": "misc", "new": "people"}
+{"action": "recategorize", "emoji": "👭", "name": "women holding hands", "old": "misc", "new": "people"}
+{"action": "recategorize", "emoji": "🤼‍♀", "name": "women wrestling", "old": "misc", "new": "sport"}
+{"action": "recategorize", "emoji": "🪵", "name": "wood", "old": "misc", "new": "nature"}
+{"action": "recategorize", "emoji": "✍", "name": "writing hand", "old": "misc", "new": "people"}
+{"action": "recategorize", "emoji": "🩻", "name": "x-ray", "old": "misc", "new": "medical"}
+{"action": "recategorize", "emoji": "💴", "name": "yen banknote", "old": "misc", "new": "building"}
+{"action": "recategorize", "emoji": "🦓", "name": "zebra", "old": "misc", "new": "animal"}
+{"action": "recategorize", "emoji": "🧟", "name": "zombie", "old": "misc", "new": "people"}
+{"action": "recategorize", "emoji": "🍄‍🟫", "name": "brown mushroom", "old": "nature", "new": "food"}
+{"action": "recategorize", "emoji": "🎴", "name": "flower playing cards", "old": "nature", "new": "transport"}
+{"action": "recategorize", "emoji": "🍀", "name": "four leaf clover", "old": "nature", "new": "emotion"}
+{"action": "recategorize", "emoji": "🍃", "name": "leaf fluttering in wind", "old": "nature", "new": "weather"}
+{"action": "recategorize", "emoji": "🍄", "name": "mushroom", "old": "nature", "new": "food"}
+{"action": "recategorize", "emoji": "🎋", "name": "tanabata tree", "old": "nature", "new": "animal"}
+{"action": "recategorize", "emoji": "🌷", "name": "tulip", "old": "nature", "new": "people"}
+{"action": "recategorize", "emoji": "⏰", "name": "alarm clock", "old": "object", "new": "misc"}
+{"action": "recategorize", "emoji": "📘", "name": "blue book", "old": "object", "new": "misc"}
+{"action": "recategorize", "emoji": "💣", "name": "bomb", "old": "object", "new": "misc"}
+{"action": "recategorize", "emoji": "🔖", "name": "bookmark", "old": "object", "new": "misc"}
+{"action": "recategorize", "emoji": "📑", "name": "bookmark tabs", "old": "object", "new": "misc"}
+{"action": "recategorize", "emoji": "📷", "name": "camera", "old": "object", "new": "misc"}
+{"action": "recategorize", "emoji": "📕", "name": "closed book", "old": "object", "new": "misc"}
+{"action": "recategorize", "emoji": "💽", "name": "computer disk", "old": "object", "new": "misc"}
+{"action": "recategorize", "emoji": "👑", "name": "crown", "old": "object", "new": "sport"}
+{"action": "recategorize", "emoji": "🖥", "name": "desktop computer", "old": "object", "new": "misc"}
+{"action": "recategorize", "emoji": "🫏", "name": "donkey", "old": "object", "new": "animal"}
+{"action": "recategorize", "emoji": "🕗", "name": "eight o’clock", "old": "object", "new": "misc"}
+{"action": "recategorize", "emoji": "🕚", "name": "eleven o’clock", "old": "object", "new": "misc"}
+{"action": "recategorize", "emoji": "🏑", "name": "field hockey", "old": "object", "new": "sport"}
+{"action": "recategorize", "emoji": "🕔", "name": "five o’clock", "old": "object", "new": "misc"}
+{"action": "recategorize", "emoji": "🍴", "name": "fork and knife", "old": "object", "new": "food"}
+{"action": "recategorize", "emoji": "🍽", "name": "fork and knife with plate", "old": "object", "new": "food"}
+{"action": "recategorize", "emoji": "🖋", "name": "fountain pen", "old": "object", "new": "misc"}
+{"action": "recategorize", "emoji": "🕓", "name": "four o’clock", "old": "object", "new": "misc"}
+{"action": "recategorize", "emoji": "💎", "name": "gem stone", "old": "object", "new": "misc"}
+{"action": "recategorize", "emoji": "♊", "name": "Gemini", "old": "object", "new": "misc"}
+{"action": "recategorize", "emoji": "📗", "name": "green book", "old": "object", "new": "misc"}
+{"action": "recategorize", "emoji": "⚒", "name": "hammer and pick", "old": "object", "new": "misc"}
+{"action": "recategorize", "emoji": "🛠", "name": "hammer and wrench", "old": "object", "new": "misc"}
+{"action": "recategorize", "emoji": "🎧", "name": "headphone", "old": "object", "new": "music"}
+{"action": "recategorize", "emoji": "♨", "name": "hot springs", "old": "object", "new": "misc"}
+{"action": "recategorize", "emoji": "🏒", "name": "ice hockey", "old": "object", "new": "sport"}
+{"action": "recategorize", "emoji": "🔑", "name": "key", "old": "object", "new": "misc"}
+{"action": "recategorize", "emoji": "⌨", "name": "keyboard", "old": "object", "new": "misc"}
+{"action": "recategorize", "emoji": "🔪", "name": "kitchen knife", "old": "object", "new": "food"}
+{"action": "recategorize", "emoji": "🔒", "name": "locked", "old": "object", "new": "misc"}
+{"action": "recategorize", "emoji": "🔐", "name": "locked with key", "old": "object", "new": "misc"}
+{"action": "recategorize", "emoji": "🔏", "name": "locked with pen", "old": "object", "new": "misc"}
+{"action": "recategorize", "emoji": "📣", "name": "megaphone", "old": "object", "new": "misc"}
+{"action": "recategorize", "emoji": "🎤", "name": "microphone", "old": "object", "new": "music"}
+{"action": "recategorize", "emoji": "📱", "name": "mobile phone", "old": "object", "new": "misc"}
+{"action": "recategorize", "emoji": "📴", "name": "mobile phone off", "old": "object", "new": "misc"}
+{"action": "recategorize", "emoji": "📲", "name": "mobile phone with arrow", "old": "object", "new": "sport"}
+{"action": "recategorize", "emoji": "🎥", "name": "movie camera", "old": "object", "new": "misc"}
+{"action": "recategorize", "emoji": "🎹", "name": "musical keyboard", "old": "object", "new": "music"}
+{"action": "recategorize", "emoji": "🕘", "name": "nine o’clock", "old": "object", "new": "misc"}
+{"action": "recategorize", "emoji": "🚯", "name": "no littering", "old": "object", "new": "misc"}
+{"action": "recategorize", "emoji": "📵", "name": "no mobile phones", "old": "object", "new": "misc"}
+{"action": "recategorize", "emoji": "📓", "name": "notebook", "old": "object", "new": "music"}
+{"action": "recategorize", "emoji": "📔", "name": "notebook with decorative cover", "old": "object", "new": "animal"}
+{"action": "recategorize", "emoji": "🗝", "name": "old key", "old": "object", "new": "people"}
+{"action": "recategorize", "emoji": "📂", "name": "open file folder", "old": "object", "new": "people"}
+{"action": "recategorize", "emoji": "👐", "name": "open hands", "old": "object", "new": "people"}
+{"action": "recategorize", "emoji": "🖊", "name": "pen", "old": "object", "new": "misc"}
+{"action": "recategorize", "emoji": "✏", "name": "pencil", "old": "object", "new": "misc"}
+{"action": "recategorize", "emoji": "🐧", "name": "penguin", "old": "object", "new": "animal"}
+{"action": "recategorize", "emoji": "💍", "name": "ring", "old": "object", "new": "misc"}
+{"action": "recategorize", "emoji": "🛟", "name": "ring buoy", "old": "object", "new": "misc"}
+{"action": "recategorize", "emoji": "🎷", "name": "saxophone", "old": "object", "new": "music"}
+{"action": "recategorize", "emoji": "✂", "name": "scissors", "old": "object", "new": "misc"}
+{"action": "recategorize", "emoji": "🕖", "name": "seven o’clock", "old": "object", "new": "misc"}
+{"action": "recategorize", "emoji": "🛡", "name": "shield", "old": "object", "new": "misc"}
+{"action": "recategorize", "emoji": "🕕", "name": "six o’clock", "old": "object", "new": "misc"}
+{"action": "recategorize", "emoji": "🎙", "name": "studio microphone", "old": "object", "new": "music"}
+{"action": "recategorize", "emoji": "🚟", "name": "suspension railway", "old": "object", "new": "transport"}
+{"action": "recategorize", "emoji": "💉", "name": "syringe", "old": "object", "new": "medical"}
+{"action": "recategorize", "emoji": "☎", "name": "telephone", "old": "object", "new": "misc"}
+{"action": "recategorize", "emoji": "📞", "name": "telephone receiver", "old": "object", "new": "misc"}
+{"action": "recategorize", "emoji": "🕙", "name": "ten o’clock", "old": "object", "new": "misc"}
+{"action": "recategorize", "emoji": "🕒", "name": "three o’clock", "old": "object", "new": "misc"}
+{"action": "recategorize", "emoji": "⏲", "name": "timer clock", "old": "object", "new": "misc"}
+{"action": "recategorize", "emoji": "🦃", "name": "turkey", "old": "object", "new": "misc"}
+{"action": "recategorize", "emoji": "🕛", "name": "twelve o’clock", "old": "object", "new": "misc"}
+{"action": "recategorize", "emoji": "🕑", "name": "two o’clock", "old": "object", "new": "misc"}
+{"action": "recategorize", "emoji": "🔓", "name": "unlocked", "old": "object", "new": "misc"}
+{"action": "recategorize", "emoji": "📹", "name": "video camera", "old": "object", "new": "misc"}
+{"action": "recategorize", "emoji": "🙍‍♂", "name": "man frowning", "old": "people", "new": "emotion"}
+{"action": "recategorize", "emoji": "🙎‍♂", "name": "man pouting", "old": "people", "new": "emotion"}
+{"action": "recategorize", "emoji": "🙍", "name": "person frowning", "old": "people", "new": "emotion"}
+{"action": "recategorize", "emoji": "🙎", "name": "person pouting", "old": "people", "new": "emotion"}
+{"action": "recategorize", "emoji": "👲", "name": "person with skullcap", "old": "people", "new": "emotion"}
+{"action": "recategorize", "emoji": "🔙", "name": "BACK arrow", "old": "symbol", "new": "sport"}
+{"action": "recategorize", "emoji": "⚫", "name": "black circle", "old": "symbol", "new": "misc"}
+{"action": "recategorize", "emoji": "⬛", "name": "black large square", "old": "symbol", "new": "misc"}
+{"action": "recategorize", "emoji": "◼", "name": "black medium square", "old": "symbol", "new": "misc"}
+{"action": "recategorize", "emoji": "◾", "name": "black medium-small square", "old": "symbol", "new": "misc"}
+{"action": "recategorize", "emoji": "▪", "name": "black small square", "old": "symbol", "new": "misc"}
+{"action": "recategorize", "emoji": "🔲", "name": "black square button", "old": "symbol", "new": "misc"}
+{"action": "recategorize", "emoji": "🟦", "name": "blue square", "old": "symbol", "new": "misc"}
+{"action": "recategorize", "emoji": "🟤", "name": "brown circle", "old": "symbol", "new": "sport"}
+{"action": "recategorize", "emoji": "🟫", "name": "brown square", "old": "symbol", "new": "sport"}
+{"action": "recategorize", "emoji": "☑", "name": "check box with check", "old": "symbol", "new": "misc"}
+{"action": "recategorize", "emoji": "✔", "name": "check mark", "old": "symbol", "new": "misc"}
+{"action": "recategorize", "emoji": "Ⓜ", "name": "circled M", "old": "symbol", "new": "misc"}
+{"action": "recategorize", "emoji": "❎", "name": "cross mark button", "old": "symbol", "new": "misc"}
+{"action": "recategorize", "emoji": "🤞", "name": "crossed fingers", "old": "symbol", "new": "people"}
+{"action": "recategorize", "emoji": "⚔", "name": "crossed swords", "old": "symbol", "new": "misc"}
+{"action": "recategorize", "emoji": "♦", "name": "diamond suit", "old": "symbol", "new": "misc"}
+{"action": "recategorize", "emoji": "💠", "name": "diamond with a dot", "old": "symbol", "new": "misc"}
+{"action": "recategorize", "emoji": "⬇", "name": "down arrow", "old": "symbol", "new": "sport"}
+{"action": "recategorize", "emoji": "↙", "name": "down-left arrow", "old": "symbol", "new": "sport"}
+{"action": "recategorize", "emoji": "↘", "name": "down-right arrow", "old": "symbol", "new": "sport"}
+{"action": "recategorize", "emoji": "🔚", "name": "END arrow", "old": "symbol", "new": "sport"}
+{"action": "recategorize", "emoji": "🟢", "name": "green circle", "old": "symbol", "new": "misc"}
+{"action": "recategorize", "emoji": "🟩", "name": "green square", "old": "symbol", "new": "misc"}
+{"action": "recategorize", "emoji": "🫰", "name": "hand with index finger and thumb crossed", "old": "symbol", "new": "people"}
+{"action": "recategorize", "emoji": "🥍", "name": "lacrosse", "old": "symbol", "new": "sport"}
+{"action": "recategorize", "emoji": "🔷", "name": "large blue diamond", "old": "symbol", "new": "misc"}
+{"action": "recategorize", "emoji": "✝", "name": "latin cross", "old": "symbol", "new": "misc"}
+{"action": "recategorize", "emoji": "⬅", "name": "left arrow", "old": "symbol", "new": "sport"}
+{"action": "recategorize", "emoji": "↪", "name": "left arrow curving right", "old": "symbol", "new": "sport"}
+{"action": "recategorize", "emoji": "↔", "name": "left-right arrow", "old": "symbol", "new": "sport"}
+{"action": "recategorize", "emoji": "☦", "name": "orthodox cross", "old": "symbol", "new": "misc"}
+{"action": "recategorize", "emoji": "🟣", "name": "purple circle", "old": "symbol", "new": "misc"}
+{"action": "recategorize", "emoji": "🟪", "name": "purple square", "old": "symbol", "new": "misc"}
+{"action": "recategorize", "emoji": "🔴", "name": "red circle", "old": "symbol", "new": "misc"}
+{"action": "recategorize", "emoji": "🟥", "name": "red square", "old": "symbol", "new": "misc"}
+{"action": "recategorize", "emoji": "🔻", "name": "red triangle pointed down", "old": "symbol", "new": "people"}
+{"action": "recategorize", "emoji": "➡", "name": "right arrow", "old": "symbol", "new": "sport"}
+{"action": "recategorize", "emoji": "⤵", "name": "right arrow curving down", "old": "symbol", "new": "sport"}
+{"action": "recategorize", "emoji": "↩", "name": "right arrow curving left", "old": "symbol", "new": "sport"}
+{"action": "recategorize", "emoji": "⤴", "name": "right arrow curving up", "old": "symbol", "new": "sport"}
+{"action": "recategorize", "emoji": "☠", "name": "skull and crossbones", "old": "symbol", "new": "emotion"}
+{"action": "recategorize", "emoji": "🔜", "name": "SOON arrow", "old": "symbol", "new": "sport"}
+{"action": "recategorize", "emoji": "🔝", "name": "TOP arrow", "old": "symbol", "new": "sport"}
+{"action": "recategorize", "emoji": "⬆", "name": "up arrow", "old": "symbol", "new": "sport"}
+{"action": "recategorize", "emoji": "↕", "name": "up-down arrow", "old": "symbol", "new": "sport"}
+{"action": "recategorize", "emoji": "↖", "name": "up-left arrow", "old": "symbol", "new": "sport"}
+{"action": "recategorize", "emoji": "↗", "name": "up-right arrow", "old": "symbol", "new": "sport"}
+{"action": "recategorize", "emoji": "⚪", "name": "white circle", "old": "symbol", "new": "misc"}
+{"action": "recategorize", "emoji": "⬜", "name": "white large square", "old": "symbol", "new": "misc"}
+{"action": "recategorize", "emoji": "◻", "name": "white medium square", "old": "symbol", "new": "misc"}
+{"action": "recategorize", "emoji": "◽", "name": "white medium-small square", "old": "symbol", "new": "misc"}
+{"action": "recategorize", "emoji": "▫", "name": "white small square", "old": "symbol", "new": "misc"}
+{"action": "recategorize", "emoji": "🔳", "name": "white square button", "old": "symbol", "new": "misc"}
+{"action": "recategorize", "emoji": "🟡", "name": "yellow circle", "old": "symbol", "new": "misc"}
+{"action": "recategorize", "emoji": "🟨", "name": "yellow square", "old": "symbol", "new": "misc"}
+{"action": "recategorize", "emoji": "📇", "name": "card index", "old": "transport", "new": "people"}
+{"action": "recategorize", "emoji": "🥕", "name": "carrot", "old": "transport", "new": "food"}
+{"action": "recategorize", "emoji": "🚎", "name": "trolleybus", "old": "transport", "new": "people"}
+{"action": "recategorize", "emoji": "🔯", "name": "dotted six-pointed star", "old": "weather", "new": "people"}
+{"action": "recategorize", "emoji": "✴", "name": "eight-pointed star", "old": "weather", "new": "people"}
+{"action": "recategorize", "emoji": "🌟", "name": "glowing star", "old": "weather", "new": "animal"}
+{"action": "recategorize", "emoji": "🎑", "name": "moon viewing ceremony", "old": "weather", "new": "animal"}
+{"action": "recategorize", "emoji": "🏔", "name": "snow-capped mountain", "old": "weather", "new": "clothing"}
+{"action": "recategorize", "emoji": "🏂", "name": "snowboarder", "old": "weather", "new": "sport"}
+{"action": "recategorize", "emoji": "☃", "name": "snowman", "old": "weather", "new": "people"}
+{"action": "recategorize", "emoji": "🤩", "name": "star-struck", "old": "weather", "new": "transport"}
+{"action": "recategorize", "emoji": "🕶", "name": "sunglasses", "old": "weather", "new": "food"}
+{"action": "recategorize", "emoji": "🌄", "name": "sunrise over mountains", "old": "weather", "new": "nature"}
+{"action": "trim_tier1", "emoji": "🧞‍♀", "name": "woman genie", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🙅‍♀", "name": "woman gesturing NO", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🙆‍♀", "name": "woman gesturing OK", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "💇‍♀", "name": "woman getting haircut", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "💆‍♀", "name": "woman getting massage", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🏌‍♀", "name": "woman golfing", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "💂‍♀", "name": "woman guard", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "👩‍⚕", "name": "woman health worker", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🧘‍♀", "name": "woman in lotus position", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "👩‍🦽", "name": "woman in manual wheelchair", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "👩‍🦼", "name": "woman in motorized wheelchair", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🧖‍♀", "name": "woman in steamy room", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🤵‍♀", "name": "woman in tuxedo", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "👩‍⚖", "name": "woman judge", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🤹‍♀", "name": "woman juggling", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🧎‍♀", "name": "woman kneeling", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🏋‍♀", "name": "woman lifting weights", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🧙‍♀", "name": "woman mage", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "👩‍🔧", "name": "woman mechanic", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🚵‍♀", "name": "woman mountain biking", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "👩‍💼", "name": "woman office worker", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "👩‍✈", "name": "woman pilot", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🤾‍♀", "name": "woman playing handball", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🤽‍♀", "name": "woman playing water polo", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "👮‍♀", "name": "woman police officer", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🙎‍♀", "name": "woman pouting", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🙋‍♀", "name": "woman raising hand", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "👩‍🦰", "name": "woman red hair", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🚣‍♀", "name": "woman rowing boat", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🏃‍♀", "name": "woman running", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "👩‍🔬", "name": "woman scientist", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🤷‍♀", "name": "woman shrugging", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "👩‍🎤", "name": "woman singer", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🧍‍♀", "name": "woman standing", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "👩‍🎓", "name": "woman student", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🦸‍♀", "name": "woman superhero", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🦹‍♀", "name": "woman supervillain", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🏄‍♀", "name": "woman surfing", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🏊‍♀", "name": "woman swimming", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "👩‍🏫", "name": "woman teacher", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "👩‍💻", "name": "woman technologist", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "💁‍♀", "name": "woman tipping hand", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🧛‍♀", "name": "woman vampire", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🚶‍♀", "name": "woman walking", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "👩‍🦳", "name": "woman white hair", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🧕", "name": "woman with headscarf", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "👰‍♀", "name": "woman with veil", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "👩‍🦯", "name": "woman with white cane", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🧟‍♀", "name": "woman zombie", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "👢", "name": "woman’s boot", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "👚", "name": "woman’s clothes", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "👒", "name": "woman’s hat", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "👡", "name": "woman’s sandal", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "👭", "name": "women holding hands", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "✍", "name": "writing hand", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🧟", "name": "zombie", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "⚛", "name": "atom symbol", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🔌", "name": "electric plug", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🏷", "name": "label", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🧲", "name": "magnet", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🤖", "name": "robot", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🔭", "name": "telescope", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🥇", "name": "1st place medal", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🥈", "name": "2nd place medal", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🥉", "name": "3rd place medal", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🔙", "name": "BACK arrow", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🏸", "name": "badminton", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "⚾", "name": "baseball", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🏀", "name": "basketball", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🟤", "name": "brown circle", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🟫", "name": "brown square", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "👑", "name": "crown", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "⬇", "name": "down arrow", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "↙", "name": "down-left arrow", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "↘", "name": "down-right arrow", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🔚", "name": "END arrow", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🏑", "name": "field hockey", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🏒", "name": "ice hockey", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "⛸", "name": "ice skate", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🥍", "name": "lacrosse", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "⬅", "name": "left arrow", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "↪", "name": "left arrow curving right", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "↔", "name": "left-right arrow", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🥋", "name": "martial arts uniform", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🤼‍♂", "name": "men wrestling", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🎖", "name": "military medal", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "📲", "name": "mobile phone with arrow", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🏓", "name": "ping pong", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "➡", "name": "right arrow", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "⤵", "name": "right arrow curving down", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "↩", "name": "right arrow curving left", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "⤴", "name": "right arrow curving up", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🏉", "name": "rugby football", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🎽", "name": "running shirt", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "👟", "name": "running shoe", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🏂", "name": "snowboarder", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "⚽", "name": "soccer ball", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🔜", "name": "SOON arrow", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🏅", "name": "sports medal", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🎾", "name": "tennis", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🔝", "name": "TOP arrow", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🏆", "name": "trophy", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "⬆", "name": "up arrow", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "↕", "name": "up-down arrow", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "↖", "name": "up-left arrow", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "↗", "name": "up-right arrow", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🏐", "name": "volleyball", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🤼‍♀", "name": "women wrestling", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🚡", "name": "aerial tramway", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "✈", "name": "airplane", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🛬", "name": "airplane arrival", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🛫", "name": "airplane departure", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🚑", "name": "ambulance", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "⚓", "name": "anchor", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🛺", "name": "auto rickshaw", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🚲", "name": "bicycle", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🏗", "name": "building construction", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🚅", "name": "bullet train", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🚌", "name": "bus", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🚏", "name": "bus stop", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🛶", "name": "canoe", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🗃", "name": "card file box", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🎏", "name": "carp streamer", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🪚", "name": "carpentry saw", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🚧", "name": "construction", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "👷", "name": "construction worker", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "💳", "name": "credit card", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🚚", "name": "delivery truck", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "⛴", "name": "ferry", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🚒", "name": "fire engine", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🎴", "name": "flower playing cards", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "⛽", "name": "fuel pump", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🚁", "name": "helicopter", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🚄", "name": "high-speed train", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🚥", "name": "horizontal traffic light", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🈺", "name": "Japanese open for business button", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🛴", "name": "kick scooter", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🚇", "name": "metro", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🚐", "name": "minibus", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🚝", "name": "monorail", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🛥", "name": "motor boat", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🛵", "name": "motor scooter", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🏍", "name": "motorcycle", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🚞", "name": "mountain railway", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🚳", "name": "no bicycles", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🚍", "name": "oncoming bus", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🚔", "name": "oncoming police car", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🚖", "name": "oncoming taxi", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🛳", "name": "passenger ship", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🛻", "name": "pickup truck", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🪧", "name": "placard", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🛐", "name": "place of worship", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🚓", "name": "police car", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🚨", "name": "police car light", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "👮", "name": "police officer", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🏎", "name": "racing car", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🚃", "name": "railway car", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🛤", "name": "railway track", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🪐", "name": "ringed planet", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🚀", "name": "rocket", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "⛵", "name": "sailboat", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🛰", "name": "satellite", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🧣", "name": "scarf", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🚢", "name": "ship", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🛒", "name": "shopping cart", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🛹", "name": "skateboard", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🛷", "name": "sled", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🛩", "name": "small airplane", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🚤", "name": "speedboat", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🚙", "name": "sport utility vehicle", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🤩", "name": "star-struck", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🛑", "name": "stop sign", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🚟", "name": "suspension railway", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🚕", "name": "taxi", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🚆", "name": "train", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🚊", "name": "tram", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🚋", "name": "tram car", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🚦", "name": "vertical traffic light", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🏖", "name": "beach with umbrella", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🌂", "name": "closed umbrella", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "☁", "name": "cloud", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🌩", "name": "cloud with lightning", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "⛈", "name": "cloud with lightning and rain", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🌧", "name": "cloud with rain", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🌨", "name": "cloud with snow", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "☄", "name": "comet", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🌙", "name": "crescent moon", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🍮", "name": "custard", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🌀", "name": "cyclone", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🫯", "name": "fight cloud", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🌓", "name": "first quarter moon", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🌫", "name": "fog", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🌁", "name": "foggy", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🌕", "name": "full moon", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🌗", "name": "last quarter moon", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🍃", "name": "leaf fluttering in wind", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🌃", "name": "night with stars", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🌈", "name": "rainbow", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🌠", "name": "shooting star", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "❄", "name": "snowflake", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "⭐", "name": "star", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "☪", "name": "star and crescent", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "✡", "name": "star of David", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "☀", "name": "sun", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "⛅", "name": "sun behind cloud", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🌥", "name": "sun behind large cloud", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🌦", "name": "sun behind rain cloud", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🌤", "name": "sun behind small cloud", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🌅", "name": "sunrise", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🌇", "name": "sunset", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🌪", "name": "tornado", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "☂", "name": "umbrella", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "⛱", "name": "umbrella on ground", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "☔", "name": "umbrella with rain drops", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🌘", "name": "waning crescent moon", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🌖", "name": "waning gibbous moon", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🌒", "name": "waxing crescent moon", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🌔", "name": "waxing gibbous moon", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🎐", "name": "wind chime", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "trim_tier1", "emoji": "🪟", "name": "window", "reason": "Tier 1 capped at 1200 (primitives fixed at 1200-1331)"}
+{"action": "compose", "word": "photosynthesis", "ids": [1278, 1236, 1270]}
+{"action": "compose", "word": "evaporation", "ids": [1266, 1305, 1269]}
+{"action": "compose", "word": "democracy", "ids": [1302, 1204, 1290]}
+{"action": "compose", "word": "gravity", "ids": [1268, 1302, 1232, 1251]}
+{"action": "compose", "word": "chemical", "ids": [1265, 1293]}
+{"action": "compose", "word": "economy", "ids": [1298, 1296]}
+{"action": "compose", "word": "species", "ids": [1206, 1277]}
+{"action": "compose", "word": "habitat", "ids": [1300, 1277]}
+{"action": "compose", "word": "climate", "ids": [1269, 1240, 1292]}
+{"action": "compose", "word": "government", "ids": [1302, 1296, 1295]}
+{"action": "compose", "word": "temperature", "ids": [1326, 1291]}
+{"action": "compose", "word": "velocity", "ids": [1232, 1291]}
+{"action": "compose", "word": "equation", "ids": [1285, 1290]}
+{"action": "compose", "word": "variable", "ids": [1285, 1293]}
+{"action": "compose", "word": "mountain", "ids": [1268, 1218, 1250]}
+{"action": "compose", "word": "ocean", "ids": [1266, 1218]}
+{"action": "compose", "word": "forest", "ids": [1278, 1214]}
+{"action": "compose", "word": "desert", "ids": [1268, 1326, 1314]}
+{"action": "compose", "word": "volcano", "ids": [1268, 1267, 1218]}
+{"action": "compose", "word": "earthquake", "ids": [1268, 1232, 1282]}
+{"action": "compose", "word": "electricity", "ids": [1324, 1232]}
+{"action": "compose", "word": "evolution", "ids": [1238, 1293, 1244]}
+{"action": "compose", "word": "extinction", "ids": [1239, 1211]}
+{"action": "compose", "word": "revolution", "ids": [1293, 1302, 1296]}
+{"action": "compose", "word": "constitution", "ids": [1295, 1313, 1304]}
+{"action": "compose", "word": "president", "ids": [1202, 1302, 1296]}
+{"action": "compose", "word": "parliament", "ids": [1204, 1295, 1296]}
+{"action": "compose", "word": "election", "ids": [1204, 1223, 1202]}
+{"action": "compose", "word": "peace", "ids": [1253, 1297]}
+{"action": "compose", "word": "science", "ids": [1222, 1229, 1291]}
+{"action": "compose", "word": "mathematics", "ids": [1285, 1292, 1229]}
+{"action": "compose", "word": "literature", "ids": [1304, 1224, 1228]}
+{"action": "compose", "word": "university", "ids": [1299, 1218, 1296]}
+{"action": "compose", "word": "student", "ids": [1202, 1299]}
+{"action": "compose", "word": "teacher", "ids": [1202, 1299, 1227]}
+{"action": "compose", "word": "experiment", "ids": [1230, 1254, 1222]}
+{"action": "compose", "word": "hypothesis", "ids": [1254, 1229]}
+{"action": "compose", "word": "evidence", "ids": [1229, 1225]}
+{"action": "compose", "word": "analysis", "ids": [1262, 1225]}
+{"action": "compose", "word": "theory", "ids": [1221, 1292]}
+{"action": "compose", "word": "environment", "ids": [1268, 1269, 1266, 1238]}
+{"action": "compose", "word": "population", "ids": [1204, 1214, 1247]}
+{"action": "compose", "word": "agriculture", "ids": [1278, 1281, 1279]}
+{"action": "compose", "word": "industry", "ids": [1315, 1281, 1214]}
+{"action": "compose", "word": "technology", "ids": [1315, 1222]}
+{"action": "compose", "word": "communication", "ids": [1227, 1317]}
+{"action": "compose", "word": "transportation", "ids": [1232, 1315]}
+{"action": "compose", "word": "architecture", "ids": [1281, 1300, 1218]}
+{"action": "compose", "word": "philosophy", "ids": [1221, 1222, 1228]}
+{"action": "compose", "word": "psychology", "ids": [1222, 1224, 1221]}
+{"action": "compose", "word": "biology", "ids": [1222, 1238]}
+{"action": "compose", "word": "chemistry", "ids": [1222, 1265, 1293]}
+{"action": "compose", "word": "physics", "ids": [1222, 1232, 1324]}
+{"action": "compose", "word": "geography", "ids": [1222, 1268, 1247]}
+{"action": "compose", "word": "history", "ids": [1222, 1242, 1231]}
+{"action": "compose", "word": "astronomy", "ids": [1222, 1249, 1270]}
+{"action": "compose", "word": "medicine", "ids": [1222, 1238, 1216]}
+{"action": "compose", "word": "engineering", "ids": [1281, 1315, 1222]}
+{"action": "compose", "word": "computer", "ids": [1315, 1221]}
+{"action": "compose", "word": "internet", "ids": [1309, 1235]}
+{"action": "compose", "word": "language", "ids": [1228, 1227, 1222]}
+{"action": "compose", "word": "art", "ids": [1281, 1225, 1224]}
+{"action": "compose", "word": "religion", "ids": [1224, 1235, 1218]}
+{"action": "compose", "word": "writer", "ids": [1202, 1304]}
+{"action": "compose", "word": "scientist", "ids": [1202, 1222, 1291]}
+{"action": "compose", "word": "farmer", "ids": [1202, 1278, 1279]}
+{"action": "compose", "word": "soldier", "ids": [1202, 1297]}
+{"action": "compose", "word": "judge", "ids": [1202, 1295]}
+{"action": "compose", "word": "doctor", "ids": [1202, 1238, 1216]}
+{"action": "compose", "word": "telephone", "ids": [1315, 1227]}
+{"action": "compose", "word": "television", "ids": [1315, 1225]}

@@ -10,19 +10,13 @@ Follows the same pattern as SentencePiece's byte_fallback (used by Llama 1/2/3).
 from __future__ import annotations
 
 # Token IDs for byte fallback (must match vocabulary.py)
-BYTES_START_ID: int = 1804
-BYTES_END_ID: int = 1805
-BYTE_TOKEN_OFFSET: int = 1806  # Byte 0x00 → ID 1806, 0xFF → ID 2061
+BYTES_START_ID: int = 1660
+BYTES_END_ID: int = 1661
+BYTE_TOKEN_OFFSET: int = 1662  # Byte 0x00 → ID 1662, 0xFF → ID 1917
 
 
 def encode_bytes(word: str) -> list[int]:
     """Encode a word as UTF-8 byte token IDs with boundary markers.
-
-    "watr" → [1804, 1925, 1903, 1922, 1920, 1805]
-              START   w      a      t      r    END
-
-    For ASCII text: one byte = one character = one token (plus 2 markers).
-    For non-ASCII: 2-4 bytes per character.
 
     Args:
         word: Unknown word to encode as bytes.
@@ -36,9 +30,6 @@ def encode_bytes(word: str) -> list[int]:
 
 def decode_bytes(ids: list[int]) -> str:
     """Decode byte token IDs back to a string.
-
-    Inverse of encode_bytes. Extracts byte values between BYTES_START
-    and BYTES_END markers, reconstructs UTF-8 string.
 
     Args:
         ids: Token ID sequence starting with BYTES_START and ending
@@ -55,7 +46,6 @@ def decode_bytes(ids: list[int]) -> str:
     if ids[0] != BYTES_START_ID:
         raise ValueError(f"Expected BYTES_START ({BYTES_START_ID}), got {ids[0]}")
 
-    # Find end marker
     end_idx = -1
     for i in range(1, len(ids)):
         if ids[i] == BYTES_END_ID:
@@ -64,7 +54,6 @@ def decode_bytes(ids: list[int]) -> str:
     if end_idx == -1:
         raise ValueError(f"Missing BYTES_END ({BYTES_END_ID}) marker")
 
-    # Extract byte values
     byte_values = []
     for tid in ids[1:end_idx]:
         bval = tid - BYTE_TOKEN_OFFSET

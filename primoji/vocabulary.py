@@ -1,63 +1,50 @@
 """Vocabulary definition for Primoji tokenizer.
 
-Defines all ~2,062 token IDs:
-- IDs 0–1199:      Tier 1 direct Unicode emoji
-- IDs 1200–1319:   Tier 2 compositional primitives (Wierzbicka + domain)
-- IDs 1320–1578:   Country flags
-- IDs 1579–1605:   Contraction tokens (20 dedicated + 7 suffixes)
-- IDs 1606–1799:   Structural (digits, math operators, punctuation)
-- IDs 1800–1805:   Special tokens (BOS, EOS, PAD, UNK, BYTES_START, BYTES_END)
-- IDs 1806–2061:   Byte fallback (256 tokens, one per byte 0x00–0xFF)
+Loads Tier 1 emoji from data/emoji_catalog.json and defines all ID ranges:
+- IDs 0–1199:      Tier 1 direct Unicode emoji (loaded from catalog)
+- IDs 1200–1331:   Tier 2 compositional primitives (loaded from primitives.json)
+- IDs 1332–1590:   Country flags (~259)
+- IDs 1591–1617:   Contraction tokens (20 dedicated + 7 suffixes)
+- IDs 1618–1655:   Structural (digits, math operators, punctuation)
+- IDs 1656–1661:   Special tokens (BOS, EOS, PAD, UNK, BYTES_START, BYTES_END)
+- IDs 1662–1917:   Byte fallback (256 tokens, one per byte 0x00–0xFF)
+
+Total: 1918 tokens.
 """
 
 from __future__ import annotations
 
-from primoji.primitives import PRIMITIVES, get_primitive_by_emoji, get_primitive_by_id
+import json
+from pathlib import Path
+
+from primoji.primitives import PRIMITIVES
 from primoji.utils import SpecialTokens
+
+_DATA_DIR = Path(__file__).parent.parent / "data"
 
 
 # ── Tier 1: Direct Unicode Emoji (IDs 0–1199) ────────────────────────────────
-# Top ~200 semantically distinct emoji as bootstrap; full set loaded from catalog later.
 
-_TIER1_EMOJI_LIST: list[str] = [
-    # Animals
-    "🐕", "🐈", "🐟", "🐦", "🐍", "🐘", "🦁", "🐻", "🐺", "🐒",
-    "🐝", "🦋", "🐢", "🐙", "🦈", "🐋", "🐬", "🦅", "🐓", "🐄",
-    "🐖", "🐑", "🐐", "🐎", "🦌", "🐿️", "🐇", "🐊", "🦜", "🐸",
-    # Food & Drink
-    "🍎", "🍊", "🍋", "🍇", "🍓", "🍌", "🍉", "🍑", "🍒", "🥝",
-    "🍅", "🥕", "🌽", "🥔", "🧅", "🥩", "🍗", "🍞", "🧀", "🥚",
-    "🍚", "🍜", "🍕", "🍔", "🌮", "🍣", "🍰", "🍫", "🍷", "🍺",
-    # Nature & Weather
-    "🌳", "🌺", "🌻", "🌹", "🍀", "🌵", "🍄", "🌊", "🌋", "🏔️",
-    "⛰️", "🌈", "❄️", "⛈️", "🌤️", "🌙", "⭐", "🌍", "🌏", "🌎",
-    # Objects
-    "🏠", "🏢", "🏫", "🏥", "⛪", "🕌", "🏰", "🗼", "🗽", "🎡",
-    "🚗", "🚌", "🚂", "✈️", "🚀", "🛳️", "🚲", "🏍️", "🚁", "⛵",
-    "📱", "💻", "⌨️", "🖨️", "📷", "🎥", "📺", "🔑", "🔒", "💡",
-    "🔔", "📦", "🎁", "🏆", "🎵", "🎸", "🎹", "🎺", "🎻", "🥁",
-    # Body & People
-    "👶", "👦", "👧", "👨", "👩", "👴", "👵", "🤴", "👸", "🧙",
-    "💀", "👻", "🤖", "👽", "🧠", "👀", "👂", "👃", "👄", "🦷",
-    "💪", "🦵", "🦶", "👋", "✋", "🤚", "👊", "✌️", "🤞", "👍",
-    # Symbols & Misc
-    "❤️", "💔", "💯", "🔥", "💧", "💎", "🛡️", "⚔️", "🏹", "🔱",
-    "⚓", "🧲", "🧪", "🔬", "🔭", "💊", "🩺", "🧬", "🦠", "🧫",
-    "📖", "📝", "📰", "📮", "📫", "🗳️", "📊", "📈", "📉", "🗓️",
-    "⏰", "🧭", "🗺️", "🔦", "🏮", "🎈", "🎉", "🎊", "🎭", "🎨",
-    # Emotions & Faces
-    "😀", "😢", "😡", "😱", "🤔", "😴", "🤒", "😎", "🥳", "😇",
-]
+def _load_tier1() -> dict[str, int]:
+    """Load Tier 1 emoji→ID mapping from data/emoji_catalog.json."""
+    catalog_path = _DATA_DIR / "emoji_catalog.json"
+    if catalog_path.exists():
+        with catalog_path.open() as f:
+            data = json.load(f)
+        return {e["emoji"]: e["id"] for e in data["emoji"]}
+    # Fallback: empty (bootstrap before catalog exists)
+    return {}
 
-TIER1_DIRECT_EMOJI: dict[str, int] = {e: i for i, e in enumerate(_TIER1_EMOJI_LIST)}
 
-# ── Tier 2: Compositional Primitives (IDs 1200–1319) ─────────────────────────
+TIER1_DIRECT_EMOJI: dict[str, int] = _load_tier1()
+
+# ── Tier 2: Compositional Primitives (IDs 1200–1331) ─────────────────────────
 
 TIER2_PRIMITIVES: dict[str, int] = {p.emoji: p.id for p in PRIMITIVES}
 
-# ── Country Flags (IDs 1320–1578) ────────────────────────────────────────────
+# ── Country Flags (IDs 1332–1590) ────────────────────────────────────────────
 
-_FLAG_BASE_ID: int = 1320
+_FLAG_BASE_ID: int = 1332
 
 _ISO_CODES: list[str] = [
     "AD", "AE", "AF", "AG", "AI", "AL", "AM", "AO", "AQ", "AR",
@@ -100,18 +87,16 @@ for _i, _code in enumerate(_ISO_CODES):
     TIER3_FLAGS[_code] = _FLAG_BASE_ID + _i
     _FLAG_EMOJI_TO_ID[_flag] = _FLAG_BASE_ID + _i
 
-# ── Contraction Tokens (IDs 1579–1605) ───────────────────────────────────────
+# ── Contraction Tokens (IDs 1591–1617) ───────────────────────────────────────
 
 CONTRACTION_TOKENS: dict[str, int] = {
-    # Top 20 dedicated whole-contraction tokens
-    "don't": 1579, "can't": 1580, "won't": 1581, "i'm": 1582,
-    "it's": 1583, "isn't": 1584, "didn't": 1585, "doesn't": 1586,
-    "wasn't": 1587, "weren't": 1588, "couldn't": 1589, "wouldn't": 1590,
-    "shouldn't": 1591, "haven't": 1592, "hasn't": 1593, "i'll": 1594,
-    "you're": 1595, "they're": 1596, "we're": 1597, "he's": 1598,
-    # 7 contraction suffixes for splitting less common contractions
-    "'t": 1599, "'m": 1600, "'ll": 1601, "'ve": 1602,
-    "'re": 1603, "'d": 1604, "'s": 1605,
+    "don't": 1591, "can't": 1592, "won't": 1593, "i'm": 1594,
+    "it's": 1595, "isn't": 1596, "didn't": 1597, "doesn't": 1598,
+    "wasn't": 1599, "weren't": 1600, "couldn't": 1601, "wouldn't": 1602,
+    "shouldn't": 1603, "haven't": 1604, "hasn't": 1605, "i'll": 1606,
+    "you're": 1607, "they're": 1608, "we're": 1609, "he's": 1610,
+    "'t": 1611, "'m": 1612, "'ll": 1613, "'ve": 1614,
+    "'re": 1615, "'d": 1616, "'s": 1617,
 }
 
 DEDICATED_CONTRACTIONS: set[str] = {
@@ -122,9 +107,9 @@ CONTRACTION_SUFFIXES: set[str] = {
     k for k in CONTRACTION_TOKENS if k.startswith("'")
 }
 
-# ── Structural Tokens (IDs 1606–1799) ────────────────────────────────────────
+# ── Structural Tokens (IDs 1618–1655) ────────────────────────────────────────
 
-_STRUCTURAL_BASE_ID: int = 1606
+_STRUCTURAL_BASE_ID: int = 1618
 
 # Digits 0–9
 DIGIT_IDS: dict[str, int] = {str(d): _STRUCTURAL_BASE_ID + d for d in range(10)}
@@ -132,7 +117,6 @@ DIGIT_IDS: dict[str, int] = {str(d): _STRUCTURAL_BASE_ID + d for d in range(10)}
 # Math operators
 _MATH_OPS: list[str] = ["+", "−", "×", "÷", "=", "<", ">", "≤", "≥", "∫", "Σ", "√", "π", "∞"]
 MATH_OP_IDS: dict[str, int] = {op: _STRUCTURAL_BASE_ID + 10 + i for i, op in enumerate(_MATH_OPS)}
-# Also map ASCII equivalents
 MATH_OP_IDS["-"] = MATH_OP_IDS["−"]
 MATH_OP_IDS["*"] = MATH_OP_IDS["×"]
 MATH_OP_IDS["/"] = MATH_OP_IDS["÷"]
@@ -144,17 +128,16 @@ PUNCTUATION_IDS: dict[str, int] = {
 }
 
 # Byte fallback range
-BYTE_FALLBACK_OFFSET: int = 1806  # 0x00 → 1806, 0xFF → 2061
+BYTE_FALLBACK_OFFSET: int = 1662  # 0x00 → 1662, 0xFF → 1917
 
 
 # ── Vocabulary class ──────────────────────────────────────────────────────────
 
 
 class Vocabulary:
-    """Full Primoji vocabulary (~2,062 tokens).
+    """Full Primoji vocabulary (1918 tokens).
 
-    Provides bidirectional mapping between tokens (emoji, characters, special)
-    and their integer token IDs.
+    Provides bidirectional mapping between tokens and their integer IDs.
     """
 
     def __init__(self) -> None:
@@ -162,7 +145,7 @@ class Vocabulary:
         self._id_to_token: dict[int, str] = {}
         self._id_to_description: dict[int, str] = {}
 
-        # Tier 1: Direct emoji
+        # Tier 1: Direct emoji (from catalog)
         for emoji_char, tid in TIER1_DIRECT_EMOJI.items():
             self._token_to_id[emoji_char] = tid
             self._id_to_token[tid] = emoji_char
@@ -213,7 +196,7 @@ class Vocabulary:
             self._id_to_token[tid] = token_str
             self._id_to_description[tid] = f"Special token: {name}"
 
-        # Byte fallback tokens (256 byte values)
+        # Byte fallback tokens
         for bval in range(256):
             tid = BYTE_FALLBACK_OFFSET + bval
             token_str = f"<0x{bval:02X}>"
@@ -224,39 +207,18 @@ class Vocabulary:
     @property
     def vocab_size(self) -> int:
         """Total vocabulary size including byte fallback."""
-        return 2062  # Fixed: 1806 base + 256 bytes
+        return 1918
 
     def encode_token(self, token: str) -> int | None:
-        """Map a single token string to its integer ID.
-
-        Args:
-            token: An emoji, character, or special token string.
-
-        Returns:
-            The token ID, or None if not in vocabulary.
-        """
+        """Map a single token string to its integer ID."""
         return self._token_to_id.get(token)
 
     def decode_token(self, token_id: int) -> str | None:
-        """Map a token ID back to its string representation.
-
-        Args:
-            token_id: Integer token ID.
-
-        Returns:
-            The token string, or None if not a valid ID.
-        """
+        """Map a token ID back to its string representation."""
         return self._id_to_token.get(token_id)
 
     def describe(self, token_id: int) -> str:
-        """Get a human-readable description for a token ID.
-
-        Args:
-            token_id: Integer token ID.
-
-        Returns:
-            Description string.
-        """
+        """Get a human-readable description for a token ID."""
         token = self._id_to_token.get(token_id)
         desc = self._id_to_description.get(token_id, "Unknown token")
         if token is not None:

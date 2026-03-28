@@ -14,22 +14,22 @@ import emoji as emoji_lib
 # ── Special token IDs ─────────────────────────────────────────────────────────
 
 class SpecialTokens:
-    """Reserved special token IDs (1800–1805)."""
+    """Reserved special token IDs (1656–1661)."""
 
-    BOS: int = 1800
-    EOS: int = 1801
-    PAD: int = 1802
-    UNK: int = 1803  # Should never be produced (byte fallback prevents it)
-    BYTES_START: int = 1804
-    BYTES_END: int = 1805
+    BOS: int = 1656
+    EOS: int = 1657
+    PAD: int = 1658
+    UNK: int = 1659  # Should never be produced (byte fallback prevents it)
+    BYTES_START: int = 1660
+    BYTES_END: int = 1661
 
     ALL: dict[str, int] = {
-        "BOS": 1800,
-        "EOS": 1801,
-        "PAD": 1802,
-        "UNK": 1803,
-        "BYTES_START": 1804,
-        "BYTES_END": 1805,
+        "BOS": 1656,
+        "EOS": 1657,
+        "PAD": 1658,
+        "UNK": 1659,
+        "BYTES_START": 1660,
+        "BYTES_END": 1661,
     }
 
     @classmethod
@@ -49,35 +49,17 @@ class SpecialTokens:
 # ── Emoji utilities ───────────────────────────────────────────────────────────
 
 def is_emoji(char: str) -> bool:
-    """Check if a string is a single emoji or emoji sequence.
-
-    Args:
-        char: A string to check.
-
-    Returns:
-        True if the string is purely emoji.
-    """
+    """Check if a string is a single emoji or emoji sequence."""
     return emoji_lib.is_emoji(char)
 
 
 def get_all_emoji() -> list[str]:
-    """Return a list of all Unicode emoji from the emoji library.
-
-    Returns:
-        Sorted list of all known emoji characters.
-    """
+    """Return a list of all Unicode emoji from the emoji library."""
     return sorted(emoji_lib.EMOJI_DATA.keys())
 
 
 def emoji_name(char: str) -> str | None:
-    """Get the CLDR short name for an emoji.
-
-    Args:
-        char: An emoji character.
-
-    Returns:
-        The emoji name (e.g. 'dog face'), or None if not found.
-    """
+    """Get the CLDR short name for an emoji."""
     demojized = emoji_lib.demojize(char, delimiters=("", ""))
     if demojized == char:
         return None
@@ -90,30 +72,14 @@ _WHITESPACE_RE = re.compile(r"\s+")
 
 
 def normalize_text(text: str) -> str:
-    """Normalize text for tokenization: collapse whitespace, strip.
-
-    Does NOT lowercase — case handling is done per-word in the tokenizer.
-
-    Args:
-        text: Input text.
-
-    Returns:
-        Normalized text.
-    """
+    """Normalize text for tokenization: collapse whitespace, strip."""
     text = text.strip()
     text = _WHITESPACE_RE.sub(" ", text)
     return text
 
 
 def is_punctuation(char: str) -> bool:
-    """Check if a character is punctuation.
-
-    Args:
-        char: A single character.
-
-    Returns:
-        True if the character is punctuation.
-    """
+    """Check if a character is punctuation."""
     if len(char) != 1:
         return False
     cat = unicodedata.category(char)
@@ -121,24 +87,16 @@ def is_punctuation(char: str) -> bool:
 
 
 def simple_word_tokenize(text: str) -> list[str]:
-    """Simple whitespace + punctuation tokenizer for when spaCy is not needed.
+    """Simple whitespace + punctuation tokenizer.
 
     Splits on whitespace and separates punctuation from words.
     Preserves apostrophes within words (contractions).
-
-    Args:
-        text: Input text.
-
-    Returns:
-        List of tokens.
     """
     tokens: list[str] = []
     for chunk in text.split():
-        # Peel off leading punctuation (but not apostrophes)
         while chunk and is_punctuation(chunk[0]) and chunk[0] != "'":
             tokens.append(chunk[0])
             chunk = chunk[1:]
-        # Peel off trailing punctuation (but not apostrophes mid-word)
         trailing: list[str] = []
         while chunk and is_punctuation(chunk[-1]) and chunk[-1] != "'":
             trailing.append(chunk[-1])
