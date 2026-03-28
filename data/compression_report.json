@@ -1,0 +1,14 @@
+{
+  "dataset": "FineWeb-Edu (1000 sentences)",
+  "compression_ratio": 1.955,
+  "primoji_total_tokens": 64747,
+  "bpe_total_tokens": 33118,
+  "reduction_pct": -95.5,
+  "per_sentence": {
+    "mean_ratio": 1.916,
+    "p10_ratio": 1.154,
+    "p50_ratio": 1.875,
+    "p90_ratio": 2.724
+  },
+  "verdict": "FAIL"
+}

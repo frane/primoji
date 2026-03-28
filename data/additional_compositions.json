@@ -1,0 +1,495 @@
+{
+  "january": [
+    "TIME",
+    "ONE"
+  ],
+  "february": [
+    "TIME",
+    "TWO"
+  ],
+  "march": [
+    "TIME"
+  ],
+  "april": [
+    "TIME"
+  ],
+  "may": [
+    "MAYBE"
+  ],
+  "june": [
+    "TIME"
+  ],
+  "july": [
+    "TIME"
+  ],
+  "august": [
+    "TIME"
+  ],
+  "september": [
+    "TIME"
+  ],
+  "october": [
+    "TIME"
+  ],
+  "november": [
+    "TIME"
+  ],
+  "december": [
+    "TIME"
+  ],
+  "week": [
+    "TIME"
+  ],
+  "month": [
+    "TIME"
+  ],
+  "century": [
+    "TIME",
+    "BIG"
+  ],
+  "daily": [
+    "TIME",
+    "ALL"
+  ],
+  "recently": [
+    "BEFORE",
+    "NEAR"
+  ],
+  "recent": [
+    "BEFORE",
+    "NEAR"
+  ],
+  "soon": [
+    "AFTER",
+    "NEAR"
+  ],
+  "second": [
+    "TWO"
+  ],
+  "per": [],
+  "common": [
+    "MANY",
+    "SAME"
+  ],
+  "various": [
+    "MANY",
+    "DIFFERENT"
+  ],
+  "general": [
+    "ALL"
+  ],
+  "main": [
+    "BIG",
+    "ONE"
+  ],
+  "particular": [
+    "ONE"
+  ],
+  "likely": [
+    "MAYBE"
+  ],
+  "effective": [
+    "GOOD",
+    "DO"
+  ],
+  "effectively": [
+    "GOOD",
+    "DO"
+  ],
+  "famous": [
+    "KNOW",
+    "MANY"
+  ],
+  "traditional": [
+    "BEFORE",
+    "PATTERN"
+  ],
+  "physical": [
+    "MATTER",
+    "BODY"
+  ],
+  "scientific": [
+    "KNOW",
+    "MEASURE"
+  ],
+  "environmental": [
+    "EARTH",
+    "AIR"
+  ],
+  "cultural": [
+    "SOCIETY",
+    "PATTERN"
+  ],
+  "global": [
+    "EARTH",
+    "ALL"
+  ],
+  "regional": [
+    "WHERE",
+    "PART"
+  ],
+  "intellectual": [
+    "THINK",
+    "KNOW"
+  ],
+  "organic": [
+    "LIVE",
+    "MATTER"
+  ],
+  "primary": [
+    "ONE",
+    "BIG"
+  ],
+  "current": [
+    "NOW"
+  ],
+  "fair": [
+    "GOOD",
+    "EQUAL"
+  ],
+  "outside": [
+    "NOT",
+    "INSIDE"
+  ],
+  "following": [
+    "AFTER"
+  ],
+  "nearly": [
+    "NEAR"
+  ],
+  "highly": [
+    "VERY",
+    "ABOVE"
+  ],
+  "exactly": [
+    "EQUAL"
+  ],
+  "less": [
+    "SMALL"
+  ],
+  "process": [
+    "DO",
+    "ORDER"
+  ],
+  "development": [
+    "GROW",
+    "CREATE"
+  ],
+  "production": [
+    "CREATE"
+  ],
+  "practice": [
+    "DO",
+    "PATTERN"
+  ],
+  "method": [
+    "PATH",
+    "DO"
+  ],
+  "methods": [
+    "PATH",
+    "DO"
+  ],
+  "support": [
+    "HOLD",
+    "GOOD"
+  ],
+  "effort": [
+    "DO",
+    "POWER"
+  ],
+  "efforts": [
+    "DO",
+    "POWER"
+  ],
+  "issue": [
+    "SOMETHING",
+    "BAD"
+  ],
+  "issues": [
+    "SOMETHING",
+    "BAD"
+  ],
+  "problem": [
+    "SOMETHING",
+    "BAD"
+  ],
+  "problems": [
+    "SOMETHING",
+    "BAD"
+  ],
+  "source": [
+    "BEGIN",
+    "WHERE"
+  ],
+  "sources": [
+    "BEGIN",
+    "WHERE"
+  ],
+  "member": [
+    "SOMEONE",
+    "INSIDE"
+  ],
+  "members": [
+    "SOMEONE",
+    "INSIDE"
+  ],
+  "list": [
+    "ORDER",
+    "MANY"
+  ],
+  "series": [
+    "ORDER",
+    "MANY",
+    "PATTERN"
+  ],
+  "impact": [
+    "CAUSE",
+    "BIG"
+  ],
+  "difference": [
+    "DIFFERENT"
+  ],
+  "object": [
+    "SOMETHING"
+  ],
+  "objects": [
+    "SOMETHING",
+    "MANY"
+  ],
+  "table": [
+    "SOMETHING",
+    "FLAT"
+  ],
+  "chapter": [
+    "PART",
+    "WRITE"
+  ],
+  "report": [
+    "WRITE",
+    "TRUE"
+  ],
+  "site": [
+    "WHERE"
+  ],
+  "loss": [
+    "NOT",
+    "HAVE"
+  ],
+  "team": [
+    "PEOPLE",
+    "DO"
+  ],
+  "resource": [
+    "SOMETHING",
+    "GOOD"
+  ],
+  "average": [
+    "EQUAL",
+    "MANY"
+  ],
+  "mass": [
+    "MATTER",
+    "BIG"
+  ],
+  "characteristics": [
+    "KIND",
+    "MANY"
+  ],
+  "storage": [
+    "HOLD",
+    "INSIDE"
+  ],
+  "command": [
+    "SAY",
+    "POWER"
+  ],
+  "correction": [
+    "CHANGE",
+    "GOOD"
+  ],
+  "institute": [
+    "SOCIETY",
+    "KNOW"
+  ],
+  "treaty": [
+    "LAW",
+    "SOCIETY"
+  ],
+  "poverty": [
+    "NOT",
+    "HAVE",
+    "MANY"
+  ],
+  "pressure": [
+    "POWER",
+    "FLAT"
+  ],
+  "skin": [
+    "BODY",
+    "FLAT"
+  ],
+  "memory": [
+    "KNOW",
+    "HOLD"
+  ],
+  "lens": [
+    "SEE",
+    "ROUND"
+  ],
+  "fossil": [
+    "BEFORE",
+    "ANIMAL",
+    "HARD"
+  ],
+  "biodiversity": [
+    "LIVE",
+    "MANY",
+    "DIFFERENT"
+  ],
+  "hurricane": [
+    "AIR",
+    "MOVE",
+    "DESTROY"
+  ],
+  "diabetes": [
+    "BODY",
+    "BAD"
+  ],
+  "north": [
+    "ABOVE"
+  ],
+  "northern": [
+    "ABOVE",
+    "WHERE"
+  ],
+  "south": [
+    "BELOW"
+  ],
+  "southern": [
+    "BELOW",
+    "WHERE"
+  ],
+  "east": [
+    "SIDE"
+  ],
+  "eastern": [
+    "SIDE",
+    "WHERE"
+  ],
+  "west": [
+    "SIDE"
+  ],
+  "western": [
+    "SIDE",
+    "WHERE"
+  ],
+  "region": [
+    "WHERE",
+    "PART"
+  ],
+  "europe": [
+    "EARTH",
+    "WHERE"
+  ],
+  "made": [
+    "CREATE"
+  ],
+  "based": [
+    "BEGIN",
+    "WHERE"
+  ],
+  "published": [
+    "WRITE",
+    "SEND"
+  ],
+  "released": [
+    "SEND"
+  ],
+  "according": [
+    "SAY"
+  ],
+  "understand": [
+    "KNOW"
+  ],
+  "half": [
+    "PART",
+    "TWO"
+  ],
+  "due": [
+    "BECAUSE"
+  ],
+  "god": [
+    "FEEL",
+    "POWER",
+    "BIG"
+  ],
+  "subjects": [
+    "ABOUT",
+    "MANY"
+  ],
+  "itself": [
+    "SOMETHING"
+  ],
+  "themselves": [
+    "PEOPLE"
+  ],
+  "whose": [
+    "SOMEONE",
+    "HAVE"
+  ],
+  "whether": [
+    "IF"
+  ],
+  "either": [
+    "ONE",
+    "OTHER"
+  ],
+  "neither": [
+    "NOT",
+    "ONE",
+    "OTHER"
+  ],
+  "another": [
+    "OTHER",
+    "ONE"
+  ],
+  "own": [
+    "HAVE"
+  ],
+  "certain": [
+    "KNOW"
+  ],
+  "whole": [
+    "WHOLE"
+  ],
+  "entire": [
+    "WHOLE"
+  ],
+  "able": [
+    "CAN"
+  ],
+  "however": [],
+  "therefore": [],
+  "although": [],
+  "though": [],
+  "thus": [],
+  "hence": [],
+  "moreover": [],
+  "furthermore": [],
+  "meanwhile": [],
+  "nevertheless": [],
+  "indeed": [],
+  "perhaps": [
+    "MAYBE"
+  ],
+  "instead": [],
+  "rather": [],
+  "especially": [
+    "VERY"
+  ],
+  "particularly": [
+    "VERY",
+    "ONE"
+  ]
+}

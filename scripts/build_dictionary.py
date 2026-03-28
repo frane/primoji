@@ -231,9 +231,134 @@ _COMPOSITIONS: dict[str, list[str]] = {
     "doctor": ["SOMEONE", "LIVE", "GOOD"],
     "telephone": ["MACHINE", "SAY"],
     "television": ["MACHINE", "SEE"],
-    # Function words (empty = drop)
-    "the": [], "a": [], "an": [],
-    "explained": ["SAY"],
+    # Function words: empty = drop (no semantic content for training)
+    "the": [], "a": [], "an": [], "of": [], "and": [], "to": [],
+    "in": [], "on": [], "at": [], "or": [], "but": [], "so": [],
+    "yet": [], "nor": [], "than": [], "then": [],
+
+    # Pronouns -> primitive mappings
+    "it": ["SOMETHING"], "its": ["SOMETHING"],
+    "they": ["PEOPLE"], "them": ["PEOPLE"], "their": ["PEOPLE"],
+    "we": ["PEOPLE"], "us": ["PEOPLE"], "our": ["PEOPLE"],
+    "he": ["SOMEONE"], "him": ["SOMEONE"], "his": ["SOMEONE"],
+    "she": ["SOMEONE"], "her": ["SOMEONE"],
+    "i": ["I"], "me": ["I"], "my": ["I"], "myself": ["I"],
+    "you": ["YOU"], "your": ["YOU"], "yourself": ["YOU"],
+    "this": ["THIS"], "these": ["THIS"],
+    "that": ["THIS"], "those": ["OTHER"],
+    "what": ["SOMETHING"], "which": ["SOMETHING"],
+    "who": ["SOMEONE"], "whom": ["SOMEONE"],
+    "there": ["THERE_IS"],
+
+    # Prepositions -> drop or minimal mapping
+    "by": [], "from": [], "into": [], "through": [],
+    "over": [], "under": [], "between": [], "among": [],
+    "during": [], "after": ["AFTER"], "before": ["BEFORE"],
+    "until": [], "since": [], "while": [],
+    "upon": [], "within": [], "without": [],
+    "across": [], "along": [], "around": [],
+    "behind": [], "beyond": [], "above": ["ABOVE"],
+    "below": ["BELOW"], "beside": ["SIDE"], "near": ["NEAR"],
+
+    # Common verbs (forms -> primitive)
+    "is": ["BE"], "are": ["BE"], "was": ["BEFORE", "BE"],
+    "were": ["BEFORE", "BE"], "be": ["BE"], "been": ["BE"],
+    "being": ["BE"], "am": ["BE"],
+    "has": ["HAVE"], "had": ["BEFORE", "HAVE"], "having": ["HAVE"],
+    "does": ["DO"], "did": ["BEFORE", "DO"], "done": ["DO"],
+    "go": ["MOVE"], "goes": ["MOVE"], "going": ["MOVE"],
+    "went": ["BEFORE", "MOVE"], "gone": ["MOVE"],
+    "come": ["MOVE"], "came": ["BEFORE", "MOVE"],
+    "get": ["RECEIVE"], "got": ["BEFORE", "RECEIVE"],
+    "gets": ["RECEIVE"], "getting": ["RECEIVE"],
+    "take": ["HOLD"], "took": ["BEFORE", "HOLD"],
+    "taken": ["HOLD"], "takes": ["HOLD"],
+    "give": ["SEND"], "gave": ["BEFORE", "SEND"],
+    "given": ["SEND"], "gives": ["SEND"],
+    "put": ["MOVE"], "set": ["SET"],
+    "use": ["DO"], "used": ["DO"], "using": ["DO"],
+    "find": ["SEE"], "found": ["SEE"],
+    "show": ["SEE"], "shown": ["SEE"], "shows": ["SEE"],
+    "called": ["NAME"], "call": ["NAME"],
+    "known": ["KNOW"], "knew": ["BEFORE", "KNOW"],
+    "became": ["BEFORE", "CHANGE"], "become": ["CHANGE"],
+    "thought": ["THINK"], "keep": ["HOLD"],
+    "left": ["MOVE"], "need": ["WANT"],
+    "try": ["DO"], "tried": ["DO"],
+    "ask": ["SAY"], "asked": ["SAY"],
+    "work": ["DO"], "worked": ["DO"], "working": ["DO"],
+    "seem": ["BE"], "seemed": ["BEFORE", "BE"],
+    "help": ["DO", "GOOD"], "include": ["INSIDE"],
+    "turn": ["CHANGE"], "turned": ["CHANGE"],
+    "run": ["MOVE"], "running": ["MOVE"],
+    "look": ["SEE"], "looked": ["SEE"], "looking": ["SEE"],
+    "tell": ["SAY"], "told": ["SAY"],
+    "play": ["DO"], "played": ["DO"],
+    "believe": ["THINK", "TRUE"],
+    "provide": ["SEND"], "consider": ["THINK"],
+    "appear": ["SEE"], "lead": ["CAUSE", "MOVE"],
+    "stand": ["BE_SOMEWHERE"], "allow": ["CAN"],
+
+    # Common adjectives
+    "new": ["BEGIN"], "old": ["OLD"], "young": ["YOUNG"],
+    "long": ["BIG", "TIME"], "short": ["SMALL"],
+    "high": ["ABOVE", "BIG"], "low": ["BELOW", "SMALL"],
+    "open": ["BEGIN"], "closed": ["END"],
+    "right": ["TRUE"], "wrong": ["NOT", "TRUE"],
+    "important": ["BIG", "GOOD"], "different": ["DIFFERENT"],
+    "same": ["SAME"], "own": ["HAVE"],
+    "other": ["OTHER"], "first": ["ONE", "BEGIN"],
+    "last": ["ONE", "END"], "next": ["AFTER"],
+    "early": ["BEFORE"], "late": ["AFTER"],
+    "great": ["BIG", "GOOD"], "best": ["GOOD", "VERY"],
+    "better": ["GOOD", "MORE"], "worst": ["BAD", "VERY"],
+    "most": ["MANY", "VERY"], "much": ["BIG"],
+    "such": ["LIKE_AS"], "each": ["ALL", "ONE"],
+    "every": ["ALL"], "several": ["MANY"],
+    "both": ["TWO", "ALL"], "between": ["TWO", "SIDE"],
+    "among": ["MANY", "INSIDE"],
+
+    # Common nouns
+    "people": ["PEOPLE"], "man": ["SOMEONE"],
+    "woman": ["SOMEONE"], "child": ["YOUNG"],
+    "children": ["YOUNG", "MANY"],
+    "world": ["EARTH", "ALL"], "country": ["EARTH", "SOCIETY"],
+    "year": ["TIME"], "years": ["TIME", "MANY"],
+    "day": ["TIME", "LIGHT"], "days": ["TIME", "MANY"],
+    "way": ["PATH"], "part": ["PART"],
+    "place": ["WHERE"], "case": ["SOMETHING"],
+    "point": ["WHERE"], "group": ["SET"],
+    "hand": ["HOLD"], "state": ["BE", "SOCIETY"],
+    "area": ["WHERE", "BIG"], "system": ["ORDER", "MACHINE"],
+    "fact": ["TRUE"], "number": ["NUMBER"],
+    "example": ["ONE", "SEE"],
+    "also": [], "however": [], "because": ["BECAUSE"],
+    "therefore": ["BECAUSE"], "although": [],
+    "just": [], "only": ["ONE"], "even": ["SAME"],
+    "still": ["FOR_SOME_TIME"], "already": ["BEFORE"],
+    "very": ["VERY"], "really": ["VERY"], "too": ["VERY"],
+    "more": ["MORE"], "most": ["MANY", "VERY"],
+    "enough": ["GOOD", "MEASURE"],
+    "often": ["MANY", "TIME"], "always": ["ALL", "TIME"],
+    "never": ["NOT", "TIME"], "sometimes": ["SOME", "TIME"],
+    "usually": ["MANY", "TIME"],
+    "today": ["NOW"], "now": ["NOW"],
+    "back": ["BEFORE"], "again": ["PATTERN"],
+    "up": ["ABOVE"], "down": ["BELOW"],
+    "well": ["GOOD"], "away": ["FAR"],
+    "thing": ["SOMETHING"], "things": ["SOMETHING", "MANY"],
+    "said": ["SAY"], "explained": ["SAY"],
+    "could": ["CAN", "BEFORE"], "would": ["WANT"],
+    "should": ["GOOD"], "must": ["WANT", "VERY"],
+    "will": ["AFTER", "DO"], "can": ["CAN"],
+    "may": ["MAYBE"], "might": ["MAYBE"],
+    "if": ["IF"], "when": ["TIME"], "where": ["WHERE"],
+    "how": ["PATH"], "why": ["BECAUSE"],
+    "not": ["NOT"], "no": ["NOT"],
+    "some": ["SOME"], "any": ["SOME"],
+    "many": ["MANY"], "few": ["FEW"],
+    "all": ["ALL"],
+    "about": ["ABOUT"], "with": ["WITH"], "for": ["FOR"],
 }
 
 
@@ -306,9 +431,18 @@ def main() -> None:
             l3_count += 1
     print(f"Layer 3 (anchors):         {l3_count:6d}")
 
-    # Layer 4: compositions
+    # Layer 4: compositions (manual + supplementary)
     l4_count = 0
-    for word, names in _COMPOSITIONS.items():
+    all_compositions = dict(_COMPOSITIONS)
+
+    # Load supplementary compositions if available
+    supp_path = _DATA_DIR / "additional_compositions.json"
+    if supp_path.exists():
+        with open(supp_path) as f:
+            supplementary = json.load(f)
+        all_compositions.update(supplementary)
+
+    for word, names in all_compositions.items():
         valid = all(n in prim_names for n in names)
         if not valid:
             bad = [n for n in names if n not in prim_names]

@@ -1,0 +1,153 @@
+{
+  "by_domain": {
+    "science": {
+      "n": 34,
+      "ratio": 2.094,
+      "pct_reduction": -109.4
+    },
+    "math": {
+      "n": 27,
+      "ratio": 2.214,
+      "pct_reduction": -121.4
+    },
+    "history": {
+      "n": 61,
+      "ratio": 2.033,
+      "pct_reduction": -103.3
+    },
+    "geography": {
+      "n": 46,
+      "ratio": 1.961,
+      "pct_reduction": -96.1
+    },
+    "general": {
+      "n": 832,
+      "ratio": 1.93,
+      "pct_reduction": -93.0
+    }
+  },
+  "best_10": [
+    {
+      "sent": "see also Rabbet\nA strong current in a stream or river.",
+      "primoji": 7,
+      "bpe": 15,
+      "ratio": 0.47
+    },
+    {
+      "sent": "The Facts About HPV?",
+      "primoji": 4,
+      "bpe": 8,
+      "ratio": 0.5
+    },
+    {
+      "sent": "The difference?",
+      "primoji": 2,
+      "bpe": 4,
+      "ratio": 0.5
+    },
+    {
+      "sent": "A view can become a page or a block.",
+      "primoji": 6,
+      "bpe": 11,
+      "ratio": 0.55
+    },
+    {
+      "sent": "A page needs a path to display the page.",
+      "primoji": 6,
+      "bpe": 11,
+      "ratio": 0.55
+    },
+    {
+      "sent": "Cremation to a Child\nWhen a deceased family member or friend is cremated or already\nhas been cremate",
+      "primoji": 24,
+      "bpe": 41,
+      "ratio": 0.59
+    },
+    {
+      "sent": "More posts by David Dubin\nDr.",
+      "primoji": 6,
+      "bpe": 10,
+      "ratio": 0.6
+    },
+    {
+      "sent": "Don't feel like exercise?",
+      "primoji": 5,
+      "bpe": 8,
+      "ratio": 0.62
+    },
+    {
+      "sent": "Table of Contents Image Captions\n1.",
+      "primoji": 7,
+      "bpe": 11,
+      "ratio": 0.64
+    },
+    {
+      "sent": "She doesn't think he just sounds out words.",
+      "primoji": 8,
+      "bpe": 12,
+      "ratio": 0.67
+    }
+  ],
+  "worst_10": [
+    {
+      "sent": "Throughout life there are many times when outside influences change or influence decision-making.",
+      "primoji": 62,
+      "bpe": 17,
+      "ratio": 3.65
+    },
+    {
+      "sent": "The word \u201cneurotoxic\u201d literally translates as \u201cnerve poison\u201d.",
+      "primoji": 66,
+      "bpe": 18,
+      "ratio": 3.67
+    },
+    {
+      "sent": "For instance, some are manufactured versions of patented inventions.",
+      "primoji": 52,
+      "bpe": 14,
+      "ratio": 3.71
+    },
+    {
+      "sent": "The newer Fontconfig font subsystem simplifies font management and provides advanced display feature",
+      "primoji": 93,
+      "bpe": 25,
+      "ratio": 3.72
+    },
+    {
+      "sent": "This article was published in collaboration with GlobalPossibilities.org.",
+      "primoji": 56,
+      "bpe": 15,
+      "ratio": 3.73
+    },
+    {
+      "sent": "Most baking powder products, a staple in some households, contain toxic levels of aluminum.",
+      "primoji": 79,
+      "bpe": 21,
+      "ratio": 3.76
+    },
+    {
+      "sent": "Highway facilities or a set of lanes where operational strategies are proactively implemented and ma",
+      "primoji": 99,
+      "bpe": 25,
+      "ratio": 3.96
+    },
+    {
+      "sent": "The common definition for this type of cooperation is \u201csocial partnership\u201d.",
+      "primoji": 56,
+      "bpe": 14,
+      "ratio": 4.0
+    },
+    {
+      "sent": "GNU Octave is a high-level language, primarily intended for numerical computations.",
+      "primoji": 76,
+      "bpe": 18,
+      "ratio": 4.22
+    },
+    {
+      "sent": "Providence Sunday Journal.",
+      "primoji": 30,
+      "bpe": 6,
+      "ratio": 5.0
+    }
+  ]
+}

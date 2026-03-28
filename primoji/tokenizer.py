@@ -19,7 +19,7 @@ from primoji.dictionary import Dictionary
 from primoji.fuzzy import FuzzyMatcher
 from primoji.math_handler import is_math_expression
 from primoji.preprocessor import Preprocessor
-from primoji.utils import SpecialTokens, normalize_text
+from primoji.utils import SpecialTokens, _IDS, normalize_text
 from primoji.vocabulary import (
     ANCHOR_TOKENS,
     CONTRACTION_TOKENS,
@@ -180,6 +180,64 @@ class Tokenizer:
             Description string.
         """
         return self._vocab.describe(token_id)
+
+    def classify_word(self, word: str) -> str:
+        """Classify which tier handles a single word, without encoding.
+
+        Returns one of: "tier1_emoji", "tier2_primitive", "tier3_structural",
+        "tier3_contraction", "tier3_anchor", "dict_composed", "dict_dropped",
+        "composer_rule", "symspell_fuzzy", "byte_fallback".
+
+        Args:
+            word: A single word token.
+
+        Returns:
+            Tier label string.
+        """
+        # Punctuation / digits / math ops
+        if PUNCTUATION_IDS.get(word) is not None:
+            return "tier3_structural"
+        if word.replace(".", "", 1).isdigit():
+            return "tier3_structural"
+        if MATH_OP_IDS.get(word) is not None:
+            return "tier3_structural"
+
+        # Contraction token
+        if CONTRACTION_TOKENS.get(word.lower()) is not None:
+            return "tier3_contraction"
+
+        # Dictionary lookup
+        result = self._dict.lookup(word.lower())
+        if result is not None:
+            if not result:
+                return "dict_dropped"  # articles (the, a, an)
+            if len(result) == 1:
+                tid = result[0]
+                if 0 <= tid <= 1199:
+                    return "tier1_emoji"
+                elif 1200 <= tid <= 1331:
+                    return "tier2_primitive"
+                else:
+                    return "tier3_structural"
+            else:
+                return "dict_composed"
+
+        # Composer rules (negation, temporal, comparative)
+        composed = self._composer.compose(word.lower())
+        if composed != [SpecialTokens.UNK]:
+            return "composer_rule"
+
+        # Anchor
+        if ANCHOR_TOKENS.get(word) is not None:
+            return "tier3_anchor"
+
+        # Fuzzy match
+        if self._fuzzy:
+            corrected = self._fuzzy.correct(word.lower())
+            if corrected is not None and self._dict.lookup(corrected) is not None:
+                return "symspell_fuzzy"
+
+        return "byte_fallback"
 
     @property
     def vocabulary(self) -> Vocabulary:
