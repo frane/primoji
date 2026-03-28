@@ -4,11 +4,11 @@
 
 What if every token in your model's vocabulary actually *meant* something?
 
-BPE chops "photosynthesis" into `["photo", "synth", "esis"]` — three fragments with no semantic content. Primoji encodes it as `[PLANT, HAVE, LIGHT]` — three tokens that carry the actual meaning. The model doesn't need to learn that "synth" relates to combining things; the structure is already there.
+BPE chops "photosynthesis" into `["photo", "synth", "esis"]`. Three fragments with no semantic content. Primoji encodes it as `[PLANT, HAVE, LIGHT]`. Three tokens that carry the actual meaning. The model doesn't need to learn that "synth" relates to combining things; the structure is already there.
 
 ```
-BPE:     "photosynthesis"  →  ["photo", "synth", "esis"]     (meaningless fragments)
-Primoji: "photosynthesis"  →  [🌿, 📥, ☀️]                   (plant + absorb + light)
+BPE:     "photosynthesis"  ->  ["photo", "synth", "esis"]     (meaningless fragments)
+Primoji: "photosynthesis"  ->  [🌿, 📥, ☀️]                   (plant + absorb + light)
 ```
 
 ## How it works
@@ -20,12 +20,12 @@ tok = Tokenizer()
 
 ids = tok.encode("The teacher explained photosynthesis")
 print(tok.decode(ids))
-# → "teacher explained photosynthesis"
+# -> "teacher explained photosynthesis"
 
 print(tok.vocab_size)  # ~2,400 tokens (vs 32K-100K for BPE)
 ```
 
-Primoji uses a **4-tier fallback pipeline** — every word gets encoded, nothing is lost:
+Primoji uses a **4-tier fallback pipeline**. Every word gets encoded, nothing is lost:
 
 | Tier | What it handles | How |
 |------|----------------|-----|
@@ -34,43 +34,43 @@ Primoji uses a **4-tier fallback pipeline** — every word gets encoded, nothing
 | **3. Fuzzy match** | Typos like "watir" | SymSpell, edit distance 1, conservative |
 | **4. Byte fallback** | Everything else | UTF-8 bytes, zero information loss |
 
-No UNK tokens. Ever. If the dictionary doesn't know a word, byte fallback encodes it losslessly — the same approach used by Llama's SentencePiece.
+No UNK tokens. Ever. If the dictionary doesn't know a word, byte fallback encodes it losslessly. Same approach used by Llama's SentencePiece.
 
 ## The vocabulary (~2,400 tokens)
 
 Three tiers of meaning, plus a universal safety net:
 
-**Tier 1 — Unicode emoji (~1,200 tokens)**
+**Tier 1: Unicode emoji (~1,200 tokens)**
 Direct mappings for concrete nouns. Dog = 🐕. Tree = 🌳. Hospital = 🏥. One emoji, one token, one concept.
 
-**Tier 2 — Compositional primitives (132 tokens)**
-For everything emoji can't represent — verbs, adjectives, abstract concepts. Grounded in [Wierzbicka's Natural Semantic Metalanguage](https://en.wikipedia.org/wiki/Natural_semantic_metalanguage): 65 irreducible concepts verified across 30+ language families, plus 67 domain expansions for educational text.
+**Tier 2: Compositional primitives (132 tokens)**
+For everything emoji can't directly represent (verbs, adjectives, abstract concepts). Grounded in [Wierzbicka's Natural Semantic Metalanguage](https://en.wikipedia.org/wiki/Natural_semantic_metalanguage): 65 irreducible concepts verified across 30+ language families, plus 67 domain expansions for educational text.
 
 Compositions follow positional rules: `HEAD + MODIFIER + SPECIFIER`
 - 🧑 + 📚 + 💬 = teacher (person + teach + say)
 - 💧 + ➜ + 💨 = evaporation (water + cause + air)
 - 🔧 + 💭 = computer (machine + think)
 
-**Tier 3 — Structural tokens (~600)**
+**Tier 3: Structural tokens (~600)**
 Country flags, contraction tokens, proper noun anchors (top 500 from FineWeb-Edu), digits, math operators, punctuation.
 
-**Tier 4 — Byte fallback (258 tokens)**
+**Tier 4: Byte fallback (258 tokens)**
 UTF-8 bytes wrapped in boundary markers. Handles any unknown word with zero information loss.
 
 ## Why this matters
 
 A vocabulary of ~2,400 tokens (vs BPE's 32K-100K) has real consequences:
 
-- **94% smaller embedding table** — BPE 32K x 4096 = 256 MB vs Primoji 2.4K x 1536 = 7 MB
-- **Shorter sequences** — phrase-level composition means fewer tokens per sentence
-- **Attention savings** — shorter sequences = quadratically less compute in self-attention
-- **Semantic structure** — related concepts share compositional patterns that BPE can't capture
+- **94% smaller embedding table.** BPE 32K x 4096 = 256 MB vs Primoji 2.4K x 1536 = 7 MB
+- **Shorter sequences.** Phrase-level composition means fewer tokens per sentence
+- **Attention savings.** Shorter sequences = quadratically less compute in self-attention
+- **Semantic structure.** Related concepts share compositional patterns that BPE can't capture
 
 These claims are based on the [vocabulary bottleneck theorem](https://arxiv.org/abs/2106.07144) (Wies et al., 2021). Empirical validation on FineWeb-Edu is in progress.
 
 ## Current status
 
-This is a **research prototype**. It works, the pipeline is complete, 300+ tests pass — but it hasn't been validated at scale yet. Here's what's done and what's ahead:
+This is a **research prototype**. It works, the pipeline is complete, and 300+ tests pass, but it hasn't been validated at scale yet. Here's what's done and what's ahead:
 
 | Status | Milestone |
 |--------|-----------|
@@ -83,7 +83,7 @@ This is a **research prototype**. It works, the pipeline is complete, 300+ tests
 | Next | Compare learning curves against BPE baseline |
 | Future | Multilingual extension, MoE routing via token semantics |
 
-The approach is deliberately *lossy at the word level* — "photosynthesis" decodes as "plant absorb light", not the original word. Verbatim reconstruction via BPE sidecar metadata is architecturally supported but not yet implemented. For training data, semantic equivalence is sufficient; for inference, exact reconstruction will be needed.
+The approach is deliberately *lossy at the word level*. "Photosynthesis" decodes as "plant absorb light", not the original word. Verbatim reconstruction via BPE sidecar metadata is architecturally supported but not yet implemented. For training data, semantic equivalence is sufficient; for inference, exact reconstruction will be needed.
 
 ## Installation
 
@@ -109,9 +109,9 @@ primoji/
   fuzzy.py            Tier 3 conservative spell correction
   vocabulary.py       All token ID ranges (dynamically computed)
   composer.py         Composition rules (HEAD + MODIFIER + SPECIFIER)
-  dictionary.py       Word → token ID lookup (symbolic seed + resolver)
+  dictionary.py       Word -> token ID lookup (symbolic seed + resolver)
   primitives.py       132 compositional primitives from data/primitives.json
-  decoder.py          Tier-based decoding (catalog → primitives → structural → bytes)
+  decoder.py          Tier-based decoding (catalog -> primitives -> structural -> bytes)
   math_handler.py     Single-digit number and math operator tokenization
 scripts/
   build_dictionary.py  Reproducible dictionary build from data sources
