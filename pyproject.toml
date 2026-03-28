@@ -1,0 +1,71 @@
+[build-system]
+requires = ["setuptools>=75.0", "wheel>=0.45"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "primoji"
+version = "0.1.0"
+description = "Compositional pictographic tokenizer for LLM training"
+readme = "README.md"
+license = {text = "Apache-2.0"}
+requires-python = ">=3.11"
+authors = [{name = "Frane"}]
+keywords = ["tokenizer", "emoji", "nlp", "llm", "compositional", "pictographic"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: Apache Software License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Topic :: Text Processing :: Linguistic",
+]
+dependencies = [
+    "spacy>=3.8,<4.0",
+    "emoji>=2.14,<3.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.3,<9.0",
+    "black>=24.10,<25.0",
+    "ruff>=0.8,<1.0",
+]
+train = [
+    "torch>=2.5,<3.0",
+    "tokenizers>=0.21,<1.0",
+]
+validate = [
+    "anthropic>=0.42,<1.0",
+]
+spelling = [
+    "symspellpy>=6.7,<7.0",
+]
+all = ["primoji[dev,train,spelling]"]
+
+[project.urls]
+Homepage = "https://github.com/frane/primoji"
+Documentation = "https://github.com/frane/primoji#readme"
+Repository = "https://github.com/frane/primoji"
+Issues = "https://github.com/frane/primoji/issues"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["primoji*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+
+[tool.black]
+line-length = 100
+target-version = ["py311", "py312"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "N", "W", "UP"]
