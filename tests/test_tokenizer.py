@@ -42,9 +42,10 @@ class TestVocabSize:
         assert isinstance(tok.vocab_size, int)
         assert tok.vocab_size > 0
 
-    def test_vocab_size_is_1918(self, tok: Tokenizer) -> None:
-        """Vocabulary should be exactly 1918 (1662 base + 256 bytes)."""
-        assert tok.vocab_size == 1918
+    def test_vocab_size_is_dynamic(self, tok: Tokenizer) -> None:
+        """Vocabulary size is dynamically computed from data files."""
+        from primoji.utils import _IDS
+        assert tok.vocab_size == _IDS["VOCAB_SIZE"]
 
     def test_vocab_size_is_in_expected_range(self, tok: Tokenizer) -> None:
         """Vocabulary should be in a reasonable range."""
@@ -174,9 +175,11 @@ class TestPunctuation:
         assert PUNCTUATION_IDS["!"] in ids
 
     def test_punctuation_ids_are_in_structural_range(self) -> None:
-        """All punctuation IDs should be in the structural range (1618+)."""
+        """All punctuation IDs should be in the structural range."""
+        from primoji.utils import _IDS
+        struct_start = _IDS["STRUCT_START"]
         for punc, tid in PUNCTUATION_IDS.items():
-            assert tid >= 1618, f"Punctuation '{punc}' has ID {tid} below structural base"
+            assert tid >= struct_start, f"Punctuation '{punc}' has ID {tid} below structural base {struct_start}"
 
 
 # ── numbers in text ──────────────────────────────────────────────────────────
@@ -200,9 +203,11 @@ class TestNumbers:
         assert PUNCTUATION_IDS["."] in ids
 
     def test_digit_ids_are_in_structural_range(self) -> None:
-        """All digit IDs should be in the structural range (1618+)."""
+        """All digit IDs should be in the structural range."""
+        from primoji.utils import _IDS
+        struct_start = _IDS["STRUCT_START"]
         for digit, tid in DIGIT_IDS.items():
-            assert tid >= 1618, f"Digit '{digit}' has ID {tid} below structural base"
+            assert tid >= struct_start, f"Digit '{digit}' has ID {tid} below structural base {struct_start}"
 
 
 # ── describe ─────────────────────────────────────────────────────────────────
@@ -301,17 +306,30 @@ class TestTieredPipeline:
         assert len(ids) > 0
 
     def test_contraction_tokens_are_in_range(self) -> None:
-        """Contraction token IDs should be in the 1591-1617 range."""
+        """Contraction token IDs should be in the dynamically computed contraction range."""
+        from primoji.utils import _IDS
+        contract_start = _IDS["CONTRACT_START"]
+        contract_end = contract_start + len(CONTRACTION_TOKENS) - 1
         for contraction, tid in CONTRACTION_TOKENS.items():
-            assert 1591 <= tid <= 1617, (
-                f"Contraction '{contraction}' has ID {tid} outside 1591-1617 range"
+            assert contract_start <= tid <= contract_end, (
+                f"Contraction '{contraction}' has ID {tid} outside {contract_start}-{contract_end} range"
             )
 
     def test_special_tokens_ids(self) -> None:
-        """Special token IDs should match the expected values."""
-        assert SpecialTokens.BOS == 1656
-        assert SpecialTokens.EOS == 1657
-        assert SpecialTokens.PAD == 1658
-        assert SpecialTokens.UNK == 1659
-        assert SpecialTokens.BYTES_START == 1660
-        assert SpecialTokens.BYTES_END == 1661
+        """Special token IDs should be sequential and match the dynamic values from _IDS."""
+        from primoji.utils import _IDS
+        assert SpecialTokens.BOS == _IDS["BOS"]
+        assert SpecialTokens.EOS == _IDS["EOS"]
+        assert SpecialTokens.PAD == _IDS["PAD"]
+        assert SpecialTokens.UNK == _IDS["UNK"]
+        assert SpecialTokens.BYTES_START == _IDS["BYTES_START"]
+        assert SpecialTokens.BYTES_END == _IDS["BYTES_END"]
+        # They should be sequential
+        assert SpecialTokens.EOS == SpecialTokens.BOS + 1
+        assert SpecialTokens.PAD == SpecialTokens.BOS + 2
+        assert SpecialTokens.UNK == SpecialTokens.BOS + 3
+        assert SpecialTokens.BYTES_START == SpecialTokens.BOS + 4
+        assert SpecialTokens.BYTES_END == SpecialTokens.BOS + 5
+        # All should be unique
+        all_ids = list(SpecialTokens.ALL.values())
+        assert len(all_ids) == len(set(all_ids))

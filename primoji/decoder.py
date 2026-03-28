@@ -1,46 +1,97 @@
-"""Decoder: emoji token ID sequences → English text.
+"""Decoder: token IDs → English text.
 
-Provides decoding with byte fallback support:
-- Standard tokens: dictionary reverse lookup or primitive description
-- Byte regions: UTF-8 reconstruction from byte token IDs
-- Contraction tokens: direct string mapping
+Decodes by tier, matching the encode architecture. Does NOT depend on
+dictionary reverse lookup as primary path. Each token is decoded by its
+tier (emoji catalog name, primitive name, structural token string, byte
+fallback reconstruction).
+
+Dictionary reverse lookup is only used as an OPTIONAL enhancement for
+multi-token composition pretty-printing (e.g., showing "photosynthesis"
+instead of "plant have light").
 """
 
 from __future__ import annotations
 
+import json
+from pathlib import Path
+
 from primoji.byte_fallback import (
     BYTES_END_ID,
     BYTES_START_ID,
-    decode_bytes,
+    BYTE_TOKEN_OFFSET,
     is_byte_boundary,
     is_byte_token,
 )
-from primoji.dictionary import Dictionary
 from primoji.primitives import get_primitive_by_id
-from primoji.utils import SpecialTokens
-from primoji.vocabulary import CONTRACTION_TOKENS, Vocabulary
+from primoji.utils import SpecialTokens, _IDS
+from primoji.vocabulary import (
+    ANCHOR_TOKENS,
+    CONTRACTION_TOKENS,
+    DIGIT_IDS,
+    MATH_OP_IDS,
+    PUNCTUATION_IDS,
+)
+
+_DATA_DIR = Path(__file__).parent.parent / "data"
 
 
-# Reverse map: contraction ID → string
-_CONTRACTION_ID_TO_STR: dict[int, str] = {v: k for k, v in CONTRACTION_TOKENS.items()}
+# ── Tier-based reverse lookups (NOT dictionary-dependent) ─────────────────────
+
+def _build_tier1_names() -> dict[int, str]:
+    """Load ID → CLDR name for Tier 1 emoji."""
+    path = _DATA_DIR / "emoji_catalog.json"
+    if path.exists():
+        with path.open() as f:
+            data = json.load(f)
+        return {e["id"]: e["name"].lower() for e in data["emoji"]}
+    return {}
+
+
+def _build_anchor_names() -> dict[int, str]:
+    """Load ID → proper noun name for anchors."""
+    return {v: k for k, v in ANCHOR_TOKENS.items()}
+
+
+def _build_contraction_names() -> dict[int, str]:
+    return {v: k for k, v in CONTRACTION_TOKENS.items()}
+
+
+def _build_structural_names() -> dict[int, str]:
+    names: dict[int, str] = {}
+    for ch, tid in DIGIT_IDS.items():
+        names[tid] = ch
+    for op, tid in MATH_OP_IDS.items():
+        if tid not in names:
+            names[tid] = op
+    for p, tid in PUNCTUATION_IDS.items():
+        names[tid] = p
+    return names
+
+
+_TIER1_NAMES: dict[int, str] = _build_tier1_names()
+_ANCHOR_NAMES: dict[int, str] = _build_anchor_names()
+_CONTRACTION_NAMES: dict[int, str] = _build_contraction_names()
+_STRUCTURAL_NAMES: dict[int, str] = _build_structural_names()
 
 
 class Decoder:
-    """Decode Primoji token ID sequences back to English.
+    """Decode Primoji token IDs back to English.
 
-    Handles standard emoji/primitive tokens, contraction tokens,
-    and byte fallback regions.
+    Primary decode path uses tier-based lookups (catalog, primitives,
+    structural). Dictionary reverse lookup is optional for multi-token
+    composition pretty-printing.
     """
 
-    def __init__(self, vocabulary: Vocabulary, dictionary: Dictionary) -> None:
+    def __init__(self, vocabulary: "Vocabulary", dictionary: "Dictionary") -> None:
         self._vocab = vocabulary
         self._dict = dictionary
 
     def decode_canonical(self, ids: list[int]) -> str:
         """Decode token IDs to canonical English.
 
-        Handles byte fallback regions, contraction tokens, and standard
-        emoji/primitive tokens via dictionary reverse lookup.
+        Decodes each token by its tier. For multi-token sequences, attempts
+        dictionary reverse lookup for composition names (e.g., "photosynthesis")
+        before falling back to per-token decoding.
 
         Args:
             ids: List of token IDs.
@@ -53,81 +104,90 @@ class Decoder:
         while i < len(ids):
             tid = ids[i]
 
-            # Skip special tokens (BOS, EOS, PAD, UNK)
+            # Skip non-boundary special tokens
             if SpecialTokens.is_special(tid) and not is_byte_boundary(tid):
                 i += 1
                 continue
 
-            # Handle byte fallback regions
+            # Byte fallback region: BYTES_START ... BYTES_END
             if tid == BYTES_START_ID:
                 j = i + 1
                 while j < len(ids) and ids[j] != BYTES_END_ID:
                     j += 1
-                # Decode the byte region (including markers)
-                end = min(j + 1, len(ids))
+                byte_vals = []
+                for k in range(i + 1, j):
+                    byte_vals.append(ids[k] - BYTE_TOKEN_OFFSET)
                 try:
-                    word = decode_bytes(ids[i:end])
-                    words.append(word)
-                except (ValueError, UnicodeDecodeError):
+                    words.append(bytes(byte_vals).decode("utf-8", errors="replace"))
+                except Exception:
                     words.append("<bytes?>")
-                i = end
+                i = j + 1
                 continue
 
-            # Handle contraction tokens
-            contraction = _CONTRACTION_ID_TO_STR.get(tid)
-            if contraction is not None:
-                words.append(contraction)
-                i += 1
-                continue
-
-            # Try matching longest subsequence in dictionary (up to 5 tokens)
-            matched = False
-            for length in range(min(5, len(ids) - i), 0, -1):
-                subseq = ids[i : i + length]
-                # Skip if subseq contains byte tokens
-                if any(is_byte_token(t) or is_byte_boundary(t) for t in subseq):
-                    continue
-                word = self._dict.reverse_lookup(subseq)
-                if word is not None:
+            # Try multi-token composition from dictionary (optional enhancement)
+            if i + 1 < len(ids):
+                composed = self._try_composition(ids, i)
+                if composed is not None:
+                    word, length = composed
                     words.append(word)
                     i += length
-                    matched = True
-                    break
+                    continue
 
-            if not matched:
-                word = self._describe_token(tid)
-                if word:
-                    words.append(word)
-                i += 1
+            # Single-token decode by tier
+            word = self._decode_single(tid)
+            if word is not None:
+                words.append(word)
+            i += 1
 
         return " ".join(words)
 
-    def decode_semantic(self, ids: list[int]) -> str:
-        """Decode token IDs to best-effort semantic English.
+    def _decode_single(self, tid: int) -> str | None:
+        """Decode a single token ID by its tier."""
+        # Tier 1: emoji catalog name
+        name = _TIER1_NAMES.get(tid)
+        if name is not None:
+            return name
 
-        Args:
-            ids: List of token IDs.
-
-        Returns:
-            Semantic English approximation.
-        """
-        return self.decode_canonical(ids)
-
-    def _describe_token(self, token_id: int) -> str | None:
-        """Get a short English word for a single token ID.
-
-        Args:
-            token_id: Integer token ID.
-
-        Returns:
-            English word or None.
-        """
-        prim = get_primitive_by_id(token_id)
+        # Tier 2: primitive name
+        prim = get_primitive_by_id(tid)
         if prim is not None:
             return prim.name.lower()
 
-        token = self._vocab.decode_token(token_id)
-        if token is not None:
-            return token
+        # Contraction
+        contraction = _CONTRACTION_NAMES.get(tid)
+        if contraction is not None:
+            return contraction
+
+        # Anchor
+        anchor = _ANCHOR_NAMES.get(tid)
+        if anchor is not None:
+            return anchor
+
+        # Structural (digit, math op, punctuation)
+        structural = _STRUCTURAL_NAMES.get(tid)
+        if structural is not None:
+            return structural
 
         return None
+
+    def _try_composition(self, ids: list[int], start: int) -> tuple[str, int] | None:
+        """Try to match a multi-token composition in the dictionary.
+
+        Tries longest match first (up to 5 tokens). Only matches sequences
+        that don't contain byte tokens.
+
+        Returns:
+            (word, length) tuple if found, None otherwise.
+        """
+        for length in range(min(5, len(ids) - start), 1, -1):
+            subseq = ids[start : start + length]
+            if any(is_byte_token(t) or is_byte_boundary(t) for t in subseq):
+                continue
+            word = self._dict.reverse_lookup(subseq)
+            if word is not None:
+                return (word, length)
+        return None
+
+    def decode_semantic(self, ids: list[int]) -> str:
+        """Decode token IDs to best-effort semantic English."""
+        return self.decode_canonical(ids)

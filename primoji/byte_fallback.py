@@ -9,10 +9,12 @@ Follows the same pattern as SentencePiece's byte_fallback (used by Llama 1/2/3).
 
 from __future__ import annotations
 
-# Token IDs for byte fallback (must match vocabulary.py)
-BYTES_START_ID: int = 1660
-BYTES_END_ID: int = 1661
-BYTE_TOKEN_OFFSET: int = 1662  # Byte 0x00 → ID 1662, 0xFF → ID 1917
+from primoji.utils import _IDS
+
+# Token IDs for byte fallback (dynamically computed from data sizes)
+BYTES_START_ID: int = _IDS["BYTES_START"]
+BYTES_END_ID: int = _IDS["BYTES_END"]
+BYTE_TOKEN_OFFSET: int = _IDS["BYTE_OFFSET"]
 
 
 def encode_bytes(word: str) -> list[int]:
@@ -32,14 +34,13 @@ def decode_bytes(ids: list[int]) -> str:
     """Decode byte token IDs back to a string.
 
     Args:
-        ids: Token ID sequence starting with BYTES_START and ending
-             with BYTES_END, with byte tokens in between.
+        ids: Token ID sequence starting with BYTES_START, ending with BYTES_END.
 
     Returns:
         Decoded string.
 
     Raises:
-        ValueError: If byte sequence is not valid UTF-8 or markers are missing.
+        ValueError: If markers are missing or bytes are invalid UTF-8.
     """
     if not ids:
         raise ValueError("Empty token ID sequence")

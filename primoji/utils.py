@@ -1,35 +1,85 @@
 """Utility helpers for Primoji tokenizer.
 
 Provides Unicode emoji catalog access, text normalization, and shared constants.
+ID ranges are computed dynamically from data files in _compute_ids().
 """
 
 from __future__ import annotations
 
+import json
 import re
 import unicodedata
+from pathlib import Path
 
 import emoji as emoji_lib
+
+_DATA_DIR = Path(__file__).parent.parent / "data"
+
+
+# ── Dynamic ID computation ────────────────────────────────────────────────────
+
+def _compute_ids() -> dict[str, int]:
+    """Compute all token ID boundaries from actual data file sizes."""
+    # Fixed
+    t2_count = 132  # primitives 1200-1331
+    flags_count = 259
+    contractions_count = 27
+    structural_count = 38  # 10 digits + 14 math + 14 punct
+
+    # Dynamic: anchors
+    anchor_path = _DATA_DIR / "proper_noun_anchors.json"
+    if anchor_path.exists():
+        with anchor_path.open() as f:
+            anchor_count = json.load(f)["total_count"]
+    else:
+        anchor_count = 0
+
+    # Compute ranges
+    flags_start = 1332
+    contract_start = flags_start + flags_count
+    anchor_start = contract_start + contractions_count
+    struct_start = anchor_start + anchor_count
+    special_start = struct_start + structural_count
+
+    return {
+        "FLAGS_START": flags_start,
+        "CONTRACT_START": contract_start,
+        "ANCHOR_START": anchor_start,
+        "ANCHOR_COUNT": anchor_count,
+        "STRUCT_START": struct_start,
+        "BOS": special_start,
+        "EOS": special_start + 1,
+        "PAD": special_start + 2,
+        "UNK": special_start + 3,
+        "BYTES_START": special_start + 4,
+        "BYTES_END": special_start + 5,
+        "BYTE_OFFSET": special_start + 6,
+        "VOCAB_SIZE": special_start + 6 + 256,
+    }
+
+
+_IDS = _compute_ids()
 
 
 # ── Special token IDs ─────────────────────────────────────────────────────────
 
 class SpecialTokens:
-    """Reserved special token IDs (1656–1661)."""
+    """Reserved special token IDs (dynamically computed)."""
 
-    BOS: int = 1656
-    EOS: int = 1657
-    PAD: int = 1658
-    UNK: int = 1659  # Should never be produced (byte fallback prevents it)
-    BYTES_START: int = 1660
-    BYTES_END: int = 1661
+    BOS: int = _IDS["BOS"]
+    EOS: int = _IDS["EOS"]
+    PAD: int = _IDS["PAD"]
+    UNK: int = _IDS["UNK"]
+    BYTES_START: int = _IDS["BYTES_START"]
+    BYTES_END: int = _IDS["BYTES_END"]
 
     ALL: dict[str, int] = {
-        "BOS": 1656,
-        "EOS": 1657,
-        "PAD": 1658,
-        "UNK": 1659,
-        "BYTES_START": 1660,
-        "BYTES_END": 1661,
+        "BOS": _IDS["BOS"],
+        "EOS": _IDS["EOS"],
+        "PAD": _IDS["PAD"],
+        "UNK": _IDS["UNK"],
+        "BYTES_START": _IDS["BYTES_START"],
+        "BYTES_END": _IDS["BYTES_END"],
     }
 
     @classmethod
@@ -89,7 +139,6 @@ def is_punctuation(char: str) -> bool:
 def simple_word_tokenize(text: str) -> list[str]:
     """Simple whitespace + punctuation tokenizer.
 
-    Splits on whitespace and separates punctuation from words.
     Preserves apostrophes within words (contractions).
     """
     tokens: list[str] = []

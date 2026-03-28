@@ -1,15 +1,8 @@
 """Vocabulary definition for Primoji tokenizer.
 
-Loads Tier 1 emoji from data/emoji_catalog.json and defines all ID ranges:
-- IDs 0–1199:      Tier 1 direct Unicode emoji (loaded from catalog)
-- IDs 1200–1331:   Tier 2 compositional primitives (loaded from primitives.json)
-- IDs 1332–1590:   Country flags (~259)
-- IDs 1591–1617:   Contraction tokens (20 dedicated + 7 suffixes)
-- IDs 1618–1655:   Structural (digits, math operators, punctuation)
-- IDs 1656–1661:   Special tokens (BOS, EOS, PAD, UNK, BYTES_START, BYTES_END)
-- IDs 1662–1917:   Byte fallback (256 tokens, one per byte 0x00–0xFF)
-
-Total: 1918 tokens.
+All ID ranges are dynamically computed from actual data file sizes.
+Loads Tier 1 emoji from emoji_catalog.json, primitives from primitives.json,
+anchors from proper_noun_anchors.json.
 """
 
 from __future__ import annotations
@@ -18,7 +11,7 @@ import json
 from pathlib import Path
 
 from primoji.primitives import PRIMITIVES
-from primoji.utils import SpecialTokens
+from primoji.utils import SpecialTokens, _IDS
 
 _DATA_DIR = Path(__file__).parent.parent / "data"
 
@@ -27,24 +20,23 @@ _DATA_DIR = Path(__file__).parent.parent / "data"
 
 def _load_tier1() -> dict[str, int]:
     """Load Tier 1 emoji→ID mapping from data/emoji_catalog.json."""
-    catalog_path = _DATA_DIR / "emoji_catalog.json"
-    if catalog_path.exists():
-        with catalog_path.open() as f:
+    path = _DATA_DIR / "emoji_catalog.json"
+    if path.exists():
+        with path.open() as f:
             data = json.load(f)
         return {e["emoji"]: e["id"] for e in data["emoji"]}
-    # Fallback: empty (bootstrap before catalog exists)
     return {}
 
 
 TIER1_DIRECT_EMOJI: dict[str, int] = _load_tier1()
 
-# ── Tier 2: Compositional Primitives (IDs 1200–1331) ─────────────────────────
+# ── Tier 2: Compositional Primitives (IDs 1200–1331, fixed) ──────────────────
 
 TIER2_PRIMITIVES: dict[str, int] = {p.emoji: p.id for p in PRIMITIVES}
 
-# ── Country Flags (IDs 1332–1590) ────────────────────────────────────────────
+# ── Country Flags ────────────────────────────────────────────────────────────
 
-_FLAG_BASE_ID: int = 1332
+_FLAG_BASE_ID: int = _IDS["FLAGS_START"]
 
 _ISO_CODES: list[str] = [
     "AD", "AE", "AF", "AG", "AI", "AL", "AM", "AO", "AQ", "AR",
@@ -87,55 +79,70 @@ for _i, _code in enumerate(_ISO_CODES):
     TIER3_FLAGS[_code] = _FLAG_BASE_ID + _i
     _FLAG_EMOJI_TO_ID[_flag] = _FLAG_BASE_ID + _i
 
-# ── Contraction Tokens (IDs 1591–1617) ───────────────────────────────────────
+# ── Contraction Tokens ───────────────────────────────────────────────────────
+
+_CONTRACT_BASE: int = _IDS["CONTRACT_START"]
+
+_CONTRACTION_LIST: list[str] = [
+    "don't", "can't", "won't", "i'm", "it's", "isn't", "didn't", "doesn't",
+    "wasn't", "weren't", "couldn't", "wouldn't", "shouldn't", "haven't",
+    "hasn't", "i'll", "you're", "they're", "we're", "he's",
+    "'t", "'m", "'ll", "'ve", "'re", "'d", "'s",
+]
 
 CONTRACTION_TOKENS: dict[str, int] = {
-    "don't": 1591, "can't": 1592, "won't": 1593, "i'm": 1594,
-    "it's": 1595, "isn't": 1596, "didn't": 1597, "doesn't": 1598,
-    "wasn't": 1599, "weren't": 1600, "couldn't": 1601, "wouldn't": 1602,
-    "shouldn't": 1603, "haven't": 1604, "hasn't": 1605, "i'll": 1606,
-    "you're": 1607, "they're": 1608, "we're": 1609, "he's": 1610,
-    "'t": 1611, "'m": 1612, "'ll": 1613, "'ve": 1614,
-    "'re": 1615, "'d": 1616, "'s": 1617,
+    c: _CONTRACT_BASE + i for i, c in enumerate(_CONTRACTION_LIST)
 }
 
 DEDICATED_CONTRACTIONS: set[str] = {
     k for k in CONTRACTION_TOKENS if not k.startswith("'")
 }
-
 CONTRACTION_SUFFIXES: set[str] = {
     k for k in CONTRACTION_TOKENS if k.startswith("'")
 }
 
-# ── Structural Tokens (IDs 1618–1655) ────────────────────────────────────────
+# ── Anchor Tokens (proper nouns from FineWeb-Edu) ────────────────────────────
 
-_STRUCTURAL_BASE_ID: int = 1618
+_ANCHOR_BASE: int = _IDS["ANCHOR_START"]
 
-# Digits 0–9
+
+def _load_anchors() -> dict[str, int]:
+    """Load anchor name→ID mapping from proper_noun_anchors.json."""
+    path = _DATA_DIR / "proper_noun_anchors.json"
+    if path.exists():
+        with path.open() as f:
+            data = json.load(f)
+        return {a["name"]: _ANCHOR_BASE + i for i, a in enumerate(data["anchors"])}
+    return {}
+
+
+ANCHOR_TOKENS: dict[str, int] = _load_anchors()
+
+# ── Structural Tokens ────────────────────────────────────────────────────────
+
+_STRUCTURAL_BASE_ID: int = _IDS["STRUCT_START"]
+
 DIGIT_IDS: dict[str, int] = {str(d): _STRUCTURAL_BASE_ID + d for d in range(10)}
 
-# Math operators
 _MATH_OPS: list[str] = ["+", "−", "×", "÷", "=", "<", ">", "≤", "≥", "∫", "Σ", "√", "π", "∞"]
 MATH_OP_IDS: dict[str, int] = {op: _STRUCTURAL_BASE_ID + 10 + i for i, op in enumerate(_MATH_OPS)}
 MATH_OP_IDS["-"] = MATH_OP_IDS["−"]
 MATH_OP_IDS["*"] = MATH_OP_IDS["×"]
 MATH_OP_IDS["/"] = MATH_OP_IDS["÷"]
 
-# Punctuation
 _PUNCTUATION: list[str] = [".", ",", "!", "?", ":", ";", '"', "'", "(", ")", "[", "]", "{", "}"]
 PUNCTUATION_IDS: dict[str, int] = {
     p: _STRUCTURAL_BASE_ID + 24 + i for i, p in enumerate(_PUNCTUATION)
 }
 
-# Byte fallback range
-BYTE_FALLBACK_OFFSET: int = 1662  # 0x00 → 1662, 0xFF → 1917
+BYTE_FALLBACK_OFFSET: int = _IDS["BYTE_OFFSET"]
 
 
 # ── Vocabulary class ──────────────────────────────────────────────────────────
 
 
 class Vocabulary:
-    """Full Primoji vocabulary (1918 tokens).
+    """Full Primoji vocabulary (dynamically sized).
 
     Provides bidirectional mapping between tokens and their integer IDs.
     """
@@ -145,7 +152,7 @@ class Vocabulary:
         self._id_to_token: dict[int, str] = {}
         self._id_to_description: dict[int, str] = {}
 
-        # Tier 1: Direct emoji (from catalog)
+        # Tier 1: Direct emoji
         for emoji_char, tid in TIER1_DIRECT_EMOJI.items():
             self._token_to_id[emoji_char] = tid
             self._id_to_token[tid] = emoji_char
@@ -164,11 +171,17 @@ class Vocabulary:
             self._id_to_token[tid] = flag
             self._id_to_description[tid] = f"Flag: {code}"
 
-        # Contraction tokens
-        for contraction, tid in CONTRACTION_TOKENS.items():
-            self._token_to_id[contraction] = tid
-            self._id_to_token[tid] = contraction
-            self._id_to_description[tid] = f"Contraction: {contraction}"
+        # Contractions
+        for c, tid in CONTRACTION_TOKENS.items():
+            self._token_to_id[c] = tid
+            self._id_to_token[tid] = c
+            self._id_to_description[tid] = f"Contraction: {c}"
+
+        # Anchors
+        for name, tid in ANCHOR_TOKENS.items():
+            self._token_to_id[name] = tid
+            self._id_to_token[tid] = name
+            self._id_to_description[tid] = f"Anchor: {name}"
 
         # Digits
         for digit, tid in DIGIT_IDS.items():
@@ -196,7 +209,7 @@ class Vocabulary:
             self._id_to_token[tid] = token_str
             self._id_to_description[tid] = f"Special token: {name}"
 
-        # Byte fallback tokens
+        # Byte fallback
         for bval in range(256):
             tid = BYTE_FALLBACK_OFFSET + bval
             token_str = f"<0x{bval:02X}>"
@@ -207,7 +220,7 @@ class Vocabulary:
     @property
     def vocab_size(self) -> int:
         """Total vocabulary size including byte fallback."""
-        return 1918
+        return _IDS["VOCAB_SIZE"]
 
     def encode_token(self, token: str) -> int | None:
         """Map a single token string to its integer ID."""
@@ -230,7 +243,7 @@ class Vocabulary:
         return token in self._token_to_id
 
     def get_flag_id(self, iso_code: str) -> int | None:
-        """Get the token ID for a country flag by ISO 3166-1 alpha-2 code."""
+        """Get the token ID for a country flag."""
         return TIER3_FLAGS.get(iso_code.upper())
 
     def get_digit_id(self, digit: str) -> int | None:
@@ -246,5 +259,9 @@ class Vocabulary:
         return PUNCTUATION_IDS.get(punc)
 
     def get_contraction_id(self, contraction: str) -> int | None:
-        """Get the token ID for a contraction or contraction suffix."""
+        """Get the token ID for a contraction."""
         return CONTRACTION_TOKENS.get(contraction.lower())
+
+    def get_anchor_id(self, name: str) -> int | None:
+        """Get the token ID for a proper noun anchor."""
+        return ANCHOR_TOKENS.get(name)

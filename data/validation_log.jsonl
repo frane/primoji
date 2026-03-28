@@ -985,3 +985,1238 @@
 {"action": "compose", "word": "doctor", "ids": [1202, 1238, 1216]}
 {"action": "compose", "word": "telephone", "ids": [1315, 1227]}
 {"action": "compose", "word": "television", "ids": [1315, 1225]}
+{"action": "download", "source": "CLDR annotations", "status": "success", "path": "code/data/external/cldr_annotations_en.xml"}
+{"action": "download", "source": "CLDR derived", "status": "success", "path": "code/data/external/cldr_derived_en.xml"}
+{"action": "download", "source": "emojilib", "status": "success", "path": "code/data/external/emojilib.json"}
+{"action": "download", "source": "emoji2vec", "status": "success", "path": "code/data/external/emoji2vec_pairs.txt"}
+{"action": "download", "source": "EmojiNet", "status": "skipped", "reason": "Requires Kaggle auth, supplementary source"}
+{"action": "download", "source": "ELCo", "status": "skipped", "reason": "Not directly downloadable, supplementary source"}
+{"action": "enrich_words", "emoji": "🐜", "name": "ant", "added_count": 5, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "📶", "name": "antenna bars", "added_count": 18, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🦡", "name": "badger", "added_count": 4, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🦇", "name": "bat", "added_count": 5, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🛁", "name": "bathtub", "added_count": 5, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🍺", "name": "beer mug", "added_count": 19, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🪲", "name": "beetle", "added_count": 3, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🐦", "name": "bird", "added_count": 6, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🦬", "name": "bison", "added_count": 5, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🐦‍⬛", "name": "black bird", "added_count": 10, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🐈‍⬛", "name": "black cat", "added_count": 10, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🐡", "name": "blowfish", "added_count": 8, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🎳", "name": "bowling", "added_count": 11, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🐛", "name": "bug", "added_count": 6, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🦋", "name": "butterfly", "added_count": 5, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🐪", "name": "camel", "added_count": 8, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🎠", "name": "carousel horse", "added_count": 10, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🐈", "name": "cat", "added_count": 8, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "♟", "name": "chess pawn", "added_count": 4, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🐿", "name": "chipmunk", "added_count": 2, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🪳", "name": "cockroach", "added_count": 5, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🖱", "name": "computer mouse", "added_count": 2, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🪸", "name": "coral", "added_count": 5, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🐄", "name": "cow", "added_count": 9, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🦀", "name": "crab", "added_count": 4, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🦗", "name": "cricket", "added_count": 6, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🏏", "name": "cricket game", "added_count": 6, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🐊", "name": "crocodile", "added_count": 7, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🥐", "name": "croissant", "added_count": 6, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🦌", "name": "deer", "added_count": 7, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🐕", "name": "dog", "added_count": 8, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🐬", "name": "dolphin", "added_count": 8, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🫏", "name": "donkey", "added_count": 8, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🕊", "name": "dove", "added_count": 4, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🐉", "name": "dragon", "added_count": 9, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🦆", "name": "duck", "added_count": 5, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🦅", "name": "eagle", "added_count": 5, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🐘", "name": "elephant", "added_count": 5, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🪹", "name": "empty nest", "added_count": 6, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🪶", "name": "feather", "added_count": 5, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🐟", "name": "fish", "added_count": 8, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🍥", "name": "fish cake with swirl", "added_count": 16, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🎣", "name": "fishing pole", "added_count": 9, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🦩", "name": "flamingo", "added_count": 5, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🪰", "name": "fly", "added_count": 6, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🥏", "name": "flying disc", "added_count": 8, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🛸", "name": "flying saucer", "added_count": 12, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🦊", "name": "fox", "added_count": 3, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🍤", "name": "fried shrimp", "added_count": 8, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🐸", "name": "frog", "added_count": 5, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🦒", "name": "giraffe", "added_count": 5, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🌎", "name": "globe showing Americas", "added_count": 8, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🌏", "name": "globe showing Asia-Australia", "added_count": 10, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🌟", "name": "glowing star", "added_count": 11, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🐐", "name": "goat", "added_count": 6, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🦍", "name": "gorilla", "added_count": 3, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🦮", "name": "guide dog", "added_count": 7, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🐹", "name": "hamster", "added_count": 4, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🐣", "name": "hatching chick", "added_count": 8, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🦔", "name": "hedgehog", "added_count": 4, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🦛", "name": "hippopotamus", "added_count": 3, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🐝", "name": "honeybee", "added_count": 8, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🐎", "name": "horse", "added_count": 9, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🏇", "name": "horse racing", "added_count": 12, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🌭", "name": "hot dog", "added_count": 9, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🪪", "name": "identification card", "added_count": 7, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🎃", "name": "jack-o-lantern", "added_count": 11, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🈸", "name": "Japanese application button", "added_count": 16, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "㊗", "name": "Japanese congratulations button", "added_count": 4, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🪼", "name": "jellyfish", "added_count": 14, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🦘", "name": "kangaroo", "added_count": 8, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🐞", "name": "lady beetle", "added_count": 9, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🐆", "name": "leopard", "added_count": 8, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🦁", "name": "lion", "added_count": 12, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🦎", "name": "lizard", "added_count": 4, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🦙", "name": "llama", "added_count": 6, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🦞", "name": "lobster", "added_count": 5, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🪫", "name": "low battery", "added_count": 9, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🀄", "name": "mahjong red dragon", "added_count": 8, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🦣", "name": "mammoth", "added_count": 9, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🦠", "name": "microbe", "added_count": 10, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "💸", "name": "money with wings", "added_count": 17, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🐒", "name": "monkey", "added_count": 5, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🎑", "name": "moon viewing ceremony", "added_count": 18, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🫎", "name": "moose", "added_count": 9, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🦟", "name": "mosquito", "added_count": 9, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🐁", "name": "mouse", "added_count": 6, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🪤", "name": "mouse trap", "added_count": 8, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🪺", "name": "nest with eggs", "added_count": 6, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🪆", "name": "nesting dolls", "added_count": 10, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "📔", "name": "notebook with decorative cover", "added_count": 13, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🐙", "name": "octopus", "added_count": 6, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🦧", "name": "orangutan", "added_count": 3, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🦦", "name": "otter", "added_count": 3, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🦉", "name": "owl", "added_count": 6, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🦜", "name": "parrot", "added_count": 6, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🦚", "name": "peacock", "added_count": 9, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🐧", "name": "penguin", "added_count": 5, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🐖", "name": "pig", "added_count": 7, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🎍", "name": "pine decoration", "added_count": 12, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🐩", "name": "poodle", "added_count": 8, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🐇", "name": "rabbit", "added_count": 6, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🐀", "name": "rat", "added_count": 3, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🏮", "name": "red paper lantern", "added_count": 11, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🦏", "name": "rhinoceros", "added_count": 4, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🐓", "name": "rooster", "added_count": 7, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "📡", "name": "satellite antenna", "added_count": 11, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🦂", "name": "scorpion", "added_count": 5, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🦭", "name": "seal", "added_count": 5, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🙈", "name": "see-no-evil monkey", "added_count": 24, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🐕‍🦺", "name": "service dog", "added_count": 6, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🪡", "name": "sewing needle", "added_count": 8, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🦈", "name": "shark", "added_count": 10, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🦐", "name": "shrimp", "added_count": 8, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🦨", "name": "skunk", "added_count": 3, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🦥", "name": "sloth", "added_count": 3, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🐌", "name": "snail", "added_count": 7, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🐍", "name": "snake", "added_count": 9, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🙊", "name": "speak-no-evil monkey", "added_count": 22, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🕷", "name": "spider", "added_count": 2, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🕸", "name": "spider web", "added_count": 2, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🦑", "name": "squid", "added_count": 7, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🦢", "name": "swan", "added_count": 7, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🎋", "name": "tanabata tree", "added_count": 14, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🐅", "name": "tiger", "added_count": 8, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🐠", "name": "tropical fish", "added_count": 10, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🐢", "name": "turtle", "added_count": 5, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🐫", "name": "two-hump camel", "added_count": 11, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "📳", "name": "vibration mode", "added_count": 10, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🐋", "name": "whale", "added_count": 5, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🪽", "name": "wing", "added_count": 11, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🐺", "name": "wolf", "added_count": 4, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🪱", "name": "worm", "added_count": 4, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🦓", "name": "zebra", "added_count": 6, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🏦", "name": "bank", "added_count": 9, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🏰", "name": "castle", "added_count": 5, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "⛪", "name": "church", "added_count": 7, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🎪", "name": "circus tent", "added_count": 9, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🏛", "name": "classical building", "added_count": 2, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🏪", "name": "convenience store", "added_count": 11, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🏬", "name": "department store", "added_count": 7, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🏚", "name": "derelict house", "added_count": 3, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "💵", "name": "dollar banknote", "added_count": 11, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "💶", "name": "euro banknote", "added_count": 12, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🏭", "name": "factory", "added_count": 6, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🧑‍🏭", "name": "factory worker", "added_count": 6, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🛕", "name": "hindu temple", "added_count": 3, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🏥", "name": "hospital", "added_count": 10, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🏨", "name": "hotel", "added_count": 4, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🏡", "name": "house with garden", "added_count": 15, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🏘", "name": "houses", "added_count": 1, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🛖", "name": "hut", "added_count": 6, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🉑", "name": "Japanese acceptable button", "added_count": 15, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🉐", "name": "Japanese bargain button", "added_count": 14, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🏯", "name": "Japanese castle", "added_count": 5, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🈹", "name": "Japanese discount button", "added_count": 16, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🎎", "name": "Japanese dolls", "added_count": 11, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🈚", "name": "Japanese free of charge button", "added_count": 16, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🈁", "name": "Japanese here button", "added_count": 11, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🈷", "name": "Japanese monthly amount button", "added_count": 5, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🈵", "name": "Japanese no vacancy button", "added_count": 15, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🈶", "name": "Japanese not free of charge button", "added_count": 17, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🈴", "name": "Japanese passing grade button", "added_count": 16, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🏣", "name": "Japanese post office", "added_count": 9, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🈲", "name": "Japanese prohibited button", "added_count": 17, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🈯", "name": "Japanese reserved button", "added_count": 14, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "㊙", "name": "Japanese secret button", "added_count": 4, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🈂", "name": "Japanese service charge button", "added_count": 5, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🔰", "name": "Japanese symbol for beginner", "added_count": 12, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🈳", "name": "Japanese vacancy button", "added_count": 15, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🏩", "name": "love hotel", "added_count": 8, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🕌", "name": "mosque", "added_count": 8, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🏢", "name": "office building", "added_count": 9, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🧑‍💼", "name": "office worker", "added_count": 11, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🪂", "name": "parachute", "added_count": 6, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🏤", "name": "post office", "added_count": 5, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "💷", "name": "pound banknote", "added_count": 20, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🏫", "name": "school", "added_count": 10, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🕍", "name": "synagogue", "added_count": 7, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "⛺", "name": "tent", "added_count": 3, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "💴", "name": "yen banknote", "added_count": 12, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🎒", "name": "backpack", "added_count": 9, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🛄", "name": "baggage claim", "added_count": 15, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🩰", "name": "ballet shoes", "added_count": 6, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "👙", "name": "bikini", "added_count": 14, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🧢", "name": "billed cap", "added_count": 7, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "💼", "name": "briefcase", "added_count": 9, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🏙", "name": "cityscape", "added_count": 1, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🌆", "name": "cityscape at dusk", "added_count": 14, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "👝", "name": "clutch bag", "added_count": 11, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🧥", "name": "coat", "added_count": 6, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "👗", "name": "dress", "added_count": 8, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🎡", "name": "ferris wheel", "added_count": 13, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🥿", "name": "flat shoe", "added_count": 8, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🥽", "name": "goggles", "added_count": 9, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🎓", "name": "graduation cap", "added_count": 19, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "👜", "name": "handbag", "added_count": 10, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "👠", "name": "high-heeled shoe", "added_count": 14, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "👖", "name": "jeans", "added_count": 11, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "👘", "name": "kimono", "added_count": 9, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🥼", "name": "lab coat", "added_count": 11, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🪖", "name": "military helmet", "added_count": 7, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "💰", "name": "money bag", "added_count": 21, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "👔", "name": "necktie", "added_count": 10, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "👛", "name": "purse", "added_count": 12, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "⛑", "name": "rescue worker’s helmet", "added_count": 6, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🦺", "name": "safety vest", "added_count": 4, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🥻", "name": "sari", "added_count": 4, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🛍", "name": "shopping bags", "added_count": 4, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🩳", "name": "shorts", "added_count": 7, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🏔", "name": "snow-capped mountain", "added_count": 4, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🧦", "name": "socks", "added_count": 5, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "👕", "name": "t-shirt", "added_count": 14, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🩴", "name": "thong sandal", "added_count": 13, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🎩", "name": "top hat", "added_count": 15, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🛞", "name": "wheel", "added_count": 6, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "☸", "name": "wheel of dharma", "added_count": 4, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "😠", "name": "angry face", "added_count": 14, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "👿", "name": "angry face with horns", "added_count": 16, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "😧", "name": "anguished face", "added_count": 13, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "😰", "name": "anxious face with sweat", "added_count": 12, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "😲", "name": "astonished face", "added_count": 14, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🥊", "name": "boxing glove", "added_count": 4, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🐱", "name": "cat face", "added_count": 8, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "😼", "name": "cat with wry smile", "added_count": 9, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🤡", "name": "clown face", "added_count": 3, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🥶", "name": "cold face", "added_count": 11, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "😖", "name": "confounded face", "added_count": 16, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "😕", "name": "confused face", "added_count": 18, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🐮", "name": "cow face", "added_count": 10, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🤠", "name": "cowboy hat face", "added_count": 4, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "😿", "name": "crying cat", "added_count": 11, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "😢", "name": "crying face", "added_count": 13, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🔮", "name": "crystal ball", "added_count": 16, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "😞", "name": "disappointed face", "added_count": 12, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🥸", "name": "disguised face", "added_count": 14, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🫪", "name": "distorted face", "added_count": 6, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🤿", "name": "diving mask", "added_count": 6, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🐶", "name": "dog face", "added_count": 11, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🫥", "name": "dotted line face", "added_count": 15, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "😓", "name": "downcast face with sweat", "added_count": 16, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🐲", "name": "dragon face", "added_count": 11, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🤤", "name": "drooling face", "added_count": 3, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "😡", "name": "enraged face", "added_count": 17, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "😑", "name": "expressionless face", "added_count": 20, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "😘", "name": "face blowing a kiss", "added_count": 23, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "😮‍💨", "name": "face exhaling", "added_count": 16, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "😶‍🌫", "name": "face in clouds", "added_count": 5, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "😋", "name": "face savoring food", "added_count": 23, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🤮", "name": "face vomiting", "added_count": 15, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🫤", "name": "face with diagonal mouth", "added_count": 18, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🤕", "name": "face with head-bandage", "added_count": 9, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "😷", "name": "face with medical mask", "added_count": 16, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🧐", "name": "face with monocle", "added_count": 9, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "😮", "name": "face with open mouth", "added_count": 16, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "😤", "name": "face with steam from nose", "added_count": 24, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🤬", "name": "face with symbols on mouth", "added_count": 16, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🤒", "name": "face with thermometer", "added_count": 8, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "😛", "name": "face with tongue", "added_count": 16, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "😶", "name": "face without mouth", "added_count": 13, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🌛", "name": "first quarter moon face", "added_count": 12, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "😳", "name": "flushed face", "added_count": 24, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🍀", "name": "four leaf clover", "added_count": 11, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "☹", "name": "frowning face", "added_count": 4, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "😦", "name": "frowning face with open mouth", "added_count": 14, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🌝", "name": "full moon face", "added_count": 15, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "👻", "name": "ghost", "added_count": 16, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🧤", "name": "gloves", "added_count": 5, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "😬", "name": "grimacing face", "added_count": 12, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "😺", "name": "grinning cat", "added_count": 11, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "😀", "name": "grinning face", "added_count": 13, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "😅", "name": "grinning face with sweat", "added_count": 18, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "😆", "name": "grinning squinting face", "added_count": 23, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🐴", "name": "horse face", "added_count": 10, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🥵", "name": "hot face", "added_count": 12, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "😯", "name": "hushed face", "added_count": 13, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "💏", "name": "kiss", "added_count": 27, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "💋", "name": "kiss mark", "added_count": 15, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "😽", "name": "kissing cat", "added_count": 9, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "😗", "name": "kissing face", "added_count": 17, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🌜", "name": "last quarter moon face", "added_count": 13, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "😭", "name": "loudly crying face", "added_count": 13, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "💌", "name": "love letter", "added_count": 12, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🤟", "name": "love-you gesture", "added_count": 10, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🤥", "name": "lying face", "added_count": 7, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🙍‍♂", "name": "man frowning", "added_count": 11, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🙎‍♂", "name": "man pouting", "added_count": 10, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🫠", "name": "melting face", "added_count": 14, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🤑", "name": "money-mouth face", "added_count": 9, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🐵", "name": "monkey face", "added_count": 7, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🐭", "name": "mouse face", "added_count": 5, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🤢", "name": "nauseated face", "added_count": 12, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🤓", "name": "nerd face", "added_count": 13, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "😐", "name": "neutral face", "added_count": 19, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🌚", "name": "new moon face", "added_count": 14, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🥳", "name": "partying face", "added_count": 13, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "😔", "name": "pensive face", "added_count": 15, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "😣", "name": "persevering face", "added_count": 15, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🙍", "name": "person frowning", "added_count": 14, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🙎", "name": "person pouting", "added_count": 16, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "👲", "name": "person with skullcap", "added_count": 12, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🐷", "name": "pig face", "added_count": 9, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🥺", "name": "pleading face", "added_count": 17, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "😾", "name": "pouting cat", "added_count": 6, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🐰", "name": "rabbit face", "added_count": 9, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "😌", "name": "relieved face", "added_count": 13, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🤣", "name": "rolling on the floor laughing", "added_count": 18, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "😥", "name": "sad but relieved face", "added_count": 15, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🫡", "name": "saluting face", "added_count": 11, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🫨", "name": "shaking face", "added_count": 14, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🤫", "name": "shushing face", "added_count": 12, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "💀", "name": "skull", "added_count": 16, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "☠", "name": "skull and crossbones", "added_count": 7, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "😴", "name": "sleeping face", "added_count": 15, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "😪", "name": "sleepy face", "added_count": 15, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🙁", "name": "slightly frowning face", "added_count": 8, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🙂", "name": "slightly smiling face", "added_count": 7, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "☺", "name": "smiling face", "added_count": 6, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "😇", "name": "smiling face with halo", "added_count": 17, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "😈", "name": "smiling face with horns", "added_count": 15, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🤗", "name": "smiling face with open hands", "added_count": 8, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "😎", "name": "smiling face with sunglasses", "added_count": 27, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "😏", "name": "smirking face", "added_count": 23, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🤧", "name": "sneezing face", "added_count": 9, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🐳", "name": "spouting whale", "added_count": 9, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "😝", "name": "squinting face with tongue", "added_count": 20, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🌞", "name": "sun with face", "added_count": 18, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "💦", "name": "sweat droplets", "added_count": 15, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🤔", "name": "thinking face", "added_count": 14, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🐯", "name": "tiger face", "added_count": 11, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "😫", "name": "tired face", "added_count": 15, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "😒", "name": "unamused face", "added_count": 23, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🙃", "name": "upside-down face", "added_count": 7, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🌬", "name": "wind face", "added_count": 4, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "😉", "name": "winking face", "added_count": 15, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "😜", "name": "winking face with tongue", "added_count": 24, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🥴", "name": "woozy face", "added_count": 11, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "😟", "name": "worried face", "added_count": 13, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🥱", "name": "yawning face", "added_count": 13, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🤪", "name": "zany face", "added_count": 13, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🤐", "name": "zipper-mouth face", "added_count": 13, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🥑", "name": "avocado", "added_count": 2, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🥓", "name": "bacon", "added_count": 7, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🥯", "name": "bagel", "added_count": 7, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🥖", "name": "baguette bread", "added_count": 6, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🍌", "name": "banana", "added_count": 6, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🫑", "name": "bell pepper", "added_count": 7, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🍱", "name": "bento box", "added_count": 6, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🧃", "name": "beverage box", "added_count": 6, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🎂", "name": "birthday cake", "added_count": 11, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🍾", "name": "bottle with popping cork", "added_count": 11, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🥣", "name": "bowl with spoon", "added_count": 9, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🍞", "name": "bread", "added_count": 8, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🥦", "name": "broccoli", "added_count": 5, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🍄‍🟫", "name": "brown mushroom", "added_count": 17, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🧋", "name": "bubble tea", "added_count": 11, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🌯", "name": "burrito", "added_count": 3, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🧈", "name": "butter", "added_count": 3, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🍬", "name": "candy", "added_count": 9, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🥫", "name": "canned food", "added_count": 8, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "♑", "name": "Capricorn", "added_count": 6, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🥕", "name": "carrot", "added_count": 3, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🧀", "name": "cheese wedge", "added_count": 5, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🌰", "name": "chestnut", "added_count": 6, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🍫", "name": "chocolate bar", "added_count": 9, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🥢", "name": "chopsticks", "added_count": 4, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🍸", "name": "cocktail glass", "added_count": 15, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🥥", "name": "coconut", "added_count": 7, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🍚", "name": "cooked rice", "added_count": 7, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🍪", "name": "cookie", "added_count": 8, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🥒", "name": "cucumber", "added_count": 5, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🥤", "name": "cup with straw", "added_count": 13, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🧁", "name": "cupcake", "added_count": 10, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🍛", "name": "curry rice", "added_count": 6, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🥩", "name": "cut of meat", "added_count": 9, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🍩", "name": "doughnut", "added_count": 6, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🥟", "name": "dumpling", "added_count": 7, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🥚", "name": "egg", "added_count": 3, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🍆", "name": "eggplant", "added_count": 7, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🫓", "name": "flatbread", "added_count": 10, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🫕", "name": "fondue", "added_count": 7, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🍴", "name": "fork and knife", "added_count": 19, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🍽", "name": "fork and knife with plate", "added_count": 6, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🥠", "name": "fortune cookie", "added_count": 5, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🍟", "name": "french fries", "added_count": 9, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🧄", "name": "garlic", "added_count": 6, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🥛", "name": "glass of milk", "added_count": 5, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "👓", "name": "glasses", "added_count": 10, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🍇", "name": "grapes", "added_count": 6, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🍏", "name": "green apple", "added_count": 9, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🥗", "name": "green salad", "added_count": 6, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🍔", "name": "hamburger", "added_count": 11, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🍯", "name": "honey pot", "added_count": 10, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "☕", "name": "hot beverage", "added_count": 14, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🌶", "name": "hot pepper", "added_count": 2, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "⌛", "name": "hourglass done", "added_count": 11, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🍨", "name": "ice cream", "added_count": 8, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🔪", "name": "kitchen knife", "added_count": 12, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🥝", "name": "kiwi fruit", "added_count": 6, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🍋", "name": "lemon", "added_count": 6, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🧴", "name": "lotion bottle", "added_count": 5, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🔍", "name": "magnifying glass tilted left", "added_count": 16, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🧉", "name": "mate", "added_count": 8, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🍈", "name": "melon", "added_count": 7, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🌌", "name": "milky way", "added_count": 10, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🥮", "name": "moon cake", "added_count": 8, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🍄", "name": "mushroom", "added_count": 5, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🩱", "name": "one-piece swimsuit", "added_count": 7, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🧅", "name": "onion", "added_count": 6, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "📙", "name": "orange book", "added_count": 10, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🟠", "name": "orange circle", "added_count": 5, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🟧", "name": "orange square", "added_count": 4, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🥞", "name": "pancakes", "added_count": 9, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🍑", "name": "peach", "added_count": 6, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🥜", "name": "peanuts", "added_count": 5, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🥧", "name": "pie", "added_count": 10, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🍍", "name": "pineapple", "added_count": 7, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🍕", "name": "pizza", "added_count": 7, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🍿", "name": "popcorn", "added_count": 9, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🍲", "name": "pot of food", "added_count": 7, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🥔", "name": "potato", "added_count": 7, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🥨", "name": "pretzel", "added_count": 8, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🍎", "name": "red apple", "added_count": 11, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🍙", "name": "rice ball", "added_count": 6, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🍘", "name": "rice cracker", "added_count": 6, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🍠", "name": "roasted sweet potato", "added_count": 8, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🍶", "name": "sake", "added_count": 12, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🧂", "name": "salt", "added_count": 7, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🥪", "name": "sandwich", "added_count": 9, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🥘", "name": "shallow pan of food", "added_count": 8, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🌾", "name": "sheaf of rice", "added_count": 10, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🍰", "name": "shortcake", "added_count": 8, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🔸", "name": "small orange diamond", "added_count": 7, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🍦", "name": "soft ice cream", "added_count": 12, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🍝", "name": "spaghetti", "added_count": 6, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🥄", "name": "spoon", "added_count": 4, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🍜", "name": "steaming bowl", "added_count": 10, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🍓", "name": "strawberry", "added_count": 5, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🥙", "name": "stuffed flatbread", "added_count": 11, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🕶", "name": "sunglasses", "added_count": 4, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🍣", "name": "sushi", "added_count": 6, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🌮", "name": "taco", "added_count": 2, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🫔", "name": "tamale", "added_count": 6, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🧑‍🏫", "name": "teacher", "added_count": 5, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🍵", "name": "teacup without handle", "added_count": 12, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🫖", "name": "teapot", "added_count": 7, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🍅", "name": "tomato", "added_count": 5, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🍹", "name": "tropical drink", "added_count": 22, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🥃", "name": "tumbler glass", "added_count": 14, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🦄", "name": "unicorn", "added_count": 4, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🧇", "name": "waffle", "added_count": 5, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🍉", "name": "watermelon", "added_count": 5, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🍷", "name": "wine glass", "added_count": 13, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🩹", "name": "adhesive bandage", "added_count": 8, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🩼", "name": "crutch", "added_count": 10, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🧬", "name": "dna", "added_count": 7, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🧑‍⚕", "name": "health worker", "added_count": 6, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🔬", "name": "microscope", "added_count": 9, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🧫", "name": "petri dish", "added_count": 7, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "💊", "name": "pill", "added_count": 11, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🩺", "name": "stethoscope", "added_count": 5, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "💉", "name": "syringe", "added_count": 14, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🧪", "name": "test tube", "added_count": 7, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🌡", "name": "thermometer", "added_count": 1, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🩻", "name": "x-ray", "added_count": 8, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🧮", "name": "abacus", "added_count": 6, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🎟", "name": "admission tickets", "added_count": 3, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "⏰", "name": "alarm clock", "added_count": 9, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "⚗", "name": "alembic", "added_count": 2, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "👽", "name": "alien", "added_count": 14, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "👾", "name": "alien monster", "added_count": 20, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🏺", "name": "amphora", "added_count": 9, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "💢", "name": "anger symbol", "added_count": 9, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "♒", "name": "Aquarius", "added_count": 7, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "♈", "name": "Aries", "added_count": 6, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🚛", "name": "articulated lorry", "added_count": 12, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🧑‍🎨", "name": "artist", "added_count": 7, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🧑‍🚀", "name": "astronaut", "added_count": 6, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🏧", "name": "ATM sign", "added_count": 11, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🚗", "name": "automobile", "added_count": 6, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🪓", "name": "axe", "added_count": 7, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "⚖", "name": "balance scale", "added_count": 8, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🧑‍🩰", "name": "ballet dancer", "added_count": 2, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🎈", "name": "balloon", "added_count": 8, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🗳", "name": "ballot box with ballot", "added_count": 2, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "💈", "name": "barber pole", "added_count": 13, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🧺", "name": "basket", "added_count": 3, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🫘", "name": "beans", "added_count": 4, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🦫", "name": "beaver", "added_count": 4, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🛏", "name": "bed", "added_count": 2, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🔔", "name": "bell", "added_count": 10, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🔕", "name": "bell with slash", "added_count": 18, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🛎", "name": "bellhop bell", "added_count": 3, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "☣", "name": "biohazard", "added_count": 1, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "⚫", "name": "black circle", "added_count": 7, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "⬛", "name": "black large square", "added_count": 7, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "◼", "name": "black medium square", "added_count": 4, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "◾", "name": "black medium-small square", "added_count": 7, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "✒", "name": "black nib", "added_count": 3, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "▪", "name": "black small square", "added_count": 4, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🔲", "name": "black square button", "added_count": 7, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "📘", "name": "blue book", "added_count": 11, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🟦", "name": "blue square", "added_count": 4, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🫐", "name": "blueberries", "added_count": 7, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🐗", "name": "boar", "added_count": 5, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "💣", "name": "bomb", "added_count": 7, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🔖", "name": "bookmark", "added_count": 6, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "📑", "name": "bookmark tabs", "added_count": 8, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🪃", "name": "boomerang", "added_count": 4, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🧱", "name": "brick", "added_count": 5, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🌉", "name": "bridge at night", "added_count": 8, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🩲", "name": "briefs", "added_count": 8, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "⛓‍💥", "name": "broken chain", "added_count": 6, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🧹", "name": "broom", "added_count": 5, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🫧", "name": "bubbles", "added_count": 10, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🪣", "name": "bucket", "added_count": 5, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "📅", "name": "calendar", "added_count": 6, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "📷", "name": "camera", "added_count": 10, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "♋", "name": "Cancer", "added_count": 6, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🕯", "name": "candle", "added_count": 1, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "⛓", "name": "chains", "added_count": 1, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "☑", "name": "check box with check", "added_count": 7, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "✔", "name": "check mark", "added_count": 7, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🍒", "name": "cherries", "added_count": 7, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🐔", "name": "chicken", "added_count": 6, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🚬", "name": "cigarette", "added_count": 7, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🎦", "name": "cinema", "added_count": 13, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "Ⓜ", "name": "circled M", "added_count": 2, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🆑", "name": "CL button", "added_count": 8, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🗜", "name": "clamp", "added_count": 3, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🎬", "name": "clapper board", "added_count": 11, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "📕", "name": "closed book", "added_count": 9, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "♣", "name": "club suit", "added_count": 5, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "⚰", "name": "coffin", "added_count": 3, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🪙", "name": "coin", "added_count": 9, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🧭", "name": "compass", "added_count": 4, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "💽", "name": "computer disk", "added_count": 9, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🎊", "name": "confetti ball", "added_count": 11, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🎛", "name": "control knobs", "added_count": 3, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🧑‍🍳", "name": "cook", "added_count": 6, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🆒", "name": "COOL button", "added_count": 7, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🛋", "name": "couch and lamp", "added_count": 3, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "❎", "name": "cross mark button", "added_count": 11, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "⚔", "name": "crossed swords", "added_count": 3, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🥌", "name": "curling stone", "added_count": 5, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "➰", "name": "curly loop", "added_count": 8, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "💱", "name": "currency exchange", "added_count": 7, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🛃", "name": "customs", "added_count": 4, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🗡", "name": "dagger", "added_count": 2, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🍡", "name": "dango", "added_count": 12, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🖥", "name": "desktop computer", "added_count": 3, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "♦", "name": "diamond suit", "added_count": 4, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "💠", "name": "diamond with a dot", "added_count": 14, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🔅", "name": "dim button", "added_count": 10, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🪔", "name": "diya lamp", "added_count": 5, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🦤", "name": "dodo", "added_count": 8, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🚪", "name": "door", "added_count": 7, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "➿", "name": "double curly loop", "added_count": 8, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "‼", "name": "double exclamation mark", "added_count": 5, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "📀", "name": "dvd", "added_count": 9, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "📧", "name": "e-mail", "added_count": 6, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🕗", "name": "eight o’clock", "added_count": 8, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "✳", "name": "eight-spoked asterisk", "added_count": 2, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🕣", "name": "eight-thirty", "added_count": 8, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "⏏", "name": "eject button", "added_count": 2, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🛗", "name": "elevator", "added_count": 3, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🕚", "name": "eleven o’clock", "added_count": 8, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🕦", "name": "eleven-thirty", "added_count": 8, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🏴󠁧󠁢󠁥󠁮󠁧󠁿", "name": "England", "added_count": 5, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "✉", "name": "envelope", "added_count": 3, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🐑", "name": "ewe", "added_count": 10, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "⁉", "name": "exclamation question mark", "added_count": 5, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🤯", "name": "exploding head", "added_count": 13, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🧆", "name": "falafel", "added_count": 5, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🧑‍🌾", "name": "farmer", "added_count": 6, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "⏬", "name": "fast down button", "added_count": 11, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "📠", "name": "fax machine", "added_count": 5, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "♀", "name": "female sign", "added_count": 3, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🗄", "name": "file cabinet", "added_count": 4, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🎞", "name": "film frames", "added_count": 4, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "📽", "name": "film projector", "added_count": 5, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🧯", "name": "fire extinguisher", "added_count": 4, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🧨", "name": "firecracker", "added_count": 11, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🧑‍🚒", "name": "firefighter", "added_count": 2, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🎆", "name": "fireworks", "added_count": 10, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🕔", "name": "five o’clock", "added_count": 8, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🕠", "name": "five-thirty", "added_count": 8, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🔦", "name": "flashlight", "added_count": 8, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "⚜", "name": "fleur-de-lis", "added_count": 1, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "💾", "name": "floppy disk", "added_count": 6, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🪈", "name": "flute", "added_count": 13, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "⛲", "name": "fountain", "added_count": 6, "sources": ["emojilib"]}
+{"action": "enrich_words", "emoji": "🖋", "name": "fountain pen", "added_count": 2, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🕓", "name": "four o’clock", "added_count": 8, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🕟", "name": "four-thirty", "added_count": 8, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🖼", "name": "framed picture", "added_count": 6, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🆓", "name": "FREE button", "added_count": 6, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "⚱", "name": "funeral urn", "added_count": 4, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "💎", "name": "gem stone", "added_count": 12, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "♊", "name": "Gemini", "added_count": 6, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🫚", "name": "ginger root", "added_count": 10, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🥅", "name": "goal net", "added_count": 4, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "👺", "name": "goblin", "added_count": 17, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🪿", "name": "goose", "added_count": 13, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "📗", "name": "green book", "added_count": 10, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🟢", "name": "green circle", "added_count": 5, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🟩", "name": "green square", "added_count": 4, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "⚒", "name": "hammer and pick", "added_count": 3, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🛠", "name": "hammer and wrench", "added_count": 4, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🪬", "name": "hamsa", "added_count": 11, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🪉", "name": "harp", "added_count": 5, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "💲", "name": "heavy dollar sign", "added_count": 13, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🪝", "name": "hook", "added_count": 9, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "♨", "name": "hot springs", "added_count": 4, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🪻", "name": "hyacinth", "added_count": 13, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🧊", "name": "ice", "added_count": 4, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🆔", "name": "ID button", "added_count": 8, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "📨", "name": "incoming envelope", "added_count": 13, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "♾", "name": "infinity", "added_count": 3, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🔡", "name": "input latin lowercase", "added_count": 10, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🔠", "name": "input latin uppercase", "added_count": 11, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🔣", "name": "input symbols", "added_count": 11, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🃏", "name": "joker", "added_count": 10, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🕹", "name": "joystick", "added_count": 3, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🧑‍⚖", "name": "judge", "added_count": 3, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🕋", "name": "kaaba", "added_count": 7, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🔑", "name": "key", "added_count": 6, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "⌨", "name": "keyboard", "added_count": 1, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🪁", "name": "kite", "added_count": 4, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🪢", "name": "knot", "added_count": 7, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🐨", "name": "koala", "added_count": 8, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🪜", "name": "ladder", "added_count": 5, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🛘", "name": "landslide", "added_count": 7, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "💻", "name": "laptop", "added_count": 10, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🔷", "name": "large blue diamond", "added_count": 7, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "⏮", "name": "last track button", "added_count": 7, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "✝", "name": "latin cross", "added_count": 5, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "📒", "name": "ledger", "added_count": 8, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🛅", "name": "left luggage", "added_count": 10, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🗨", "name": "left speech bubble", "added_count": 5, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "♌", "name": "Leo", "added_count": 6, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🎚", "name": "level slider", "added_count": 3, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "♎", "name": "Libra", "added_count": 8, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "💡", "name": "light bulb", "added_count": 6, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🚈", "name": "light rail", "added_count": 7, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🍋‍🟩", "name": "lime", "added_count": 17, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🚮", "name": "litter in bin sign", "added_count": 14, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🔒", "name": "locked", "added_count": 7, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🔐", "name": "locked with key", "added_count": 9, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🔏", "name": "locked with pen", "added_count": 9, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🚂", "name": "locomotive", "added_count": 9, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🧳", "name": "luggage", "added_count": 5, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🪄", "name": "magic wand", "added_count": 7, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "♂", "name": "male sign", "added_count": 3, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🗾", "name": "map of Japan", "added_count": 7, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🧑‍🔧", "name": "mechanic", "added_count": 7, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🦾", "name": "mechanical arm", "added_count": 5, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "⚕", "name": "medical symbol", "added_count": 5, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "📣", "name": "megaphone", "added_count": 7, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "📝", "name": "memo", "added_count": 19, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🕎", "name": "menorah", "added_count": 10, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🚹", "name": "men’s room", "added_count": 12, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🪩", "name": "mirror ball", "added_count": 6, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🗿", "name": "moai", "added_count": 10, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "📱", "name": "mobile phone", "added_count": 11, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "📴", "name": "mobile phone off", "added_count": 10, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🛣", "name": "motorway", "added_count": 2, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🗻", "name": "mount fuji", "added_count": 9, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🎥", "name": "movie camera", "added_count": 10, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🤶", "name": "Mrs. Claus", "added_count": 17, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🧑‍🎄", "name": "Mx Claus", "added_count": 12, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "💅", "name": "nail polish", "added_count": 16, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🧿", "name": "nazar amulet", "added_count": 10, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🆕", "name": "NEW button", "added_count": 8, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "📰", "name": "newspaper", "added_count": 5, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "⏭", "name": "next track button", "added_count": 6, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🆖", "name": "NG button", "added_count": 11, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🕘", "name": "nine o’clock", "added_count": 8, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🕤", "name": "nine-thirty", "added_count": 8, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "⛔", "name": "no entry", "added_count": 16, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🚯", "name": "no littering", "added_count": 12, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "📵", "name": "no mobile phones", "added_count": 14, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🔞", "name": "no one under eighteen", "added_count": 16, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🚷", "name": "no pedestrians", "added_count": 11, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🚱", "name": "non-potable water", "added_count": 14, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🔩", "name": "nut and bolt", "added_count": 9, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🍢", "name": "oden", "added_count": 7, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "👹", "name": "ogre", "added_count": 16, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🆗", "name": "OK button", "added_count": 10, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🫒", "name": "olive", "added_count": 2, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🕉", "name": "om", "added_count": 2, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🚘", "name": "oncoming automobile", "added_count": 8, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🕜", "name": "one-thirty", "added_count": 8, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "⛎", "name": "Ophiuchus", "added_count": 8, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "💿", "name": "optical disk", "added_count": 10, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🫍", "name": "orca", "added_count": 3, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "☦", "name": "orthodox cross", "added_count": 4, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🐂", "name": "ox", "added_count": 11, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🦪", "name": "oyster", "added_count": 3, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🅿", "name": "P button", "added_count": 2, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "📄", "name": "page facing up", "added_count": 9, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "📃", "name": "page with curl", "added_count": 8, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "📟", "name": "pager", "added_count": 5, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🖌", "name": "paintbrush", "added_count": 1, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🐼", "name": "panda", "added_count": 4, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "〽", "name": "part alternation mark", "added_count": 3, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🎉", "name": "party popper", "added_count": 16, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🛂", "name": "passport control", "added_count": 8, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "⏸", "name": "pause button", "added_count": 5, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🫛", "name": "pea pod", "added_count": 11, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "☮", "name": "peace symbol", "added_count": 4, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🖊", "name": "pen", "added_count": 1, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🎭", "name": "performing arts", "added_count": 18, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🐦‍🔥", "name": "phoenix", "added_count": 18, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "⛏", "name": "pick", "added_count": 3, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "💩", "name": "pile of poo", "added_count": 25, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🧑‍✈", "name": "pilot", "added_count": 1, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "♓", "name": "Pisces", "added_count": 6, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🪅", "name": "piñata", "added_count": 11, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "▶", "name": "play button", "added_count": 5, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "⏯", "name": "play or pause button", "added_count": 6, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🛝", "name": "playground slide", "added_count": 9, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🪠", "name": "plunger", "added_count": 6, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🎱", "name": "pool 8 ball", "added_count": 11, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "📯", "name": "postal horn", "added_count": 9, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "📮", "name": "postbox", "added_count": 6, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🚰", "name": "potable water", "added_count": 13, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "📿", "name": "prayer beads", "added_count": 8, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🖨", "name": "printer", "added_count": 1, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🟣", "name": "purple circle", "added_count": 5, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🟪", "name": "purple square", "added_count": 4, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🦝", "name": "raccoon", "added_count": 5, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🐏", "name": "ram", "added_count": 8, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🪒", "name": "razor", "added_count": 3, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🧾", "name": "receipt", "added_count": 6, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "⏺", "name": "record button", "added_count": 3, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "♻", "name": "recycling symbol", "added_count": 3, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🔴", "name": "red circle", "added_count": 7, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🧧", "name": "red envelope", "added_count": 12, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "❗", "name": "red exclamation mark", "added_count": 10, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🟥", "name": "red square", "added_count": 6, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🎗", "name": "reminder ribbon", "added_count": 3, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🚻", "name": "restroom", "added_count": 8, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "◀", "name": "reverse button", "added_count": 5, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🎀", "name": "ribbon", "added_count": 6, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🗯", "name": "right anger bubble", "added_count": 6, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "💍", "name": "ring", "added_count": 14, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🛟", "name": "ring buoy", "added_count": 13, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🧻", "name": "roll of paper", "added_count": 4, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🗞", "name": "rolled-up newspaper", "added_count": 5, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🎢", "name": "roller coaster", "added_count": 12, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🛼", "name": "roller skate", "added_count": 9, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🫜", "name": "root vegetable", "added_count": 9, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🧷", "name": "safety pin", "added_count": 5, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "♐", "name": "Sagittarius", "added_count": 6, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🦕", "name": "sauropod", "added_count": 7, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🧑‍🔬", "name": "scientist", "added_count": 8, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "✂", "name": "scissors", "added_count": 4, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "♏", "name": "Scorpio", "added_count": 7, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🏴󠁧󠁢󠁳󠁣󠁴󠁿", "name": "Scotland", "added_count": 6, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "💺", "name": "seat", "added_count": 9, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🕖", "name": "seven o’clock", "added_count": 8, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🕢", "name": "seven-thirty", "added_count": 8, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🍧", "name": "shaved ice", "added_count": 9, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🛡", "name": "shield", "added_count": 1, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "⛩", "name": "shinto shrine", "added_count": 3, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🪏", "name": "shovel", "added_count": 9, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🚿", "name": "shower", "added_count": 5, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🤘", "name": "sign of the horns", "added_count": 10, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🕕", "name": "six o’clock", "added_count": 10, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🕡", "name": "six-thirty", "added_count": 8, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "⛷", "name": "skier", "added_count": 2, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🎿", "name": "skis", "added_count": 8, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🎰", "name": "slot machine", "added_count": 13, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🧼", "name": "soap", "added_count": 6, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🥎", "name": "softball", "added_count": 7, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🆘", "name": "SOS button", "added_count": 10, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "♠", "name": "spade suit", "added_count": 4, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🎇", "name": "sparkler", "added_count": 12, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "✨", "name": "sparkles", "added_count": 11, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🗓", "name": "spiral calendar", "added_count": 3, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🐚", "name": "spiral shell", "added_count": 8, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🫟", "name": "splatter", "added_count": 8, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🧽", "name": "sponge", "added_count": 4, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🚉", "name": "station", "added_count": 6, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🗽", "name": "Statue of Liberty", "added_count": 8, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "⏹", "name": "stop button", "added_count": 3, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "⏱", "name": "stopwatch", "added_count": 2, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🧑‍🎓", "name": "student", "added_count": 5, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🦖", "name": "T-Rex", "added_count": 7, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🥡", "name": "takeout box", "added_count": 12, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🍊", "name": "tangerine", "added_count": 9, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "♉", "name": "Taurus", "added_count": 7, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🧑‍💻", "name": "technologist", "added_count": 8, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "☎", "name": "telephone", "added_count": 1, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "📞", "name": "telephone receiver", "added_count": 9, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "📺", "name": "television", "added_count": 7, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🕙", "name": "ten o’clock", "added_count": 8, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🕥", "name": "ten-thirty", "added_count": 8, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🧵", "name": "thread", "added_count": 5, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🕒", "name": "three o’clock", "added_count": 8, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🕞", "name": "three-thirty", "added_count": 8, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🎫", "name": "ticket", "added_count": 9, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "⏲", "name": "timer clock", "added_count": 2, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🚽", "name": "toilet", "added_count": 6, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🗼", "name": "Tokyo tower", "added_count": 6, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🧰", "name": "toolbox", "added_count": 9, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🖲", "name": "trackball", "added_count": 1, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🚜", "name": "tractor", "added_count": 5, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "™", "name": "trade mark", "added_count": 4, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "⚧", "name": "transgender symbol", "added_count": 2, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🪎", "name": "treasure chest", "added_count": 9, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🔱", "name": "trident emblem", "added_count": 9, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🦃", "name": "turkey", "added_count": 5, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🕛", "name": "twelve o’clock", "added_count": 11, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🕧", "name": "twelve-thirty", "added_count": 8, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🕑", "name": "two o’clock", "added_count": 8, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🕝", "name": "two-thirty", "added_count": 8, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🔓", "name": "unlocked", "added_count": 7, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🆙", "name": "UP! button", "added_count": 10, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "📹", "name": "video camera", "added_count": 7, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🎮", "name": "video game", "added_count": 10, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "📼", "name": "videocassette", "added_count": 9, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "♍", "name": "Virgo", "added_count": 7, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🆚", "name": "VS button", "added_count": 6, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🖖", "name": "vulcan salute", "added_count": 16, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🏴󠁧󠁢󠁷󠁬󠁳󠁿", "name": "Wales", "added_count": 8, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "⚠", "name": "warning", "added_count": 1, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🗑", "name": "wastebasket", "added_count": 4, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "⌚", "name": "watch", "added_count": 7, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🐃", "name": "water buffalo", "added_count": 8, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🚾", "name": "water closet", "added_count": 8, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🔫", "name": "water pistol", "added_count": 10, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "〰", "name": "wavy dash", "added_count": 3, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "💒", "name": "wedding", "added_count": 14, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "⚪", "name": "white circle", "added_count": 6, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "❕", "name": "white exclamation mark", "added_count": 11, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "⬜", "name": "white large square", "added_count": 8, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "◻", "name": "white medium square", "added_count": 4, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "◽", "name": "white medium-small square", "added_count": 8, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "❔", "name": "white question mark", "added_count": 11, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "▫", "name": "white small square", "added_count": 4, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🔳", "name": "white square button", "added_count": 7, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🛜", "name": "wireless", "added_count": 13, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🚺", "name": "women’s room", "added_count": 13, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🗺", "name": "world map", "added_count": 2, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🎁", "name": "wrapped gift", "added_count": 11, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🧶", "name": "yarn", "added_count": 4, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🟡", "name": "yellow circle", "added_count": 5, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🟨", "name": "yellow square", "added_count": 6, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "☯", "name": "yin yang", "added_count": 9, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🪀", "name": "yo-yo", "added_count": 3, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "💤", "name": "ZZZ", "added_count": 13, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🪗", "name": "accordion", "added_count": 7, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🪕", "name": "banjo", "added_count": 6, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "📉", "name": "chart decreasing", "added_count": 19, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "💹", "name": "chart increasing with yen", "added_count": 19, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🥁", "name": "drum", "added_count": 4, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🎸", "name": "guitar", "added_count": 8, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🎧", "name": "headphone", "added_count": 10, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🪘", "name": "long drum", "added_count": 8, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "📢", "name": "loudspeaker", "added_count": 11, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🪇", "name": "maracas", "added_count": 9, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🎤", "name": "microphone", "added_count": 10, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🎹", "name": "musical keyboard", "added_count": 8, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🎵", "name": "musical note", "added_count": 13, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🎶", "name": "musical notes", "added_count": 10, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🎼", "name": "musical score", "added_count": 10, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🔇", "name": "muted speaker", "added_count": 11, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "📓", "name": "notebook", "added_count": 9, "sources": ["emojilib"]}
+{"action": "enrich_words", "emoji": "🛢", "name": "oil drum", "added_count": 2, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "📻", "name": "radio", "added_count": 9, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "☢", "name": "radioactive", "added_count": 1, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🔂", "name": "repeat single button", "added_count": 19, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🎷", "name": "saxophone", "added_count": 7, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🧑‍🎤", "name": "singer", "added_count": 11, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🔊", "name": "speaker high volume", "added_count": 13, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🔈", "name": "speaker low volume", "added_count": 7, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🔉", "name": "speaker medium volume", "added_count": 9, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🗒", "name": "spiral notepad", "added_count": 4, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🎙", "name": "studio microphone", "added_count": 4, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🎺", "name": "trumpet", "added_count": 7, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🎻", "name": "violin", "added_count": 9, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🌼", "name": "blossom", "added_count": 8, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "💐", "name": "bouquet", "added_count": 10, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🌵", "name": "cactus", "added_count": 5, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🌸", "name": "cherry blossom", "added_count": 9, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🎄", "name": "Christmas tree", "added_count": 9, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🌳", "name": "deciduous tree", "added_count": 10, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🏝", "name": "desert island", "added_count": 2, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🌲", "name": "evergreen tree", "added_count": 9, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🍂", "name": "fallen leaf", "added_count": 10, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🌺", "name": "hibiscus", "added_count": 5, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🪾", "name": "leafless tree", "added_count": 10, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🥬", "name": "leafy green", "added_count": 17, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🪷", "name": "lotus", "added_count": 11, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🍁", "name": "maple leaf", "added_count": 10, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🚠", "name": "mountain cableway", "added_count": 8, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🏞", "name": "national park", "added_count": 2, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🌴", "name": "palm tree", "added_count": 10, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🪴", "name": "potted plant", "added_count": 11, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🌹", "name": "rose", "added_count": 10, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🏵", "name": "rosette", "added_count": 1, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🪛", "name": "screwdriver", "added_count": 5, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "☘", "name": "shamrock", "added_count": 2, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🌻", "name": "sunflower", "added_count": 7, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🌄", "name": "sunrise over mountains", "added_count": 10, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🌋", "name": "volcano", "added_count": 6, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "💮", "name": "white flower", "added_count": 11, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🥀", "name": "wilted flower", "added_count": 8, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🪵", "name": "wood", "added_count": 6, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🅰", "name": "A button (blood type)", "added_count": 3, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🆎", "name": "AB button (blood type)", "added_count": 8, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🏈", "name": "american football", "added_count": 11, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🅱", "name": "B button (blood type)", "added_count": 3, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "👼", "name": "baby angel", "added_count": 14, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🍼", "name": "baby bottle", "added_count": 12, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🐤", "name": "baby chick", "added_count": 7, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🚼", "name": "baby symbol", "added_count": 8, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "👇", "name": "backhand index pointing down", "added_count": 11, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "👈", "name": "backhand index pointing left", "added_count": 11, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "👆", "name": "backhand index pointing up", "added_count": 12, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🦲", "name": "bald", "added_count": 5, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🫦", "name": "biting lip", "added_count": 15, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🦴", "name": "bone", "added_count": 4, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "👦", "name": "boy", "added_count": 11, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🤱", "name": "breast-feeding", "added_count": 13, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🤙", "name": "call me hand", "added_count": 11, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "📇", "name": "card index", "added_count": 8, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🪑", "name": "chair", "added_count": 3, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🧒", "name": "child", "added_count": 13, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🚸", "name": "children crossing", "added_count": 14, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "👏", "name": "clapping hands", "added_count": 22, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🍻", "name": "clinking beer mugs", "added_count": 20, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🥂", "name": "clinking glasses", "added_count": 14, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🍳", "name": "cooking", "added_count": 15, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🤞", "name": "crossed fingers", "added_count": 12, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🦱", "name": "curly hair", "added_count": 4, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🧏‍♂", "name": "deaf man", "added_count": 6, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🧏", "name": "deaf person", "added_count": 6, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🧏‍♀", "name": "deaf woman", "added_count": 6, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🕵", "name": "detective", "added_count": 2, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🔯", "name": "dotted six-pointed star", "added_count": 11, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🩸", "name": "drop of blood", "added_count": 12, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "✴", "name": "eight-pointed star", "added_count": 2, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🧝", "name": "elf", "added_count": 10, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🤭", "name": "face with hand over mouth", "added_count": 17, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🧚", "name": "fairy", "added_count": 11, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "👪", "name": "family", "added_count": 16, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🧑‍🧒", "name": "family adult child", "added_count": 5, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "👨‍👦", "name": "family man boy", "added_count": 12, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "👨‍👧", "name": "family man girl", "added_count": 12, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "👩‍👦", "name": "family woman boy", "added_count": 12, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "👩‍👧", "name": "family woman girl", "added_count": 12, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "📁", "name": "file folder", "added_count": 8, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🫆", "name": "fingerprint", "added_count": 9, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🙏", "name": "folded hands", "added_count": 25, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🪭", "name": "folding hand fan", "added_count": 14, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🦶", "name": "foot", "added_count": 5, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "👣", "name": "footprints", "added_count": 13, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🐥", "name": "front-facing baby chick", "added_count": 10, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🧞", "name": "genie", "added_count": 10, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "👧", "name": "girl", "added_count": 14, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "💂", "name": "guard", "added_count": 7, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🪮", "name": "hair pick", "added_count": 5, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🫈", "name": "hairy creature", "added_count": 8, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🖐", "name": "hand with fingers splayed", "added_count": 6, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🫰", "name": "hand with index finger and thumb crossed", "added_count": 10, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🙂‍↔", "name": "head shaking horizontally", "added_count": 5, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🙂‍↕", "name": "head shaking vertically", "added_count": 5, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🥾", "name": "hiking boot", "added_count": 8, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "💯", "name": "hundred points", "added_count": 21, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🫵", "name": "index pointing at the viewer", "added_count": 10, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "☝", "name": "index pointing up", "added_count": 7, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🪯", "name": "khanda", "added_count": 7, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🤛", "name": "left-facing fist", "added_count": 7, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🫲", "name": "leftwards hand", "added_count": 10, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🫷", "name": "leftwards pushing hand", "added_count": 17, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🦵", "name": "leg", "added_count": 6, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🖇", "name": "linked paperclips", "added_count": 4, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "💄", "name": "lipstick", "added_count": 10, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🍭", "name": "lollipop", "added_count": 8, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🫁", "name": "lungs", "added_count": 7, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🧙", "name": "mage", "added_count": 10, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "👨", "name": "man", "added_count": 11, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "👨‍🎨", "name": "man artist", "added_count": 9, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "👨‍🚀", "name": "man astronaut", "added_count": 11, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "👨‍🦲", "name": "man bald", "added_count": 9, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🚴‍♂", "name": "man biking", "added_count": 9, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "👱‍♂", "name": "man blond hair", "added_count": 4, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "⛹‍♂", "name": "man bouncing ball", "added_count": 10, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🙇‍♂", "name": "man bowing", "added_count": 14, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🤸‍♂", "name": "man cartwheeling", "added_count": 9, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🧗‍♂", "name": "man climbing", "added_count": 8, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "👷‍♂", "name": "man construction worker", "added_count": 11, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "👨‍🍳", "name": "man cook", "added_count": 9, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "👨‍🦱", "name": "man curly hair", "added_count": 8, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🕺", "name": "man dancing", "added_count": 16, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🕵‍♂", "name": "man detective", "added_count": 4, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🧝‍♂", "name": "man elf", "added_count": 9, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🤦‍♂", "name": "man facepalming", "added_count": 12, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "👨‍🏭", "name": "man factory worker", "added_count": 9, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🧚‍♂", "name": "man fairy", "added_count": 11, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "👨‍🌾", "name": "man farmer", "added_count": 10, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "👨‍🍼", "name": "man feeding baby", "added_count": 17, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "👨‍🚒", "name": "man firefighter", "added_count": 8, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🧞‍♂", "name": "man genie", "added_count": 9, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🙅‍♂", "name": "man gesturing NO", "added_count": 7, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🙆‍♂", "name": "man gesturing OK", "added_count": 7, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "💇‍♂", "name": "man getting haircut", "added_count": 13, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "💆‍♂", "name": "man getting massage", "added_count": 13, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🏌‍♂", "name": "man golfing", "added_count": 12, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "💂‍♂", "name": "man guard", "added_count": 6, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "👨‍⚕", "name": "man health worker", "added_count": 7, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🧘‍♂", "name": "man in lotus position", "added_count": 13, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "👨‍🦽", "name": "man in manual wheelchair", "added_count": 7, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "👨‍🦼", "name": "man in motorized wheelchair", "added_count": 7, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🧖‍♂", "name": "man in steamy room", "added_count": 11, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🤵‍♂", "name": "man in tuxedo", "added_count": 5, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "👨‍⚖", "name": "man judge", "added_count": 5, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🤹‍♂", "name": "man juggling", "added_count": 10, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🧎‍♂", "name": "man kneeling", "added_count": 4, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🏋‍♂", "name": "man lifting weights", "added_count": 11, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🧙‍♂", "name": "man mage", "added_count": 12, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "👨‍🔧", "name": "man mechanic", "added_count": 11, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🚵‍♂", "name": "man mountain biking", "added_count": 10, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "👨‍💼", "name": "man office worker", "added_count": 17, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "👨‍✈", "name": "man pilot", "added_count": 3, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🤾‍♂", "name": "man playing handball", "added_count": 13, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🤽‍♂", "name": "man playing water polo", "added_count": 7, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "👮‍♂", "name": "man police officer", "added_count": 11, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🙋‍♂", "name": "man raising hand", "added_count": 10, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "👨‍🦰", "name": "man red hair", "added_count": 10, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🚣‍♂", "name": "man rowing boat", "added_count": 13, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🏃‍♂", "name": "man running", "added_count": 11, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "👨‍🔬", "name": "man scientist", "added_count": 13, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🤷‍♂", "name": "man shrugging", "added_count": 13, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "👨‍🎤", "name": "man singer", "added_count": 16, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🧍‍♂", "name": "man standing", "added_count": 3, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "👨‍🎓", "name": "man student", "added_count": 10, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🦸‍♂", "name": "man superhero", "added_count": 5, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🦹‍♂", "name": "man supervillain", "added_count": 7, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🏄‍♂", "name": "man surfing", "added_count": 9, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🏊‍♂", "name": "man swimming", "added_count": 7, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "👨‍🏫", "name": "man teacher", "added_count": 11, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "👨‍💻", "name": "man technologist", "added_count": 15, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "💁‍♂", "name": "man tipping hand", "added_count": 12, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🧛‍♂", "name": "man vampire", "added_count": 9, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🚶‍♂", "name": "man walking", "added_count": 10, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "👨‍🦳", "name": "man white hair", "added_count": 9, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "👰‍♂", "name": "man with veil", "added_count": 3, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "👨‍🦯", "name": "man with white cane", "added_count": 8, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🧟‍♂", "name": "man zombie", "added_count": 9, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🥭", "name": "mango", "added_count": 3, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🕰", "name": "mantelpiece clock", "added_count": 3, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🦽", "name": "manual wheelchair", "added_count": 3, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "👞", "name": "man’s shoe", "added_count": 14, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🍖", "name": "meat on bone", "added_count": 8, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🦿", "name": "mechanical leg", "added_count": 5, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "👬", "name": "men holding hands", "added_count": 27, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🧜‍♀", "name": "mermaid", "added_count": 8, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🧜‍♂", "name": "merman", "added_count": 10, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🧜", "name": "merperson", "added_count": 13, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🖕", "name": "middle finger", "added_count": 13, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🦼", "name": "motorized wheelchair", "added_count": 3, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "👄", "name": "mouth", "added_count": 6, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🥷", "name": "ninja", "added_count": 13, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🚭", "name": "no smoking", "added_count": 11, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "👃", "name": "nose", "added_count": 9, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🅾", "name": "O button (blood type)", "added_count": 3, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "👌", "name": "OK hand", "added_count": 21, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🗝", "name": "old key", "added_count": 4, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "👵", "name": "old woman", "added_count": 16, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🧓", "name": "older person", "added_count": 19, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "👊", "name": "oncoming fist", "added_count": 26, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "📂", "name": "open file folder", "added_count": 5, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "👐", "name": "open hands", "added_count": 10, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🫳", "name": "palm down hand", "added_count": 9, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🫴", "name": "palm up hand", "added_count": 12, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "📎", "name": "paperclip", "added_count": 3, "sources": ["emojilib"]}
+{"action": "enrich_words", "emoji": "🧑‍🦲", "name": "person bald", "added_count": 8, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🚴", "name": "person biking", "added_count": 10, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "👱", "name": "person blond hair", "added_count": 8, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "⛹", "name": "person bouncing ball", "added_count": 10, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🙇", "name": "person bowing", "added_count": 23, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🤸", "name": "person cartwheeling", "added_count": 13, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🧗", "name": "person climbing", "added_count": 10, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🧑‍🦱", "name": "person curly hair", "added_count": 7, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🤦", "name": "person facepalming", "added_count": 18, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🧑‍🍼", "name": "person feeding baby", "added_count": 13, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🤺", "name": "person fencing", "added_count": 5, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🙆", "name": "person gesturing OK", "added_count": 12, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "💇", "name": "person getting haircut", "added_count": 15, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "💆", "name": "person getting massage", "added_count": 15, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🏌", "name": "person golfing", "added_count": 12, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🛌", "name": "person in bed", "added_count": 14, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🧘", "name": "person in lotus position", "added_count": 14, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🧑‍🦽", "name": "person in manual wheelchair", "added_count": 5, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🧑‍🦼", "name": "person in motorized wheelchair", "added_count": 5, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🧖", "name": "person in steamy room", "added_count": 12, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🕴", "name": "person in suit levitating", "added_count": 4, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🤵", "name": "person in tuxedo", "added_count": 10, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🤹", "name": "person juggling", "added_count": 12, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🧎", "name": "person kneeling", "added_count": 6, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🧎‍➡", "name": "person kneeling facing right", "added_count": 6, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🏋", "name": "person lifting weights", "added_count": 11, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🚵", "name": "person mountain biking", "added_count": 12, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🤾", "name": "person playing handball", "added_count": 13, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🤽", "name": "person playing water polo", "added_count": 7, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🙋", "name": "person raising hand", "added_count": 15, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🧑‍🦰", "name": "person red hair", "added_count": 7, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🚣", "name": "person rowing boat", "added_count": 17, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🏃", "name": "person running", "added_count": 15, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🏃‍➡", "name": "person running facing right", "added_count": 13, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🤷", "name": "person shrugging", "added_count": 15, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🧍", "name": "person standing", "added_count": 4, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🏄", "name": "person surfing", "added_count": 10, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🏊", "name": "person swimming", "added_count": 8, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🛀", "name": "person taking bath", "added_count": 10, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "💁", "name": "person tipping hand", "added_count": 23, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🚶", "name": "person walking", "added_count": 13, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🚶‍➡", "name": "person walking facing right", "added_count": 13, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🧑‍🦳", "name": "person white hair", "added_count": 8, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🫅", "name": "person with crown", "added_count": 8, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "👰", "name": "person with veil", "added_count": 7, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🧑‍🦯", "name": "person with white cane", "added_count": 6, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🐽", "name": "pig nose", "added_count": 8, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🤌", "name": "pinched fingers", "added_count": 21, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🍗", "name": "poultry leg", "added_count": 10, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🫃", "name": "pregnant man", "added_count": 7, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🫄", "name": "pregnant person", "added_count": 8, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🤰", "name": "pregnant woman", "added_count": 6, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🤴", "name": "prince", "added_count": 12, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "👸", "name": "princess", "added_count": 15, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🤚", "name": "raised back of hand", "added_count": 6, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "✋", "name": "raised hand", "added_count": 10, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🙌", "name": "raising hands", "added_count": 19, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🦰", "name": "red hair", "added_count": 4, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🔻", "name": "red triangle pointed down", "added_count": 10, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🤜", "name": "right-facing fist", "added_count": 7, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🫱", "name": "rightwards hand", "added_count": 10, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🫸", "name": "rightwards pushing hand", "added_count": 17, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🎅", "name": "Santa Claus", "added_count": 20, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🤳", "name": "selfie", "added_count": 4, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "☃", "name": "snowman", "added_count": 3, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "⛄", "name": "snowman without snow", "added_count": 12, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🗣", "name": "speaking head", "added_count": 5, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🦸", "name": "superhero", "added_count": 7, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🦹", "name": "supervillain", "added_count": 8, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "👎", "name": "thumbs down", "added_count": 14, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "👍", "name": "thumbs up", "added_count": 15, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "👅", "name": "tongue", "added_count": 7, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🦷", "name": "tooth", "added_count": 5, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🪥", "name": "toothbrush", "added_count": 7, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🧌", "name": "troll", "added_count": 7, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🚎", "name": "trolleybus", "added_count": 6, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🪊", "name": "trombone", "added_count": 6, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🌷", "name": "tulip", "added_count": 8, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🧛", "name": "vampire", "added_count": 10, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "✌", "name": "victory hand", "added_count": 3, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🌊", "name": "water wave", "added_count": 13, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "👋", "name": "waving hand", "added_count": 23, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "♿", "name": "wheelchair symbol", "added_count": 9, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🦯", "name": "white cane", "added_count": 5, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🦳", "name": "white hair", "added_count": 4, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "👩", "name": "woman", "added_count": 6, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "👫", "name": "woman and man holding hands", "added_count": 27, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "👩‍🎨", "name": "woman artist", "added_count": 9, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "👩‍🚀", "name": "woman astronaut", "added_count": 11, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "👩‍🦲", "name": "woman bald", "added_count": 9, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🚴‍♀", "name": "woman biking", "added_count": 9, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "👱‍♀", "name": "woman blond hair", "added_count": 5, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "⛹‍♀", "name": "woman bouncing ball", "added_count": 10, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🙇‍♀", "name": "woman bowing", "added_count": 14, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🤸‍♀", "name": "woman cartwheeling", "added_count": 9, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🧗‍♀", "name": "woman climbing", "added_count": 8, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "👷‍♀", "name": "woman construction worker", "added_count": 12, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "👩‍🍳", "name": "woman cook", "added_count": 9, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "👩‍🦱", "name": "woman curly hair", "added_count": 8, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "💃", "name": "woman dancing", "added_count": 17, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🕵‍♀", "name": "woman detective", "added_count": 4, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🧝‍♀", "name": "woman elf", "added_count": 9, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "🤦‍♀", "name": "woman facepalming", "added_count": 12, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "👩‍🏭", "name": "woman factory worker", "added_count": 9, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🧚‍♀", "name": "woman fairy", "added_count": 10, "sources": ["CLDR"]}
+{"action": "enrich_words", "emoji": "👩‍🌾", "name": "woman farmer", "added_count": 10, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "👩‍🍼", "name": "woman feeding baby", "added_count": 17, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "👩‍🚒", "name": "woman firefighter", "added_count": 8, "sources": ["CLDR", "emojilib"]}
+{"action": "enrich_words", "emoji": "🙍‍♀", "name": "woman frowning", "added_count": 11, "sources": ["CLDR"]}
+{"action": "anchor_extracted", "name": "U.S.", "frequency": 323, "label": "GPE"}
+{"action": "anchor_extracted", "name": "American", "frequency": 295, "label": "NORP"}
+{"action": "anchor_extracted", "name": "NASA", "frequency": 225, "label": "ORG"}
+{"action": "anchor_extracted", "name": "French", "frequency": 180, "label": "NORP"}
+{"action": "anchor_extracted", "name": "America", "frequency": 172, "label": "GPE"}
+{"action": "anchor_extracted", "name": "Japan", "frequency": 170, "label": "GPE"}
+{"action": "anchor_extracted", "name": "China", "frequency": 168, "label": "GPE"}
+{"action": "anchor_extracted", "name": "US", "frequency": 160, "label": "GPE"}
+{"action": "anchor_extracted", "name": "British", "frequency": 160, "label": "NORP"}
+{"action": "anchor_extracted", "name": "Americans", "frequency": 153, "label": "NORP"}
+{"action": "anchor_summary", "total": 500}
+{"action": "anchor_extracted", "name": "American", "frequency": 3110, "label": "NORP"}
+{"action": "anchor_extracted", "name": "U.S.", "frequency": 2890, "label": "GPE"}
+{"action": "anchor_extracted", "name": "India", "frequency": 1947, "label": "GPE"}
+{"action": "anchor_extracted", "name": "China", "frequency": 1902, "label": "GPE"}
+{"action": "anchor_extracted", "name": "US", "frequency": 1875, "label": "GPE"}
+{"action": "anchor_extracted", "name": "British", "frequency": 1828, "label": "NORP"}
+{"action": "anchor_extracted", "name": "French", "frequency": 1609, "label": "NORP"}
+{"action": "anchor_extracted", "name": "Americans", "frequency": 1498, "label": "NORP"}
+{"action": "anchor_extracted", "name": "America", "frequency": 1475, "label": "GPE"}
+{"action": "anchor_extracted", "name": "NASA", "frequency": 1467, "label": "ORG"}
+{"action": "anchor_summary", "total": 500, "source": "FineWeb-Edu 50K docs"}
+{"action": "remove_variation_selector_overlap", "emoji": "\ud83c\udfdb", "name": "classical building", "reason": "Variation selector duplicate of primitive emoji"}
+{"action": "remove_variation_selector_overlap", "emoji": "\ud83c\udfd4", "name": "snow-capped mountain", "reason": "Variation selector duplicate of primitive emoji"}
+{"action": "remove_variation_selector_overlap", "emoji": "\ud83c\udf7d", "name": "fork and knife with plate", "reason": "Variation selector duplicate of primitive emoji"}
+{"action": "remove_variation_selector_overlap", "emoji": "\ud83c\udf21", "name": "thermometer", "reason": "Variation selector duplicate of primitive emoji"}
+{"action": "remove_variation_selector_overlap", "emoji": "\u2696", "name": "balance scale", "reason": "Variation selector duplicate of primitive emoji"}
+{"action": "remove_variation_selector_overlap", "emoji": "\u2714", "name": "check mark", "reason": "Variation selector duplicate of primitive emoji"}
+{"action": "remove_variation_selector_overlap", "emoji": "\u2694", "name": "crossed swords", "reason": "Variation selector duplicate of primitive emoji"}
+{"action": "remove_variation_selector_overlap", "emoji": "\u203c", "name": "double exclamation mark", "reason": "Variation selector duplicate of primitive emoji"}
+{"action": "remove_variation_selector_overlap", "emoji": "\ud83d\uddbc", "name": "framed picture", "reason": "Variation selector duplicate of primitive emoji"}
+{"action": "remove_variation_selector_overlap", "emoji": "\u270f", "name": "pencil", "reason": "Variation selector duplicate of primitive emoji"}
+{"action": "remove_variation_selector_overlap", "emoji": "\u25b6", "name": "play button", "reason": "Variation selector duplicate of primitive emoji"}
+{"action": "remove_variation_selector_overlap", "emoji": "\u23fa", "name": "record button", "reason": "Variation selector duplicate of primitive emoji"}
+{"action": "remove_variation_selector_overlap", "emoji": "\u25c0", "name": "reverse button", "reason": "Variation selector duplicate of primitive emoji"}
+{"action": "remove_variation_selector_overlap", "emoji": "\u23f9", "name": "stop button", "reason": "Variation selector duplicate of primitive emoji"}
+{"action": "remove_variation_selector_overlap", "emoji": "\u23f1", "name": "stopwatch", "reason": "Variation selector duplicate of primitive emoji"}
+{"action": "remove_variation_selector_overlap", "emoji": "\u3030", "name": "wavy dash", "reason": "Variation selector duplicate of primitive emoji"}
+{"action": "remove_variation_selector_overlap", "emoji": "\ud83d\uddfa", "name": "world map", "reason": "Variation selector duplicate of primitive emoji"}
+{"action": "remove_variation_selector_overlap", "emoji": "\ud83c\udfcb", "name": "person lifting weights", "reason": "Variation selector duplicate of primitive emoji"}

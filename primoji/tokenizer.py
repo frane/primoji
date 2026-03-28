@@ -21,6 +21,7 @@ from primoji.math_handler import is_math_expression
 from primoji.preprocessor import Preprocessor
 from primoji.utils import SpecialTokens, normalize_text
 from primoji.vocabulary import (
+    ANCHOR_TOKENS,
     CONTRACTION_TOKENS,
     DIGIT_IDS,
     MATH_OP_IDS,
@@ -120,6 +121,11 @@ class Tokenizer:
         result = self._composer.compose(word.lower())
         if result != [SpecialTokens.UNK]:
             return result
+
+        # Check anchor tokens (proper nouns — case-sensitive)
+        anchor_id = ANCHOR_TOKENS.get(word)
+        if anchor_id is not None:
+            return [anchor_id]
 
         # Tier 3: Fuzzy match (optional)
         if self._fuzzy:
