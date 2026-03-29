@@ -1,14 +1,19 @@
 # Primoji
 
-**Compositional pictographic tokenizer for LLM training**
+A compositional semantic tokenizer for LLM training research.
 
-What if every token in your model's vocabulary actually *meant* something?
+Primoji tokenizes text using a hybrid vocabulary: direct tokens for common
+words and emoji for concrete nouns, plus compositional semantic decomposition
+for rare and technical vocabulary. "Photosynthesis" becomes [PLANT, HAVE, LIGHT],
+three tokens that encode the concept's meaning rather than arbitrary character
+fragments.
 
-BPE chops "photosynthesis" into `["photo", "synth", "esis"]`. Three fragments with no semantic content. Primoji encodes it as `[PLANT, HAVE, LIGHT]`. Three tokens that carry the actual meaning. The model doesn't need to learn that "synth" relates to combining things; the structure is already there.
+The research question: does semantic structure in the token representation
+improve model learning, even when it doesn't compress text shorter?
 
 ```
-BPE:     "photosynthesis"  ->  ["photo", "synth", "esis"]     (meaningless fragments)
-Primoji: "photosynthesis"  ->  [🌿, 📥, ☀️]                   (plant + absorb + light)
+BPE:     "photosynthesis"  ->  ["photo", "synth", "esis"]     (character fragments)
+Primoji: "photosynthesis"  ->  [PLANT, HAVE, LIGHT]           (semantic composition)
 ```
 
 ## How it works
@@ -22,68 +27,98 @@ ids = tok.encode("The teacher explained photosynthesis")
 print(tok.decode(ids))
 # -> "teacher explained photosynthesis"
 
-print(tok.vocab_size)  # ~2,400 tokens (vs 32K-100K for BPE)
+print(tok.vocab_size)  # 4,035
 ```
 
-Primoji uses a **4-tier fallback pipeline**. Every word gets encoded, nothing is lost:
+The tokenizer uses a 4-tier fallback pipeline. No input ever produces UNK:
 
 | Tier | What it handles | How |
 |------|----------------|-----|
-| **1. Dictionary** | Known words (~85%) | Emoji lookup table, O(1) |
-| **2. Contractions** | "don't", "won't", etc. | Dedicated tokens or apostrophe split |
-| **3. Fuzzy match** | Typos like "watir" | SymSpell, edit distance 1, conservative |
-| **4. Byte fallback** | Everything else | UTF-8 bytes, zero information loss |
+| **1a. Emoji** | Concrete nouns (3.6%) | 1,182 Unicode emoji |
+| **1b. Common words** | High-frequency English (11.9%) | 1,617 direct word tokens |
+| **2. Primitives** | Verbs, adjectives, abstracts (22.7%) | 132 semantic primitives |
+| **3. Structural** | Flags, anchors, digits, contractions | ~900 tokens |
+| **4. Byte fallback** | Everything else (17.4%) | UTF-8 bytes, lossless |
 
-No UNK tokens. Ever. If the dictionary doesn't know a word, byte fallback encodes it losslessly. Same approach used by Llama's SentencePiece.
+## Vocabulary (4,035 tokens)
 
-## The vocabulary (~2,400 tokens)
+| Tier | Count | What | Examples |
+|------|-------|------|----------|
+| 1a. Emoji | 1,182 | Concrete nouns | dog, cat, hospital |
+| 1b. Common words | 1,617 | NGSL high-frequency | government, important, against |
+| 2. Primitives | 132 | Semantic composition | PLANT, CAUSE, MOVE, KNOW |
+| 3. Structural | 846 | Flags, anchors, digits, contractions | US, Shakespeare, 0-9 |
+| 4. Byte fallback | 258 | UTF-8 bytes + markers | Any unknown word |
 
-Three tiers of meaning, plus a universal safety net:
-
-**Tier 1: Unicode emoji (~1,200 tokens)**
-Direct mappings for concrete nouns. Dog = 🐕. Tree = 🌳. Hospital = 🏥. One emoji, one token, one concept.
-
-**Tier 2: Compositional primitives (132 tokens)**
-For everything emoji can't directly represent (verbs, adjectives, abstract concepts). Grounded in [Wierzbicka's Natural Semantic Metalanguage](https://en.wikipedia.org/wiki/Natural_semantic_metalanguage): 65 irreducible concepts verified across 30+ language families, plus 67 domain expansions for educational text.
+Primitives are grounded in [Wierzbicka's Natural Semantic Metalanguage](https://en.wikipedia.org/wiki/Natural_semantic_metalanguage):
+65 irreducible concepts verified across 30+ language families, plus 67 domain
+expansions for educational text (v0.2, validated against Goddard & Wierzbicka 2014/2018).
 
 Compositions follow positional rules: `HEAD + MODIFIER + SPECIFIER`
-- 🧑 + 📚 + 💬 = teacher (person + teach + say)
-- 💧 + ➜ + 💨 = evaporation (water + cause + air)
-- 🔧 + 💭 = computer (machine + think)
+- SOMEONE + TEACH + SAY = teacher
+- WATER + CAUSE + AIR = evaporation
+- MACHINE + THINK = computer
 
-**Tier 3: Structural tokens (~600)**
-Country flags, contraction tokens, proper noun anchors (top 500 from FineWeb-Edu), digits, math operators, punctuation.
+## Empirical results
 
-**Tier 4: Byte fallback (258 tokens)**
-UTF-8 bytes wrapped in boundary markers. Handles any unknown word with zero information loss.
+### Compression vs Mistral BPE (1,000 FineWeb-Edu sentences)
 
-## Why this matters
+| Metric | Primoji | Mistral BPE |
+|--------|---------|-------------|
+| Vocab size | 4,035 | 32,768 |
+| Total tokens | 59,460 | 33,118 |
+| Ratio | 1.80x | 1.00x |
+| Dictionary hit rate | 82.6% | 100% |
+| Byte fallback rate | 17.4% | 0% |
 
-A vocabulary of ~2,400 tokens (vs BPE's 32K-100K) has real consequences:
+**Primoji produces 1.8x more tokens than BPE, not fewer.** The original
+hypothesis that compositional encoding would compress text shorter than BPE
+was tested and falsified. Word-level composition expands most words to 2-3
+tokens, while BPE handles the same words in 1-2 subword tokens. Byte fallback
+adds 2 boundary tokens per unknown word.
 
-- **94% smaller embedding table.** BPE 32K x 4096 = 256 MB vs Primoji 2.4K x 1536 = 7 MB
-- **Shorter sequences.** Phrase-level composition means fewer tokens per sentence
-- **Attention savings.** Shorter sequences = quadratically less compute in self-attention
-- **Semantic structure.** Related concepts share compositional patterns that BPE can't capture
+The value proposition is not compression but vocabulary size (8x smaller
+embedding table) and semantic structure in the token representation. Whether
+semantic structure improves model learning efficiency is an open question
+that requires training experiments to answer.
 
-These claims are based on the [vocabulary bottleneck theorem](https://arxiv.org/abs/2106.07144) (Wies et al., 2021). Empirical validation on FineWeb-Edu is in progress.
+### Per-sentence distribution
 
-## Current status
+| Percentile | Ratio |
+|------------|-------|
+| p10 (best) | 1.06x |
+| p50 (median) | 1.73x |
+| p90 (worst) | 2.48x |
 
-This is a **research prototype**. It works, the pipeline is complete, and 300+ tests pass, but it hasn't been validated at scale yet. Here's what's done and what's ahead:
+The best 10% of sentences achieve near-parity with BPE. The worst 10%
+are 2.5x longer, typically sentences with many rare words hitting byte fallback.
 
-| Status | Milestone |
-|--------|-----------|
-| Done | Vocabulary design (132 primitives, 1,182 emoji, 500 anchors) |
-| Done | 4-tier tokenization pipeline with byte fallback |
-| Done | 20K+ word seed dictionary with compositions |
-| Done | Reproducible build pipeline (`scripts/build_dictionary.py`) |
-| Next | Compression benchmarks vs Mistral BPE on FineWeb-Edu |
-| Next | Train 125M parameter model on primoji-tokenized data |
-| Next | Compare learning curves against BPE baseline |
-| Future | Multilingual extension, MoE routing via token semantics |
+## Design history
 
-The approach is deliberately *lossy at the word level*. "Photosynthesis" decodes as "plant absorb light", not the original word. Verbatim reconstruction via BPE sidecar metadata is architecturally supported but not yet implemented. For training data, semantic equivalence is sufficient; for inference, exact reconstruction will be needed.
+This project started as "build a language in emoji." The original hypothesis
+was that a small compositional emoji vocabulary would compress text shorter
+than BPE. That hypothesis was falsified: word-level composition produced
+1.95x more tokens than BPE on FineWeb-Edu (before the NGSL vocabulary
+expansion brought it down to 1.80x).
+
+The vocabulary was expanded with 1,617 direct tokens for common English words,
+bringing the byte fallback rate from 42% to 17%. The research question shifted
+from "does it compress better?" to "does semantic structure improve learning?"
+
+## The reconstruction question
+
+Primoji is a semantic representation layer, not a lossless text codec.
+
+For dictionary-covered vocabulary (~83% of tokens), encode-decode roundtrip
+produces the canonical word form: "photosynthesis" -> [PLANT, HAVE, LIGHT] ->
+"photosynthesis".
+
+For byte-fallback words, roundtrip is perfectly lossless: the original bytes
+are preserved exactly.
+
+Roundtrip is stable: `decode(encode(decode(encode(x)))) == decode(encode(x))`
+always. The first roundtrip may change the surface form (lossy canonical
+mapping), but subsequent roundtrips are identical.
 
 ## Installation
 
@@ -93,48 +128,63 @@ cd primoji
 pip install -e ".[dev]"
 ```
 
-Optional dependencies:
-```bash
-pip install primoji[spelling]   # SymSpell for Tier 3 fuzzy matching
-pip install primoji[train]      # PyTorch + HuggingFace tokenizers for benchmarks
-```
-
 ## Project structure
 
 ```
 primoji/
   tokenizer.py        4-tier encode/decode pipeline
+  vocabulary.py       Dynamic ID ranges from data files
+  dictionary.py       Symbolic seed + runtime resolution
+  primitives.py       132 semantic primitives (from data/primitives.json)
+  decoder.py          Dictionary-first, then tier-based fallback
+  byte_fallback.py    UTF-8 byte encoding for unknown words
+  composer.py         HEAD + MODIFIER + SPECIFIER composition
+  fuzzy.py            Conservative SymSpell (edit distance 1)
   preprocessor.py     Unicode normalization, contraction splitting
-  byte_fallback.py    Tier 4 UTF-8 byte encoding
-  fuzzy.py            Tier 3 conservative spell correction
-  vocabulary.py       All token ID ranges (dynamically computed)
-  composer.py         Composition rules (HEAD + MODIFIER + SPECIFIER)
-  dictionary.py       Word -> token ID lookup (symbolic seed + resolver)
-  primitives.py       132 compositional primitives from data/primitives.json
-  decoder.py          Tier-based decoding (catalog -> primitives -> structural -> bytes)
-  math_handler.py     Single-digit number and math operator tokenization
+  math_handler.py     Single-digit numbers, math operators
 scripts/
-  build_dictionary.py  Reproducible dictionary build from data sources
-tests/                 300+ pytest tests
-data/                  Emoji catalog, primitives, anchors, seed dictionary
+  build_dictionary.py   Reproducible dictionary build (single source of truth)
+tests/                  265 tests (invariants, stress, coverage, BPB formula)
+data/
+  emoji_catalog.json    1,182 emoji with CLDR annotations
+  primitives.json       132 compositional primitives (v0.2)
+  common_words.json     1,617 high-frequency English words
+  proper_noun_anchors.json  500 FineWeb-Edu proper nouns
+  dictionary_seed.json  Symbolic dictionary (~16K entries)
+  compression_report.json  Benchmark results
 ```
+
+## Current status
+
+| Status | What |
+|--------|------|
+| Done | 4,035 token vocabulary (emoji + words + primitives + structural + byte fallback) |
+| Done | 4-tier tokenization pipeline, 265 tests, reproducible dictionary build |
+| Done | Compression benchmark: 1.80x vs BPE on 1K FineWeb-Edu sentences |
+| Next | Training experiment: 125M model, bits-per-byte comparison vs BPE |
+| Next | Deeper/narrower architecture (Wies bottleneck theorem) |
+| Future | Multilingual extension |
 
 ## Paper
 
-> **Primoji: Compositional Pictographic Tokenization for Efficient LLM Training**
+> **Primoji: Compositional Semantic Tokenization for LLM Training**
 > Frane Bandov (ESCP Business School)
 > *Manuscript in preparation*
 
-This is Paper 2 in a research portfolio on efficient LLM training. Paper 1 covers distributed training (Distrain), Paper 3 combines this tokenizer with MoE + BitNet routing, Paper 4 is the capstone integration.
+Paper 2 in a series on efficient LLM training:
+1. Distributed training protocol (Distrain)
+2. Compositional semantic tokenization (this project)
+3. Deterministic MoE routing via token semantics
+4. Integration
 
 ## Citation
 
 ```bibtex
 @article{bandov2026primoji,
-  title   = {Primoji: Compositional Pictographic Tokenization for Efficient LLM Training},
-  author  = {Bandov, Frane},
-  year    = {2026},
-  note    = {Manuscript in preparation}
+  title  = {Primoji: Compositional Semantic Tokenization for LLM Training},
+  author = {Bandov, Frane},
+  year   = {2026},
+  note   = {Manuscript in preparation}
 }
 ```
 
