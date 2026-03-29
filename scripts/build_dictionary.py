@@ -385,18 +385,25 @@ def main() -> None:
     entries: dict[str, list[dict]] = {}
 
     # Layer 1: emoji words (lowest priority)
-    # When multiple emoji claim the same keyword, prefer the one whose
-    # CLDR name matches. "dog" → 🐕 (name="dog"), not 🦴 (name="bone").
+    # Only map words that appear in the emoji's CLDR name (as the full name
+    # or a word within it). Don't map arbitrary community keywords like
+    # "hello" -> 👋 (waving hand) since those produce bad decode output.
     l1_count = 0
-    word_to_best_emoji: dict[str, tuple[str, bool]] = {}  # word → (emoji_char, is_name_match)
+    word_to_best_emoji: dict[str, tuple[str, bool]] = {}
     for e in catalog["emoji"]:
         cldr_name = e["name"].lower()
+        cldr_words = set(cldr_name.split())
+        cldr_words.add(cldr_name)  # full name too
         emoji_char = e["emoji"]
         for word in e.get("words", [e["name"]]):
             w = word.lower().strip()
-            if not w or len(w) > 40:
+            if not w or len(w) > 40 or len(w) < 2:
                 continue
+            # Only accept if word is the CLDR name or a word within it
             is_name = (w == cldr_name)
+            is_name_word = (w in cldr_words)
+            if not is_name and not is_name_word:
+                continue
             existing = word_to_best_emoji.get(w)
             if existing is None or (is_name and not existing[1]):
                 word_to_best_emoji[w] = (emoji_char, is_name)

@@ -124,16 +124,22 @@ class Decoder:
                 i = j + 1
                 continue
 
-            # Try multi-token composition from dictionary (optional enhancement)
-            if i + 1 < len(ids):
-                composed = self._try_composition(ids, i)
-                if composed is not None:
-                    word, length = composed
-                    words.append(word)
-                    i += length
-                    continue
+            # Try multi-token composition from dictionary (longest match first)
+            composed = self._try_composition(ids, i)
+            if composed is not None:
+                word, length = composed
+                words.append(word)
+                i += length
+                continue
 
-            # Single-token decode by tier
+            # Single token: dictionary canonical form first, then tier name
+            dict_word = self._dict.reverse_lookup([tid])
+            if dict_word is not None:
+                words.append(dict_word)
+                i += 1
+                continue
+
+            # Fallback: tier-based name (CLDR, primitive, structural)
             word = self._decode_single(tid)
             if word is not None:
                 words.append(word)
