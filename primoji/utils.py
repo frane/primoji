@@ -24,7 +24,7 @@ def _compute_ids() -> dict[str, int]:
     t2_count = 132  # primitives 1200-1331
     flags_count = 259
     contractions_count = 27
-    structural_count = 38  # 10 digits + 14 math + 14 punct
+    structural_count = 10 + 14 + 60  # digits + math ops + expanded punctuation
 
     # Dynamic: anchors
     anchor_path = _DATA_DIR / "proper_noun_anchors.json"

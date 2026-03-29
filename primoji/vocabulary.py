@@ -147,7 +147,36 @@ MATH_OP_IDS["-"] = MATH_OP_IDS["−"]
 MATH_OP_IDS["*"] = MATH_OP_IDS["×"]
 MATH_OP_IDS["/"] = MATH_OP_IDS["÷"]
 
-_PUNCTUATION: list[str] = [".", ",", "!", "?", ":", ";", '"', "'", "(", ")", "[", "]", "{", "}"]
+_PUNCTUATION: list[str] = [
+    # ASCII punctuation
+    ".", ",", "!", "?", ":", ";", '"', "'", "(", ")", "[", "]", "{", "}",
+    # Smart/curly quotes
+    "\u2018", "\u2019", "\u201C", "\u201D",
+    # Dashes
+    "\u2013", "\u2014", "\u2015",
+    # Ellipsis
+    "\u2026",
+    # Pipes/bars
+    "|", "\u00B7",
+    # Bullets
+    "\u2022",
+    # Math/science symbols (excluding those already in MATH_OP_IDS: pi, integral, sum, sqrt)
+    "\u00B0", "\u00B1", "\u2248", "\u2260",
+    "\u0394", "\u03B1", "\u03B2", "\u03B3", "\u03BB", "\u03BC", "\u03C3", "\u03C9",
+    "\u2202",
+    # Legal/trademark
+    "\u00A9", "\u00AE", "\u2122",
+    # Currency
+    "$", "\u00A3", "\u20AC", "\u00A5", "\u20B9",
+    # Superscript digits
+    "\u00B9", "\u00B2", "\u00B3",
+    # Fractions
+    "\u00BC", "\u00BD", "\u00BE",
+    # Guillemets
+    "\u00AB", "\u00BB",
+    # Common ASCII symbols
+    "\\", "@", "#", "%", "&", "~",
+]
 PUNCTUATION_IDS: dict[str, int] = {
     p: _STRUCTURAL_BASE_ID + 24 + i for i, p in enumerate(_PUNCTUATION)
 }

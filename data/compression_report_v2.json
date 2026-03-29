@@ -1,0 +1,107 @@
+{
+  "dataset": "FineWeb-Edu 1K sentences",
+  "primoji_vocab": 4081,
+  "total_words": 24673,
+  "coverage": {
+    "tier2_primitive": {
+      "count": 5600,
+      "pct": 22.7
+    },
+    "dict_dropped": {
+      "count": 5208,
+      "pct": 21.1
+    },
+    "byte_fallback": {
+      "count": 4093,
+      "pct": 16.6
+    },
+    "tier3_structural": {
+      "count": 3385,
+      "pct": 13.7
+    },
+    "tier1b_word": {
+      "count": 2926,
+      "pct": 11.9
+    },
+    "dict_composed": {
+      "count": 1668,
+      "pct": 6.8
+    },
+    "tier1_emoji": {
+      "count": 890,
+      "pct": 3.6
+    },
+    "tier3_anchor": {
+      "count": 583,
+      "pct": 2.4
+    },
+    "tier3_contraction": {
+      "count": 187,
+      "pct": 0.8
+    },
+    "composer_rule": {
+      "count": 133,
+      "pct": 0.5
+    }
+  },
+  "primoji_tokens": 58872,
+  "mistral_tokens": 33118,
+  "ratio": 1.778,
+  "percentiles": {
+    "p10": 1.04,
+    "p50": 1.705,
+    "p90": 2.451
+  },
+  "byte_fallback_top50": [
+    "researchers",
+    "bullying",
+    "ptosis",
+    "c",
+    "celebrate",
+    "obj",
+    "heel",
+    "mice",
+    "saint",
+    "gis",
+    "calories",
+    "subobj",
+    "referendum",
+    "flash",
+    "aup",
+    "observe",
+    "biological",
+    "epo",
+    "ix",
+    "radiation",
+    "placenta",
+    "genetic",
+    "partnership",
+    "visual",
+    "technique",
+    "hydrogen",
+    "revolutionary",
+    "desalination",
+    "prevalence",
+    "dictionary",
+    "expand",
+    "dengue",
+    "fever",
+    "transmission",
+    "findings",
+    "practical",
+    "components",
+    "initiative",
+    "topics",
+    "alzheimer",
+    "amyloid",
+    "demonstrated",
+    "n'kisi",
+    "cave",
+    "conservation",
+    "highlights",
+    "gap",
+    "howard",
+    "galaxy",
+    "constantinople"
+  ]
+}
