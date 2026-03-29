@@ -1,14 +1,130 @@
 {
-  "dataset": "FineWeb-Edu (1000 sentences)",
-  "compression_ratio": 1.955,
-  "primoji_total_tokens": 64747,
-  "bpe_total_tokens": 33118,
-  "reduction_pct": -95.5,
-  "per_sentence": {
-    "mean_ratio": 1.916,
-    "p10_ratio": 1.154,
-    "p50_ratio": 1.875,
-    "p90_ratio": 2.724
+  "dataset": "FineWeb-Edu 1K sentences",
+  "primoji_vocab": 4035,
+  "mistral_vocab": 32768,
+  "total_words": 24673,
+  "coverage": {
+    "tier2_primitive": {
+      "count": 5600,
+      "pct": 22.7
+    },
+    "dict_dropped": {
+      "count": 5208,
+      "pct": 21.1
+    },
+    "byte_fallback": {
+      "count": 4301,
+      "pct": 17.4
+    },
+    "tier3_structural": {
+      "count": 3177,
+      "pct": 12.9
+    },
+    "tier1b_word": {
+      "count": 2926,
+      "pct": 11.9
+    },
+    "dict_composed": {
+      "count": 1668,
+      "pct": 6.8
+    },
+    "tier1_emoji": {
+      "count": 890,
+      "pct": 3.6
+    },
+    "tier3_anchor": {
+      "count": 583,
+      "pct": 2.4
+    },
+    "tier3_contraction": {
+      "count": 187,
+      "pct": 0.8
+    },
+    "composer_rule": {
+      "count": 133,
+      "pct": 0.5
+    }
   },
-  "verdict": "FAIL"
+  "primoji_tokens": 59460,
+  "mistral_tokens": 33118,
+  "ratio": 1.795,
+  "percentiles": {
+    "p10": 1.056,
+    "p50": 1.725,
+    "p90": 2.485
+  },
+  "by_domain": {
+    "general": {
+      "n": 845,
+      "ratio": 1.77
+    },
+    "science": {
+      "n": 34,
+      "ratio": 1.993
+    },
+    "history": {
+      "n": 60,
+      "ratio": 1.921
+    },
+    "geography": {
+      "n": 41,
+      "ratio": 1.778
+    },
+    "math": {
+      "n": 20,
+      "ratio": 1.996
+    }
+  },
+  "byte_fallback_top50": [
+    "|",
+    "\u201c",
+    "\u201d",
+    "&",
+    "researchers",
+    "bullying",
+    "ptosis",
+    "\u2013",
+    "c",
+    "celebrate",
+    "obj",
+    "heel",
+    "mice",
+    "saint",
+    "gis",
+    "calories",
+    "subobj",
+    "referendum",
+    "flash",
+    "\u2022",
+    "aup",
+    "observe",
+    "biological",
+    "epo",
+    "ix",
+    "radiation",
+    "placenta",
+    "genetic",
+    "partnership",
+    "visual",
+    "technique",
+    "%",
+    "hydrogen",
+    "revolutionary",
+    "desalination",
+    "prevalence",
+    "dictionary",
+    "expand",
+    "dengue",
+    "fever",
+    "transmission",
+    "findings",
+    "practical",
+    "components",
+    "initiative",
+    "topics",
+    "alzheimer",
+    "amyloid",
+    "demonstrated",
+    "n'kisi"
+  ]
 }
