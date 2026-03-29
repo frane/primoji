@@ -22,6 +22,7 @@ from primoji.preprocessor import Preprocessor
 from primoji.utils import SpecialTokens, _IDS, normalize_text
 from primoji.vocabulary import (
     ANCHOR_TOKENS,
+    COMMON_WORD_TOKENS,
     CONTRACTION_TOKENS,
     DIGIT_IDS,
     MATH_OP_IDS,
@@ -122,6 +123,11 @@ class Tokenizer:
         if result != [SpecialTokens.UNK]:
             return result
 
+        # Common word token (Tier 1b)
+        word_id = COMMON_WORD_TOKENS.get(word.lower())
+        if word_id is not None:
+            return [word_id]
+
         # Check anchor tokens (proper nouns — case-sensitive)
         anchor_id = ANCHOR_TOKENS.get(word)
         if anchor_id is not None:
@@ -217,6 +223,10 @@ class Tokenizer:
                     return "tier1_emoji"
                 elif 1200 <= tid <= 1331:
                     return "tier2_primitive"
+                elif _IDS["WORD_START"] <= tid < _IDS["WORD_START"] + _IDS["WORD_COUNT"]:
+                    return "tier1b_word"
+                elif _IDS["ANCHOR_START"] <= tid < _IDS["ANCHOR_START"] + _IDS["ANCHOR_COUNT"]:
+                    return "tier3_anchor"
                 else:
                     return "tier3_structural"
             else:
@@ -226,6 +236,10 @@ class Tokenizer:
         composed = self._composer.compose(word.lower())
         if composed != [SpecialTokens.UNK]:
             return "composer_rule"
+
+        # Common word token (Tier 1b)
+        if COMMON_WORD_TOKENS.get(word.lower()) is not None:
+            return "tier1b_word"
 
         # Anchor
         if ANCHOR_TOKENS.get(word) is not None:

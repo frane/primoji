@@ -118,6 +118,23 @@ def _load_anchors() -> dict[str, int]:
 
 ANCHOR_TOKENS: dict[str, int] = _load_anchors()
 
+# ── Common Word Tokens (Tier 1b) ─────────────────────────────────────────────
+
+_WORD_BASE: int = _IDS["WORD_START"]
+
+
+def _load_common_words() -> dict[str, int]:
+    """Load common word→ID mapping from common_words.json."""
+    path = _DATA_DIR / "common_words.json"
+    if path.exists():
+        with path.open() as f:
+            data = json.load(f)
+        return {w: _WORD_BASE + i for i, w in enumerate(data["words"])}
+    return {}
+
+
+COMMON_WORD_TOKENS: dict[str, int] = _load_common_words()
+
 # ── Structural Tokens ────────────────────────────────────────────────────────
 
 _STRUCTURAL_BASE_ID: int = _IDS["STRUCT_START"]
@@ -182,6 +199,12 @@ class Vocabulary:
             self._token_to_id[name] = tid
             self._id_to_token[tid] = name
             self._id_to_description[tid] = f"Anchor: {name}"
+
+        # Common word tokens (Tier 1b)
+        for word, tid in COMMON_WORD_TOKENS.items():
+            self._token_to_id[word] = tid
+            self._id_to_token[tid] = word
+            self._id_to_description[tid] = f"Common word: {word}"
 
         # Digits
         for digit, tid in DIGIT_IDS.items():

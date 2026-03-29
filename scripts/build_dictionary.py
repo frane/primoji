@@ -40,6 +40,9 @@ def _prim_ref(name: str) -> dict[str, str]:
 def _anchor_ref(name: str) -> dict[str, str]:
     return {"type": "anchor", "name": name}
 
+def _word_ref(word: str) -> dict[str, str]:
+    return {"type": "word", "word": word}
+
 
 # ── Primitive synonym table ──────────────────────────────────────────────────
 
@@ -368,6 +371,7 @@ def main() -> None:
     parser.add_argument("--catalog", default=str(_DATA_DIR / "emoji_catalog.json"))
     parser.add_argument("--primitives", default=str(_DATA_DIR / "primitives.json"))
     parser.add_argument("--anchors", default=str(_DATA_DIR / "proper_noun_anchors.json"))
+    parser.add_argument("--words", default=str(_DATA_DIR / "common_words.json"))
     parser.add_argument("--output", default=str(_DATA_DIR / "dictionary_seed.json"))
     args = parser.parse_args()
 
@@ -425,6 +429,23 @@ def main() -> None:
             entries[w.lower()] = ref
             l2_count += 1
     print(f"Layer 2 (primitives):      {l2_count:6d} ({l2_overrides} overrides)")
+
+    # Layer 2b: common word tokens (OVERRIDES Layer 1, but NOT Layer 2)
+    l2b_count, l2b_overrides = 0, 0
+    if Path(args.words).exists():
+        with open(args.words) as f:
+            word_data = json.load(f)
+        for w in word_data["words"]:
+            ref = [_word_ref(w)]
+            if w in entries:
+                # Don't override primitive mappings (Layer 2)
+                existing = entries[w]
+                if existing and existing[0].get("type") == "primitive":
+                    continue
+                l2b_overrides += 1
+            entries[w] = ref
+            l2b_count += 1
+    print(f"Layer 2b (words):          {l2b_count:6d} ({l2b_overrides} overrides)")
 
     # Layer 3: anchors
     l3_count = 0

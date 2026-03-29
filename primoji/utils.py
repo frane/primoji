@@ -34,12 +34,21 @@ def _compute_ids() -> dict[str, int]:
     else:
         anchor_count = 0
 
+    # Dynamic: common word tokens (Tier 1b)
+    words_path = _DATA_DIR / "common_words.json"
+    if words_path.exists():
+        with words_path.open() as f:
+            word_count = json.load(f)["total_count"]
+    else:
+        word_count = 0
+
     # Compute ranges
     flags_start = 1332
     contract_start = flags_start + flags_count
     anchor_start = contract_start + contractions_count
     struct_start = anchor_start + anchor_count
-    special_start = struct_start + structural_count
+    word_start = struct_start + structural_count
+    special_start = word_start + word_count
 
     return {
         "FLAGS_START": flags_start,
@@ -47,6 +56,8 @@ def _compute_ids() -> dict[str, int]:
         "ANCHOR_START": anchor_start,
         "ANCHOR_COUNT": anchor_count,
         "STRUCT_START": struct_start,
+        "WORD_START": word_start,
+        "WORD_COUNT": word_count,
         "BOS": special_start,
         "EOS": special_start + 1,
         "PAD": special_start + 2,

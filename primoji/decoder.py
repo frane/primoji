@@ -26,6 +26,7 @@ from primoji.primitives import get_primitive_by_id
 from primoji.utils import SpecialTokens, _IDS
 from primoji.vocabulary import (
     ANCHOR_TOKENS,
+    COMMON_WORD_TOKENS,
     CONTRACTION_TOKENS,
     DIGIT_IDS,
     MATH_OP_IDS,
@@ -52,6 +53,11 @@ def _build_anchor_names() -> dict[int, str]:
     return {v: k for k, v in ANCHOR_TOKENS.items()}
 
 
+def _build_word_names() -> dict[int, str]:
+    """Load ID → word for common word tokens."""
+    return {v: k for k, v in COMMON_WORD_TOKENS.items()}
+
+
 def _build_contraction_names() -> dict[int, str]:
     return {v: k for k, v in CONTRACTION_TOKENS.items()}
 
@@ -70,6 +76,7 @@ def _build_structural_names() -> dict[int, str]:
 
 _TIER1_NAMES: dict[int, str] = _build_tier1_names()
 _ANCHOR_NAMES: dict[int, str] = _build_anchor_names()
+_WORD_NAMES: dict[int, str] = _build_word_names()
 _CONTRACTION_NAMES: dict[int, str] = _build_contraction_names()
 _STRUCTURAL_NAMES: dict[int, str] = _build_structural_names()
 
@@ -149,7 +156,7 @@ class Decoder:
 
     def _decode_single(self, tid: int) -> str | None:
         """Decode a single token ID by its tier."""
-        # Tier 1: emoji catalog name
+        # Tier 1a: emoji catalog name
         name = _TIER1_NAMES.get(tid)
         if name is not None:
             return name
@@ -158,6 +165,11 @@ class Decoder:
         prim = get_primitive_by_id(tid)
         if prim is not None:
             return prim.name.lower()
+
+        # Tier 1b: common word token
+        word = _WORD_NAMES.get(tid)
+        if word is not None:
+            return word
 
         # Contraction
         contraction = _CONTRACTION_NAMES.get(tid)

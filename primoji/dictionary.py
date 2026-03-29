@@ -17,7 +17,7 @@ from collections import defaultdict
 from pathlib import Path
 
 from primoji.primitives import PRIMITIVES, get_primitive_by_id, get_primitive_by_name
-from primoji.vocabulary import ANCHOR_TOKENS, TIER1_DIRECT_EMOJI, TIER3_FLAGS
+from primoji.vocabulary import ANCHOR_TOKENS, COMMON_WORD_TOKENS, TIER1_DIRECT_EMOJI, TIER3_FLAGS
 
 _DATA_DIR = Path(__file__).parent.parent / "data"
 
@@ -109,6 +109,8 @@ def _resolve_ref(ref: dict) -> int | None:
         return p.id if p else None
     elif rtype == "anchor":
         return ANCHOR_TOKENS.get(ref["name"])
+    elif rtype == "word":
+        return COMMON_WORD_TOKENS.get(ref["word"])
     return None
 
 

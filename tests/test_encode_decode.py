@@ -235,3 +235,34 @@ class TestIDRanges:
         for byte_val in [0, 127, 255]:
             tid = BYTE_TOKEN_OFFSET + byte_val
             assert tid < Tokenizer(fuzzy=False).vocab_size
+
+
+class TestClassifyWord:
+    """classify_word must report the correct tier for every token type."""
+
+    def test_classify_emoji(self, tok: Tokenizer) -> None:
+        assert tok.classify_word("dog") == "tier1_emoji"
+
+    def test_classify_primitive(self, tok: Tokenizer) -> None:
+        assert tok.classify_word("water") == "tier2_primitive"
+
+    def test_classify_word_token(self, tok: Tokenizer) -> None:
+        assert tok.classify_word("out") == "tier1b_word"
+
+    def test_classify_dropped(self, tok: Tokenizer) -> None:
+        assert tok.classify_word("the") == "dict_dropped"
+
+    def test_classify_composed(self, tok: Tokenizer) -> None:
+        assert tok.classify_word("photosynthesis") == "dict_composed"
+
+    def test_classify_contraction(self, tok: Tokenizer) -> None:
+        assert tok.classify_word("don't") == "tier3_contraction"
+
+    def test_classify_digit(self, tok: Tokenizer) -> None:
+        assert tok.classify_word("42") == "tier3_structural"
+
+    def test_classify_byte_fallback(self, tok: Tokenizer) -> None:
+        assert tok.classify_word("xyzzyplugh") == "byte_fallback"
+
+    def test_classify_punctuation(self, tok: Tokenizer) -> None:
+        assert tok.classify_word(".") == "tier3_structural"
