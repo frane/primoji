@@ -163,15 +163,21 @@ class TokenDataset:
 
 @torch.no_grad()
 def compute_bpb(model: GPT, dataset: TokenDataset, total_bytes: int,
-                batch_size: int, device: str, max_batches: int = 100) -> tuple[float, float]:
+                total_val_tokens: int, batch_size: int, device: str,
+                max_batches: int = 100) -> tuple[float, float]:
     """Compute bits-per-byte on validation data.
+
+    BPB = avg_loss_nats * (total_val_tokens / total_bytes) / ln(2)
+
+    This correctly scales from per-token loss to per-byte bits regardless
+    of how many eval batches we sample.
 
     Returns:
         (bpb, avg_loss_nats)
     """
     model.eval()
     total_loss = 0.0
-    total_tokens = 0
+    n_tokens = 0
 
     for _ in range(max_batches):
         batch = dataset.get_batch(batch_size, device)
@@ -182,10 +188,12 @@ def compute_bpb(model: GPT, dataset: TokenDataset, total_bytes: int,
             reduction="sum",
         )
         total_loss += loss.item()
-        total_tokens += batch[:, 1:].numel()
+        n_tokens += batch[:, 1:].numel()
 
-    avg_loss = total_loss / total_tokens
-    bpb = total_loss / (total_bytes * math.log(2))
+    avg_loss = total_loss / n_tokens
+    # Scale avg per-token loss to per-byte bits using the full val set ratio
+    tokens_per_byte = total_val_tokens / total_bytes
+    bpb = avg_loss * tokens_per_byte / math.log(2)
     model.train()
     return bpb, avg_loss
 
@@ -247,6 +255,7 @@ def train(tokenizer_name: str, data_dir: Path, device: str,
     # Dataset
     train_ds = TokenDataset(str(train_path), seq_len)
     val_ds = TokenDataset(str(val_path), seq_len)
+    total_val_tokens = len(val_ds.data)
 
     n_train_tokens = len(train_ds.data)
     tokens_per_step = batch_size * seq_len
@@ -291,7 +300,7 @@ def train(tokenizer_name: str, data_dir: Path, device: str,
     out_dir.mkdir(exist_ok=True)
 
     # Initial eval
-    bpb, val_loss = compute_bpb(model, val_ds, total_val_bytes, batch_size, device)
+    bpb, val_loss = compute_bpb(model, val_ds, total_val_bytes, total_val_tokens, batch_size, device)
     print(f"Initial: val_loss={val_loss:.4f} bpb={bpb:.4f}")
     log.append({"step": 0, "tokens_seen": 0, "train_loss": None,
                 "val_loss": val_loss, "val_bpb": bpb, "time": 0})
@@ -343,7 +352,7 @@ def train(tokenizer_name: str, data_dir: Path, device: str,
 
         # Eval
         if step % eval_interval == 0:
-            bpb, val_loss = compute_bpb(model, val_ds, total_val_bytes, batch_size, device)
+            bpb, val_loss = compute_bpb(model, val_ds, total_val_bytes, total_val_tokens, batch_size, device)
             tokens_seen = step * tokens_per_step
             elapsed = time.time() - t0
             flops = 6 * n_params * tokens_seen
@@ -366,7 +375,7 @@ def train(tokenizer_name: str, data_dir: Path, device: str,
                 json.dump(log, f, indent=2)
 
     # Final eval
-    bpb, val_loss = compute_bpb(model, val_ds, total_val_bytes, batch_size, device)
+    bpb, val_loss = compute_bpb(model, val_ds, total_val_bytes, total_val_tokens, batch_size, device)
     elapsed = time.time() - t0
     tokens_seen = total_steps * tokens_per_step
     flops = 6 * n_params * tokens_seen

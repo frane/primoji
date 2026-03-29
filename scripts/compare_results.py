@@ -28,6 +28,26 @@ def load_log(name: str) -> list[dict]:
         return json.load(f)
 
 
+def recompute_bpb(log: list[dict], bin_path: str, bytes_path: str) -> list[dict]:
+    """Recompute BPB from val_loss using correct formula.
+
+    BPB = avg_loss_nats * (total_tokens / total_bytes) / ln(2)
+    """
+    import math
+    import numpy as np
+
+    data = np.memmap(bin_path, dtype=np.uint16, mode="r")
+    byte_counts = np.fromfile(bytes_path, dtype=np.int64)
+    total_tokens = len(data)
+    total_bytes = int(byte_counts.sum())
+    tokens_per_byte = total_tokens / total_bytes
+
+    for entry in log:
+        if entry.get("val_loss") is not None:
+            entry["val_bpb"] = entry["val_loss"] * tokens_per_byte / math.log(2)
+    return log
+
+
 def main() -> None:
     _PLOT_DIR.mkdir(parents=True, exist_ok=True)
 
@@ -37,6 +57,18 @@ def main() -> None:
     if not primoji_log or not mistral_log:
         print("Need both training logs. Run train_125m.py for both tokenizers first.")
         return
+
+    # Recompute BPB from val_loss (fixes any buggy early logs)
+    primoji_log = recompute_bpb(
+        primoji_log,
+        str(_DATA_DIR / "primoji_val.bin"),
+        str(_DATA_DIR / "byte_counts_val.bin"),
+    )
+    mistral_log = recompute_bpb(
+        mistral_log,
+        str(_DATA_DIR / "mistral_val.bin"),
+        str(_DATA_DIR / "byte_counts_val.bin"),
+    )
 
     # Filter to eval steps only (have val_bpb)
     p_evals = [e for e in primoji_log if e.get("val_bpb") is not None]
