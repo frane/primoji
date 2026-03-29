@@ -1,143 +1,83 @@
-"""Stub tests for future FineWeb-Edu coverage testing.
+"""Tests that verify tokenizer coverage on real text.
 
-Contains placeholder tests and basic dictionary/tokenizer coverage checks.
-The full coverage test will run against 1,000 random FineWeb-Edu sentences
-once the dataset is tokenized (see scripts/coverage_test.py).
+These catch dictionary gaps that cause excessive byte fallback.
 """
 
 from __future__ import annotations
 
 import pytest
 
-from primoji.dictionary import Dictionary
-from primoji.tokenizer import Tokenizer
-from primoji.utils import SpecialTokens
+from primoji import Tokenizer
+from primoji.byte_fallback import BYTES_START_ID
 
 
 @pytest.fixture
 def tok() -> Tokenizer:
-    return Tokenizer()
+    return Tokenizer(fuzzy=False)
 
 
-@pytest.fixture
-def dictionary() -> Dictionary:
-    return Dictionary()
+class TestCommonWordsEncoded:
+    """The 100 most common English words must NOT go to byte fallback."""
+
+    # Source: Oxford English Corpus top 100
+    COMMON_WORDS = [
+        "the", "be", "to", "of", "and", "a", "in", "that", "have", "i",
+        "it", "for", "not", "on", "with", "he", "as", "you", "do", "at",
+        "this", "but", "his", "by", "from", "they", "we", "say", "her", "she",
+        "or", "an", "will", "my", "one", "all", "would", "there", "their",
+        "what", "so", "if", "about", "who", "get", "which", "go", "me",
+        "when", "make", "can", "like", "time", "no", "just", "him", "know",
+        "take", "people", "into", "year", "your", "good", "some", "could",
+        "them", "see", "other", "than", "then", "now", "look", "only", "come",
+        "its", "over", "think", "also", "back", "after", "use", "two", "how",
+        "our", "work", "first", "well", "way", "even", "new", "want",
+        "because", "any", "these", "give", "day", "most", "us",
+    ]
+
+    @pytest.mark.parametrize("word", COMMON_WORDS)
+    def test_common_word_not_byte_fallback(self, tok: Tokenizer, word: str) -> None:
+        ids = tok.encode(word)
+        assert BYTES_START_ID not in ids, (
+            f"Common word '{word}' hit byte fallback: {ids}"
+        )
 
 
-# ── Placeholder for future FineWeb-Edu coverage ─────────────────────────────
+class TestEducationalVocab:
+    """Key FineWeb-Edu vocabulary must encode without byte fallback."""
+
+    EDUCATIONAL_WORDS = [
+        "photosynthesis", "evolution", "democracy", "temperature",
+        "science", "mathematics", "history", "biology", "chemistry",
+        "physics", "geography", "government", "population", "environment",
+        "technology", "university", "student", "teacher", "experiment",
+    ]
+
+    @pytest.mark.parametrize("word", EDUCATIONAL_WORDS)
+    def test_educational_word_not_byte_fallback(self, tok: Tokenizer, word: str) -> None:
+        ids = tok.encode(word)
+        assert BYTES_START_ID not in ids, (
+            f"Educational word '{word}' hit byte fallback: {ids}"
+        )
 
 
-class TestFineWebCoverage:
-    def test_placeholder(self) -> None:
-        """Placeholder: full FineWeb-Edu coverage testing not yet implemented.
+class TestSentenceCoverage:
+    """Real sentences should not have too many byte-fallback tokens."""
 
-        TODO: Download 1,000 random FineWeb-Edu sentences, tokenize each,
-        measure coverage (% of words that get non-UNK encodings), and assert
-        coverage exceeds a target threshold (e.g. 70%+). See scripts/coverage_test.py.
-        """
-        assert True
+    SAMPLE_SENTENCES = [
+        "The teacher explained how photosynthesis converts light energy into chemical energy.",
+        "Water evaporates when heated and rises into the atmosphere as water vapor.",
+        "The United States declared independence from Great Britain in 1776.",
+        "Scientists use the scientific method to test their hypotheses.",
+        "The population of the world has grown significantly in the last century.",
+    ]
 
-
-# ── Dictionary loading ───────────────────────────────────────────────────────
-
-
-class TestDictionaryLoading:
-    def test_bootstrap_dictionary_has_entries(self, dictionary: Dictionary) -> None:
-        """The bootstrap dictionary should have a meaningful number of entries."""
-        assert dictionary.size() > 0
-
-    def test_bootstrap_dictionary_minimum_size(self, dictionary: Dictionary) -> None:
-        """Bootstrap dictionary should contain at least 50 hardcoded mappings."""
-        assert dictionary.size() >= 50
-
-    def test_dictionary_contains_common_nouns(self, dictionary: Dictionary) -> None:
-        common_nouns = ["dog", "cat", "fish", "fire", "water", "house"]
-        for word in common_nouns:
-            assert dictionary.contains(word), f"Dictionary missing common noun '{word}'"
-
-    def test_dictionary_contains_verbs(self, dictionary: Dictionary) -> None:
-        verbs = ["think", "know", "feel", "see", "say", "move", "grow", "teach"]
-        for word in verbs:
-            assert dictionary.contains(word), f"Dictionary missing verb '{word}'"
-
-    def test_dictionary_contains_adjectives(self, dictionary: Dictionary) -> None:
-        adjectives = ["big", "small", "good", "bad", "dark"]
-        for word in adjectives:
-            assert dictionary.contains(word), f"Dictionary missing adjective '{word}'"
-
-    def test_dictionary_contains_composed_concepts(self, dictionary: Dictionary) -> None:
-        concepts = ["photosynthesis", "computer", "internet", "teacher"]
-        for word in concepts:
-            assert dictionary.contains(word), f"Dictionary missing concept '{word}'"
-
-    def test_dictionary_lookup_returns_list(self, dictionary: Dictionary) -> None:
-        ids = dictionary.lookup("dog")
-        assert isinstance(ids, list)
-        assert all(isinstance(i, int) for i in ids)
-
-    def test_dictionary_lookup_missing_word_returns_none(self, dictionary: Dictionary) -> None:
-        assert dictionary.lookup("xyzzyplugh") is None
-
-    def test_dictionary_reverse_lookup(self, dictionary: Dictionary) -> None:
-        """Forward then reverse lookup should return a word mapping to the same IDs."""
-        ids = dictionary.lookup("dog")
-        assert ids is not None
-        word = dictionary.reverse_lookup(ids)
-        assert word is not None, "Reverse lookup returned None for dog's IDs"
-        # The reverse lookup may return a different word that maps to the same IDs
-        # (e.g. a synonym from the seed dictionary). Verify it maps back.
-        reverse_ids = dictionary.lookup(word)
-        assert reverse_ids == ids
-
-
-# ── Word type coverage ───────────────────────────────────────────────────────
-
-
-class TestWordTypeCoverage:
-    def test_concrete_nouns(self, tok: Tokenizer) -> None:
-        """Concrete nouns (Tier 1 emoji) should encode to short sequences."""
-        nouns = ["dog", "cat", "tree", "fire", "water", "apple", "star"]
-        for noun in nouns:
-            ids = tok.encode(noun)
-            assert len(ids) >= 1, f"'{noun}' produced no tokens"
-            assert SpecialTokens.UNK not in ids, f"'{noun}' produced UNK"
-
-    def test_action_verbs(self, tok: Tokenizer) -> None:
-        """Common verbs should map to primitive IDs, not UNK."""
-        verbs = ["think", "know", "feel", "see", "say", "move", "grow"]
-        for verb in verbs:
-            ids = tok.encode(verb)
-            assert len(ids) >= 1
-            assert SpecialTokens.UNK not in ids, f"Verb '{verb}' produced UNK"
-
-    def test_adjectives(self, tok: Tokenizer) -> None:
-        """Common adjectives should map to descriptor primitives, not UNK."""
-        adjectives = ["big", "small", "good", "bad", "dark", "bright"]
-        for adj in adjectives:
-            ids = tok.encode(adj)
-            assert len(ids) >= 1
-            assert SpecialTokens.UNK not in ids, f"Adjective '{adj}' produced UNK"
-
-    def test_function_words(self, tok: Tokenizer) -> None:
-        """Function words should either be dropped (empty) or mapped, never UNK."""
-        function_words = ["the", "a", "an", "is", "not", "can", "if", "because"]
-        for fw in function_words:
-            ids = tok.encode(fw)
-            # May be empty (articles) or mapped — but never UNK
-            assert SpecialTokens.UNK not in ids, f"Function word '{fw}' produced UNK"
-
-    def test_abstract_concepts(self, tok: Tokenizer) -> None:
-        """Abstract concepts should encode via composition, not UNK."""
-        concepts = ["knowledge", "education", "society", "war", "peace", "life", "death"]
-        for concept in concepts:
-            ids = tok.encode(concept)
-            assert len(ids) >= 1
-            assert SpecialTokens.UNK not in ids, f"Concept '{concept}' produced UNK"
-
-    def test_composed_technical_terms(self, tok: Tokenizer) -> None:
-        """Technical terms should compose to multi-token sequences."""
-        terms = ["photosynthesis", "computer", "internet", "telephone", "television"]
-        for term in terms:
-            ids = tok.encode(term)
-            assert len(ids) >= 2, f"'{term}' should compose to 2+ tokens, got {len(ids)}"
-            assert SpecialTokens.UNK not in ids, f"'{term}' produced UNK"
+    @pytest.mark.parametrize("sentence", SAMPLE_SENTENCES)
+    def test_sentence_mostly_covered(self, tok: Tokenizer, sentence: str) -> None:
+        ids = tok.encode(sentence)
+        byte_count = sum(1 for tid in ids if tid == BYTES_START_ID)
+        total = len(ids)
+        byte_fraction = byte_count / total if total > 0 else 0
+        # Less than 40% of tokens should be byte-fallback START markers
+        assert byte_fraction < 0.4, (
+            f"Too many byte fallback tokens ({byte_fraction:.0%}): {sentence[:60]}..."
+        )
