@@ -47,13 +47,13 @@ class TestExactEncoding:
         ]
         assert ids == expected
 
-    def test_water_maps_to_water_primitive(self, tok: Tokenizer) -> None:
+    def test_water_is_single_token(self, tok: Tokenizer) -> None:
         ids = tok.encode("water")
-        assert ids == [get_primitive_by_name("WATER").id]
+        assert len(ids) == 1  # single token (word token or primitive)
 
-    def test_fire_maps_to_fire_primitive(self, tok: Tokenizer) -> None:
+    def test_fire_is_single_token(self, tok: Tokenizer) -> None:
         ids = tok.encode("fire")
-        assert ids == [get_primitive_by_name("FIRE").id]
+        assert len(ids) == 1
 
     def test_dog_maps_to_dog_emoji(self, tok: Tokenizer) -> None:
         ids = tok.encode("dog")
@@ -243,8 +243,10 @@ class TestClassifyWord:
     def test_classify_emoji(self, tok: Tokenizer) -> None:
         assert tok.classify_word("dog") == "tier1_emoji"
 
-    def test_classify_primitive(self, tok: Tokenizer) -> None:
-        assert tok.classify_word("water") == "tier2_primitive"
+    def test_classify_primitive_or_word(self, tok: Tokenizer) -> None:
+        # "water" may be a primitive or a word token depending on NGSL expansion
+        tier = tok.classify_word("water")
+        assert tier in ("tier2_primitive", "tier1b_word")
 
     def test_classify_word_token(self, tok: Tokenizer) -> None:
         assert tok.classify_word("out") == "tier1b_word"
@@ -266,3 +268,22 @@ class TestClassifyWord:
 
     def test_classify_punctuation(self, tok: Tokenizer) -> None:
         assert tok.classify_word(".") == "tier3_structural"
+
+
+class TestNGSLSingleTokens:
+    """Common NGSL words must encode as single tokens, not multi-primitive compositions."""
+
+    @pytest.mark.parametrize("word", [
+        "was", "were", "government", "important", "different",
+        "between", "against", "could", "would", "should",
+        "because", "through", "before", "another", "really",
+        "city", "company", "public", "women", "children",
+    ])
+    def test_common_word_is_single_token(self, tok: Tokenizer, word: str) -> None:
+        ids = tok.encode(word)
+        assert len(ids) == 1, f"'{word}' encoded as {len(ids)} tokens: {ids}"
+
+    def test_photosynthesis_still_composed(self, tok: Tokenizer) -> None:
+        """Rare technical words should still use composition, not direct tokens."""
+        ids = tok.encode("photosynthesis")
+        assert len(ids) > 1

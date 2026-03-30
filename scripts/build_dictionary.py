@@ -234,10 +234,20 @@ _COMPOSITIONS: dict[str, list[str]] = {
     "doctor": ["SOMEONE", "LIVE", "GOOD"],
     "telephone": ["MACHINE", "SAY"],
     "television": ["MACHINE", "SEE"],
-    # Function words: empty = drop (no semantic content for training)
+    # Function words: empty = drop (these carry minimal semantic content)
     "the": [], "a": [], "an": [], "of": [], "and": [], "to": [],
     "in": [], "on": [], "at": [], "or": [], "but": [], "so": [],
     "yet": [], "nor": [], "than": [], "then": [],
+    "by": [], "from": [], "into": [],
+    "over": [], "under": [], "among": [],
+    "during": [], "until": [], "since": [], "while": [],
+    "upon": [], "within": [], "without": [],
+    "across": [], "along": [], "around": [],
+    "behind": [], "beyond": [],
+    "also": [], "however": [], "although": [], "though": [],
+    "thus": [], "hence": [], "moreover": [], "furthermore": [],
+    "meanwhile": [], "nevertheless": [], "indeed": [],
+    "instead": [], "rather": [], "just": [],
 
     # Pronouns -> primitive mappings
     "it": ["SOMETHING"], "its": ["SOMETHING"],
@@ -253,15 +263,10 @@ _COMPOSITIONS: dict[str, list[str]] = {
     "who": ["SOMEONE"], "whom": ["SOMEONE"],
     "there": ["THERE_IS"],
 
-    # Prepositions -> drop or minimal mapping
-    "by": [], "from": [], "into": [], "through": [],
-    "over": [], "under": [], "between": [], "among": [],
-    "during": [], "after": ["AFTER"], "before": ["BEFORE"],
-    "until": [], "since": [], "while": [],
-    "upon": [], "within": [], "without": [],
-    "across": [], "along": [], "around": [],
-    "behind": [], "beyond": [], "above": ["ABOVE"],
-    "below": ["BELOW"], "beside": ["SIDE"], "near": ["NEAR"],
+    # Prepositions -> primitive mappings where meaningful
+    "after": ["AFTER"], "before": ["BEFORE"],
+    "above": ["ABOVE"], "below": ["BELOW"],
+    "beside": ["SIDE"], "near": ["NEAR"],
 
     # Common verbs (forms -> primitive)
     "is": ["BE"], "are": ["BE"], "was": ["BEFORE", "BE"],
@@ -335,9 +340,8 @@ _COMPOSITIONS: dict[str, list[str]] = {
     "area": ["WHERE", "BIG"], "system": ["ORDER", "MACHINE"],
     "fact": ["TRUE"], "number": ["NUMBER"],
     "example": ["ONE", "SEE"],
-    "also": [], "however": [], "because": ["BECAUSE"],
-    "therefore": ["BECAUSE"], "although": [],
-    "just": [], "only": ["ONE"], "even": ["SAME"],
+    "because": ["BECAUSE"], "therefore": ["BECAUSE"],
+    "only": ["ONE"], "even": ["SAME"],
     "still": ["FOR_SOME_TIME"], "already": ["BEFORE"],
     "very": ["VERY"], "really": ["VERY"], "too": ["VERY"],
     "more": ["MORE"], "most": ["MANY", "VERY"],
@@ -430,23 +434,6 @@ def main() -> None:
             l2_count += 1
     print(f"Layer 2 (primitives):      {l2_count:6d} ({l2_overrides} overrides)")
 
-    # Layer 2b: common word tokens (OVERRIDES Layer 1, but NOT Layer 2)
-    l2b_count, l2b_overrides = 0, 0
-    if Path(args.words).exists():
-        with open(args.words) as f:
-            word_data = json.load(f)
-        for w in word_data["words"]:
-            ref = [_word_ref(w)]
-            if w in entries:
-                # Don't override primitive mappings (Layer 2)
-                existing = entries[w]
-                if existing and existing[0].get("type") == "primitive":
-                    continue
-                l2b_overrides += 1
-            entries[w] = ref
-            l2b_count += 1
-    print(f"Layer 2b (words):          {l2b_count:6d} ({l2b_overrides} overrides)")
-
     # Layer 3: anchors
     l3_count = 0
     if anchors:
@@ -479,6 +466,25 @@ def main() -> None:
         entries[word] = [_prim_ref(n) for n in names] if names else []
         l4_count += 1
     print(f"Layer 4 (compositions):    {l4_count:6d}")
+
+    # Layer 4b: common word tokens (FINAL OVERRIDE, runs after compositions)
+    # Makes "was" = 1 token, not [BEFORE, BE] = 2 tokens.
+    # Makes "government" = 1 token, not [POWER, SOCIETY, LAW] = 3 tokens.
+    l4b_count, l4b_overrides = 0, 0
+    if Path(args.words).exists():
+        with open(args.words) as f:
+            word_data = json.load(f)
+        for w in word_data["words"]:
+            ref = [_word_ref(w)]
+            if w in entries:
+                existing = entries[w]
+                if existing == []:  # Don't override dropped words
+                    continue
+                if existing != ref:
+                    l4b_overrides += 1
+            entries[w] = ref
+            l4b_count += 1
+    print(f"Layer 4b (word tokens):    {l4b_count:6d} ({l4b_overrides} overrides)")
 
     # Layer 5: inflections (never overrides)
     l5_count = 0
