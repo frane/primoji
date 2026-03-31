@@ -1,0 +1,9 @@
+{
+  "n_docs": 50000,
+  "n_train": 45000,
+  "n_val": 5000,
+  "primoji_vocab_size": 5311,
+  "mistral_vocab_size": 32768,
+  "primoji_eos": 5050,
+  "mistral_eos": 2
+}
