@@ -1,23 +1,25 @@
 """Prepare training data for the 125M primoji vs BPE experiment.
 
 Streams FineWeb-Edu documents, tokenizes with both primoji and Mistral BPE,
-saves as binary files for fast loading during training.
+writes tokens directly to disk in chunks to avoid OOM on large datasets.
 
 Usage:
-    python -m scripts.prepare_training_data --n-docs 10000
+    python -m scripts.prepare_training_data --n-docs 500000
 """
 
 from __future__ import annotations
 
 import argparse
 import json
-import sys
+import struct
 import time
 from pathlib import Path
 
 import numpy as np
 
 _DATA_DIR = Path(__file__).parent.parent / "data"
+
+CHUNK_SIZE = 5000  # docs per chunk before flushing to disk
 
 
 def main() -> None:
@@ -30,93 +32,106 @@ def main() -> None:
     out = Path(args.output_dir)
     out.mkdir(parents=True, exist_ok=True)
 
-    # ── Stream documents ──────────────────────────────────────────────────
+    # ── Stream and save docs to disk (not RAM) ────────────────────────────
     from datasets import load_dataset
 
     print(f"Streaming {args.n_docs} docs from FineWeb-Edu...", flush=True)
     ds = load_dataset("HuggingFaceFW/fineweb-edu", "sample-10BT",
                        split="train", streaming=True)
 
-    docs: list[str] = []
-    for i, example in enumerate(ds):
-        if len(docs) >= args.n_docs:
-            break
-        text = example["text"].strip()
-        if len(text) >= args.min_len:
-            docs.append(text)
-        if (i + 1) % 2000 == 0:
-            print(f"  Scanned {i+1}, collected {len(docs)} docs...", flush=True)
+    docs_path = out / "docs.jsonl"
+    n_collected = 0
+    with open(docs_path, "w") as f:
+        for i, example in enumerate(ds):
+            if n_collected >= args.n_docs:
+                break
+            text = example["text"].strip()
+            if len(text) >= args.min_len:
+                f.write(json.dumps({"text": text}) + "\n")
+                n_collected += 1
+            if (i + 1) % 10000 == 0:
+                print(f"  Scanned {i+1}, collected {n_collected} docs...", flush=True)
 
-    print(f"Collected {len(docs)} docs")
+    print(f"Collected {n_collected} docs", flush=True)
 
-    # Save raw docs
-    with open(out / "docs.jsonl", "w") as f:
-        for doc in docs:
-            f.write(json.dumps({"text": doc}) + "\n")
-
-    # ── Tokenize with both ────────────────────────────────────────────────
+    # ── Tokenize in streaming chunks, writing directly to disk ────────────
     from primoji import Tokenizer as PrimojiTokenizer
     from primoji.utils import SpecialTokens
     from tokenizers import Tokenizer as HFTokenizer
 
     print("Loading tokenizers...", flush=True)
-    primoji_tok = PrimojiTokenizer(fuzzy=False)  # no fuzzy for speed
+    primoji_tok = PrimojiTokenizer(fuzzy=False)
     mistral_tok = HFTokenizer.from_pretrained("mistralai/Mistral-7B-v0.3")
 
     primoji_eos = SpecialTokens.EOS
     mistral_eos = mistral_tok.token_to_id("</s>")
 
     # Split: 90% train, 10% val
-    split_idx = int(len(docs) * 0.9)
-    train_docs = docs[:split_idx]
-    val_docs = docs[split_idx:]
+    split_idx = int(n_collected * 0.9)
 
-    for split_name, split_docs in [("train", train_docs), ("val", val_docs)]:
-        print(f"\nTokenizing {split_name} ({len(split_docs)} docs)...", flush=True)
+    for split_name, doc_start, doc_end in [
+        ("train", 0, split_idx),
+        ("val", split_idx, n_collected),
+    ]:
+        n_split = doc_end - doc_start
+        print(f"\nTokenizing {split_name} ({n_split} docs)...", flush=True)
 
-        primoji_all: list[int] = []
-        mistral_all: list[int] = []
-        byte_counts: list[int] = []
+        p_file = open(out / f"primoji_{split_name}.bin", "wb")
+        m_file = open(out / f"mistral_{split_name}.bin", "wb")
+        b_file = open(out / f"byte_counts_{split_name}.bin", "wb")
 
+        p_total = 0
+        m_total = 0
+        total_bytes = 0
         t0 = time.time()
-        for i, doc in enumerate(split_docs):
-            # Primoji
-            p_ids = primoji_tok.encode(doc)
-            primoji_all.extend(p_ids)
-            primoji_all.append(primoji_eos)
+        doc_idx = 0
 
-            # Mistral BPE
-            m_ids = mistral_tok.encode(doc).ids
-            mistral_all.extend(m_ids)
-            mistral_all.append(mistral_eos)
+        with open(docs_path) as f:
+            for line_idx, line in enumerate(f):
+                if line_idx < doc_start:
+                    continue
+                if line_idx >= doc_end:
+                    break
 
-            # Byte count for BPB calculation
-            byte_counts.append(len(doc.encode("utf-8")))
+                doc = json.loads(line)["text"]
+                doc_idx += 1
 
-            if (i + 1) % 1000 == 0:
-                elapsed = time.time() - t0
-                rate = (i + 1) / elapsed
-                print(f"  {i+1}/{len(split_docs)} docs ({rate:.0f} docs/s)", flush=True)
+                # Primoji
+                p_ids = primoji_tok.encode(doc)
+                p_ids.append(primoji_eos)
+                p_file.write(np.array(p_ids, dtype=np.uint16).tobytes())
+                p_total += len(p_ids)
 
-        # Save as binary
-        primoji_arr = np.array(primoji_all, dtype=np.uint16)
-        mistral_arr = np.array(mistral_all, dtype=np.uint16)
-        bytes_arr = np.array(byte_counts, dtype=np.int64)
+                # Mistral BPE
+                m_ids = mistral_tok.encode(doc).ids
+                m_ids.append(mistral_eos)
+                m_file.write(np.array(m_ids, dtype=np.uint16).tobytes())
+                m_total += len(m_ids)
 
-        primoji_arr.tofile(out / f"primoji_{split_name}.bin")
-        mistral_arr.tofile(out / f"mistral_{split_name}.bin")
-        bytes_arr.tofile(out / f"byte_counts_{split_name}.bin")
+                # Byte count
+                n_bytes = len(doc.encode("utf-8"))
+                b_file.write(struct.pack("<q", n_bytes))
+                total_bytes += n_bytes
 
-        total_bytes = sum(byte_counts)
-        print(f"  {split_name}: {len(split_docs)} docs, {total_bytes:,} bytes")
-        print(f"  Primoji: {len(primoji_all):,} tokens ({len(primoji_all)/len(mistral_all):.2f}x BPE)")
-        print(f"  Mistral: {len(mistral_all):,} tokens")
+                if doc_idx % 1000 == 0:
+                    elapsed = time.time() - t0
+                    rate = doc_idx / elapsed
+                    print(f"  {doc_idx}/{n_split} docs ({rate:.0f} docs/s)", flush=True)
+
+        p_file.close()
+        m_file.close()
+        b_file.close()
+
+        ratio = p_total / m_total if m_total > 0 else 0
+        print(f"  {split_name}: {n_split} docs, {total_bytes:,} bytes")
+        print(f"  Primoji: {p_total:,} tokens ({ratio:.2f}x BPE)")
+        print(f"  Mistral: {m_total:,} tokens")
 
     # Save metadata
     meta = {
-        "n_docs": len(docs),
-        "n_train": len(train_docs),
-        "n_val": len(val_docs),
+        "n_docs": n_collected,
+        "n_train": split_idx,
+        "n_val": n_collected - split_idx,
         "primoji_vocab_size": primoji_tok.vocab_size,
         "mistral_vocab_size": 32768,
         "primoji_eos": primoji_eos,
@@ -125,7 +140,7 @@ def main() -> None:
     with open(out / "meta.json", "w") as f:
         json.dump(meta, f, indent=2)
     print(f"\nMetadata saved to {out / 'meta.json'}")
-    print("Done!")
+    print("Done!", flush=True)
 
 
 if __name__ == "__main__":
