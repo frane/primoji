@@ -1,0 +1,3007 @@
+{
+  "version": "0.2.0",
+  "source": "FineWeb-Edu sample-10BT (100K docs)",
+  "total_count": 500,
+  "anchors": [
+    {
+      "rank": 1,
+      "name": "American",
+      "frequency": 6337,
+      "label": "NORP"
+    },
+    {
+      "rank": 2,
+      "name": "U.S.",
+      "frequency": 5730,
+      "label": "GPE"
+    },
+    {
+      "rank": 3,
+      "name": "India",
+      "frequency": 3958,
+      "label": "GPE"
+    },
+    {
+      "rank": 4,
+      "name": "China",
+      "frequency": 3887,
+      "label": "GPE"
+    },
+    {
+      "rank": 5,
+      "name": "US",
+      "frequency": 3760,
+      "label": "GPE"
+    },
+    {
+      "rank": 6,
+      "name": "British",
+      "frequency": 3678,
+      "label": "NORP"
+    },
+    {
+      "rank": 7,
+      "name": "French",
+      "frequency": 3136,
+      "label": "NORP"
+    },
+    {
+      "rank": 8,
+      "name": "Americans",
+      "frequency": 2984,
+      "label": "NORP"
+    },
+    {
+      "rank": 9,
+      "name": "America",
+      "frequency": 2923,
+      "label": "GPE"
+    },
+    {
+      "rank": 10,
+      "name": "NASA",
+      "frequency": 2902,
+      "label": "ORG"
+    },
+    {
+      "rank": 11,
+      "name": "Canada",
+      "frequency": 2844,
+      "label": "GPE"
+    },
+    {
+      "rank": 12,
+      "name": "German",
+      "frequency": 2769,
+      "label": "NORP"
+    },
+    {
+      "rank": 13,
+      "name": "California",
+      "frequency": 2712,
+      "label": "GPE"
+    },
+    {
+      "rank": 14,
+      "name": "Chinese",
+      "frequency": 2653,
+      "label": "NORP"
+    },
+    {
+      "rank": 15,
+      "name": "UK",
+      "frequency": 2621,
+      "label": "GPE"
+    },
+    {
+      "rank": 16,
+      "name": "Australia",
+      "frequency": 2607,
+      "label": "GPE"
+    },
+    {
+      "rank": 17,
+      "name": "England",
+      "frequency": 2435,
+      "label": "GPE"
+    },
+    {
+      "rank": 18,
+      "name": "European",
+      "frequency": 2433,
+      "label": "NORP"
+    },
+    {
+      "rank": 19,
+      "name": "Jesus",
+      "frequency": 2430,
+      "label": "PERSON"
+    },
+    {
+      "rank": 20,
+      "name": "Japan",
+      "frequency": 2384,
+      "label": "GPE"
+    },
+    {
+      "rank": 21,
+      "name": "France",
+      "frequency": 2325,
+      "label": "GPE"
+    },
+    {
+      "rank": 22,
+      "name": "Germany",
+      "frequency": 2283,
+      "label": "GPE"
+    },
+    {
+      "rank": 23,
+      "name": "Japanese",
+      "frequency": 2240,
+      "label": "NORP"
+    },
+    {
+      "rank": 24,
+      "name": "Greek",
+      "frequency": 2165,
+      "label": "NORP"
+    },
+    {
+      "rank": 25,
+      "name": "Jewish",
+      "frequency": 2066,
+      "label": "NORP"
+    },
+    {
+      "rank": 26,
+      "name": "Indian",
+      "frequency": 2054,
+      "label": "NORP"
+    },
+    {
+      "rank": 27,
+      "name": "New York",
+      "frequency": 2016,
+      "label": "GPE"
+    },
+    {
+      "rank": 28,
+      "name": "Spanish",
+      "frequency": 1711,
+      "label": "NORP"
+    },
+    {
+      "rank": 29,
+      "name": "London",
+      "frequency": 1657,
+      "label": "GPE"
+    },
+    {
+      "rank": 30,
+      "name": "Washington",
+      "frequency": 1559,
+      "label": "GPE"
+    },
+    {
+      "rank": 31,
+      "name": "Russia",
+      "frequency": 1557,
+      "label": "GPE"
+    },
+    {
+      "rank": 32,
+      "name": "Britain",
+      "frequency": 1507,
+      "label": "GPE"
+    },
+    {
+      "rank": 33,
+      "name": "Christian",
+      "frequency": 1469,
+      "label": "NORP"
+    },
+    {
+      "rank": 34,
+      "name": "Jews",
+      "frequency": 1468,
+      "label": "NORP"
+    },
+    {
+      "rank": 35,
+      "name": "Congress",
+      "frequency": 1466,
+      "label": "ORG"
+    },
+    {
+      "rank": 36,
+      "name": "Texas",
+      "frequency": 1381,
+      "label": "GPE"
+    },
+    {
+      "rank": 37,
+      "name": "Israel",
+      "frequency": 1343,
+      "label": "GPE"
+    },
+    {
+      "rank": 38,
+      "name": "Roman",
+      "frequency": 1324,
+      "label": "NORP"
+    },
+    {
+      "rank": 39,
+      "name": "Egypt",
+      "frequency": 1318,
+      "label": "GPE"
+    },
+    {
+      "rank": 40,
+      "name": "Mexico",
+      "frequency": 1314,
+      "label": "GPE"
+    },
+    {
+      "rank": 41,
+      "name": "Florida",
+      "frequency": 1309,
+      "label": "GPE"
+    },
+    {
+      "rank": 42,
+      "name": "African",
+      "frequency": 1273,
+      "label": "NORP"
+    },
+    {
+      "rank": 43,
+      "name": "Spain",
+      "frequency": 1265,
+      "label": "GPE"
+    },
+    {
+      "rank": 44,
+      "name": "Bible",
+      "frequency": 1259,
+      "label": "WORK_OF_ART"
+    },
+    {
+      "rank": 45,
+      "name": "Italy",
+      "frequency": 1257,
+      "label": "GPE"
+    },
+    {
+      "rank": 46,
+      "name": "BC",
+      "frequency": 1163,
+      "label": "ORG"
+    },
+    {
+      "rank": 47,
+      "name": "English",
+      "frequency": 1143,
+      "label": "NORP"
+    },
+    {
+      "rank": 48,
+      "name": "Canadian",
+      "frequency": 1139,
+      "label": "NORP"
+    },
+    {
+      "rank": 49,
+      "name": "Russian",
+      "frequency": 1122,
+      "label": "NORP"
+    },
+    {
+      "rank": 50,
+      "name": "Paris",
+      "frequency": 1117,
+      "label": "GPE"
+    },
+    {
+      "rank": 51,
+      "name": "Rome",
+      "frequency": 1115,
+      "label": "GPE"
+    },
+    {
+      "rank": 52,
+      "name": "Italian",
+      "frequency": 1108,
+      "label": "NORP"
+    },
+    {
+      "rank": 53,
+      "name": "World War II",
+      "frequency": 1074,
+      "label": "EVENT"
+    },
+    {
+      "rank": 54,
+      "name": "CDC",
+      "frequency": 1052,
+      "label": "ORG"
+    },
+    {
+      "rank": 55,
+      "name": "Australian",
+      "frequency": 1008,
+      "label": "NORP"
+    },
+    {
+      "rank": 56,
+      "name": "Ireland",
+      "frequency": 993,
+      "label": "GPE"
+    },
+    {
+      "rank": 57,
+      "name": "Brazil",
+      "frequency": 992,
+      "label": "GPE"
+    },
+    {
+      "rank": 58,
+      "name": "Scotland",
+      "frequency": 978,
+      "label": "GPE"
+    },
+    {
+      "rank": 59,
+      "name": "New Zealand",
+      "frequency": 921,
+      "label": "GPE"
+    },
+    {
+      "rank": 60,
+      "name": "United States",
+      "frequency": 917,
+      "label": "GPE"
+    },
+    {
+      "rank": 61,
+      "name": "Google",
+      "frequency": 917,
+      "label": "ORG"
+    },
+    {
+      "rank": 62,
+      "name": "PDF",
+      "frequency": 897,
+      "label": "ORG"
+    },
+    {
+      "rank": 63,
+      "name": "Wikipedia",
+      "frequency": 896,
+      "label": "ORG"
+    },
+    {
+      "rank": 64,
+      "name": "Latin",
+      "frequency": 892,
+      "label": "NORP"
+    },
+    {
+      "rank": 65,
+      "name": "EPA",
+      "frequency": 891,
+      "label": "ORG"
+    },
+    {
+      "rank": 66,
+      "name": "AI",
+      "frequency": 888,
+      "label": "GPE"
+    },
+    {
+      "rank": 67,
+      "name": "Moon",
+      "frequency": 887,
+      "label": "PERSON"
+    },
+    {
+      "rank": 68,
+      "name": "Sun",
+      "frequency": 869,
+      "label": "ORG"
+    },
+    {
+      "rank": 69,
+      "name": "Irish",
+      "frequency": 869,
+      "label": "NORP"
+    },
+    {
+      "rank": 70,
+      "name": "Virginia",
+      "frequency": 867,
+      "label": "GPE"
+    },
+    {
+      "rank": 71,
+      "name": "COVID-19",
+      "frequency": 851,
+      "label": "ORG"
+    },
+    {
+      "rank": 72,
+      "name": "EU",
+      "frequency": 834,
+      "label": "ORG"
+    },
+    {
+      "rank": 73,
+      "name": "South Africa",
+      "frequency": 810,
+      "label": "GPE"
+    },
+    {
+      "rank": 74,
+      "name": "Dutch",
+      "frequency": 801,
+      "label": "NORP"
+    },
+    {
+      "rank": 75,
+      "name": "Asian",
+      "frequency": 791,
+      "label": "NORP"
+    },
+    {
+      "rank": 76,
+      "name": "FDA",
+      "frequency": 781,
+      "label": "ORG"
+    },
+    {
+      "rank": 77,
+      "name": "USA",
+      "frequency": 775,
+      "label": "GPE"
+    },
+    {
+      "rank": 78,
+      "name": "MD",
+      "frequency": 774,
+      "label": "GPE"
+    },
+    {
+      "rank": 79,
+      "name": "UN",
+      "frequency": 770,
+      "label": "ORG"
+    },
+    {
+      "rank": 80,
+      "name": "CO2",
+      "frequency": 767,
+      "label": "PRODUCT"
+    },
+    {
+      "rank": 81,
+      "name": "Indians",
+      "frequency": 730,
+      "label": "NORP"
+    },
+    {
+      "rank": 82,
+      "name": "Greece",
+      "frequency": 720,
+      "label": "GPE"
+    },
+    {
+      "rank": 83,
+      "name": "Chicago",
+      "frequency": 718,
+      "label": "GPE"
+    },
+    {
+      "rank": 84,
+      "name": "PhD",
+      "frequency": 717,
+      "label": "WORK_OF_ART"
+    },
+    {
+      "rank": 85,
+      "name": "State",
+      "frequency": 706,
+      "label": "ORG"
+    },
+    {
+      "rank": 86,
+      "name": "New York City",
+      "frequency": 704,
+      "label": "GPE"
+    },
+    {
+      "rank": 87,
+      "name": "John",
+      "frequency": 689,
+      "label": "PERSON"
+    },
+    {
+      "rank": 88,
+      "name": "Islam",
+      "frequency": 687,
+      "label": "ORG"
+    },
+    {
+      "rank": 89,
+      "name": "Egyptian",
+      "frequency": 682,
+      "label": "NORP"
+    },
+    {
+      "rank": 90,
+      "name": "Georgia",
+      "frequency": 675,
+      "label": "GPE"
+    },
+    {
+      "rank": 91,
+      "name": "Ohio",
+      "frequency": 672,
+      "label": "GPE"
+    },
+    {
+      "rank": 92,
+      "name": "Pakistan",
+      "frequency": 667,
+      "label": "GPE"
+    },
+    {
+      "rank": 93,
+      "name": "Alaska",
+      "frequency": 651,
+      "label": "GPE"
+    },
+    {
+      "rank": 94,
+      "name": "Poland",
+      "frequency": 650,
+      "label": "GPE"
+    },
+    {
+      "rank": 95,
+      "name": "Christianity",
+      "frequency": 647,
+      "label": "GPE"
+    },
+    {
+      "rank": 96,
+      "name": "Catholic",
+      "frequency": 643,
+      "label": "NORP"
+    },
+    {
+      "rank": 97,
+      "name": "Muslim",
+      "frequency": 639,
+      "label": "NORP"
+    },
+    {
+      "rank": 98,
+      "name": "Christians",
+      "frequency": 635,
+      "label": "NORP"
+    },
+    {
+      "rank": 99,
+      "name": "Mexican",
+      "frequency": 615,
+      "label": "NORP"
+    },
+    {
+      "rank": 100,
+      "name": "Church",
+      "frequency": 613,
+      "label": "ORG"
+    },
+    {
+      "rank": 101,
+      "name": "Jerusalem",
+      "frequency": 611,
+      "label": "GPE"
+    },
+    {
+      "rank": 102,
+      "name": "Soviet",
+      "frequency": 606,
+      "label": "NORP"
+    },
+    {
+      "rank": 103,
+      "name": "Pennsylvania",
+      "frequency": 605,
+      "label": "GPE"
+    },
+    {
+      "rank": 104,
+      "name": "Indonesia",
+      "frequency": 602,
+      "label": "GPE"
+    },
+    {
+      "rank": 105,
+      "name": "Colorado",
+      "frequency": 601,
+      "label": "GPE"
+    },
+    {
+      "rank": 106,
+      "name": "Romans",
+      "frequency": 593,
+      "label": "NORP"
+    },
+    {
+      "rank": 107,
+      "name": "Turkey",
+      "frequency": 581,
+      "label": "GPE"
+    },
+    {
+      "rank": 108,
+      "name": "Michigan",
+      "frequency": 574,
+      "label": "GPE"
+    },
+    {
+      "rank": 109,
+      "name": "Lincoln",
+      "frequency": 567,
+      "label": "PERSON"
+    },
+    {
+      "rank": 110,
+      "name": "Ph.D.",
+      "frequency": 566,
+      "label": "WORK_OF_ART"
+    },
+    {
+      "rank": 111,
+      "name": "Massachusetts",
+      "frequency": 565,
+      "label": "GPE"
+    },
+    {
+      "rank": 112,
+      "name": "Boston",
+      "frequency": 564,
+      "label": "GPE"
+    },
+    {
+      "rank": 113,
+      "name": "Mary",
+      "frequency": 563,
+      "label": "PERSON"
+    },
+    {
+      "rank": 114,
+      "name": "Java",
+      "frequency": 563,
+      "label": "PERSON"
+    },
+    {
+      "rank": 115,
+      "name": "Sweden",
+      "frequency": 561,
+      "label": "GPE"
+    },
+    {
+      "rank": 116,
+      "name": "TB",
+      "frequency": 559,
+      "label": "ORG"
+    },
+    {
+      "rank": 117,
+      "name": "IP",
+      "frequency": 552,
+      "label": "ORG"
+    },
+    {
+      "rank": 118,
+      "name": "North Carolina",
+      "frequency": 543,
+      "label": "GPE"
+    },
+    {
+      "rank": 119,
+      "name": "Philadelphia",
+      "frequency": 531,
+      "label": "GPE"
+    },
+    {
+      "rank": 120,
+      "name": "Missouri",
+      "frequency": 526,
+      "label": "GPE"
+    },
+    {
+      "rank": 121,
+      "name": "Shakespeare",
+      "frequency": 521,
+      "label": "PERSON"
+    },
+    {
+      "rank": 122,
+      "name": "Constitution",
+      "frequency": 520,
+      "label": "LAW"
+    },
+    {
+      "rank": 123,
+      "name": "Arizona",
+      "frequency": 519,
+      "label": "GPE"
+    },
+    {
+      "rank": 124,
+      "name": "Amazon",
+      "frequency": 518,
+      "label": "ORG"
+    },
+    {
+      "rank": 125,
+      "name": "Iran",
+      "frequency": 510,
+      "label": "GPE"
+    },
+    {
+      "rank": 126,
+      "name": "African American",
+      "frequency": 509,
+      "label": "NORP"
+    },
+    {
+      "rank": 127,
+      "name": "Islamic",
+      "frequency": 506,
+      "label": "NORP"
+    },
+    {
+      "rank": 128,
+      "name": "Obama",
+      "frequency": 504,
+      "label": "PERSON"
+    },
+    {
+      "rank": 129,
+      "name": "Vietnam",
+      "frequency": 501,
+      "label": "GPE"
+    },
+    {
+      "rank": 130,
+      "name": "Netherlands",
+      "frequency": 500,
+      "label": "GPE"
+    },
+    {
+      "rank": 131,
+      "name": "Illinois",
+      "frequency": 499,
+      "label": "GPE"
+    },
+    {
+      "rank": 132,
+      "name": "Western",
+      "frequency": 499,
+      "label": "NORP"
+    },
+    {
+      "rank": 133,
+      "name": "Nature",
+      "frequency": 493,
+      "label": "WORK_OF_ART"
+    },
+    {
+      "rank": 134,
+      "name": "Native American",
+      "frequency": 493,
+      "label": "NORP"
+    },
+    {
+      "rank": 135,
+      "name": "Hindu",
+      "frequency": 492,
+      "label": "NORP"
+    },
+    {
+      "rank": 136,
+      "name": "STEM",
+      "frequency": 487,
+      "label": "ORG"
+    },
+    {
+      "rank": 137,
+      "name": "Oregon",
+      "frequency": 486,
+      "label": "GPE"
+    },
+    {
+      "rank": 138,
+      "name": "Buddhist",
+      "frequency": 484,
+      "label": "NORP"
+    },
+    {
+      "rank": 139,
+      "name": "Microsoft",
+      "frequency": 483,
+      "label": "ORG"
+    },
+    {
+      "rank": 140,
+      "name": "B.C.",
+      "frequency": 481,
+      "label": "GPE"
+    },
+    {
+      "rank": 141,
+      "name": "Saturn",
+      "frequency": 481,
+      "label": "PRODUCT"
+    },
+    {
+      "rank": 142,
+      "name": "Minnesota",
+      "frequency": 479,
+      "label": "GPE"
+    },
+    {
+      "rank": 143,
+      "name": "Polish",
+      "frequency": 477,
+      "label": "NORP"
+    },
+    {
+      "rank": 144,
+      "name": "Iraq",
+      "frequency": 475,
+      "label": "GPE"
+    },
+    {
+      "rank": 145,
+      "name": "Nazi",
+      "frequency": 473,
+      "label": "NORP"
+    },
+    {
+      "rank": 146,
+      "name": "Los Angeles",
+      "frequency": 471,
+      "label": "GPE"
+    },
+    {
+      "rank": 147,
+      "name": "Hawaii",
+      "frequency": 470,
+      "label": "GPE"
+    },
+    {
+      "rank": 148,
+      "name": "Peru",
+      "frequency": 468,
+      "label": "GPE"
+    },
+    {
+      "rank": 149,
+      "name": "Scottish",
+      "frequency": 463,
+      "label": "NORP"
+    },
+    {
+      "rank": 150,
+      "name": "Switzerland",
+      "frequency": 462,
+      "label": "GPE"
+    },
+    {
+      "rank": 151,
+      "name": "San Francisco",
+      "frequency": 460,
+      "label": "GPE"
+    },
+    {
+      "rank": 152,
+      "name": "Maryland",
+      "frequency": 459,
+      "label": "GPE"
+    },
+    {
+      "rank": 153,
+      "name": "Austria",
+      "frequency": 459,
+      "label": "GPE"
+    },
+    {
+      "rank": 154,
+      "name": "David",
+      "frequency": 456,
+      "label": "PERSON"
+    },
+    {
+      "rank": 155,
+      "name": "Muslims",
+      "frequency": 456,
+      "label": "NORP"
+    },
+    {
+      "rank": 156,
+      "name": "Senate",
+      "frequency": 453,
+      "label": "ORG"
+    },
+    {
+      "rank": 157,
+      "name": "Kenya",
+      "frequency": 451,
+      "label": "GPE"
+    },
+    {
+      "rank": 158,
+      "name": "African-American",
+      "frequency": 449,
+      "label": "NORP"
+    },
+    {
+      "rank": 159,
+      "name": "African Americans",
+      "frequency": 444,
+      "label": "NORP"
+    },
+    {
+      "rank": 160,
+      "name": "Germans",
+      "frequency": 443,
+      "label": "NORP"
+    },
+    {
+      "rank": 161,
+      "name": "Philippines",
+      "frequency": 441,
+      "label": "GPE"
+    },
+    {
+      "rank": 162,
+      "name": "USDA",
+      "frequency": 439,
+      "label": "ORG"
+    },
+    {
+      "rank": 163,
+      "name": "New Jersey",
+      "frequency": 438,
+      "label": "GPE"
+    },
+    {
+      "rank": 164,
+      "name": "Ontario",
+      "frequency": 436,
+      "label": "GPE"
+    },
+    {
+      "rank": 165,
+      "name": "Chile",
+      "frequency": 435,
+      "label": "GPE"
+    },
+    {
+      "rank": 166,
+      "name": "Norway",
+      "frequency": 435,
+      "label": "GPE"
+    },
+    {
+      "rank": 167,
+      "name": "Torah",
+      "frequency": 434,
+      "label": "PERSON"
+    },
+    {
+      "rank": 168,
+      "name": "Syria",
+      "frequency": 433,
+      "label": "GPE"
+    },
+    {
+      "rank": 169,
+      "name": "Afghanistan",
+      "frequency": 432,
+      "label": "GPE"
+    },
+    {
+      "rank": 170,
+      "name": "HPV",
+      "frequency": 430,
+      "label": "ORG"
+    },
+    {
+      "rank": 171,
+      "name": "HTML",
+      "frequency": 430,
+      "label": "ORG"
+    },
+    {
+      "rank": 172,
+      "name": "CT",
+      "frequency": 420,
+      "label": "ORG"
+    },
+    {
+      "rank": 173,
+      "name": "Paul",
+      "frequency": 419,
+      "label": "PERSON"
+    },
+    {
+      "rank": 174,
+      "name": "D.C.",
+      "frequency": 412,
+      "label": "GPE"
+    },
+    {
+      "rank": 175,
+      "name": "Linux",
+      "frequency": 412,
+      "label": "PERSON"
+    },
+    {
+      "rank": 176,
+      "name": "Alabama",
+      "frequency": 410,
+      "label": "GPE"
+    },
+    {
+      "rank": 177,
+      "name": "MIT",
+      "frequency": 409,
+      "label": "ORG"
+    },
+    {
+      "rank": 178,
+      "name": "Hitler",
+      "frequency": 408,
+      "label": "PERSON"
+    },
+    {
+      "rank": 179,
+      "name": "House",
+      "frequency": 408,
+      "label": "ORG"
+    },
+    {
+      "rank": 180,
+      "name": "Twitter",
+      "frequency": 406,
+      "label": "PERSON"
+    },
+    {
+      "rank": 181,
+      "name": "Wisconsin",
+      "frequency": 404,
+      "label": "GPE"
+    },
+    {
+      "rank": 182,
+      "name": "Utah",
+      "frequency": 402,
+      "label": "GPE"
+    },
+    {
+      "rank": 183,
+      "name": "Portuguese",
+      "frequency": 401,
+      "label": "NORP"
+    },
+    {
+      "rank": 184,
+      "name": "Renaissance",
+      "frequency": 400,
+      "label": "ORG"
+    },
+    {
+      "rank": 185,
+      "name": "Science",
+      "frequency": 399,
+      "label": "ORG"
+    },
+    {
+      "rank": 186,
+      "name": "Berlin",
+      "frequency": 398,
+      "label": "GPE"
+    },
+    {
+      "rank": 187,
+      "name": "Arab",
+      "frequency": 397,
+      "label": "NORP"
+    },
+    {
+      "rank": 188,
+      "name": "Europeans",
+      "frequency": 395,
+      "label": "NORP"
+    },
+    {
+      "rank": 189,
+      "name": "Tennessee",
+      "frequency": 391,
+      "label": "GPE"
+    },
+    {
+      "rank": 190,
+      "name": "Apple",
+      "frequency": 390,
+      "label": "ORG"
+    },
+    {
+      "rank": 191,
+      "name": "Denmark",
+      "frequency": 388,
+      "label": "GPE"
+    },
+    {
+      "rank": 192,
+      "name": "North American",
+      "frequency": 387,
+      "label": "NORP"
+    },
+    {
+      "rank": 193,
+      "name": "Hispanic",
+      "frequency": 383,
+      "label": "NORP"
+    },
+    {
+      "rank": 194,
+      "name": "Native Americans",
+      "frequency": 383,
+      "label": "NORP"
+    },
+    {
+      "rank": 195,
+      "name": "Argentina",
+      "frequency": 383,
+      "label": "GPE"
+    },
+    {
+      "rank": 196,
+      "name": "Indiana",
+      "frequency": 380,
+      "label": "GPE"
+    },
+    {
+      "rank": 197,
+      "name": "Mercury",
+      "frequency": 378,
+      "label": "ORG"
+    },
+    {
+      "rank": 198,
+      "name": "BMI",
+      "frequency": 378,
+      "label": "ORG"
+    },
+    {
+      "rank": 199,
+      "name": "Brown",
+      "frequency": 377,
+      "label": "PERSON"
+    },
+    {
+      "rank": 200,
+      "name": "Maine",
+      "frequency": 377,
+      "label": "GPE"
+    },
+    {
+      "rank": 201,
+      "name": "Confederate",
+      "frequency": 376,
+      "label": "ORG"
+    },
+    {
+      "rank": 202,
+      "name": "Louisiana",
+      "frequency": 375,
+      "label": "GPE"
+    },
+    {
+      "rank": 203,
+      "name": "Kentucky",
+      "frequency": 371,
+      "label": "GPE"
+    },
+    {
+      "rank": 204,
+      "name": "M.D.",
+      "frequency": 370,
+      "label": "GPE"
+    },
+    {
+      "rank": 205,
+      "name": "Great Britain",
+      "frequency": 367,
+      "label": "GPE"
+    },
+    {
+      "rank": 206,
+      "name": "Kansas",
+      "frequency": 360,
+      "label": "GPE"
+    },
+    {
+      "rank": 207,
+      "name": "Darwin",
+      "frequency": 359,
+      "label": "PERSON"
+    },
+    {
+      "rank": 208,
+      "name": "Finland",
+      "frequency": 357,
+      "label": "GPE"
+    },
+    {
+      "rank": 209,
+      "name": "Thailand",
+      "frequency": 356,
+      "label": "GPE"
+    },
+    {
+      "rank": 210,
+      "name": "Mississippi",
+      "frequency": 354,
+      "label": "GPE"
+    },
+    {
+      "rank": 211,
+      "name": "Singapore",
+      "frequency": 353,
+      "label": "GPE"
+    },
+    {
+      "rank": 212,
+      "name": "Turkish",
+      "frequency": 347,
+      "label": "NORP"
+    },
+    {
+      "rank": 213,
+      "name": "Belgium",
+      "frequency": 346,
+      "label": "GPE"
+    },
+    {
+      "rank": 214,
+      "name": "Cuba",
+      "frequency": 345,
+      "label": "GPE"
+    },
+    {
+      "rank": 215,
+      "name": "Peter",
+      "frequency": 345,
+      "label": "PERSON"
+    },
+    {
+      "rank": 216,
+      "name": "Wales",
+      "frequency": 344,
+      "label": "GPE"
+    },
+    {
+      "rank": 217,
+      "name": "YouTube",
+      "frequency": 341,
+      "label": "PRODUCT"
+    },
+    {
+      "rank": 218,
+      "name": "Parliament",
+      "frequency": 339,
+      "label": "ORG"
+    },
+    {
+      "rank": 219,
+      "name": "New Mexico",
+      "frequency": 337,
+      "label": "GPE"
+    },
+    {
+      "rank": 220,
+      "name": "Abraham",
+      "frequency": 335,
+      "label": "PERSON"
+    },
+    {
+      "rank": 221,
+      "name": "Korea",
+      "frequency": 335,
+      "label": "GPE"
+    },
+    {
+      "rank": 222,
+      "name": "Korean",
+      "frequency": 334,
+      "label": "NORP"
+    },
+    {
+      "rank": 223,
+      "name": "Portugal",
+      "frequency": 333,
+      "label": "GPE"
+    },
+    {
+      "rank": 224,
+      "name": "ESA",
+      "frequency": 331,
+      "label": "ORG"
+    },
+    {
+      "rank": 225,
+      "name": "Bangladesh",
+      "frequency": 331,
+      "label": "GPE"
+    },
+    {
+      "rank": 226,
+      "name": "Excel",
+      "frequency": 331,
+      "label": "PRODUCT"
+    },
+    {
+      "rank": 227,
+      "name": "Ethiopia",
+      "frequency": 331,
+      "label": "GPE"
+    },
+    {
+      "rank": 228,
+      "name": "Swedish",
+      "frequency": 330,
+      "label": "NORP"
+    },
+    {
+      "rank": 229,
+      "name": "Harvard",
+      "frequency": 327,
+      "label": "ORG"
+    },
+    {
+      "rank": 230,
+      "name": "Connecticut",
+      "frequency": 326,
+      "label": "GPE"
+    },
+    {
+      "rank": 231,
+      "name": "DC",
+      "frequency": 326,
+      "label": "GPE"
+    },
+    {
+      "rank": 232,
+      "name": "Nigeria",
+      "frequency": 325,
+      "label": "GPE"
+    },
+    {
+      "rank": 233,
+      "name": "Malaysia",
+      "frequency": 323,
+      "label": "GPE"
+    },
+    {
+      "rank": 234,
+      "name": "South Carolina",
+      "frequency": 322,
+      "label": "GPE"
+    },
+    {
+      "rank": 235,
+      "name": "Joseph",
+      "frequency": 322,
+      "label": "PERSON"
+    },
+    {
+      "rank": 236,
+      "name": "Iowa",
+      "frequency": 322,
+      "label": "GPE"
+    },
+    {
+      "rank": 237,
+      "name": "AC",
+      "frequency": 321,
+      "label": "ORG"
+    },
+    {
+      "rank": 238,
+      "name": "Republican",
+      "frequency": 319,
+      "label": "NORP"
+    },
+    {
+      "rank": 239,
+      "name": "Ukraine",
+      "frequency": 318,
+      "label": "GPE"
+    },
+    {
+      "rank": 240,
+      "name": "Nepal",
+      "frequency": 315,
+      "label": "GPE"
+    },
+    {
+      "rank": 241,
+      "name": "Windows",
+      "frequency": 315,
+      "label": "NORP"
+    },
+    {
+      "rank": 242,
+      "name": "CPU",
+      "frequency": 314,
+      "label": "ORG"
+    },
+    {
+      "rank": 243,
+      "name": "BBC",
+      "frequency": 308,
+      "label": "ORG"
+    },
+    {
+      "rank": 244,
+      "name": "Universe",
+      "frequency": 308,
+      "label": "ORG"
+    },
+    {
+      "rank": 245,
+      "name": "Digital",
+      "frequency": 308,
+      "label": "ORG"
+    },
+    {
+      "rank": 246,
+      "name": "Army",
+      "frequency": 307,
+      "label": "ORG"
+    },
+    {
+      "rank": 247,
+      "name": "IBM",
+      "frequency": 306,
+      "label": "ORG"
+    },
+    {
+      "rank": 248,
+      "name": "New Orleans",
+      "frequency": 306,
+      "label": "GPE"
+    },
+    {
+      "rank": 249,
+      "name": "D.",
+      "frequency": 302,
+      "label": "NORP"
+    },
+    {
+      "rank": 250,
+      "name": "The United States",
+      "frequency": 301,
+      "label": "GPE"
+    },
+    {
+      "rank": 251,
+      "name": "Southern",
+      "frequency": 300,
+      "label": "NORP"
+    },
+    {
+      "rank": 252,
+      "name": "Greenland",
+      "frequency": 300,
+      "label": "GPE"
+    },
+    {
+      "rank": 253,
+      "name": "Montana",
+      "frequency": 299,
+      "label": "GPE"
+    },
+    {
+      "rank": 254,
+      "name": "NOAA",
+      "frequency": 299,
+      "label": "ORG"
+    },
+    {
+      "rank": 255,
+      "name": "Aboriginal",
+      "frequency": 298,
+      "label": "ORG"
+    },
+    {
+      "rank": 256,
+      "name": "AP",
+      "frequency": 298,
+      "label": "ORG"
+    },
+    {
+      "rank": 257,
+      "name": "Adam",
+      "frequency": 297,
+      "label": "PERSON"
+    },
+    {
+      "rank": 258,
+      "name": "Israeli",
+      "frequency": 296,
+      "label": "NORP"
+    },
+    {
+      "rank": 259,
+      "name": "Jesus Christ",
+      "frequency": 295,
+      "label": "PERSON"
+    },
+    {
+      "rank": 260,
+      "name": "Learn",
+      "frequency": 295,
+      "label": "ORG"
+    },
+    {
+      "rank": 261,
+      "name": "Venus",
+      "frequency": 293,
+      "label": "GPE"
+    },
+    {
+      "rank": 262,
+      "name": "Taiwan",
+      "frequency": 292,
+      "label": "GPE"
+    },
+    {
+      "rank": 263,
+      "name": "Buddha",
+      "frequency": 292,
+      "label": "ORG"
+    },
+    {
+      "rank": 264,
+      "name": "Cambridge",
+      "frequency": 291,
+      "label": "GPE"
+    },
+    {
+      "rank": 265,
+      "name": "Swiss",
+      "frequency": 284,
+      "label": "NORP"
+    },
+    {
+      "rank": 266,
+      "name": "Johnson",
+      "frequency": 283,
+      "label": "PERSON"
+    },
+    {
+      "rank": 267,
+      "name": "Apollo",
+      "frequency": 283,
+      "label": "ORG"
+    },
+    {
+      "rank": 268,
+      "name": "Hong Kong",
+      "frequency": 282,
+      "label": "GPE"
+    },
+    {
+      "rank": 269,
+      "name": "San Diego",
+      "frequency": 282,
+      "label": "GPE"
+    },
+    {
+      "rank": 270,
+      "name": "Victorian",
+      "frequency": 281,
+      "label": "NORP"
+    },
+    {
+      "rank": 271,
+      "name": "Egyptians",
+      "frequency": 280,
+      "label": "NORP"
+    },
+    {
+      "rank": 272,
+      "name": "Nevada",
+      "frequency": 280,
+      "label": "GPE"
+    },
+    {
+      "rank": 273,
+      "name": "Colombia",
+      "frequency": 279,
+      "label": "GPE"
+    },
+    {
+      "rank": 274,
+      "name": "Education",
+      "frequency": 279,
+      "label": "ORG"
+    },
+    {
+      "rank": 275,
+      "name": "Beijing",
+      "frequency": 277,
+      "label": "GPE"
+    },
+    {
+      "rank": 276,
+      "name": "Fahrenheit",
+      "frequency": 277,
+      "label": "GPE"
+    },
+    {
+      "rank": 277,
+      "name": "Oklahoma",
+      "frequency": 277,
+      "label": "GPE"
+    },
+    {
+      "rank": 278,
+      "name": "Navy",
+      "frequency": 276,
+      "label": "ORG"
+    },
+    {
+      "rank": 279,
+      "name": "Nazis",
+      "frequency": 274,
+      "label": "NORP"
+    },
+    {
+      "rank": 280,
+      "name": "Seattle",
+      "frequency": 274,
+      "label": "GPE"
+    },
+    {
+      "rank": 281,
+      "name": "Jefferson",
+      "frequency": 273,
+      "label": "PERSON"
+    },
+    {
+      "rank": 282,
+      "name": "World War I",
+      "frequency": 272,
+      "label": "EVENT"
+    },
+    {
+      "rank": 283,
+      "name": "Oxford",
+      "frequency": 272,
+      "label": "ORG"
+    },
+    {
+      "rank": 284,
+      "name": "Moscow",
+      "frequency": 272,
+      "label": "GPE"
+    },
+    {
+      "rank": 285,
+      "name": "Canadians",
+      "frequency": 270,
+      "label": "NORP"
+    },
+    {
+      "rank": 286,
+      "name": "UNESCO",
+      "frequency": 270,
+      "label": "ORG"
+    },
+    {
+      "rank": 287,
+      "name": "Elizabeth",
+      "frequency": 269,
+      "label": "PERSON"
+    },
+    {
+      "rank": 288,
+      "name": "Persian",
+      "frequency": 268,
+      "label": "NORP"
+    },
+    {
+      "rank": 289,
+      "name": "James",
+      "frequency": 267,
+      "label": "PERSON"
+    },
+    {
+      "rank": 290,
+      "name": "Aristotle",
+      "frequency": 267,
+      "label": "PERSON"
+    },
+    {
+      "rank": 291,
+      "name": "IoT",
+      "frequency": 267,
+      "label": "ORG"
+    },
+    {
+      "rank": 292,
+      "name": "British Columbia",
+      "frequency": 266,
+      "label": "GPE"
+    },
+    {
+      "rank": 293,
+      "name": "Henry",
+      "frequency": 265,
+      "label": "PERSON"
+    },
+    {
+      "rank": 294,
+      "name": "Athens",
+      "frequency": 265,
+      "label": "GPE"
+    },
+    {
+      "rank": 295,
+      "name": "Houston",
+      "frequency": 264,
+      "label": "GPE"
+    },
+    {
+      "rank": 296,
+      "name": "Bitcoin",
+      "frequency": 264,
+      "label": "NORP"
+    },
+    {
+      "rank": 297,
+      "name": "USB",
+      "frequency": 263,
+      "label": "ORG"
+    },
+    {
+      "rank": 298,
+      "name": "Genesis",
+      "frequency": 261,
+      "label": "ORG"
+    },
+    {
+      "rank": 299,
+      "name": "Vienna",
+      "frequency": 260,
+      "label": "GPE"
+    },
+    {
+      "rank": 300,
+      "name": "Syrian",
+      "frequency": 260,
+      "label": "NORP"
+    },
+    {
+      "rank": 301,
+      "name": "Luke",
+      "frequency": 259,
+      "label": "PERSON"
+    },
+    {
+      "rank": 302,
+      "name": "Greeks",
+      "frequency": 259,
+      "label": "PERSON"
+    },
+    {
+      "rank": 303,
+      "name": "Palestine",
+      "frequency": 257,
+      "label": "GPE"
+    },
+    {
+      "rank": 304,
+      "name": "Ghana",
+      "frequency": 256,
+      "label": "GPE"
+    },
+    {
+      "rank": 305,
+      "name": "Iceland",
+      "frequency": 255,
+      "label": "GPE"
+    },
+    {
+      "rank": 306,
+      "name": "Jordan",
+      "frequency": 250,
+      "label": "GPE"
+    },
+    {
+      "rank": 307,
+      "name": "Android",
+      "frequency": 249,
+      "label": "ORG"
+    },
+    {
+      "rank": 308,
+      "name": "Smith",
+      "frequency": 249,
+      "label": "PERSON"
+    },
+    {
+      "rank": 309,
+      "name": "Danish",
+      "frequency": 247,
+      "label": "NORP"
+    },
+    {
+      "rank": 310,
+      "name": "Columbus",
+      "frequency": 247,
+      "label": "GPE"
+    },
+    {
+      "rank": 311,
+      "name": "Quebec",
+      "frequency": 245,
+      "label": "GPE"
+    },
+    {
+      "rank": 312,
+      "name": "Thomas",
+      "frequency": 245,
+      "label": "PERSON"
+    },
+    {
+      "rank": 313,
+      "name": "Arkansas",
+      "frequency": 245,
+      "label": "GPE"
+    },
+    {
+      "rank": 314,
+      "name": "SQL",
+      "frequency": 244,
+      "label": "ORG"
+    },
+    {
+      "rank": 315,
+      "name": "William",
+      "frequency": 243,
+      "label": "PERSON"
+    },
+    {
+      "rank": 316,
+      "name": "Hungary",
+      "frequency": 243,
+      "label": "GPE"
+    },
+    {
+      "rank": 317,
+      "name": "Plato",
+      "frequency": 243,
+      "label": "PERSON"
+    },
+    {
+      "rank": 318,
+      "name": "Victoria",
+      "frequency": 241,
+      "label": "GPE"
+    },
+    {
+      "rank": 319,
+      "name": "Eastern",
+      "frequency": 240,
+      "label": "ORG"
+    },
+    {
+      "rank": 320,
+      "name": "Abraham Lincoln",
+      "frequency": 239,
+      "label": "PERSON"
+    },
+    {
+      "rank": 321,
+      "name": "Haiti",
+      "frequency": 237,
+      "label": "GPE"
+    },
+    {
+      "rank": 322,
+      "name": "Lebanon",
+      "frequency": 235,
+      "label": "GPE"
+    },
+    {
+      "rank": 323,
+      "name": "Sri Lanka",
+      "frequency": 235,
+      "label": "GPE"
+    },
+    {
+      "rank": 324,
+      "name": "Newton",
+      "frequency": 235,
+      "label": "GPE"
+    },
+    {
+      "rank": 325,
+      "name": "George Washington",
+      "frequency": 233,
+      "label": "PERSON"
+    },
+    {
+      "rank": 326,
+      "name": "Uganda",
+      "frequency": 232,
+      "label": "GPE"
+    },
+    {
+      "rank": 327,
+      "name": "Wyoming",
+      "frequency": 230,
+      "label": "GPE"
+    },
+    {
+      "rank": 328,
+      "name": "Atlanta",
+      "frequency": 230,
+      "label": "GPE"
+    },
+    {
+      "rank": 329,
+      "name": "Ford",
+      "frequency": 229,
+      "label": "ORG"
+    },
+    {
+      "rank": 330,
+      "name": "Arabic",
+      "frequency": 229,
+      "label": "NORP"
+    },
+    {
+      "rank": 331,
+      "name": "South Korea",
+      "frequency": 228,
+      "label": "GPE"
+    },
+    {
+      "rank": 332,
+      "name": "Australians",
+      "frequency": 228,
+      "label": "NORP"
+    },
+    {
+      "rank": 333,
+      "name": "Einstein",
+      "frequency": 228,
+      "label": "PERSON"
+    },
+    {
+      "rank": 334,
+      "name": "PowerPoint",
+      "frequency": 228,
+      "label": "ORG"
+    },
+    {
+      "rank": 335,
+      "name": "Tokyo",
+      "frequency": 227,
+      "label": "GPE"
+    },
+    {
+      "rank": 336,
+      "name": "Bolivia",
+      "frequency": 226,
+      "label": "GPE"
+    },
+    {
+      "rank": 337,
+      "name": "RNA",
+      "frequency": 226,
+      "label": "PERSON"
+    },
+    {
+      "rank": 338,
+      "name": "Martian",
+      "frequency": 226,
+      "label": "NORP"
+    },
+    {
+      "rank": 339,
+      "name": "OECD",
+      "frequency": 226,
+      "label": "ORG"
+    },
+    {
+      "rank": 340,
+      "name": "Alberta",
+      "frequency": 225,
+      "label": "GPE"
+    },
+    {
+      "rank": 341,
+      "name": "Sanskrit",
+      "frequency": 225,
+      "label": "ORG"
+    },
+    {
+      "rank": 342,
+      "name": "K-12",
+      "frequency": 224,
+      "label": "PRODUCT"
+    },
+    {
+      "rank": 343,
+      "name": "Baltimore",
+      "frequency": 224,
+      "label": "PERSON"
+    },
+    {
+      "rank": 344,
+      "name": "Trump",
+      "frequency": 224,
+      "label": "PERSON"
+    },
+    {
+      "rank": 345,
+      "name": "Cambodia",
+      "frequency": 223,
+      "label": "GPE"
+    },
+    {
+      "rank": 346,
+      "name": "St. Louis",
+      "frequency": 221,
+      "label": "GPE"
+    },
+    {
+      "rank": 347,
+      "name": "WHO",
+      "frequency": 220,
+      "label": "ORG"
+    },
+    {
+      "rank": 348,
+      "name": "Venezuela",
+      "frequency": 220,
+      "label": "GPE"
+    },
+    {
+      "rank": 349,
+      "name": "Arduino",
+      "frequency": 219,
+      "label": "ORG"
+    },
+    {
+      "rank": 350,
+      "name": "GI",
+      "frequency": 219,
+      "label": "ORG"
+    },
+    {
+      "rank": 351,
+      "name": "Types",
+      "frequency": 216,
+      "label": "PERSON"
+    },
+    {
+      "rank": 352,
+      "name": "DNS",
+      "frequency": 216,
+      "label": "ORG"
+    },
+    {
+      "rank": 353,
+      "name": "Allied",
+      "frequency": 215,
+      "label": "ORG"
+    },
+    {
+      "rank": 354,
+      "name": "Norwegian",
+      "frequency": 215,
+      "label": "NORP"
+    },
+    {
+      "rank": 355,
+      "name": "Sydney",
+      "frequency": 214,
+      "label": "GPE"
+    },
+    {
+      "rank": 356,
+      "name": "Nebraska",
+      "frequency": 214,
+      "label": "GPE"
+    },
+    {
+      "rank": 357,
+      "name": "RAM",
+      "frequency": 214,
+      "label": "ORG"
+    },
+    {
+      "rank": 358,
+      "name": "Download",
+      "frequency": 213,
+      "label": "PERSON"
+    },
+    {
+      "rank": 359,
+      "name": "Morocco",
+      "frequency": 212,
+      "label": "GPE"
+    },
+    {
+      "rank": 360,
+      "name": "Shiva",
+      "frequency": 212,
+      "label": "PERSON"
+    },
+    {
+      "rank": 361,
+      "name": "Napoleon",
+      "frequency": 212,
+      "label": "ORG"
+    },
+    {
+      "rank": 362,
+      "name": "Tanzania",
+      "frequency": 211,
+      "label": "GPE"
+    },
+    {
+      "rank": 363,
+      "name": "Democrats",
+      "frequency": 211,
+      "label": "NORP"
+    },
+    {
+      "rank": 364,
+      "name": "Vermont",
+      "frequency": 210,
+      "label": "GPE"
+    },
+    {
+      "rank": 365,
+      "name": "Africans",
+      "frequency": 210,
+      "label": "NORP"
+    },
+    {
+      "rank": 366,
+      "name": "C.",
+      "frequency": 209,
+      "label": "NORP"
+    },
+    {
+      "rank": 367,
+      "name": "King",
+      "frequency": 209,
+      "label": "PERSON"
+    },
+    {
+      "rank": 368,
+      "name": "Lewis",
+      "frequency": 209,
+      "label": "PERSON"
+    },
+    {
+      "rank": 369,
+      "name": "Jackson",
+      "frequency": 208,
+      "label": "PERSON"
+    },
+    {
+      "rank": 370,
+      "name": "Titan",
+      "frequency": 208,
+      "label": "GPE"
+    },
+    {
+      "rank": 371,
+      "name": "Jacob",
+      "frequency": 207,
+      "label": "PERSON"
+    },
+    {
+      "rank": 372,
+      "name": "Wilson",
+      "frequency": 207,
+      "label": "ORG"
+    },
+    {
+      "rank": 373,
+      "name": "MS",
+      "frequency": 205,
+      "label": "GPE"
+    },
+    {
+      "rank": 374,
+      "name": "WWII",
+      "frequency": 205,
+      "label": "EVENT"
+    },
+    {
+      "rank": 375,
+      "name": "ICT",
+      "frequency": 204,
+      "label": "ORG"
+    },
+    {
+      "rank": 376,
+      "name": "NIH",
+      "frequency": 204,
+      "label": "ORG"
+    },
+    {
+      "rank": 377,
+      "name": "North Korea",
+      "frequency": 203,
+      "label": "GPE"
+    },
+    {
+      "rank": 378,
+      "name": "Austrian",
+      "frequency": 201,
+      "label": "NORP"
+    },
+    {
+      "rank": 379,
+      "name": "Charles",
+      "frequency": 201,
+      "label": "PERSON"
+    },
+    {
+      "rank": 380,
+      "name": "PHP",
+      "frequency": 201,
+      "label": "ORG"
+    },
+    {
+      "rank": 381,
+      "name": "Mac",
+      "frequency": 200,
+      "label": "PERSON"
+    },
+    {
+      "rank": 382,
+      "name": "Queensland",
+      "frequency": 200,
+      "label": "GPE"
+    },
+    {
+      "rank": 383,
+      "name": "Judaism",
+      "frequency": 200,
+      "label": "ORG"
+    },
+    {
+      "rank": 384,
+      "name": "Denver",
+      "frequency": 199,
+      "label": "GPE"
+    },
+    {
+      "rank": 385,
+      "name": "Puerto Rico",
+      "frequency": 198,
+      "label": "GPE"
+    },
+    {
+      "rank": 386,
+      "name": "Intel",
+      "frequency": 198,
+      "label": "ORG"
+    },
+    {
+      "rank": 387,
+      "name": "Lyme",
+      "frequency": 197,
+      "label": "ORG"
+    },
+    {
+      "rank": 388,
+      "name": "Tibet",
+      "frequency": 197,
+      "label": "GPE"
+    },
+    {
+      "rank": 389,
+      "name": "Matthew",
+      "frequency": 196,
+      "label": "PERSON"
+    },
+    {
+      "rank": 390,
+      "name": "Mark",
+      "frequency": 196,
+      "label": "PERSON"
+    },
+    {
+      "rank": 391,
+      "name": "Lesson",
+      "frequency": 195,
+      "label": "PERSON"
+    },
+    {
+      "rank": 392,
+      "name": "Union",
+      "frequency": 195,
+      "label": "ORG"
+    },
+    {
+      "rank": 393,
+      "name": "B12",
+      "frequency": 194,
+      "label": "ORG"
+    },
+    {
+      "rank": 394,
+      "name": "Republicans",
+      "frequency": 194,
+      "label": "NORP"
+    },
+    {
+      "rank": 395,
+      "name": "Zimbabwe",
+      "frequency": 193,
+      "label": "GPE"
+    },
+    {
+      "rank": 396,
+      "name": "West Africa",
+      "frequency": 192,
+      "label": "GPE"
+    },
+    {
+      "rank": 397,
+      "name": "Healthwise",
+      "frequency": 192,
+      "label": "GPE"
+    },
+    {
+      "rank": 398,
+      "name": "Calif.",
+      "frequency": 191,
+      "label": "GPE"
+    },
+    {
+      "rank": 399,
+      "name": "Medicare",
+      "frequency": 190,
+      "label": "ORG"
+    },
+    {
+      "rank": 400,
+      "name": "Toronto",
+      "frequency": 190,
+      "label": "GPE"
+    },
+    {
+      "rank": 401,
+      "name": "Columbia",
+      "frequency": 190,
+      "label": "GPE"
+    },
+    {
+      "rank": 402,
+      "name": "Kennedy",
+      "frequency": 190,
+      "label": "PERSON"
+    },
+    {
+      "rank": 403,
+      "name": "Brazilian",
+      "frequency": 189,
+      "label": "NORP"
+    },
+    {
+      "rank": 404,
+      "name": "Lee",
+      "frequency": 189,
+      "label": "PERSON"
+    },
+    {
+      "rank": 405,
+      "name": "CNN",
+      "frequency": 188,
+      "label": "ORG"
+    },
+    {
+      "rank": 406,
+      "name": "Stanford",
+      "frequency": 188,
+      "label": "ORG"
+    },
+    {
+      "rank": 407,
+      "name": "API",
+      "frequency": 187,
+      "label": "ORG"
+    },
+    {
+      "rank": 408,
+      "name": "Hawaiian",
+      "frequency": 187,
+      "label": "NORP"
+    },
+    {
+      "rank": 409,
+      "name": "Russians",
+      "frequency": 187,
+      "label": "NORP"
+    },
+    {
+      "rank": 410,
+      "name": "Noah",
+      "frequency": 187,
+      "label": "PERSON"
+    },
+    {
+      "rank": 411,
+      "name": "Alexander",
+      "frequency": 186,
+      "label": "PERSON"
+    },
+    {
+      "rank": 412,
+      "name": "Ottoman",
+      "frequency": 186,
+      "label": "NORP"
+    },
+    {
+      "rank": 413,
+      "name": "Tibetan",
+      "frequency": 186,
+      "label": "GPE"
+    },
+    {
+      "rank": 414,
+      "name": "Catholics",
+      "frequency": 186,
+      "label": "NORP"
+    },
+    {
+      "rank": 415,
+      "name": "Florence",
+      "frequency": 185,
+      "label": "GPE"
+    },
+    {
+      "rank": 416,
+      "name": "ASD",
+      "frequency": 184,
+      "label": "ORG"
+    },
+    {
+      "rank": 417,
+      "name": "Solar",
+      "frequency": 183,
+      "label": "ORG"
+    },
+    {
+      "rank": 418,
+      "name": "West Virginia",
+      "frequency": 183,
+      "label": "GPE"
+    },
+    {
+      "rank": 419,
+      "name": "Austin",
+      "frequency": 183,
+      "label": "GPE"
+    },
+    {
+      "rank": 420,
+      "name": "Montessori",
+      "frequency": 183,
+      "label": "ORG"
+    },
+    {
+      "rank": 421,
+      "name": "Davis",
+      "frequency": 183,
+      "label": "PERSON"
+    },
+    {
+      "rank": 422,
+      "name": "Jack",
+      "frequency": 183,
+      "label": "PERSON"
+    },
+    {
+      "rank": 423,
+      "name": "Sudan",
+      "frequency": 182,
+      "label": "GPE"
+    },
+    {
+      "rank": 424,
+      "name": "Venice",
+      "frequency": 182,
+      "label": "GPE"
+    },
+    {
+      "rank": 425,
+      "name": "Fig",
+      "frequency": 182,
+      "label": "PERSON"
+    },
+    {
+      "rank": 426,
+      "name": "Guatemala",
+      "frequency": 181,
+      "label": "GPE"
+    },
+    {
+      "rank": 427,
+      "name": "Myanmar",
+      "frequency": 181,
+      "label": "GPE"
+    },
+    {
+      "rank": 428,
+      "name": "Vietnamese",
+      "frequency": 181,
+      "label": "NORP"
+    },
+    {
+      "rank": 429,
+      "name": "Clark",
+      "frequency": 181,
+      "label": "PERSON"
+    },
+    {
+      "rank": 430,
+      "name": "Richard",
+      "frequency": 180,
+      "label": "PERSON"
+    },
+    {
+      "rank": 431,
+      "name": "Democratic",
+      "frequency": 180,
+      "label": "NORP"
+    },
+    {
+      "rank": 432,
+      "name": "Muhammad",
+      "frequency": 178,
+      "label": "PERSON"
+    },
+    {
+      "rank": 433,
+      "name": "ADA",
+      "frequency": 178,
+      "label": "ORG"
+    },
+    {
+      "rank": 434,
+      "name": "Detroit",
+      "frequency": 178,
+      "label": "GPE"
+    },
+    {
+      "rank": 435,
+      "name": "Portland",
+      "frequency": 178,
+      "label": "GPE"
+    },
+    {
+      "rank": 436,
+      "name": "Roosevelt",
+      "frequency": 178,
+      "label": "PERSON"
+    },
+    {
+      "rank": 437,
+      "name": "Stalin",
+      "frequency": 178,
+      "label": "PERSON"
+    },
+    {
+      "rank": 438,
+      "name": "Madagascar",
+      "frequency": 177,
+      "label": "GPE"
+    },
+    {
+      "rank": 439,
+      "name": "Time",
+      "frequency": 177,
+      "label": "ORG"
+    },
+    {
+      "rank": 440,
+      "name": "SAT",
+      "frequency": 177,
+      "label": "ORG"
+    },
+    {
+      "rank": 441,
+      "name": "Palestinian",
+      "frequency": 177,
+      "label": "NORP"
+    },
+    {
+      "rank": 442,
+      "name": "North Africa",
+      "frequency": 176,
+      "label": "GPE"
+    },
+    {
+      "rank": 443,
+      "name": "Delaware",
+      "frequency": 176,
+      "label": "GPE"
+    },
+    {
+      "rank": 444,
+      "name": "Indonesian",
+      "frequency": 176,
+      "label": "NORP"
+    },
+    {
+      "rank": 445,
+      "name": "CA",
+      "frequency": 176,
+      "label": "PRODUCT"
+    },
+    {
+      "rank": 446,
+      "name": "R.",
+      "frequency": 175,
+      "label": "NORP"
+    },
+    {
+      "rank": 447,
+      "name": "South African",
+      "frequency": 174,
+      "label": "NORP"
+    },
+    {
+      "rank": 448,
+      "name": "Rhode Island",
+      "frequency": 173,
+      "label": "GPE"
+    },
+    {
+      "rank": 449,
+      "name": "Jew",
+      "frequency": 173,
+      "label": "NORP"
+    },
+    {
+      "rank": 450,
+      "name": "Stanford University",
+      "frequency": 173,
+      "label": "ORG"
+    },
+    {
+      "rank": 451,
+      "name": "XML",
+      "frequency": 172,
+      "label": "ORG"
+    },
+    {
+      "rank": 452,
+      "name": "Costa Rica",
+      "frequency": 172,
+      "label": "GPE"
+    },
+    {
+      "rank": 453,
+      "name": "GM",
+      "frequency": 171,
+      "label": "ORG"
+    },
+    {
+      "rank": 454,
+      "name": "Biblical",
+      "frequency": 171,
+      "label": "ORG"
+    },
+    {
+      "rank": 455,
+      "name": "Martin",
+      "frequency": 171,
+      "label": "ORG"
+    },
+    {
+      "rank": 456,
+      "name": "Idaho",
+      "frequency": 170,
+      "label": "GPE"
+    },
+    {
+      "rank": 457,
+      "name": "Gospel",
+      "frequency": 170,
+      "label": "PERSON"
+    },
+    {
+      "rank": 458,
+      "name": "USGS",
+      "frequency": 170,
+      "label": "ORG"
+    },
+    {
+      "rank": 459,
+      "name": "Library",
+      "frequency": 170,
+      "label": "PERSON"
+    },
+    {
+      "rank": 460,
+      "name": "Hollywood",
+      "frequency": 169,
+      "label": "GPE"
+    },
+    {
+      "rank": 461,
+      "name": "Panama",
+      "frequency": 168,
+      "label": "GPE"
+    },
+    {
+      "rank": 462,
+      "name": "Bush",
+      "frequency": 168,
+      "label": "PERSON"
+    },
+    {
+      "rank": 463,
+      "name": "Brain",
+      "frequency": 167,
+      "label": "ORG"
+    },
+    {
+      "rank": 464,
+      "name": "Latin American",
+      "frequency": 167,
+      "label": "NORP"
+    },
+    {
+      "rank": 465,
+      "name": "Czech",
+      "frequency": 167,
+      "label": "NORP"
+    },
+    {
+      "rank": 466,
+      "name": "Medicaid",
+      "frequency": 167,
+      "label": "ORG"
+    },
+    {
+      "rank": 467,
+      "name": "ABC",
+      "frequency": 167,
+      "label": "ORG"
+    },
+    {
+      "rank": 468,
+      "name": "Anglo",
+      "frequency": 166,
+      "label": "NORP"
+    },
+    {
+      "rank": 469,
+      "name": "The New York Times",
+      "frequency": 165,
+      "label": "ORG"
+    },
+    {
+      "rank": 470,
+      "name": "USSR",
+      "frequency": 165,
+      "label": "GPE"
+    },
+    {
+      "rank": 471,
+      "name": "Persia",
+      "frequency": 165,
+      "label": "GPE"
+    },
+    {
+      "rank": 472,
+      "name": "Discovery",
+      "frequency": 165,
+      "label": "PRODUCT"
+    },
+    {
+      "rank": 473,
+      "name": "United Nations",
+      "frequency": 165,
+      "label": "ORG"
+    },
+    {
+      "rank": 474,
+      "name": "Cuban",
+      "frequency": 164,
+      "label": "NORP"
+    },
+    {
+      "rank": 475,
+      "name": "Thomas Jefferson",
+      "frequency": 163,
+      "label": "PERSON"
+    },
+    {
+      "rank": 476,
+      "name": "GHG",
+      "frequency": 163,
+      "label": "ORG"
+    },
+    {
+      "rank": 477,
+      "name": "APA",
+      "frequency": 163,
+      "label": "ORG"
+    },
+    {
+      "rank": 478,
+      "name": "Achilles",
+      "frequency": 162,
+      "label": "GPE"
+    },
+    {
+      "rank": 479,
+      "name": "Manhattan",
+      "frequency": 162,
+      "label": "GPE"
+    },
+    {
+      "rank": 480,
+      "name": "Kepler",
+      "frequency": 162,
+      "label": "PERSON"
+    },
+    {
+      "rank": 481,
+      "name": "Barack Obama",
+      "frequency": 162,
+      "label": "PERSON"
+    },
+    {
+      "rank": 482,
+      "name": "Webster",
+      "frequency": 161,
+      "label": "PERSON"
+    },
+    {
+      "rank": 483,
+      "name": "Bill",
+      "frequency": 161,
+      "label": "PERSON"
+    },
+    {
+      "rank": 484,
+      "name": "CSS",
+      "frequency": 160,
+      "label": "ORG"
+    },
+    {
+      "rank": 485,
+      "name": "Dublin",
+      "frequency": 160,
+      "label": "GPE"
+    },
+    {
+      "rank": 486,
+      "name": "Vitamin C",
+      "frequency": 159,
+      "label": "PERSON"
+    },
+    {
+      "rank": 487,
+      "name": "New Hampshire",
+      "frequency": 158,
+      "label": "GPE"
+    },
+    {
+      "rank": 488,
+      "name": "C++",
+      "frequency": 158,
+      "label": "PERSON"
+    },
+    {
+      "rank": 489,
+      "name": "Romania",
+      "frequency": 158,
+      "label": "GPE"
+    },
+    {
+      "rank": 490,
+      "name": "NSF",
+      "frequency": 158,
+      "label": "ORG"
+    },
+    {
+      "rank": 491,
+      "name": "Arabs",
+      "frequency": 157,
+      "label": "NORP"
+    },
+    {
+      "rank": 492,
+      "name": "DOE",
+      "frequency": 157,
+      "label": "ORG"
+    },
+    {
+      "rank": 493,
+      "name": "PCB",
+      "frequency": 157,
+      "label": "ORG"
+    },
+    {
+      "rank": 494,
+      "name": "FAO",
+      "frequency": 155,
+      "label": "ORG"
+    },
+    {
+      "rank": 495,
+      "name": "Bulgaria",
+      "frequency": 154,
+      "label": "GPE"
+    },
+    {
+      "rank": 496,
+      "name": "Richmond",
+      "frequency": 154,
+      "label": "GPE"
+    },
+    {
+      "rank": 497,
+      "name": "Fukushima",
+      "frequency": 154,
+      "label": "PERSON"
+    },
+    {
+      "rank": 498,
+      "name": "Pharaoh",
+      "frequency": 153,
+      "label": "GPE"
+    },
+    {
+      "rank": 499,
+      "name": "Copenhagen",
+      "frequency": 153,
+      "label": "ORG"
+    },
+    {
+      "rank": 500,
+      "name": "Turks",
+      "frequency": 153,
+      "label": "NORP"
+    }
+  ]
+}
