@@ -64,9 +64,11 @@ class TestExactEncoding:
         assert ids[0] == get_primitive_by_name("SOMEONE").id
         assert get_primitive_by_name("TEACH").id in ids
 
-    def test_dont_gets_dedicated_token(self, tok: Tokenizer) -> None:
+    def test_dont_expands_to_do_not(self, tok: Tokenizer) -> None:
         ids = tok.encode("don't")
-        assert ids == [CONTRACTION_TOKENS["don't"]]
+        do_ids = tok.encode("do")
+        not_ids = tok.encode("not")
+        assert ids == do_ids + not_ids
 
     def test_articles_produce_nothing(self, tok: Tokenizer) -> None:
         assert tok.encode("the") == []
@@ -104,9 +106,9 @@ class TestExactDecoding:
         ids = tok.encode("teacher")
         assert tok.decode(ids) == "teacher"
 
-    def test_dont_decodes_to_dont(self, tok: Tokenizer) -> None:
+    def test_dont_decodes_to_do_not(self, tok: Tokenizer) -> None:
         ids = tok.encode("don't")
-        assert tok.decode(ids) == "don't"
+        assert tok.decode(ids) == "do not"
 
 
 # ── Byte fallback: lossless roundtrip ─────────────────────────────────────────
@@ -287,3 +289,40 @@ class TestNGSLSingleTokens:
         """Rare technical words should still use composition, not direct tokens."""
         ids = tok.encode("photosynthesis")
         assert len(ids) > 1
+
+
+class TestContractionExpansion:
+    """Contractions expand to full semantic words, not fragments."""
+
+    def test_wont_expands_to_will_not(self, tok: Tokenizer) -> None:
+        ids = tok.encode("won't")
+        will_ids = tok.encode("will")
+        not_ids = tok.encode("not")
+        assert ids == will_ids + not_ids
+
+    def test_dont_expands_to_do_not(self, tok: Tokenizer) -> None:
+        ids = tok.encode("don't")
+        assert ids == tok.encode("do") + tok.encode("not")
+
+    def test_not_unified(self, tok: Tokenizer) -> None:
+        """'not', 'don't', 'won't' all contain the same NOT token."""
+        not_id = tok.encode("not")[0]
+        assert not_id in tok.encode("don't")
+        assert not_id in tok.encode("won't")
+        assert not_id in tok.encode("can't")
+        assert not_id in tok.encode("isn't")
+
+    def test_possessive_not_expanded(self, tok: Tokenizer) -> None:
+        """'John's' keeps possessive marker, not expanded."""
+        ids = tok.encode("John's")
+        # Should NOT contain "is" token
+        is_ids = tok.encode("is")
+        assert is_ids[0] not in ids
+
+    def test_case_insensitive(self, tok: Tokenizer) -> None:
+        assert tok.encode("don't") == tok.encode("Don't") == tok.encode("DON'T")
+
+    def test_contraction_fewer_tokens_than_bytes(self, tok: Tokenizer) -> None:
+        """Expanded contraction should be 2 tokens, not 6-10 byte tokens."""
+        ids = tok.encode("won't")
+        assert len(ids) == 2
