@@ -457,6 +457,20 @@ def main() -> None:
             supplementary = json.load(f)
         all_compositions.update(supplementary)
 
+    # Load auto-generated compositions (from WordNet)
+    auto_path = _DATA_DIR / "auto_compositions.json"
+    if auto_path.exists():
+        with open(auto_path) as f:
+            auto = json.load(f)
+        auto_count = 0
+        for word, prims in auto.items():
+            if word.startswith("_") or not isinstance(prims, list):
+                continue
+            if word not in all_compositions:
+                all_compositions[word] = prims
+                auto_count += 1
+        print(f"  (loaded {auto_count} auto-compositions from WordNet)")
+
     for word, names in all_compositions.items():
         valid = all(n in prim_names for n in names)
         if not valid:

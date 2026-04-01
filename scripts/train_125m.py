@@ -101,10 +101,12 @@ class TransformerBlock(nn.Module):
 
 class GPT(nn.Module):
     def __init__(self, vocab_size: int, d_model: int, n_layers: int,
-                 n_heads: int, d_ff: int, max_seq_len: int):
+                 n_heads: int, d_ff: int, max_seq_len: int,
+                 n_tiers: int = 0):
         super().__init__()
         self.tok_emb = nn.Embedding(vocab_size, d_model)
         self.pos_emb = nn.Embedding(max_seq_len, d_model)
+        self.tier_emb = nn.Embedding(n_tiers, d_model) if n_tiers > 0 else None
         self.blocks = nn.ModuleList([
             TransformerBlock(d_model, n_heads, d_ff, max_seq_len)
             for _ in range(n_layers)
@@ -124,10 +126,12 @@ class GPT(nn.Module):
             elif isinstance(m, nn.Embedding):
                 nn.init.normal_(m.weight, mean=0.0, std=0.02)
 
-    def forward(self, idx: torch.Tensor) -> torch.Tensor:
+    def forward(self, idx: torch.Tensor, tier_ids: torch.Tensor | None = None) -> torch.Tensor:
         B, T = idx.shape
         pos = torch.arange(T, device=idx.device).unsqueeze(0)
         x = self.tok_emb(idx) + self.pos_emb(pos)
+        if self.tier_emb is not None and tier_ids is not None:
+            x = x + self.tier_emb(tier_ids)
         for block in self.blocks:
             x = block(x)
         x = self.norm(x)
@@ -142,21 +146,29 @@ class GPT(nn.Module):
 class TokenDataset:
     """Memory-mapped token dataset for efficient loading."""
 
-    def __init__(self, bin_path: str, seq_len: int):
+    def __init__(self, bin_path: str, seq_len: int, tier_path: str | None = None):
         self.data = np.memmap(bin_path, dtype=np.uint16, mode="r")
+        self.tiers = np.memmap(tier_path, dtype=np.uint8, mode="r") if tier_path else None
         self.seq_len = seq_len
 
     def __len__(self) -> int:
         return max(0, len(self.data) - self.seq_len - 1)
 
-    def get_batch(self, batch_size: int, device: str) -> torch.Tensor:
-        """Get a random batch of sequences."""
+    def get_batch(self, batch_size: int, device: str) -> tuple[torch.Tensor, torch.Tensor | None]:
+        """Get a random batch of (tokens, tier_ids). tier_ids is None if no tier data."""
         ix = torch.randint(len(self), (batch_size,))
         x = torch.stack([
             torch.from_numpy(self.data[i:i + self.seq_len + 1].astype(np.int64))
             for i in ix
         ])
-        return x.to(device)
+        t = None
+        if self.tiers is not None:
+            t = torch.stack([
+                torch.from_numpy(self.tiers[i:i + self.seq_len + 1].astype(np.int64))
+                for i in ix
+            ])
+            t = t.to(device)
+        return x.to(device), t
 
 
 # ── BPB computation ───────────────────────────────────────────────────────────
@@ -180,18 +192,19 @@ def compute_bpb(model: GPT, dataset: TokenDataset, total_bytes: int,
     n_tokens = 0
 
     for _ in range(max_batches):
-        batch = dataset.get_batch(batch_size, device)
-        logits = model(batch[:, :-1])
+        tokens, tiers = dataset.get_batch(batch_size, device)
+        tier_input = tiers[:, :-1] if tiers is not None else None
+        logits = model(tokens[:, :-1], tier_ids=tier_input)
+        # BPB eval is always unweighted (no byte downweighting)
         loss = F.cross_entropy(
             logits.reshape(-1, logits.size(-1)),
-            batch[:, 1:].reshape(-1),
+            tokens[:, 1:].reshape(-1),
             reduction="sum",
         )
         total_loss += loss.item()
-        n_tokens += batch[:, 1:].numel()
+        n_tokens += tokens[:, 1:].numel()
 
     avg_loss = total_loss / n_tokens
-    # Scale avg per-token loss to per-byte bits using the full val set ratio
     tokens_per_byte = total_val_tokens / total_bytes
     bpb = avg_loss * tokens_per_byte / math.log(2)
     model.train()
@@ -213,21 +226,28 @@ def get_lr(step: int, warmup: int, max_lr: float, min_lr: float, total_steps: in
 # ── Main training loop ───────────────────────────────────────────────────────
 
 def train(tokenizer_name: str, data_dir: Path, device: str,
-          batch_size: int, seq_len: int, max_steps: int | None) -> None:
+          batch_size: int, seq_len: int, max_steps: int | None,
+          v2: bool = False, byte_weight: float = 1.0) -> None:
     """Train a 125M GPT model."""
 
     # Load metadata
     with open(data_dir / "meta.json") as f:
         meta = json.load(f)
 
+    use_tiers = v2 and tokenizer_name == "primoji"
+
     if tokenizer_name == "primoji":
         vocab_size = meta["primoji_vocab_size"]
         train_path = data_dir / "primoji_train.bin"
         val_path = data_dir / "primoji_val.bin"
+        train_tier_path = data_dir / "primoji_tiers_train.bin" if use_tiers else None
+        val_tier_path = data_dir / "primoji_tiers_val.bin" if use_tiers else None
     else:
         vocab_size = meta["mistral_vocab_size"]
         train_path = data_dir / "mistral_train.bin"
         val_path = data_dir / "mistral_val.bin"
+        train_tier_path = None
+        val_tier_path = None
 
     val_bytes_path = data_dir / "byte_counts_val.bin"
     val_byte_counts = np.fromfile(str(val_bytes_path), dtype=np.int64)
@@ -241,20 +261,23 @@ def train(tokenizer_name: str, data_dir: Path, device: str,
         "n_heads": 12,
         "d_ff": 3072,
         "max_seq_len": seq_len,
+        "n_tiers": 5 if use_tiers else 0,
     }
 
     # Training config
     max_lr = 6e-4
     min_lr = 6e-5
-    warmup_steps = 200
+    warmup_steps = 2000
     weight_decay = 0.1
     grad_clip = 1.0
     eval_interval = 200  # steps
     log_interval = 20
 
     # Dataset
-    train_ds = TokenDataset(str(train_path), seq_len)
-    val_ds = TokenDataset(str(val_path), seq_len)
+    train_tier_str = str(train_tier_path) if train_tier_path and train_tier_path.exists() else None
+    val_tier_str = str(val_tier_path) if val_tier_path and val_tier_path.exists() else None
+    train_ds = TokenDataset(str(train_path), seq_len, tier_path=train_tier_str)
+    val_ds = TokenDataset(str(val_path), seq_len, tier_path=val_tier_str)
     total_val_tokens = len(val_ds.data)
 
     n_train_tokens = len(train_ds.data)
@@ -317,14 +340,27 @@ def train(tokenizer_name: str, data_dir: Path, device: str,
             pg["lr"] = lr
 
         # Forward/backward
-        batch = train_ds.get_batch(batch_size, device)
+        tokens, tiers = train_ds.get_batch(batch_size, device)
+        tier_input = tiers[:, :-1] if tiers is not None else None
         with torch.amp.autocast(device_type=device if device != "mps" else "cpu",
                                 dtype=amp_dtype, enabled=use_amp):
-            logits = model(batch[:, :-1])
-            loss = F.cross_entropy(
-                logits.reshape(-1, logits.size(-1)),
-                batch[:, 1:].reshape(-1),
-            )
+            logits = model(tokens[:, :-1], tier_ids=tier_input)
+            if use_tiers and byte_weight < 1.0 and tiers is not None:
+                # Weighted loss: downweight byte tokens
+                ce = F.cross_entropy(
+                    logits.reshape(-1, logits.size(-1)),
+                    tokens[:, 1:].reshape(-1),
+                    reduction="none",
+                )
+                weights = torch.ones_like(ce)
+                byte_mask = (tiers[:, 1:].reshape(-1) == 4)
+                weights[byte_mask] = byte_weight
+                loss = (ce * weights).sum() / weights.sum()
+            else:
+                loss = F.cross_entropy(
+                    logits.reshape(-1, logits.size(-1)),
+                    tokens[:, 1:].reshape(-1),
+                )
 
         if device == "cuda":
             scaler.scale(loss).backward()
@@ -403,6 +439,10 @@ def main() -> None:
     parser.add_argument("--seq-len", type=int, default=1024)
     parser.add_argument("--max-steps", type=int, default=None)
     parser.add_argument("--device", type=str, default=None)
+    parser.add_argument("--v2", action="store_true",
+                        help="Enable tier embeddings + byte loss downweighting (primoji only)")
+    parser.add_argument("--byte-weight", type=float, default=0.3,
+                        help="Loss weight for byte-fallback tokens in v2 mode (default: 0.3)")
     args = parser.parse_args()
 
     if args.device is None:
@@ -414,7 +454,8 @@ def main() -> None:
             args.device = "cpu"
 
     train(args.tokenizer, Path(args.data_dir), args.device,
-          args.batch_size, args.seq_len, args.max_steps)
+          args.batch_size, args.seq_len, args.max_steps,
+          v2=args.v2, byte_weight=args.byte_weight)
 
 
 if __name__ == "__main__":

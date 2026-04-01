@@ -77,6 +77,7 @@ def main() -> None:
         print(f"\nTokenizing {split_name} ({n_split} docs)...", flush=True)
 
         p_file = open(out / f"primoji_{split_name}.bin", "wb")
+        pt_file = open(out / f"primoji_tiers_{split_name}.bin", "wb")
         m_file = open(out / f"mistral_{split_name}.bin", "wb")
         b_file = open(out / f"byte_counts_{split_name}.bin", "wb")
 
@@ -100,6 +101,28 @@ def main() -> None:
                 p_ids = primoji_tok.encode(doc)
                 p_ids.append(primoji_eos)
                 p_file.write(np.array(p_ids, dtype=np.uint16).tobytes())
+                # Generate tier IDs for each token
+                from primoji.byte_fallback import BYTE_TOKEN_OFFSET, is_byte_token, is_byte_boundary
+                tier_ids = []
+                for tid in p_ids:
+                    if 0 <= tid <= 1199:
+                        tier_ids.append(0)  # emoji
+                    elif 1200 <= tid <= 1331:
+                        tier_ids.append(2)  # primitive
+                    elif is_byte_token(tid) or is_byte_boundary(tid):
+                        tier_ids.append(4)  # byte
+                    elif tid == primoji_eos:
+                        tier_ids.append(3)  # structural
+                    else:
+                        # Check if word token or structural
+                        from primoji.utils import _IDS
+                        ws = _IDS["WORD_START"]
+                        wc = _IDS["WORD_COUNT"]
+                        if ws <= tid < ws + wc:
+                            tier_ids.append(1)  # word
+                        else:
+                            tier_ids.append(3)  # structural
+                pt_file.write(np.array(tier_ids, dtype=np.uint8).tobytes())
                 p_total += len(p_ids)
 
                 # Mistral BPE
@@ -119,6 +142,7 @@ def main() -> None:
                     print(f"  {doc_idx}/{n_split} docs ({rate:.0f} docs/s)", flush=True)
 
         p_file.close()
+        pt_file.close()
         m_file.close()
         b_file.close()
 
