@@ -33,11 +33,11 @@ class TestPrimitives:
     """Verify the 132 primitives from primitives.json are loaded correctly."""
 
     def test_count(self) -> None:
-        assert len(PRIMITIVES) == 132
+        assert len(PRIMITIVES) == 140
 
     def test_ids_sequential(self) -> None:
         ids = [p.id for p in PRIMITIVES]
-        assert ids == list(range(1200, 1332))
+        assert ids == list(range(1200, 1340))
 
     def test_v02_primes_present(self) -> None:
         """Key v0.2 additions must be loadable."""
