@@ -28978,5 +28978,364 @@
     "aneurysm",
     "boreal",
     "segmentation"
+  ],
+  "curriculum": [
+    "TEACH",
+    "ORDER",
+    "WORDS"
+  ],
+  "criteria": [
+    "MEASURE",
+    "TRUE",
+    "SET"
+  ],
+  "phenomenon": [
+    "HAPPEN",
+    "SEE"
+  ],
+  "bacteria": [
+    "LIVE",
+    "SMALL",
+    "MANY"
+  ],
+  "gene": [
+    "LIVE",
+    "PART",
+    "PATTERN"
+  ],
+  "ecosystem": [
+    "LIVE",
+    "EARTH",
+    "CONNECT"
+  ],
+  "asthma": [
+    "AIR",
+    "BODY",
+    "BAD"
+  ],
+  "acid": [
+    "MATTER",
+    "SHARP"
+  ],
+  "ratio": [
+    "NUMBER",
+    "DIVIDE"
+  ],
+  "spectrum": [
+    "LIGHT",
+    "ORDER",
+    "MANY"
+  ],
+  "voltage": [
+    "ENERGY",
+    "MEASURE"
+  ],
+  "essay": [
+    "WRITE",
+    "THINK",
+    "WORDS"
+  ],
+  "innovation": [
+    "CREATE",
+    "BEGIN",
+    "THINK"
+  ],
+  "domain": [
+    "WHERE",
+    "POWER"
+  ],
+  "symptoms": [
+    "BODY",
+    "BAD",
+    "SEE"
+  ],
+  "infection": [
+    "LIVE",
+    "SMALL",
+    "BAD"
+  ],
+  "infections": [
+    "LIVE",
+    "SMALL",
+    "BAD"
+  ],
+  "illness": [
+    "BODY",
+    "BAD"
+  ],
+  "syndrome": [
+    "BODY",
+    "BAD",
+    "PATTERN"
+  ],
+  "infected": [
+    "LIVE",
+    "SMALL",
+    "BAD"
+  ],
+  "fever": [
+    "BODY",
+    "HOT",
+    "BAD"
+  ],
+  "flu": [
+    "BODY",
+    "BAD",
+    "AIR"
+  ],
+  "hiv": [
+    "LIVE",
+    "SMALL",
+    "BAD",
+    "BODY"
+  ],
+  "inflammation": [
+    "BODY",
+    "HOT",
+    "BAD"
+  ],
+  "respiratory": [
+    "AIR",
+    "BODY"
+  ],
+  "researchers": [
+    "SOMEONE",
+    "KNOW",
+    "DO"
+  ],
+  "examine": [
+    "SEE",
+    "KNOW"
+  ],
+  "scholars": [
+    "SOMEONE",
+    "KNOW",
+    "TEACH"
+  ],
+  "investigate": [
+    "SEE",
+    "KNOW",
+    "DO"
+  ],
+  "exploration": [
+    "MOVE",
+    "SEE",
+    "KNOW"
+  ],
+  "electrical": [
+    "ENERGY",
+    "MOVE"
+  ],
+  "circuit": [
+    "ENERGY",
+    "MOVE",
+    "PATTERN"
+  ],
+  "magnetic": [
+    "ENERGY",
+    "MATTER",
+    "MOVE"
+  ],
+  "electrode": [
+    "ENERGY",
+    "MATTER"
+  ],
+  "oxygen": [
+    "AIR",
+    "MATTER"
+  ],
+  "calcium": [
+    "HARD",
+    "MATTER"
+  ],
+  "hydrogen": [
+    "WATER",
+    "MATTER"
+  ],
+  "nitrogen": [
+    "AIR",
+    "MATTER"
+  ],
+  "acids": [
+    "MATTER",
+    "SHARP"
+  ],
+  "molecules": [
+    "MATTER",
+    "SMALL",
+    "CONNECT"
+  ],
+  "molecular": [
+    "MATTER",
+    "SMALL"
+  ],
+  "toxic": [
+    "MATTER",
+    "BAD"
+  ],
+  "nutrients": [
+    "EAT",
+    "MATTER",
+    "GOOD"
+  ],
+  "components": [
+    "PART",
+    "MANY"
+  ],
+  "component": [
+    "PART",
+    "ONE"
+  ],
+  "vital": [
+    "LIVE",
+    "VERY"
+  ],
+  "minerals": [
+    "EARTH",
+    "MATTER",
+    "HARD"
+  ],
+  "copper": [
+    "EARTH",
+    "MATTER"
+  ],
+  "compounds": [
+    "MATTER",
+    "CONNECT"
+  ],
+  "commonly": [
+    "MANY",
+    "PATTERN"
+  ],
+  "primarily": [
+    "ONE",
+    "BIG"
+  ],
+  "increasingly": [
+    "MORE",
+    "CHANGE"
+  ],
+  "naturally": [
+    "LIVE",
+    "PATTERN"
+  ],
+  "potentially": [
+    "MAYBE",
+    "CAN"
+  ],
+  "rapidly": [
+    "MOVE",
+    "VERY"
+  ],
+  "essentially": [
+    "PART",
+    "BIG"
+  ],
+  "necessarily": [
+    "WANT",
+    "VERY",
+    "TRUE"
+  ],
+  "greatly": [
+    "BIG",
+    "VERY"
+  ],
+  "carefully": [
+    "GOOD",
+    "DO"
+  ],
+  "successfully": [
+    "GOOD",
+    "RESULT"
+  ],
+  "gradually": [
+    "CHANGE",
+    "SMALL"
+  ],
+  "strongly": [
+    "POWER",
+    "VERY"
+  ],
+  "rarely": [
+    "FEW",
+    "TIME"
+  ],
+  "merely": [
+    "ONE",
+    "SMALL"
+  ],
+  "precisely": [
+    "EQUAL",
+    "VERY"
+  ],
+  "conservation": [
+    "EARTH",
+    "HOLD",
+    "GOOD"
+  ],
+  "emissions": [
+    "AIR",
+    "SEND",
+    "BAD"
+  ],
+  "sustainable": [
+    "LIVE",
+    "LONG_TIME",
+    "GOOD"
+  ],
+  "greenhouse": [
+    "HOME",
+    "PLANT",
+    "HOT"
+  ],
+  "renewable": [
+    "ENERGY",
+    "PATTERN",
+    "LIVE"
+  ],
+  "coastal": [
+    "WATER",
+    "EARTH",
+    "SIDE"
+  ],
+  "genetic": [
+    "LIVE",
+    "PART",
+    "PATTERN"
+  ],
+  "genes": [
+    "LIVE",
+    "PART",
+    "PATTERN"
+  ],
+  "ear": [
+    "HEAR",
+    "BODY"
+  ],
+  "nerve": [
+    "BODY",
+    "FEEL",
+    "CONNECT"
+  ],
+  "nervous": [
+    "BODY",
+    "FEEL"
+  ],
+  "visual": [
+    "SEE",
+    "LIGHT"
+  ],
+  "radiation": [
+    "LIGHT",
+    "ENERGY",
+    "SEND"
+  ],
+  "visible": [
+    "SEE",
+    "CAN"
+  ],
+  "format": [
+    "ORDER",
+    "SEE"
   ]
 }
