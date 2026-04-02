@@ -158,6 +158,14 @@ _PRIMITIVE_SYNONYMS: dict[str, list[str]] = {
     "LINE": ["line"], "HEAVY": ["heavy", "weight", "massive"],
     "LOVE": ["love", "affection", "adore"],
     "FEAR": ["fear", "afraid", "scared", "dread", "terror"],
+    "HEALTH": ["health", "medical", "disease", "illness", "sick"],
+    "SUBSTANCE": ["substance", "chemical", "element", "compound"],
+    "DEGREE": ["degree", "extent", "level"],
+    "ENVIRONMENT": ["environment", "ecology", "ecosystem"],
+    "BODY_PART": ["organ", "tissue", "nerve", "muscle"],
+    "VISIBLE": ["visible", "visual", "appearance"],
+    "STUDY": ["research", "study", "investigate", "examine"],
+    "ELECTRIC": ["electric", "electrical", "circuit", "voltage"],
 }
 
 # ── Composition table ────────────────────────────────────────────────────────
@@ -493,6 +501,9 @@ def main() -> None:
             if w in entries:
                 existing = entries[w]
                 if existing == []:  # Don't override dropped words
+                    continue
+                # Don't override single-primitive mappings (keeps reverse lookup working)
+                if len(existing) == 1 and existing[0].get("type") == "primitive":
                     continue
                 if existing != ref:
                     l4b_overrides += 1
