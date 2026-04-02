@@ -19,6 +19,7 @@ from primoji.dictionary import Dictionary
 from primoji.fuzzy import FuzzyMatcher
 from primoji.math_handler import is_math_expression
 from primoji.preprocessor import Preprocessor
+from primoji.primitives import PRIMITIVES
 from primoji.utils import SpecialTokens, _IDS, normalize_text
 from primoji.vocabulary import (
     ANCHOR_TOKENS,
@@ -29,6 +30,8 @@ from primoji.vocabulary import (
     PUNCTUATION_IDS,
     Vocabulary,
 )
+
+_PRIM_ID_MAX = 1200 + len(PRIMITIVES) - 1
 
 
 class Tokenizer:
@@ -221,7 +224,7 @@ class Tokenizer:
                 tid = result[0]
                 if 0 <= tid <= 1199:
                     return "tier1_emoji"
-                elif 1200 <= tid <= 1331:
+                elif 1200 <= tid <= _PRIM_ID_MAX:
                     return "tier2_primitive"
                 elif _IDS["WORD_START"] <= tid < _IDS["WORD_START"] + _IDS["WORD_COUNT"]:
                     return "tier1b_word"

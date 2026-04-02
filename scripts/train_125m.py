@@ -99,12 +99,65 @@ class TransformerBlock(nn.Module):
         return x
 
 
+class CompositionalEmbedding(nn.Module):
+    """Embedding where alias tokens compose from primitive embeddings.
+
+    Normal tokens: standard learned embedding.
+    Alias tokens (grammar words): mean of their primitive component embeddings.
+    Primitive embeddings are learned, so aliases update through them.
+    """
+
+    def __init__(self, vocab_size: int, d_model: int,
+                 alias_map: dict[int, list[int]] | None = None):
+        super().__init__()
+        self.embedding = nn.Embedding(vocab_size, d_model)
+        self._alias_map = alias_map or {}
+
+        if self._alias_map:
+            # Pre-compute for efficient forward
+            max_prims = max(len(p) for p in self._alias_map.values())
+            tok_ids = []
+            prim_matrix = []
+            counts = []
+            for tid, pids in self._alias_map.items():
+                tok_ids.append(tid)
+                padded = pids + [0] * (max_prims - len(pids))
+                prim_matrix.append(padded)
+                counts.append(len(pids))
+            self.register_buffer("_alias_toks",
+                torch.tensor(tok_ids, dtype=torch.long))
+            self.register_buffer("_alias_prims",
+                torch.tensor(prim_matrix, dtype=torch.long))
+            self.register_buffer("_alias_counts",
+                torch.tensor(counts, dtype=torch.float).unsqueeze(-1))
+
+    @property
+    def weight(self):
+        return self.embedding.weight
+
+    def forward(self, x: torch.Tensor) -> torch.Tensor:
+        emb = self.embedding(x)
+        if not self._alias_map:
+            return emb
+        # Replace alias token embeddings with composed primitive embeddings
+        for i in range(len(self._alias_toks)):
+            tid = self._alias_toks[i].item()
+            mask = (x == tid)
+            if mask.any():
+                n = int(self._alias_counts[i].item())
+                pids = self._alias_prims[i, :n]
+                composed = self.embedding.weight[pids].mean(dim=0)
+                emb = emb.masked_scatter(mask.unsqueeze(-1).expand_as(emb),
+                                          composed.expand(mask.sum(), -1))
+        return emb
+
+
 class GPT(nn.Module):
     def __init__(self, vocab_size: int, d_model: int, n_layers: int,
                  n_heads: int, d_ff: int, max_seq_len: int,
-                 n_tiers: int = 0):
+                 n_tiers: int = 0, alias_map: dict[int, list[int]] | None = None):
         super().__init__()
-        self.tok_emb = nn.Embedding(vocab_size, d_model)
+        self.tok_emb = CompositionalEmbedding(vocab_size, d_model, alias_map)
         self.pos_emb = nn.Embedding(max_seq_len, d_model)
         self.tier_emb = nn.Embedding(n_tiers, d_model) if n_tiers > 0 else None
         self.blocks = nn.ModuleList([
@@ -253,6 +306,18 @@ def train(tokenizer_name: str, data_dir: Path, device: str,
     val_byte_counts = np.fromfile(str(val_bytes_path), dtype=np.int64)
     total_val_bytes = int(val_byte_counts.sum())
 
+    # Build alias map for compositional embeddings (v6)
+    alias_map = None
+    if v2 and tokenizer_name == "primoji":
+        try:
+            from primoji.alias_map import build_alias_map
+            from primoji import Tokenizer as PT
+            pt = PT(fuzzy=False)
+            alias_map = build_alias_map(pt.encode)
+            print(f"Alias map: {len(alias_map)} grammar words with compositional embeddings")
+        except Exception as e:
+            print(f"Warning: could not build alias map: {e}")
+
     # Model config: GPT-2 125M style
     config = {
         "vocab_size": vocab_size,
@@ -262,6 +327,7 @@ def train(tokenizer_name: str, data_dir: Path, device: str,
         "d_ff": 3072,
         "max_seq_len": seq_len,
         "n_tiers": 5 if use_tiers else 0,
+        "alias_map": alias_map,
     }
 
     # Training config
