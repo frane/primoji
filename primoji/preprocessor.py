@@ -100,7 +100,8 @@ class Preprocessor:
         1. Unicode NFC normalization
         2. Apostrophe variant normalization
         3. Word tokenization
-        4. Contraction expansion ("won't" -> ["will", "not"])
+        4. Hyphen splitting ("insulin-deprived" -> ["insulin", "deprived"])
+        5. Contraction expansion ("won't" -> ["will", "not"])
         """
         text = self.normalize_unicode(text)
         text = re.sub(r"\s+", " ", text).strip()
@@ -111,8 +112,25 @@ class Preprocessor:
 
         result: list[str] = []
         for word in words:
-            result.extend(self.expand_contraction(word))
+            # Split hyphens first, then expand contractions on each part
+            parts = self.split_hyphen(word)
+            for part in parts:
+                result.extend(self.expand_contraction(part))
         return result
+
+    @staticmethod
+    def split_hyphen(word: str) -> list[str]:
+        """Split hyphenated words into components.
+
+        "insulin-deprived" -> ["insulin", "deprived"]
+        "self-driving" -> ["self", "driving"]
+        "x-ray" -> ["x", "ray"]
+        "non-" -> ["non"] (trailing hyphen stripped)
+        """
+        if "-" not in word:
+            return [word]
+        parts = [p for p in word.split("-") if p]
+        return parts if parts else [word]
 
     def normalize_unicode(self, text: str) -> str:
         """NFC normalize and standardize apostrophe variants."""
