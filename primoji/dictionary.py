@@ -166,11 +166,6 @@ def _build_bootstrap() -> dict[str, list[int]]:
         "computer": [_p("MACHINE"), _p("THINK")],
         "internet": [_p("CONNECT"), _p("THERE_IS")],
         "the": [], "a": [], "an": [],
-        "is": [_p("BE")], "are": [_p("BE")],
-        "not": [_p("NOT")], "can": [_p("CAN")], "if": [_p("IF")],
-        "because": [_p("BECAUSE")], "very": [_p("VERY")], "more": [_p("MORE")],
-        "all": [_p("ALL")], "some": [_p("SOME")], "many": [_p("MANY")],
-        "with": [_p("WITH")], "for": [_p("FOR")], "about": [_p("ABOUT")],
         "explained": [_p("SAY")],
     }
 
