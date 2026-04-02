@@ -68,7 +68,7 @@ def color_for_tier(tier: str) -> str:
 
 def generate(model: GPT, tok: Tokenizer, prompt: str,
              max_tokens: int, temperature: float, top_k: int,
-             device: str, trace: bool) -> tuple[str, list[int]]:
+             device: str, trace: bool, use_tiers: bool = False) -> tuple[str, list[int]]:
     ids = tok.encode(prompt)
     if not ids:
         ids = [SpecialTokens.BOS]
@@ -77,7 +77,14 @@ def generate(model: GPT, tok: Tokenizer, prompt: str,
     with torch.no_grad():
         for _ in range(max_tokens):
             context = torch.tensor([generated[-1024:]], dtype=torch.long, device=device)
-            logits = model(context)[0, -1, :]
+            tier_ctx = None
+            if use_tiers:
+                tier_ctx = torch.tensor([[classify_id(t) for t in generated[-1024:]]], dtype=torch.long, device=device)
+                # Map tier names to ints
+                tier_map = {"emoji": 0, "word": 1, "prim": 2, "struct": 3, "byte": 4,
+                            "anchor": 3, "contraction": 3, "special": 3}
+                tier_ctx = torch.tensor([[tier_map.get(classify_id(t), 3) for t in generated[-1024:]]], dtype=torch.long, device=device)
+            logits = model(context, tier_ids=tier_ctx)[0, -1, :]
 
             if temperature > 0:
                 logits = logits / temperature
@@ -179,6 +186,7 @@ def main() -> None:
     parser.add_argument("--max-tokens", type=int, default=150)
     parser.add_argument("--device", type=str, default=None)
     parser.add_argument("--trace", action="store_true", help="Show token tiers with colors")
+    parser.add_argument("--tiers", action="store_true", help="Model has tier embeddings (v2/v3)")
     args = parser.parse_args()
 
     if args.device is None:
@@ -191,9 +199,10 @@ def main() -> None:
 
     tok = Tokenizer(fuzzy=False)
 
+    n_tiers = 5 if args.tiers else 0
     print(f"Loading model from {args.model}...", flush=True)
     model = GPT(vocab_size=tok.vocab_size, d_model=768, n_layers=12,
-                n_heads=12, d_ff=3072, max_seq_len=1024)
+                n_heads=12, d_ff=3072, max_seq_len=1024, n_tiers=n_tiers)
     model.load_state_dict(torch.load(args.model, map_location="cpu", weights_only=True))
     model = model.to(args.device).eval()
 
@@ -216,7 +225,7 @@ def main() -> None:
 
         output, new_ids = generate(model, tok, prompt, args.max_tokens,
                                    args.temperature, args.top_k, args.device,
-                                   args.trace)
+                                   args.trace, use_tiers=args.tiers)
         print(f"Model: {output}")
 
         if args.trace:
