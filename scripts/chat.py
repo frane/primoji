@@ -79,11 +79,10 @@ def generate(model: GPT, tok: Tokenizer, prompt: str,
             context = torch.tensor([generated[-1024:]], dtype=torch.long, device=device)
             tier_ctx = None
             if use_tiers:
-                tier_ctx = torch.tensor([[classify_id(t) for t in generated[-1024:]]], dtype=torch.long, device=device)
-                # Map tier names to ints
                 tier_map = {"emoji": 0, "word": 1, "prim": 2, "struct": 3, "byte": 4,
                             "anchor": 3, "contraction": 3, "special": 3}
-                tier_ctx = torch.tensor([[tier_map.get(classify_id(t), 3) for t in generated[-1024:]]], dtype=torch.long, device=device)
+                tier_ints = [tier_map.get(classify_id(t), 3) for t in generated[-1024:]]
+                tier_ctx = torch.tensor([tier_ints], dtype=torch.long, device=device)
             logits = model(context, tier_ids=tier_ctx)[0, -1, :]
 
             if temperature > 0:
