@@ -55,7 +55,7 @@ def main() -> None:
     mistral_log = load_log("mistral")
 
     if not primoji_log or not mistral_log:
-        print("Need both training logs. Run train_125m.py for both tokenizers first.")
+        print("Need both training logs. Run train.py for both tokenizers first.")
         return
 
     # Recompute BPB from val_loss (fixes any buggy early logs)

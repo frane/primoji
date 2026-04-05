@@ -206,6 +206,3 @@ class Decoder:
                 return (word, length)
         return None
 
-    def decode_semantic(self, ids: list[int]) -> str:
-        """Decode token IDs to best-effort semantic English."""
-        return self.decode_canonical(ids)

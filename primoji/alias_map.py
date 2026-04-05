@@ -1,7 +1,7 @@
 """Grammar word alias map for compositional embeddings.
 
 Maps grammar word token IDs to their primitive component IDs.
-"is" (word token) -> [BE primitive ID]
+"is" (word token) -> [BE primitive ID, NOW primitive ID]
 "was" (word token) -> [BE primitive ID, BEFORE primitive ID]
 
 The model uses these to compute grammar word embeddings as the mean
@@ -16,41 +16,43 @@ from primoji.primitives import get_primitive_by_name
 # Grammar word -> primitive decomposition (by name)
 GRAMMAR_ALIASES: dict[str, list[str]] = {
     # Copula/be verbs
-    "is": ["BE"], "are": ["BE"], "am": ["BE"],
+    "is": ["BE", "NOW"], "are": ["BE", "NOW"], "am": ["BE", "NOW"],
     "was": ["BE", "BEFORE"], "were": ["BE", "BEFORE"],
     "be": ["BE"], "been": ["BE", "BEFORE"], "being": ["BE"],
 
     # Have verbs
-    "has": ["HAVE"], "have": ["HAVE"], "had": ["HAVE", "BEFORE"],
+    "has": ["HAVE", "NOW"], "have": ["HAVE"], "had": ["HAVE", "BEFORE"],
 
     # Do verbs
-    "do": ["DO"], "does": ["DO"], "did": ["DO", "BEFORE"],
+    "do": ["DO"], "does": ["DO", "NOW"], "did": ["DO", "BEFORE"],
 
     # Modals
     "can": ["CAN"], "could": ["CAN", "BEFORE"],
-    "will": ["AFTER"], "would": ["WANT"],
-    "should": ["GOOD"], "may": ["MAYBE"],
-    "might": ["MAYBE"], "must": ["WANT", "VERY"],
+    "will": ["AFTER"], "would": ["WANT", "BEFORE"],
+    "should": ["GOOD", "DO"], "may": ["MAYBE"],
+    "might": ["MAYBE", "BEFORE"], "must": ["WANT", "VERY"],
+    "shall": ["AFTER"],
 
     # Negation
     "not": ["NOT"], "no": ["NOT"], "never": ["NOT", "TIME"],
 
     # Pronouns
-    "i": ["SOMEONE"], "me": ["SOMEONE"], "my": ["SOMEONE"],
-    "you": ["SOMEONE"], "your": ["SOMEONE"],
+    "i": ["SOMEONE", "THIS"], "me": ["SOMEONE", "THIS"],
+    "my": ["SOMEONE", "THIS"],
+    "you": ["SOMEONE", "OTHER"], "your": ["SOMEONE", "OTHER"],
     "he": ["SOMEONE"], "him": ["SOMEONE"], "his": ["SOMEONE"],
     "she": ["SOMEONE"], "her": ["SOMEONE"],
     "it": ["SOMETHING"], "its": ["SOMETHING"],
-    "we": ["SOMEONE", "MANY"], "us": ["SOMEONE", "MANY"],
-    "our": ["SOMEONE", "MANY"],
-    "they": ["SOMEONE", "MANY"], "them": ["SOMEONE", "MANY"],
-    "their": ["SOMEONE", "MANY"],
+    "we": ["SOMEONE", "THIS", "MANY"], "us": ["SOMEONE", "THIS", "MANY"],
+    "our": ["SOMEONE", "THIS", "MANY"],
+    "they": ["SOMEONE", "OTHER", "MANY"], "them": ["SOMEONE", "OTHER", "MANY"],
+    "their": ["SOMEONE", "OTHER", "MANY"],
 
     # Determiners
-    "this": ["SOMETHING"], "that": ["SOMETHING"],
-    "these": ["SOMETHING", "MANY"], "those": ["SOMETHING", "MANY"],
+    "this": ["THIS"], "that": ["OTHER"],
+    "these": ["THIS", "MANY"], "those": ["OTHER", "MANY"],
     "all": ["ALL"], "every": ["ALL"],
-    "some": ["SOME"], "each": ["ALL"],
+    "some": ["SOME"], "each": ["ALL", "ONE"],
     "any": ["SOME"], "many": ["MANY"], "few": ["FEW"],
     "much": ["BIG"], "more": ["MORE"], "most": ["MANY", "VERY"],
 
@@ -67,6 +69,7 @@ GRAMMAR_ALIASES: dict[str, list[str]] = {
 
     # Adverbs
     "very": ["VERY"], "now": ["NOW"],
+    "also": ["ADD"],
     "always": ["ALL", "TIME"], "sometimes": ["SOME", "TIME"],
     "often": ["MANY", "TIME"], "usually": ["MANY", "TIME"],
 }

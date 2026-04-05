@@ -14,15 +14,12 @@ Special rules:
 
 from __future__ import annotations
 
-import logging
 import warnings
 
 from primoji.dictionary import Dictionary
 from primoji.primitives import get_primitive_by_name
 from primoji.utils import SpecialTokens
 from primoji.vocabulary import Vocabulary
-
-logger = logging.getLogger(__name__)
 
 MAX_COMPOSITION_DEPTH = 5
 

@@ -98,6 +98,12 @@ _PRIMITIVE_SYNONYMS: dict[str, list[str]] = {
     "FOR_SOME_TIME": ["continue", "ongoing", "duration"],
 
     # Space (concept words only)
+    "FAR": ["far", "distant", "remote"],
+    "NEAR": ["near", "close", "nearby"],
+    "BELOW": ["below", "beneath", "underneath"],
+    "ABOVE": ["above", "overhead"],
+    "WHERE": ["where", "location"],
+    "SAME": ["same", "identical"],
     "BE_SOMEWHERE": ["located", "situated"],
 
     # Logic (concept words, NOT grammar "not/if/can")
@@ -152,7 +158,7 @@ _PRIMITIVE_SYNONYMS: dict[str, list[str]] = {
     "TEACH": ["teach", "education", "instruct"],
     "HOME": ["home", "dwelling", "shelter"],
     "PATH": ["path", "route", "trail"],
-    "POWER": ["power", "strength", "authority"],
+    "POWER": ["power", "strength", "authority", "rule"],
     "NAME": ["name", "title"],
     "WRITE": ["write", "writing", "author"],
 
@@ -185,11 +191,11 @@ _PRIMITIVE_SYNONYMS: dict[str, list[str]] = {
     "FEAR": ["fear", "afraid", "scared", "dread", "terror"],
     "HEALTH": ["health", "medical", "disease", "illness"],
     "SUBSTANCE": ["substance", "chemical", "compound"],
-    "DEGREE": ["degree"],
+    "DEGREE": ["degree", "extent"],
     "ENVIRONMENT": ["environment", "ecology", "ecosystem"],
     "BODY_PART": ["organ", "tissue", "nerve", "muscle"],
     "VISIBLE": ["visible", "visual", "appearance"],
-    "STUDY": ["research", "investigate", "examine"],
+    "STUDY": ["research", "investigate", "examine", "study"],
     "ELECTRIC": ["electric", "electrical", "circuit", "voltage"],
 }
 
@@ -263,6 +269,7 @@ _COMPOSITIONS: dict[str, list[str]] = {
     "scientist": ["SOMEONE", "KNOW", "MEASURE"],
     "farmer": ["SOMEONE", "PLANT", "EAT"],
     "soldier": ["SOMEONE", "CONFLICT"],
+    "fighter": ["SOMEONE", "CONFLICT"],
     "judge": ["SOMEONE", "LAW"],
     "doctor": ["SOMEONE", "LIVE", "GOOD"],
     "telephone": ["MACHINE", "SAY"],
@@ -285,6 +292,16 @@ _COMPOSITIONS: dict[str, list[str]] = {
     # ALL grammar words are word tokens, NOT primitives.
     # Only technical/educational compositions remain here.
     "explained": ["SAY"],
+    "element": ["MATTER", "PART"],
+    "disability": ["NOT", "CAN"],
+    "disabilities": ["NOT", "CAN"],
+    "landing": ["MOVE", "EARTH"],
+    "studied": ["STUDY", "BEFORE"],
+    "studying": ["STUDY"],
+    "ruled": ["POWER", "BEFORE"],
+    "ruling": ["POWER"],
+    "locations": ["WHERE"],
+    "lands": ["EARTH"],
 }
 
 

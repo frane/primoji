@@ -4,9 +4,9 @@ A compositional semantic tokenizer for LLM training.
 
 Primoji encodes text using semantic tokens: emoji for concrete nouns, 140
 compositional primitives grounded in linguistic universals, and direct word
-tokens for common vocabulary. Rare and technical words decompose into
-primitive sequences that encode meaning: "photosynthesis" becomes
-[PLANT, HAVE, LIGHT].
+tokens for common vocabulary. Grammar words get compositional embeddings
+built from primitive components. Rare words decompose into primitive
+sequences that encode meaning.
 
 ```
 BPE:     "photosynthesis"  ->  ["photo", "synth", "esis"]     (character fragments)
@@ -15,58 +15,44 @@ Primoji: "photosynthesis"  ->  [PLANT, HAVE, LIGHT]           (semantic composit
 
 ## Results
 
-### Training: primoji beats BPE at equal data exposure
+### Training: primoji beats BPE by 13%
 
-125M parameter GPT models trained on 500K FineWeb-Edu documents (1 epoch):
+125M parameter GPT models trained on 500K FineWeb-Edu documents:
 
-| Model | BPB | vs BPE |
-|-------|-----|--------|
-| V1 primoji (5.4K vocab, no tier embeds) | **1.085** | 5.1% better |
-| V2 primoji (5.4K vocab, tier embeds, byte_weight=0.3) | **1.092** | 4.5% better |
-| V3 primoji (5.4K vocab, tier embeds, byte_weight=0.7) | **1.092** | 4.5% better |
-| BPE (Mistral, 32K vocab) | 1.144 | baseline |
+| Model | Vocab | BPB | vs BPE |
+|-------|-------|-----|--------|
+| v6 primoji (compositional embeddings) | 10,149 | **0.996** | 13% better |
+| v7 primoji (+ coverage fix) | 10,195 | training | -- |
+| BPE baseline (Mistral 32K) | 32,768 | 1.144 | baseline |
 
-All primoji variants beat BPE. V1 is the strongest on BPB. V3 produces
-dramatically better inference output (coherent text vs V1's repetitive tokens).
+BPB = bits-per-byte, the fair cross-tokenizer comparison metric.
 
-### Scaling trend
+### Compression (1,000 FineWeb-Edu sentences)
 
-| Data scale | Primoji advantage (equal training progress) |
-|------------|---------------------------------------------|
-| 1K docs | 0.3% |
-| 50K docs | 6.5% |
-| 500K docs | 5-7% (stable) |
+| Version | Vocab | Tokens | Ratio | Byte fallback |
+|---------|-------|--------|-------|--------------|
+| v1 | 4,035 | 59,460 | 1.80x | 17.4% |
+| v3 | 5,311 | 57,120 | 1.73x | 16.6% |
+| v7 | 10,195 | 36,076 | 1.09x | 6.9% |
+| BPE | 32,768 | 33,118 | 1.00x | 0% |
 
-The advantage emerged at 50K docs and held at 500K.
+v7 achieves near-parity compression with BPE (1.09x) while maintaining
+semantic structure. Byte fallback at 6.9% covers only proper nouns and
+domain-specific terms.
 
-### Compression (1,000 FineWeb-Edu sentences, v4 tokenizer)
+### Key innovation: Compositional Embeddings (v6+)
 
-| Metric | Primoji v4 | BPE |
-|--------|-----------|-----|
-| Vocab size | 10,428 | 32,768 |
-| Total tokens | 36,100 | 33,118 |
-| Ratio | 1.09x | 1.00x |
-| Byte fallback | 6.9% | 0% |
-| Median sentence ratio | 1.00x | - |
+Grammar words ("is", "was", "not", "they") are single word tokens for
+compression, but their embeddings are computed as the mean of their
+primitive components:
 
-v4 achieves near-parity compression with BPE while maintaining semantic
-structure for rare vocabulary. Progression: 1.72x (v1) -> 1.44x (v3) -> 1.09x (v4).
+- "is" embedding = mean(BE, NOW)
+- "was" embedding = mean(BE, BEFORE)
+- "not" embedding = NOT primitive embedding
+- "they" embedding = mean(SOMEONE, OTHER, MANY)
 
-### Inference quality
-
-V3 generates coherent, on-topic text with domain knowledge:
-
-```
-Prompt: "Water evaporates when"
-V3: molecule becomes too susceptible evaporate. that is why researchers
-    university cambridge study how contaminated water can become alcoholic
-    when water is dried out.
-
-V1: awareness dietary indicated merely biological, awareness gradually
-    accuracy gradually gradually accuracy biological
-```
-
-V3 uses 3-10% primitive tokens in generation. V1 uses 0%.
+This links related forms through shared primitives. Updating the BE
+embedding simultaneously updates "is", "was", "are", "were", "been".
 
 ## How it works
 
@@ -77,38 +63,45 @@ tok = Tokenizer()
 
 ids = tok.encode("The teacher explained photosynthesis")
 print(tok.decode(ids))
-# -> "teacher explained photosynthesis"
+# -> "teacher say photosynthesis"
 
-# Contractions expand semantically
-ids = tok.encode("won't")  # -> [will, not] = 2 meaningful tokens
-
-# Hyphens split into components
-ids = tok.encode("insulin-deprived")  # -> [insulin, deprived] = 2 word tokens
-
-print(tok.vocab_size)  # 10,428
+print(tok.vocab_size)  # 10,195
 ```
 
-## Vocabulary (10,428 tokens, v4)
+## Vocabulary (~10,195 tokens)
 
 | Tier | Count | Examples |
 |------|-------|----------|
 | Emoji | 1,175 | dog, cat, hospital, tree |
-| Common words | 7,964 | government, propagation, susceptible, insulin |
-| Primitives | 140 | PLANT, CAUSE, MOVE, KNOW, HEALTH, STUDY, ELECTRIC |
-| Structural | ~890 | Flags, anchors, digits, punctuation, math |
+| Common words | 7,747 | government, studied, susceptible |
+| Primitives | 140 | PLANT, CAUSE, MOVE, KNOW, HEALTH, STUDY |
+| Structural | ~875 | Flags, anchors, digits, punctuation, math |
 | Byte fallback | 258 | UTF-8 bytes + boundary markers |
 
-140 primitives: 65 Wierzbicka semantic primes (verified across 30+ language
-families) + 75 domain expansions including HEALTH, STUDY, ELECTRIC, SUBSTANCE,
-ENVIRONMENT, BODY_PART, VISIBLE, DEGREE.
+140 primitives: 65 Wierzbicka semantic primes (verified across 30+
+language families) + 75 domain expansions (HEALTH, STUDY, ELECTRIC,
+SUBSTANCE, ENVIRONMENT, BODY_PART, VISIBLE, DEGREE).
+
+## Training
+
+```bash
+# Prepare data (streams from HuggingFace):
+python -m scripts.prepare_training_data --n-docs 500000 --output-dir data/experiment
+
+# Train 125M:
+python -m scripts.train --tokenizer primoji --v2 --byte-weight 0.7 --batch-size 32
+
+# Train 1B with gradient accumulation:
+python -m scripts.train --tokenizer primoji --model-size 1b --batch-size 4 --grad-accum 8 --v2 --byte-weight 0.7
+
+# BPE baseline:
+python -m scripts.train --tokenizer mistral --batch-size 32
+```
 
 ## Interactive inference
 
 ```bash
-python -m scripts.chat                                    # V1 model
-python -m scripts.chat --model path/to/v3.pt --tiers      # V3 with tier embeddings
-python -m scripts.chat --trace                            # show token tiers
-python -m scripts.chat --temperature 0.5 --max-tokens 200
+python -m scripts.chat --model path/to/model.pt --tiers --trace
 ```
 
 ## Installation
@@ -123,29 +116,32 @@ pip install -e ".[dev]"
 
 ```
 primoji/
-  tokenizer.py        Multi-tier encode/decode pipeline
+  tokenizer.py        4-tier encode pipeline, decode
   vocabulary.py       Dynamic ID ranges from data files
   dictionary.py       Symbolic seed + runtime resolution
-  primitives.py       140 semantic primitives (from data/primitives.json)
+  primitives.py       140 semantic primitives
   decoder.py          Dictionary-first, then tier-based fallback
   byte_fallback.py    UTF-8 byte encoding for unknown words
   composer.py         HEAD + MODIFIER + SPECIFIER composition
-  preprocessor.py     Unicode norm, contraction expansion, hyphen splitting
+  preprocessor.py     Unicode norm, contraction expansion, hyphen split
   fuzzy.py            Conservative SymSpell (edit distance 1)
   math_handler.py     Single-digit numbers, math operators
+  alias_map.py        Grammar word -> primitive decomposition
+  utils.py            Shared constants, classify_token, text normalization
 scripts/
   build_dictionary.py   Reproducible dictionary build
   prepare_training_data.py  Tokenize FineWeb-Edu for training
-  train_125m.py        125M GPT training with BPB evaluation
+  train.py             GPT training (125M/1B) with BPB evaluation
   compare_results.py   Training log analysis and plots
   chat.py              Interactive inference with --trace mode
-tests/                 292 tests
+tests/                 594 tests
 data/
   primitives.json      140 compositional primitives (v0.3)
   emoji_catalog.json   1,175 emoji with CLDR annotations
-  common_words.json    7,964 high-frequency words (wordfreq + FineWeb-Edu)
+  common_words.json    7,747 high-frequency words
   auto_compositions.json  4,600+ WordNet-derived compositions
   dictionary_seed.json Symbolic dictionary (~42K entries)
+  eval_sentences.json  1,000 FineWeb-Edu sentences (benchmark)
 ```
 
 ## Paper

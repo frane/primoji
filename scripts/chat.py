@@ -17,117 +17,147 @@ from pathlib import Path
 import torch
 import torch.nn.functional as F
 
-from scripts.train_125m import GPT
-from primoji.utils import _IDS
+from scripts.train import GPT
+from primoji.utils import classify_token, classify_token_name
 from primoji.byte_fallback import BYTES_START_ID, BYTES_END_ID, BYTE_TOKEN_OFFSET, is_byte_token, is_byte_boundary
 from primoji.primitives import get_primitive_by_id
 
 # Color codes
-C_EMOJI = "\033[92m"
-C_WORD = "\033[97m"
-C_PRIM = "\033[96m"
-C_BYTE = "\033[91m"
-C_STRUCT = "\033[93m"
+_TIER_COLORS = {
+    "emoji": "\033[92m",
+    "word": "\033[97m",
+    "prim": "\033[96m",
+    "byte": "\033[91m",
+    "struct": "\033[93m",
+}
 C_DROP = "\033[90m"
 C_RESET = "\033[0m"
 
-_WORD_START = _IDS["WORD_START"]
-_WORD_END = _WORD_START + _IDS["WORD_COUNT"]
-
-
-def classify_id(tid: int) -> str:
-    if 0 <= tid <= 1199: return "emoji"
-    if 1200 <= tid <= 1339: return "prim"
-    if is_byte_token(tid) or is_byte_boundary(tid): return "byte"
-    if _WORD_START <= tid < _WORD_END: return "word"
-    return "struct"
-
 
 def color_for_tier(tier: str) -> str:
-    return {"emoji": C_EMOJI, "word": C_WORD, "prim": C_PRIM,
-            "byte": C_BYTE, "struct": C_STRUCT}.get(tier, C_RESET)
+    return _TIER_COLORS.get(tier, C_RESET)
 
 
-def generate_primoji(model, tok, prompt, max_tokens, temperature, top_k, device, use_tiers):
-    from primoji.utils import SpecialTokens
-    ids = tok.encode(prompt)
-    if not ids:
-        ids = [SpecialTokens.BOS]
-    generated = list(ids)
-
-    tier_map = {"emoji": 0, "word": 1, "prim": 2, "struct": 3, "byte": 4}
-
+def _generate(model: GPT, initial_ids: list[int], eos_id: int,
+              max_tokens: int, temperature: float, top_k: int,
+              device: str, use_tiers: bool = False) -> list[int]:
+    """Generate tokens autoregressively. Shared by primoji and BPE paths."""
+    generated = list(initial_ids)
     with torch.no_grad():
         for _ in range(max_tokens):
             context = torch.tensor([generated[-1024:]], dtype=torch.long, device=device)
             tier_ctx = None
             if use_tiers:
-                tier_ints = [tier_map.get(classify_id(t), 3) for t in generated[-1024:]]
+                tier_ints = [classify_token(t) for t in generated[-1024:]]
                 tier_ctx = torch.tensor([tier_ints], dtype=torch.long, device=device)
-            logits = model(context, tier_ids=tier_ctx)[0, -1, :]
+            logits = model(context, tier_ids=tier_ctx)[0, -1, :].float()
             if temperature > 0:
-                logits = logits / temperature
+                logits = logits.cpu() / temperature
+                logits = torch.clamp(logits, min=-1e8, max=1e8)
+                logits[logits.isnan()] = -1e8
                 topk_v, topk_i = torch.topk(logits, min(top_k, logits.size(-1)))
-                logits = torch.full_like(logits, float("-inf"))
-                logits.scatter_(0, topk_i, topk_v)
-                probs = F.softmax(logits, dim=-1)
-                next_id = torch.multinomial(probs, 1).item()
-            else:
-                next_id = logits.argmax().item()
-            if next_id == SpecialTokens.EOS:
-                break
-            generated.append(next_id)
-
-    new_ids = generated[len(ids):]
-    return tok.decode(new_ids), new_ids
-
-
-def generate_bpe(model, tok, prompt, max_tokens, temperature, top_k, device):
-    enc = tok.encode(prompt)
-    ids = enc.ids
-    eos_id = tok.token_to_id("</s>")
-    generated = list(ids)
-
-    with torch.no_grad():
-        for _ in range(max_tokens):
-            context = torch.tensor([generated[-1024:]], dtype=torch.long, device=device)
-            logits = model(context)[0, -1, :]
-            if temperature > 0:
-                logits = logits / temperature
-                topk_v, topk_i = torch.topk(logits, min(top_k, logits.size(-1)))
-                logits = torch.full_like(logits, float("-inf"))
-                logits.scatter_(0, topk_i, topk_v)
-                probs = F.softmax(logits, dim=-1)
-                next_id = torch.multinomial(probs, 1).item()
+                probs = F.softmax(topk_v, dim=-1)
+                idx = torch.multinomial(probs, 1).item()
+                next_id = topk_i[idx].item()
             else:
                 next_id = logits.argmax().item()
             if next_id == eos_id:
                 break
             generated.append(next_id)
+    return generated[len(initial_ids):]
 
-    new_ids = generated[len(ids):]
+
+def _decode_with_emoji(tok, ids, show_emoji: bool = False) -> str:
+    """Decode token IDs, optionally rendering emoji-tier tokens as glyphs."""
+    if not show_emoji:
+        return tok.decode(ids)
+    # Render emoji tokens as their Unicode glyph, everything else normally
+    parts = []
+    i = 0
+    while i < len(ids):
+        tid = ids[i]
+        tier = classify_token_name(tid)
+        if tier == "emoji":
+            # Get the emoji character from vocabulary
+            emoji_char = tok.vocabulary._id_to_token.get(tid)
+            if emoji_char:
+                parts.append(emoji_char)
+            else:
+                parts.append(tok.decode([tid]))
+        elif tier == "byte" and tid == BYTES_START_ID:
+            # Collect byte sequence and decode as one word
+            byte_ids = []
+            i += 1
+            while i < len(ids) and ids[i] != BYTES_END_ID:
+                byte_ids.append(ids[i] - BYTE_TOKEN_OFFSET)
+                i += 1
+            try:
+                parts.append(bytes(byte_ids).decode("utf-8", errors="replace"))
+            except Exception:
+                parts.append("<?>")
+        else:
+            decoded = tok.decode([tid])
+            if decoded:
+                parts.append(decoded)
+        i += 1
+    return " ".join(parts)
+
+
+def generate_primoji(model, tok, prompt, max_tokens, temperature, top_k, device,
+                     use_tiers, show_emoji=False):
+    from primoji.utils import SpecialTokens
+    ids = tok.encode(prompt)
+    if not ids:
+        ids = [SpecialTokens.BOS]
+    new_ids = _generate(model, ids, SpecialTokens.EOS, max_tokens,
+                        temperature, top_k, device, use_tiers)
+    return _decode_with_emoji(tok, new_ids, show_emoji), new_ids
+
+
+def generate_bpe(model, tok, prompt, max_tokens, temperature, top_k, device):
+    ids = tok.encode(prompt).ids
+    eos_id = tok.token_to_id("</s>")
+    new_ids = _generate(model, ids, eos_id, max_tokens, temperature, top_k, device)
     return tok.decode(new_ids), new_ids
 
 
 def print_trace_primoji(tok, input_ids, output_ids):
     from collections import Counter
+    from primoji.byte_fallback import is_byte_token, is_byte_boundary
     print()
     print(f"  {C_DROP}Input tokens:{C_RESET}")
     _print_tokens(tok, input_ids, "    ")
     print(f"  {C_DROP}Generated tokens:{C_RESET}")
     _print_tokens(tok, output_ids, "    ")
 
-    tiers = Counter(classify_id(tid) for tid in output_ids)
-    total = len(output_ids)
-    print(f"\n  {C_DROP}Token breakdown ({total} tokens):{C_RESET}")
+    # Count semantic units (words), not raw tokens
+    # A byte-fallback word = 1 word, not 8-10 tokens
+    word_tiers = Counter()
+    i = 0
+    while i < len(output_ids):
+        tid = output_ids[i]
+        if is_byte_boundary(tid) and tid == BYTES_START_ID:
+            word_tiers["byte"] += 1
+            i += 1
+            while i < len(output_ids) and output_ids[i] != BYTES_END_ID:
+                i += 1
+            i += 1  # skip BYTES_END
+        else:
+            word_tiers[classify_token_name(tid)] += 1
+            i += 1
+
+    total_words = sum(word_tiers.values())
+    total_tokens = len(output_ids)
+    print(f"\n  {C_DROP}Breakdown ({total_words} semantic units, {total_tokens} raw tokens):{C_RESET}")
     labels = {"word": "Word", "prim": "Primitive", "emoji": "Emoji",
               "byte": "Byte fallback", "struct": "Structural"}
-    for tier, color in [("word", C_WORD), ("prim", C_PRIM), ("emoji", C_EMOJI),
-                        ("byte", C_BYTE), ("struct", C_STRUCT)]:
-        if tier in tiers:
-            pct = 100 * tiers[tier] / total
+    for tier, color in [("word", _TIER_COLORS["word"]), ("prim", _TIER_COLORS["prim"]),
+                        ("emoji", _TIER_COLORS["emoji"]), ("byte", _TIER_COLORS["byte"]),
+                        ("struct", _TIER_COLORS["struct"])]:
+        if tier in word_tiers:
+            pct = 100 * word_tiers[tier] / total_words
             bar = "#" * int(pct / 2)
-            print(f"    {color}{labels[tier]:15s} {tiers[tier]:4d} ({pct:4.1f}%) {bar}{C_RESET}")
+            print(f"    {color}{labels[tier]:15s} {word_tiers[tier]:4d} ({pct:4.1f}%) {bar}{C_RESET}")
     print()
 
 
@@ -136,7 +166,7 @@ def _print_tokens(tok, ids, prefix):
     i = 0
     while i < len(ids):
         tid = ids[i]
-        tier = classify_id(tid)
+        tier = classify_token_name(tid)
         color = color_for_tier(tier)
         if tier == "byte" and tid == BYTES_START_ID:
             byte_ids = []
@@ -149,11 +179,11 @@ def _print_tokens(tok, ids, prefix):
                 word = bytes(byte_ids).decode("utf-8", errors="replace")
             except Exception:
                 word = "<?>"
-            parts.append(f"{C_BYTE}[{word}]{C_RESET}")
+            parts.append(f"{_TIER_COLORS['byte']}[{word}]{C_RESET}")
         elif tier == "prim":
             p = get_primitive_by_id(tid)
             name = p.name if p else f"?{tid}"
-            parts.append(f"{C_PRIM}{name}{C_RESET}")
+            parts.append(f"{_TIER_COLORS['prim']}{name}{C_RESET}")
         else:
             decoded = tok.decode([tid])
             parts.append(f"{color}{decoded}{C_RESET}")
@@ -180,6 +210,7 @@ def main() -> None:
     parser.add_argument("--tiers", action="store_true", help="Model has tier embeddings (v2+)")
     parser.add_argument("--bpe", action="store_true", help="Use Mistral BPE tokenizer instead of primoji")
     parser.add_argument("--1b", dest="one_b", action="store_true", help="Use 1B model config instead of 125M")
+    parser.add_argument("--emoji", action="store_true", help="Render emoji-tier tokens as Unicode glyphs")
     args = parser.parse_args()
 
     if args.device is None:
@@ -192,10 +223,11 @@ def main() -> None:
 
     # Model config
     if args.one_b:
-        d_model, n_layers, n_heads, d_ff = 2048, 24, 16, 5460
+        d_model, n_layers, n_heads, d_ff = 2048, 24, 16, 5461
     else:
         d_model, n_layers, n_heads, d_ff = 768, 12, 12, 3072
 
+    alias_map = None
     if args.bpe:
         from tokenizers import Tokenizer as HFTokenizer
         tok = HFTokenizer.from_pretrained("mistralai/Mistral-7B-v0.3")
@@ -206,11 +238,24 @@ def main() -> None:
         tok = PrimojiTokenizer(fuzzy=False)
         vocab_size = tok.vocab_size
         n_tiers = 5 if args.tiers else 0
+        # Build alias map for v6 compositional embeddings
+        try:
+            from primoji.alias_map import build_alias_map
+            alias_map = build_alias_map(tok.encode)
+        except Exception:
+            alias_map = None
 
     print(f"Loading model from {args.model}...", flush=True)
+    # Infer vocab size from checkpoint to handle version mismatches
+    state = torch.load(args.model, map_location="cpu", weights_only=True)
+    ckpt_vocab = state["tok_emb.embedding.weight"].shape[0]
+    if ckpt_vocab != vocab_size:
+        print(f"  Note: checkpoint vocab={ckpt_vocab}, current tokenizer vocab={vocab_size}. Using checkpoint vocab.")
+        vocab_size = ckpt_vocab
     model = GPT(vocab_size=vocab_size, d_model=d_model, n_layers=n_layers,
-                n_heads=n_heads, d_ff=d_ff, max_seq_len=1024, n_tiers=n_tiers)
-    model.load_state_dict(torch.load(args.model, map_location="cpu", weights_only=True))
+                n_heads=n_heads, d_ff=d_ff, max_seq_len=1024, n_tiers=n_tiers,
+                alias_map=alias_map)
+    model.load_state_dict(state)
     model = model.to(args.device).eval()
 
     mode_str = "BPE" if args.bpe else "primoji"
@@ -233,7 +278,8 @@ def main() -> None:
         else:
             output, new_ids = generate_primoji(model, tok, prompt, args.max_tokens,
                                                args.temperature, args.top_k, args.device,
-                                               use_tiers=args.tiers)
+                                               use_tiers=args.tiers,
+                                               show_emoji=args.emoji)
 
         print(f"Model: {output}")
 

@@ -210,12 +210,14 @@ class Vocabulary:
             self._id_to_token[p.id] = p.emoji
             self._id_to_description[p.id] = f"Tier 2 primitive: {p.name} — {p.description}"
 
-        # Flags
+        # Flags (don't overwrite primitives on ID collision)
+        prim_ids = {p.id for p in PRIMITIVES}
         for code, tid in TIER3_FLAGS.items():
             flag = _iso_to_flag(code)
             self._token_to_id[flag] = tid
-            self._id_to_token[tid] = flag
-            self._id_to_description[tid] = f"Flag: {code}"
+            if tid not in prim_ids:
+                self._id_to_token[tid] = flag
+                self._id_to_description[tid] = f"Flag: {code}"
 
         # Contractions
         for c, tid in CONTRACTION_TOKENS.items():

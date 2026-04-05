@@ -20,11 +20,25 @@ _DATA_DIR = Path(__file__).parent.parent / "data"
 
 def _compute_ids() -> dict[str, int]:
     """Compute all token ID boundaries from actual data file sizes."""
-    # Fixed
-    t2_count = 132  # primitives 1200-1331
+    # Tier 2: primitives (compute from data)
+    prim_path = _DATA_DIR / "primitives.json"
+    if prim_path.exists():
+        with prim_path.open() as f:
+            prim_count = len(json.load(f)["primitives"])
+    else:
+        prim_count = 140
+
+    # Tier 1: emoji catalog
+    catalog_path = _DATA_DIR / "emoji_catalog.json"
+    if catalog_path.exists():
+        with catalog_path.open() as f:
+            emoji_count = len(json.load(f)["emoji"])
+    else:
+        emoji_count = 1200
+
     flags_count = 259
     contractions_count = 27
-    structural_count = 10 + 14 + 60  # digits + math ops + expanded punctuation
+    structural_count = 10 + 14 + 60  # digits + math ops + punctuation
 
     # Dynamic: anchors
     anchor_path = _DATA_DIR / "proper_noun_anchors.json"
@@ -42,8 +56,13 @@ def _compute_ids() -> dict[str, int]:
     else:
         word_count = 0
 
-    # Compute ranges
-    flags_start = 1332
+    # !! FROZEN LAYOUT -- DO NOT CHANGE !!
+    # These boundaries are baked into every trained model and tokenized dataset.
+    # Changing them silently breaks inference and training compatibility.
+    # Primitives 1332-1339 overlap with the first 8 flag slots; this is a
+    # known compromise handled in vocabulary.py (primitives take priority).
+    prim_start = 1200
+    flags_start = 1332  # NOT prim_start + prim_count -- intentionally frozen
     contract_start = flags_start + flags_count
     anchor_start = contract_start + contractions_count
     struct_start = anchor_start + anchor_count
@@ -51,6 +70,9 @@ def _compute_ids() -> dict[str, int]:
     special_start = word_start + word_count
 
     return {
+        "EMOJI_COUNT": emoji_count,
+        "PRIM_START": prim_start,
+        "PRIM_COUNT": prim_count,
         "FLAGS_START": flags_start,
         "CONTRACT_START": contract_start,
         "ANCHOR_START": anchor_start,
@@ -105,6 +127,51 @@ class SpecialTokens:
             if tid == token_id:
                 return name
         return None
+
+
+# ── Token tier classification ────────────────────────────────────────────────
+
+# Tier IDs for tier embeddings (numeric, used in training data)
+TIER_EMOJI = 0
+TIER_WORD = 1
+TIER_PRIMITIVE = 2
+TIER_STRUCTURAL = 3
+TIER_BYTE = 4
+
+# Precomputed boundaries (avoid repeated dict lookups)
+_PRIM_START = _IDS["PRIM_START"]
+_PRIM_END = _PRIM_START + _IDS["PRIM_COUNT"] - 1
+_WORD_START = _IDS["WORD_START"]
+_WORD_END = _WORD_START + _IDS["WORD_COUNT"]
+
+
+def classify_token(tid: int) -> int:
+    """Classify a token ID into its tier (numeric).
+
+    Returns one of: TIER_EMOJI (0), TIER_WORD (1), TIER_PRIMITIVE (2),
+    TIER_STRUCTURAL (3), TIER_BYTE (4).
+
+    Note: IDs 1332-1339 overlap between primitives and flags.
+    Primitives take priority (checked first).
+    """
+    from primoji.byte_fallback import is_byte_token, is_byte_boundary
+
+    if 0 <= tid < _PRIM_START:
+        return TIER_EMOJI
+    if _PRIM_START <= tid <= _PRIM_END:
+        return TIER_PRIMITIVE  # checked before flags -- primitives win on overlap
+    if is_byte_token(tid) or is_byte_boundary(tid):
+        return TIER_BYTE
+    if _WORD_START <= tid < _WORD_END:
+        return TIER_WORD
+    return TIER_STRUCTURAL
+
+
+def classify_token_name(tid: int) -> str:
+    """Classify a token ID into its tier (string label)."""
+    names = {TIER_EMOJI: "emoji", TIER_WORD: "word", TIER_PRIMITIVE: "prim",
+             TIER_STRUCTURAL: "struct", TIER_BYTE: "byte"}
+    return names[classify_token(tid)]
 
 
 # ── Emoji utilities ───────────────────────────────────────────────────────────

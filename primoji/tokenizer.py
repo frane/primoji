@@ -31,7 +31,9 @@ from primoji.vocabulary import (
     Vocabulary,
 )
 
-_PRIM_ID_MAX = 1200 + len(PRIMITIVES) - 1
+_PRIM_ID_START = _IDS["PRIM_START"]
+_PRIM_ID_MAX = _PRIM_ID_START + _IDS["PRIM_COUNT"] - 1
+_EMOJI_MAX = _PRIM_ID_START - 1
 
 
 class Tokenizer:
@@ -167,15 +169,14 @@ class Tokenizer:
                 ids.extend(self._encode_word(token))
         return ids
 
-    def decode(self, ids: list[int], verbatim: bool = False) -> str:
+    def decode(self, ids: list[int]) -> str:
         """Decode Primoji token IDs back to English text.
 
         Args:
             ids: List of integer token IDs.
-            verbatim: If True, attempt exact reconstruction (not yet implemented).
 
         Returns:
-            English text.
+            English text (canonical form).
         """
         return self._decoder.decode_canonical(ids)
 
@@ -222,9 +223,9 @@ class Tokenizer:
                 return "dict_dropped"  # articles (the, a, an)
             if len(result) == 1:
                 tid = result[0]
-                if 0 <= tid <= 1199:
+                if 0 <= tid <= _EMOJI_MAX:
                     return "tier1_emoji"
-                elif 1200 <= tid <= _PRIM_ID_MAX:
+                elif _PRIM_ID_START <= tid <= _PRIM_ID_MAX:
                     return "tier2_primitive"
                 elif _IDS["WORD_START"] <= tid < _IDS["WORD_START"] + _IDS["WORD_COUNT"]:
                     return "tier1b_word"
