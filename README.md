@@ -186,14 +186,18 @@ pytest
 compositional embedding correctness, ID-range invariants, and frozen
 vocabulary boundaries.
 
-## Citation
+## Paper
+
+The full paper is included in this repository as
+[`paper.pdf`](paper.pdf). It is not yet on arXiv. If you reference this work,
+please cite as:
 
 ```bibtex
-@article{bandov2026primoji,
+@unpublished{bandov2026primoji,
   title  = {Primoji: Compositional Semantic Tokenization for Language Model Training},
   author = {Bandov, Frane},
   year   = {2026},
-  note   = {arXiv preprint, ID forthcoming},
+  note   = {Manuscript. \url{https://github.com/frane/primoji/blob/master/paper.pdf}},
 }
 ```
 
