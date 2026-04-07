@@ -25,8 +25,9 @@ from primoji.vocabulary import (
 from primoji.utils import SpecialTokens
 from primoji.byte_fallback import BYTE_TOKEN_OFFSET
 
+import primoji as _primoji_pkg
 
-_DATA_DIR = Path(__file__).parent.parent / "data"
+_DATA_DIR = Path(_primoji_pkg.__file__).parent / "data"
 
 
 class TestPrimitives:

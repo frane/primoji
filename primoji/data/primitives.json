@@ -1,0 +1,1165 @@
+{
+  "version": "0.3.0",
+  "description": "Primoji compositional primitives v0.2: 65 canonical Wierzbicka NSM primes (layer 2a, verified against Goddard & Wierzbicka 2014/2018) + 67 FineWeb-Edu domain expansions (layer 2b). Every primitive has a UNIQUE emoji. See primitives-v02-reasoning.md for change log.",
+  "total_count": 140,
+  "id_range": [
+    1200,
+    1339
+  ],
+  "layer_2a_count": 65,
+  "layer_2b_count": 70,
+  "changes_from_v01": {
+    "primes_removed": [
+      "LONG (molecule, not prime)",
+      "HOLD (not prime, moved to 2b)",
+      "LESS (not canonical)",
+      "HIERARCHY (not prime)"
+    ],
+    "primes_relabeled": [
+      "EXIST→THERE_IS",
+      "CONTINUE→FOR_SOME_TIME"
+    ],
+    "primes_added": [
+      "HERE",
+      "DONT_WANT",
+      "MOMENT",
+      "BE_SOMEWHERE"
+    ],
+    "domain_added": [
+      "HOLD (from 2a)",
+      "WITH",
+      "FOR",
+      "ABOUT",
+      "ENERGY",
+      "COLOR",
+      "HOT",
+      "COLD",
+      "LINE",
+      "HEAVY",
+      "LOVE",
+      "FEAR"
+    ]
+  },
+  "primitives": [
+    {
+      "id": 1200,
+      "name": "I",
+      "emoji": "👤",
+      "layer": "2a",
+      "category": "substantive",
+      "description": "First person, self"
+    },
+    {
+      "id": 1201,
+      "name": "YOU",
+      "emoji": "👉",
+      "layer": "2a",
+      "category": "substantive",
+      "description": "Second person, addressee"
+    },
+    {
+      "id": 1202,
+      "name": "SOMEONE",
+      "emoji": "🧑",
+      "layer": "2a",
+      "category": "substantive",
+      "description": "Generic person"
+    },
+    {
+      "id": 1203,
+      "name": "SOMETHING",
+      "emoji": "🔹",
+      "layer": "2a",
+      "category": "substantive",
+      "description": "Generic thing"
+    },
+    {
+      "id": 1204,
+      "name": "PEOPLE",
+      "emoji": "👥",
+      "layer": "2a",
+      "category": "substantive",
+      "description": "Group of persons"
+    },
+    {
+      "id": 1205,
+      "name": "BODY",
+      "emoji": "🫀",
+      "layer": "2a",
+      "category": "substantive",
+      "description": "Physical body"
+    },
+    {
+      "id": 1206,
+      "name": "KIND",
+      "emoji": "🏷️",
+      "layer": "2a",
+      "category": "substantive",
+      "description": "Category, type, sort"
+    },
+    {
+      "id": 1207,
+      "name": "THIS",
+      "emoji": "📌",
+      "layer": "2a",
+      "category": "determiner",
+      "description": "Proximal demonstrative"
+    },
+    {
+      "id": 1208,
+      "name": "SAME",
+      "emoji": "🟰",
+      "layer": "2a",
+      "category": "determiner",
+      "description": "Identity, unchanged"
+    },
+    {
+      "id": 1209,
+      "name": "OTHER",
+      "emoji": "↔️",
+      "layer": "2a",
+      "category": "determiner",
+      "description": "Alternation, different one"
+    },
+    {
+      "id": 1210,
+      "name": "SOME",
+      "emoji": "🎲",
+      "layer": "2a",
+      "category": "determiner",
+      "description": "Partial, indefinite"
+    },
+    {
+      "id": 1211,
+      "name": "ALL",
+      "emoji": "⭕",
+      "layer": "2a",
+      "category": "determiner",
+      "description": "Totality, every"
+    },
+    {
+      "id": 1212,
+      "name": "ONE",
+      "emoji": "1️⃣",
+      "layer": "2a",
+      "category": "quantifier",
+      "description": "Singular, unit"
+    },
+    {
+      "id": 1213,
+      "name": "TWO",
+      "emoji": "2️⃣",
+      "layer": "2a",
+      "category": "quantifier",
+      "description": "Dual, pair"
+    },
+    {
+      "id": 1214,
+      "name": "MANY",
+      "emoji": "📊",
+      "layer": "2a",
+      "category": "quantifier",
+      "description": "Large quantity"
+    },
+    {
+      "id": 1215,
+      "name": "FEW",
+      "emoji": "🤏",
+      "layer": "2a",
+      "category": "quantifier",
+      "description": "Small quantity"
+    },
+    {
+      "id": 1216,
+      "name": "GOOD",
+      "emoji": "✅",
+      "layer": "2a",
+      "category": "evaluator",
+      "description": "Positive evaluation"
+    },
+    {
+      "id": 1217,
+      "name": "BAD",
+      "emoji": "❌",
+      "layer": "2a",
+      "category": "evaluator",
+      "description": "Negative evaluation"
+    },
+    {
+      "id": 1218,
+      "name": "BIG",
+      "emoji": "⬆️",
+      "layer": "2a",
+      "category": "descriptor",
+      "description": "Large, tall, great"
+    },
+    {
+      "id": 1219,
+      "name": "SMALL",
+      "emoji": "⬇️",
+      "layer": "2a",
+      "category": "descriptor",
+      "description": "Small, short, minor"
+    },
+    {
+      "id": 1220,
+      "name": "HERE",
+      "emoji": "🔛",
+      "layer": "2a",
+      "category": "space",
+      "description": "Proximal location, this place. [v0.2: replaced LONG, which is a semantic molecule not a prime]"
+    },
+    {
+      "id": 1221,
+      "name": "THINK",
+      "emoji": "💭",
+      "layer": "2a",
+      "category": "mental",
+      "description": "Cognition, reasoning"
+    },
+    {
+      "id": 1222,
+      "name": "KNOW",
+      "emoji": "🧠",
+      "layer": "2a",
+      "category": "mental",
+      "description": "Knowledge, awareness"
+    },
+    {
+      "id": 1223,
+      "name": "WANT",
+      "emoji": "💫",
+      "layer": "2a",
+      "category": "mental",
+      "description": "Desire, wish, intention"
+    },
+    {
+      "id": 1224,
+      "name": "FEEL",
+      "emoji": "💗",
+      "layer": "2a",
+      "category": "mental",
+      "description": "Emotion, sensation"
+    },
+    {
+      "id": 1225,
+      "name": "SEE",
+      "emoji": "👁️",
+      "layer": "2a",
+      "category": "mental",
+      "description": "Visual perception"
+    },
+    {
+      "id": 1226,
+      "name": "HEAR",
+      "emoji": "👂",
+      "layer": "2a",
+      "category": "mental",
+      "description": "Auditory perception"
+    },
+    {
+      "id": 1227,
+      "name": "SAY",
+      "emoji": "💬",
+      "layer": "2a",
+      "category": "speech",
+      "description": "Utterance, verbal expression"
+    },
+    {
+      "id": 1228,
+      "name": "WORDS",
+      "emoji": "🔤",
+      "layer": "2a",
+      "category": "speech",
+      "description": "Language, text"
+    },
+    {
+      "id": 1229,
+      "name": "TRUE",
+      "emoji": "✔️",
+      "layer": "2a",
+      "category": "speech",
+      "description": "Truth, factual, correct"
+    },
+    {
+      "id": 1230,
+      "name": "DO",
+      "emoji": "⚙️",
+      "layer": "2a",
+      "category": "action",
+      "description": "Action, perform"
+    },
+    {
+      "id": 1231,
+      "name": "HAPPEN",
+      "emoji": "⚡",
+      "layer": "2a",
+      "category": "action",
+      "description": "Event, occurrence"
+    },
+    {
+      "id": 1232,
+      "name": "MOVE",
+      "emoji": "➡️",
+      "layer": "2a",
+      "category": "action",
+      "description": "Motion, displacement"
+    },
+    {
+      "id": 1233,
+      "name": "TOUCH",
+      "emoji": "🤝",
+      "layer": "2a",
+      "category": "action",
+      "description": "Physical contact"
+    },
+    {
+      "id": 1234,
+      "name": "DONT_WANT",
+      "emoji": "🙅",
+      "layer": "2a",
+      "category": "mental",
+      "description": "Refusal, unwillingness. Irreducible per NSM — not decomposable as NOT+WANT. [v0.2: replaced HOLD, moved to 2b]"
+    },
+    {
+      "id": 1235,
+      "name": "THERE_IS",
+      "emoji": "🌐",
+      "layer": "2a",
+      "category": "existence",
+      "description": "Existential being, presence. [v0.2: relabeled from EXIST to canonical NSM form]"
+    },
+    {
+      "id": 1236,
+      "name": "HAVE",
+      "emoji": "📥",
+      "layer": "2a",
+      "category": "existence",
+      "description": "Possession, contain"
+    },
+    {
+      "id": 1237,
+      "name": "BE",
+      "emoji": "🪞",
+      "layer": "2a",
+      "category": "existence",
+      "description": "Identity, equivalence, state"
+    },
+    {
+      "id": 1238,
+      "name": "LIVE",
+      "emoji": "🌱",
+      "layer": "2a",
+      "category": "life",
+      "description": "Alive, living"
+    },
+    {
+      "id": 1239,
+      "name": "DIE",
+      "emoji": "🪦",
+      "layer": "2a",
+      "category": "life",
+      "description": "Death, cessation"
+    },
+    {
+      "id": 1240,
+      "name": "TIME",
+      "emoji": "⏱️",
+      "layer": "2a",
+      "category": "time",
+      "description": "Temporal reference"
+    },
+    {
+      "id": 1241,
+      "name": "NOW",
+      "emoji": "⏺️",
+      "layer": "2a",
+      "category": "time",
+      "description": "Present moment"
+    },
+    {
+      "id": 1242,
+      "name": "BEFORE",
+      "emoji": "⏪",
+      "layer": "2a",
+      "category": "time",
+      "description": "Past, prior"
+    },
+    {
+      "id": 1243,
+      "name": "AFTER",
+      "emoji": "⏩",
+      "layer": "2a",
+      "category": "time",
+      "description": "Future, subsequent"
+    },
+    {
+      "id": 1244,
+      "name": "LONG_TIME",
+      "emoji": "⏳",
+      "layer": "2a",
+      "category": "time",
+      "description": "Extended duration"
+    },
+    {
+      "id": 1245,
+      "name": "SHORT_TIME",
+      "emoji": "🕐",
+      "layer": "2a",
+      "category": "time",
+      "description": "Brief duration"
+    },
+    {
+      "id": 1246,
+      "name": "FOR_SOME_TIME",
+      "emoji": "🔄",
+      "layer": "2a",
+      "category": "time",
+      "description": "Temporal durative, ongoing. [v0.2: relabeled from CONTINUE to canonical NSM form]"
+    },
+    {
+      "id": 1247,
+      "name": "WHERE",
+      "emoji": "📍",
+      "layer": "2a",
+      "category": "space",
+      "description": "Location, place"
+    },
+    {
+      "id": 1248,
+      "name": "NEAR",
+      "emoji": "🔎",
+      "layer": "2a",
+      "category": "space",
+      "description": "Proximity, close"
+    },
+    {
+      "id": 1249,
+      "name": "FAR",
+      "emoji": "🏔️",
+      "layer": "2a",
+      "category": "space",
+      "description": "Distance, remote"
+    },
+    {
+      "id": 1250,
+      "name": "ABOVE",
+      "emoji": "🔼",
+      "layer": "2a",
+      "category": "space",
+      "description": "Spatial above, over"
+    },
+    {
+      "id": 1251,
+      "name": "BELOW",
+      "emoji": "🔽",
+      "layer": "2a",
+      "category": "space",
+      "description": "Spatial below, under"
+    },
+    {
+      "id": 1252,
+      "name": "SIDE",
+      "emoji": "◀️",
+      "layer": "2a",
+      "category": "space",
+      "description": "Lateral, beside"
+    },
+    {
+      "id": 1253,
+      "name": "NOT",
+      "emoji": "🚫",
+      "layer": "2a",
+      "category": "logic",
+      "description": "Negation, absence"
+    },
+    {
+      "id": 1254,
+      "name": "MAYBE",
+      "emoji": "❓",
+      "layer": "2a",
+      "category": "logic",
+      "description": "Possibility, uncertainty"
+    },
+    {
+      "id": 1255,
+      "name": "CAN",
+      "emoji": "💪",
+      "layer": "2a",
+      "category": "logic",
+      "description": "Ability, capability"
+    },
+    {
+      "id": 1256,
+      "name": "BECAUSE",
+      "emoji": "∵",
+      "layer": "2a",
+      "category": "logic",
+      "description": "Causation, reason"
+    },
+    {
+      "id": 1257,
+      "name": "IF",
+      "emoji": "🔀",
+      "layer": "2a",
+      "category": "logic",
+      "description": "Conditional, hypothetical"
+    },
+    {
+      "id": 1258,
+      "name": "LIKE_AS",
+      "emoji": "〰️",
+      "layer": "2a",
+      "category": "logic",
+      "description": "Similarity, comparison, as"
+    },
+    {
+      "id": 1259,
+      "name": "VERY",
+      "emoji": "‼️",
+      "layer": "2a",
+      "category": "intensifier",
+      "description": "Intensifier, extreme degree"
+    },
+    {
+      "id": 1260,
+      "name": "MORE",
+      "emoji": "⏫",
+      "layer": "2a",
+      "category": "intensifier",
+      "description": "Comparative increase"
+    },
+    {
+      "id": 1261,
+      "name": "MOMENT",
+      "emoji": "📸",
+      "layer": "2a",
+      "category": "time",
+      "description": "Instantaneity, at that moment. [v0.2: replaced LESS, which is not a canonical intensifier]"
+    },
+    {
+      "id": 1262,
+      "name": "PART",
+      "emoji": "🧩",
+      "layer": "2a",
+      "category": "taxonomy",
+      "description": "Component, piece"
+    },
+    {
+      "id": 1263,
+      "name": "INSIDE",
+      "emoji": "📦",
+      "layer": "2a",
+      "category": "taxonomy",
+      "description": "Containment, within"
+    },
+    {
+      "id": 1264,
+      "name": "BE_SOMEWHERE",
+      "emoji": "🗺️",
+      "layer": "2a",
+      "category": "space",
+      "description": "Locative existence. Distinct from BE (identity) and THERE_IS (existential). [v0.2: replaced HIERARCHY, which is not a prime]"
+    },
+    {
+      "id": 1265,
+      "name": "MATTER",
+      "emoji": "⚛️",
+      "layer": "2b",
+      "category": "physical",
+      "description": "Substance, material, element"
+    },
+    {
+      "id": 1266,
+      "name": "WATER",
+      "emoji": "💧",
+      "layer": "2b",
+      "category": "physical",
+      "description": "Liquid, flow, aqueous"
+    },
+    {
+      "id": 1267,
+      "name": "FIRE",
+      "emoji": "🔥",
+      "layer": "2b",
+      "category": "physical",
+      "description": "Heat, combustion, energy"
+    },
+    {
+      "id": 1268,
+      "name": "EARTH",
+      "emoji": "🌍",
+      "layer": "2b",
+      "category": "physical",
+      "description": "Ground, terrain, planet"
+    },
+    {
+      "id": 1269,
+      "name": "AIR",
+      "emoji": "💨",
+      "layer": "2b",
+      "category": "physical",
+      "description": "Gas, atmosphere, wind"
+    },
+    {
+      "id": 1270,
+      "name": "LIGHT",
+      "emoji": "☀️",
+      "layer": "2b",
+      "category": "physical",
+      "description": "Illumination, radiation, sun"
+    },
+    {
+      "id": 1271,
+      "name": "DARK",
+      "emoji": "🌑",
+      "layer": "2b",
+      "category": "physical",
+      "description": "Absence of light, shadow"
+    },
+    {
+      "id": 1272,
+      "name": "HARD",
+      "emoji": "🪨",
+      "layer": "2b",
+      "category": "physical",
+      "description": "Solid, rigid, rock"
+    },
+    {
+      "id": 1273,
+      "name": "SOFT",
+      "emoji": "🫗",
+      "layer": "2b",
+      "category": "physical",
+      "description": "Flexible, fluid, yielding"
+    },
+    {
+      "id": 1274,
+      "name": "SHARP",
+      "emoji": "🔺",
+      "layer": "2b",
+      "category": "physical",
+      "description": "Edge, point, acute"
+    },
+    {
+      "id": 1275,
+      "name": "ROUND",
+      "emoji": "🔵",
+      "layer": "2b",
+      "category": "physical",
+      "description": "Circle, sphere, curved"
+    },
+    {
+      "id": 1276,
+      "name": "FLAT",
+      "emoji": "▬",
+      "layer": "2b",
+      "category": "physical",
+      "description": "Surface, plane, level"
+    },
+    {
+      "id": 1277,
+      "name": "ANIMAL",
+      "emoji": "🐾",
+      "layer": "2b",
+      "category": "living",
+      "description": "Fauna, creature"
+    },
+    {
+      "id": 1278,
+      "name": "PLANT",
+      "emoji": "🌿",
+      "layer": "2b",
+      "category": "living",
+      "description": "Flora, vegetation"
+    },
+    {
+      "id": 1279,
+      "name": "EAT",
+      "emoji": "🍽️",
+      "layer": "2b",
+      "category": "living",
+      "description": "Consume, nutrition, food"
+    },
+    {
+      "id": 1280,
+      "name": "GROW",
+      "emoji": "📈",
+      "layer": "2b",
+      "category": "living",
+      "description": "Development, increase, mature"
+    },
+    {
+      "id": 1281,
+      "name": "CREATE",
+      "emoji": "🔨",
+      "layer": "2b",
+      "category": "living",
+      "description": "Make, build, produce"
+    },
+    {
+      "id": 1282,
+      "name": "DESTROY",
+      "emoji": "💥",
+      "layer": "2b",
+      "category": "living",
+      "description": "Break, damage, demolish"
+    },
+    {
+      "id": 1283,
+      "name": "YOUNG",
+      "emoji": "👶",
+      "layer": "2b",
+      "category": "living",
+      "description": "Child, offspring, immature"
+    },
+    {
+      "id": 1284,
+      "name": "OLD",
+      "emoji": "👴",
+      "layer": "2b",
+      "category": "living",
+      "description": "Aged, ancient, elder"
+    },
+    {
+      "id": 1285,
+      "name": "NUMBER",
+      "emoji": "🔢",
+      "layer": "2b",
+      "category": "math",
+      "description": "Numerical, counting"
+    },
+    {
+      "id": 1286,
+      "name": "ADD",
+      "emoji": "➕",
+      "layer": "2b",
+      "category": "math",
+      "description": "Addition, combine, join"
+    },
+    {
+      "id": 1287,
+      "name": "REMOVE",
+      "emoji": "➖",
+      "layer": "2b",
+      "category": "math",
+      "description": "Subtraction, take away"
+    },
+    {
+      "id": 1288,
+      "name": "MULTIPLY",
+      "emoji": "✖️",
+      "layer": "2b",
+      "category": "math",
+      "description": "Multiplication, times"
+    },
+    {
+      "id": 1289,
+      "name": "DIVIDE",
+      "emoji": "➗",
+      "layer": "2b",
+      "category": "math",
+      "description": "Division, split"
+    },
+    {
+      "id": 1290,
+      "name": "EQUAL",
+      "emoji": "⚖️",
+      "layer": "2b",
+      "category": "math",
+      "description": "Equality, balance"
+    },
+    {
+      "id": 1291,
+      "name": "MEASURE",
+      "emoji": "📐",
+      "layer": "2b",
+      "category": "math",
+      "description": "Measurement, scale"
+    },
+    {
+      "id": 1292,
+      "name": "PATTERN",
+      "emoji": "🔁",
+      "layer": "2b",
+      "category": "math",
+      "description": "Repetition, regularity"
+    },
+    {
+      "id": 1293,
+      "name": "CHANGE",
+      "emoji": "🔃",
+      "layer": "2b",
+      "category": "math",
+      "description": "Transformation, delta"
+    },
+    {
+      "id": 1294,
+      "name": "SET",
+      "emoji": "🗃️",
+      "layer": "2b",
+      "category": "math",
+      "description": "Collection, group"
+    },
+    {
+      "id": 1295,
+      "name": "LAW",
+      "emoji": "📜",
+      "layer": "2b",
+      "category": "social",
+      "description": "Rule, governance, justice"
+    },
+    {
+      "id": 1296,
+      "name": "SOCIETY",
+      "emoji": "🏛️",
+      "layer": "2b",
+      "category": "social",
+      "description": "Institution, community"
+    },
+    {
+      "id": 1297,
+      "name": "CONFLICT",
+      "emoji": "⚔️",
+      "layer": "2b",
+      "category": "social",
+      "description": "War, fight, struggle"
+    },
+    {
+      "id": 1298,
+      "name": "TRADE",
+      "emoji": "🤲",
+      "layer": "2b",
+      "category": "social",
+      "description": "Commerce, exchange"
+    },
+    {
+      "id": 1299,
+      "name": "TEACH",
+      "emoji": "📚",
+      "layer": "2b",
+      "category": "social",
+      "description": "Education, instruction"
+    },
+    {
+      "id": 1300,
+      "name": "HOME",
+      "emoji": "🏠",
+      "layer": "2b",
+      "category": "social",
+      "description": "Dwelling, shelter, house"
+    },
+    {
+      "id": 1301,
+      "name": "PATH",
+      "emoji": "🛤️",
+      "layer": "2b",
+      "category": "social",
+      "description": "Route, way, method"
+    },
+    {
+      "id": 1302,
+      "name": "POWER",
+      "emoji": "🔋",
+      "layer": "2b",
+      "category": "social",
+      "description": "Force, authority, strength"
+    },
+    {
+      "id": 1303,
+      "name": "NAME",
+      "emoji": "📛",
+      "layer": "2b",
+      "category": "social",
+      "description": "Identity, label, title"
+    },
+    {
+      "id": 1304,
+      "name": "WRITE",
+      "emoji": "✏️",
+      "layer": "2b",
+      "category": "social",
+      "description": "Inscription, authoring"
+    },
+    {
+      "id": 1305,
+      "name": "CAUSE",
+      "emoji": "➜",
+      "layer": "2b",
+      "category": "abstract",
+      "description": "Causation, leads to"
+    },
+    {
+      "id": 1306,
+      "name": "RESULT",
+      "emoji": "🎯",
+      "layer": "2b",
+      "category": "abstract",
+      "description": "Outcome, effect"
+    },
+    {
+      "id": 1307,
+      "name": "BEGIN",
+      "emoji": "▶️",
+      "layer": "2b",
+      "category": "abstract",
+      "description": "Start, initiation"
+    },
+    {
+      "id": 1308,
+      "name": "END",
+      "emoji": "⏹️",
+      "layer": "2b",
+      "category": "abstract",
+      "description": "Finish, termination"
+    },
+    {
+      "id": 1309,
+      "name": "CONNECT",
+      "emoji": "🔗",
+      "layer": "2b",
+      "category": "abstract",
+      "description": "Link, bond, relationship"
+    },
+    {
+      "id": 1310,
+      "name": "ORDER",
+      "emoji": "📋",
+      "layer": "2b",
+      "category": "abstract",
+      "description": "Sequence, arrangement"
+    },
+    {
+      "id": 1311,
+      "name": "SIMILAR",
+      "emoji": "👯",
+      "layer": "2b",
+      "category": "abstract",
+      "description": "Resemblance, alike"
+    },
+    {
+      "id": 1312,
+      "name": "DIFFERENT",
+      "emoji": "🔶",
+      "layer": "2b",
+      "category": "abstract",
+      "description": "Contrast, distinction"
+    },
+    {
+      "id": 1313,
+      "name": "WHOLE",
+      "emoji": "🔘",
+      "layer": "2b",
+      "category": "abstract",
+      "description": "Complete, entire, total"
+    },
+    {
+      "id": 1314,
+      "name": "EMPTY",
+      "emoji": "∅",
+      "layer": "2b",
+      "category": "abstract",
+      "description": "Void, none, null"
+    },
+    {
+      "id": 1315,
+      "name": "MACHINE",
+      "emoji": "🔧",
+      "layer": "2b",
+      "category": "technology",
+      "description": "Tool, device, instrument"
+    },
+    {
+      "id": 1316,
+      "name": "CONTAINER",
+      "emoji": "🫙",
+      "layer": "2b",
+      "category": "technology",
+      "description": "Vessel, storage, enclosure"
+    },
+    {
+      "id": 1317,
+      "name": "SEND",
+      "emoji": "📤",
+      "layer": "2b",
+      "category": "technology",
+      "description": "Transmit, emit, output"
+    },
+    {
+      "id": 1318,
+      "name": "RECEIVE",
+      "emoji": "📩",
+      "layer": "2b",
+      "category": "technology",
+      "description": "Collect, absorb, input"
+    },
+    {
+      "id": 1319,
+      "name": "IMAGE",
+      "emoji": "🖼️",
+      "layer": "2b",
+      "category": "technology",
+      "description": "Visual form, picture"
+    },
+    {
+      "id": 1320,
+      "name": "HOLD",
+      "emoji": "✊",
+      "layer": "2b",
+      "category": "action",
+      "description": "Grasp, contain, maintain. [v0.2: moved from 2a primes — useful but not a canonical Wierzbicka prime]"
+    },
+    {
+      "id": 1321,
+      "name": "WITH",
+      "emoji": "🫂",
+      "layer": "2b",
+      "category": "grammatical",
+      "description": "Accompaniment, instrumentality. Freq rank ~28. [v0.2 NEW: no composition path from existing primitives]"
+    },
+    {
+      "id": 1322,
+      "name": "FOR",
+      "emoji": "🏹",
+      "layer": "2b",
+      "category": "grammatical",
+      "description": "Purpose, beneficiary, duration. Freq rank ~16. [v0.2 NEW: BECAUSE+WANT captures only one sense]"
+    },
+    {
+      "id": 1323,
+      "name": "ABOUT",
+      "emoji": "📖",
+      "layer": "2b",
+      "category": "grammatical",
+      "description": "Topic marker, concerning. Freq rank ~67. [v0.2 NEW: zero decomposition path]"
+    },
+    {
+      "id": 1324,
+      "name": "ENERGY",
+      "emoji": "🔆",
+      "layer": "2b",
+      "category": "science",
+      "description": "Physical energy, capacity for work. [v0.2 NEW: top science term, POWER+CHANGE is imprecise]"
+    },
+    {
+      "id": 1325,
+      "name": "COLOR",
+      "emoji": "🎨",
+      "layer": "2b",
+      "category": "perceptual",
+      "description": "Hue, wavelength. [v0.2 NEW: NSM research proved this cannot decompose from primes (Bullock 2011)]"
+    },
+    {
+      "id": 1326,
+      "name": "HOT",
+      "emoji": "🌡️",
+      "layer": "2b",
+      "category": "perceptual",
+      "description": "High temperature. [v0.2 NEW: near-universal semantic molecule, FIRE+LIKE conflates heat with flame]"
+    },
+    {
+      "id": 1327,
+      "name": "COLD",
+      "emoji": "❄️",
+      "layer": "2b",
+      "category": "perceptual",
+      "description": "Low temperature. [v0.2 NEW: no clean composition — NOT+FIRE means no fire, not cold]"
+    },
+    {
+      "id": 1328,
+      "name": "LINE",
+      "emoji": "📏",
+      "layer": "2b",
+      "category": "math",
+      "description": "One-dimensional form, geometric line. [v0.2 NEW: emoji freed from removed LONG prime]"
+    },
+    {
+      "id": 1329,
+      "name": "HEAVY",
+      "emoji": "🏋️",
+      "layer": "2b",
+      "category": "perceptual",
+      "description": "Weight, mass. [v0.2 NEW: LIGHT is taken (illumination), no other composition path]"
+    },
+    {
+      "id": 1330,
+      "name": "LOVE",
+      "emoji": "💕",
+      "layer": "2b",
+      "category": "emotion",
+      "description": "Deep affection. [v0.2 NEW: FEEL+GOOD+VERY doesn't distinguish love from joy]"
+    },
+    {
+      "id": 1331,
+      "name": "FEAR",
+      "emoji": "😨",
+      "layer": "2b",
+      "category": "emotion",
+      "description": "Fright, dread. [v0.2 NEW: FEEL+BAD doesn't distinguish fear from anger/sadness]"
+    },
+    {
+      "name": "HEALTH",
+      "emoji": "🩹",
+      "category": "living",
+      "description": "Medical condition, disease, wellness",
+      "id": 1332,
+      "layer": "2b"
+    },
+    {
+      "name": "SUBSTANCE",
+      "emoji": "⚗️",
+      "category": "physical",
+      "description": "Chemical element or compound",
+      "id": 1333,
+      "layer": "2b"
+    },
+    {
+      "name": "DEGREE",
+      "emoji": "📶",
+      "category": "intensifier",
+      "description": "Adverbial degree modification",
+      "id": 1334,
+      "layer": "2b"
+    },
+    {
+      "name": "ENVIRONMENT",
+      "emoji": "🌎",
+      "category": "living",
+      "description": "Ecology, sustainability, natural surroundings",
+      "id": 1335,
+      "layer": "2b"
+    },
+    {
+      "name": "BODY_PART",
+      "emoji": "🦴",
+      "category": "living",
+      "description": "Anatomical structure, organ, tissue",
+      "id": 1336,
+      "layer": "2b"
+    },
+    {
+      "name": "VISIBLE",
+      "emoji": "👓",
+      "category": "perceptual",
+      "description": "Visual perception, appearance, observable",
+      "id": 1337,
+      "layer": "2b"
+    },
+    {
+      "name": "STUDY",
+      "emoji": "🔬",
+      "category": "social",
+      "description": "Research, investigation, scholarly inquiry",
+      "id": 1338,
+      "layer": "2b"
+    },
+    {
+      "name": "ELECTRIC",
+      "emoji": "🔌",
+      "category": "physical",
+      "description": "Electrical/electronic phenomena",
+      "id": 1339,
+      "layer": "2b"
+    }
+  ]
+}

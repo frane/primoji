@@ -28,7 +28,7 @@ class Primitive:
 
 # ── Load primitives from JSON ─────────────────────────────────────────────────
 
-_DATA_DIR = Path(__file__).parent.parent / "data"
+_DATA_DIR = Path(__file__).parent / "data"
 _PRIMITIVES_PATH = _DATA_DIR / "primitives.json"
 
 

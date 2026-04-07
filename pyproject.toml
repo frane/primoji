@@ -71,6 +71,9 @@ Issues = "https://github.com/frane/primoji/issues"
 where = ["."]
 include = ["primoji*"]
 
+[tool.setuptools.package-data]
+primoji = ["data/*.json"]
+
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 pythonpath = ["."]

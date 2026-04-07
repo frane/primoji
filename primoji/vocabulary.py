@@ -13,7 +13,7 @@ from pathlib import Path
 from primoji.primitives import PRIMITIVES
 from primoji.utils import SpecialTokens, _IDS
 
-_DATA_DIR = Path(__file__).parent.parent / "data"
+_DATA_DIR = Path(__file__).parent / "data"
 
 
 # ── Tier 1: Direct Unicode Emoji (IDs 0–1199) ────────────────────────────────

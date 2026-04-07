@@ -19,7 +19,7 @@ from pathlib import Path
 from primoji.primitives import PRIMITIVES, get_primitive_by_id, get_primitive_by_name
 from primoji.vocabulary import ANCHOR_TOKENS, COMMON_WORD_TOKENS, TIER1_DIRECT_EMOJI, TIER3_FLAGS
 
-_DATA_DIR = Path(__file__).parent.parent / "data"
+_DATA_DIR = Path(__file__).parent / "data"
 
 # ── Canonical name lookups ────────────────────────────────────────────────────
 

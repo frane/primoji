@@ -13,7 +13,7 @@ from pathlib import Path
 
 import emoji as emoji_lib
 
-_DATA_DIR = Path(__file__).parent.parent / "data"
+_DATA_DIR = Path(__file__).parent / "data"
 
 
 # ── Dynamic ID computation ────────────────────────────────────────────────────

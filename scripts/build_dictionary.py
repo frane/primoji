@@ -478,6 +478,24 @@ def main() -> None:
         json.dump(output, f, ensure_ascii=False, indent=2)
     print(f"\nWrote {args.output}")
 
+    # Mirror runtime data files into the package directory so they ship with the wheel.
+    pkg_data_dir = _CODE_DIR / "primoji" / "data"
+    pkg_data_dir.mkdir(parents=True, exist_ok=True)
+    runtime_files = [
+        "primitives.json",
+        "common_words.json",
+        "dictionary_seed.json",
+        "emoji_catalog.json",
+        "proper_noun_anchors.json",
+    ]
+    import shutil
+    for fname in runtime_files:
+        src = _DATA_DIR / fname
+        dst = pkg_data_dir / fname
+        if src.exists():
+            shutil.copy2(src, dst)
+    print(f"Mirrored runtime data files to {pkg_data_dir}")
+
 
 if __name__ == "__main__":
     main()

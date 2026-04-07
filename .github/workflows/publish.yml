@@ -1,0 +1,56 @@
+name: Publish to PyPI
+
+on:
+  push:
+    tags:
+      - "v*"
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Build sdist and wheel
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install build
+        run: |
+          python -m pip install --upgrade pip
+          pip install build
+      - name: Build distributions
+        run: python -m build
+      - name: Sanity check the wheel
+        run: |
+          python -m venv /tmp/check
+          /tmp/check/bin/pip install dist/*.whl
+          /tmp/check/bin/python - <<'PY'
+          from primoji import Tokenizer
+          tok = Tokenizer()
+          assert tok.vocab_size > 10000, f"vocab too small: {tok.vocab_size}"
+          ids = tok.encode("The teacher explained photosynthesis")
+          assert ids, "encode produced empty list"
+          out = tok.decode(ids)
+          assert out, "decode produced empty string"
+          print(f"OK: vocab={tok.vocab_size}, decode={out!r}")
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: dist
+          path: dist/
+
+  publish:
+    name: Publish to PyPI
+    needs: build
+    runs-on: ubuntu-latest
+    environment: pypi
+    permissions:
+      id-token: write
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: dist
+          path: dist/
+      - name: Publish to PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
