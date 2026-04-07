@@ -1,18 +1,18 @@
-"""Primoji: Compositional pictographic tokenizer for LLM training.
+"""Primoji: a compositional semantic tokenizer for LLMs.
 
-Encodes English text into semantically meaningful emoji token sequences
-using a ~2,062 token vocabulary with 4-tier fallback (never produces UNK):
-  - Tier 1: Direct Unicode emoji + compositional primitives + dictionary
-  - Tier 2: Contraction tokens (dedicated + suffix split)
-  - Tier 3: Conservative fuzzy matching (optional)
-  - Tier 4: UTF-8 byte fallback (universal safety net)
+Encodes English text into a vocabulary of roughly 10,000 tokens built from
+Unicode emoji, Natural Semantic Metalanguage (NSM) primitives, common word
+tokens, and a UTF-8 byte fallback. The encode pipeline never produces an
+UNK token: any input is representable.
 
 Example:
     >>> from primoji import Tokenizer
     >>> tok = Tokenizer()
     >>> ids = tok.encode("The teacher explained photosynthesis")
     >>> tok.decode(ids)
-    'teacher explained photosynthesis'
+    'teacher say photosynthesis'
+    >>> tok.vocab_size
+    10195
 """
 
 from primoji.byte_fallback import decode_bytes, encode_bytes

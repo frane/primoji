@@ -40,7 +40,9 @@ def color_for_tier(tier: str) -> str:
 
 def _generate(model: GPT, initial_ids: list[int], eos_id: int,
               max_tokens: int, temperature: float, top_k: int,
-              device: str, use_tiers: bool = False) -> list[int]:
+              device: str, use_tiers: bool = False,
+              top_p: float | None = 0.9,
+              rep_penalty: float = 1.3, rep_window: int = 50) -> list[int]:
     """Generate tokens autoregressively. Shared by primoji and BPE paths."""
     generated = list(initial_ids)
     with torch.no_grad():
@@ -50,15 +52,36 @@ def _generate(model: GPT, initial_ids: list[int], eos_id: int,
             if use_tiers:
                 tier_ints = [classify_token(t) for t in generated[-1024:]]
                 tier_ctx = torch.tensor([tier_ints], dtype=torch.long, device=device)
-            logits = model(context, tier_ids=tier_ctx)[0, -1, :].float()
+            logits = model(context, tier_ids=tier_ctx)[0, -1, :].float().cpu()
+
+            # Repetition penalty
+            if rep_penalty > 1.0:
+                recent = set(generated[-rep_window:])
+                for tid in recent:
+                    if logits[tid] > 0:
+                        logits[tid] /= rep_penalty
+                    else:
+                        logits[tid] *= rep_penalty
+
             if temperature > 0:
-                logits = logits.cpu() / temperature
+                logits = logits / temperature
                 logits = torch.clamp(logits, min=-1e8, max=1e8)
                 logits[logits.isnan()] = -1e8
-                topk_v, topk_i = torch.topk(logits, min(top_k, logits.size(-1)))
-                probs = F.softmax(topk_v, dim=-1)
-                idx = torch.multinomial(probs, 1).item()
-                next_id = topk_i[idx].item()
+
+                if top_p is not None:
+                    sorted_logits, sorted_idx = torch.sort(logits, descending=True)
+                    probs = F.softmax(sorted_logits, dim=-1)
+                    cumsum = torch.cumsum(probs, dim=-1)
+                    mask = cumsum - probs > top_p
+                    sorted_logits[mask] = -1e8
+                    probs = F.softmax(sorted_logits, dim=-1)
+                    idx = torch.multinomial(probs, 1).item()
+                    next_id = sorted_idx[idx].item()
+                else:
+                    topk_v, topk_i = torch.topk(logits, min(top_k, logits.size(-1)))
+                    probs = F.softmax(topk_v, dim=-1)
+                    idx = torch.multinomial(probs, 1).item()
+                    next_id = topk_i[idx].item()
             else:
                 next_id = logits.argmax().item()
             if next_id == eos_id:
@@ -104,20 +127,23 @@ def _decode_with_emoji(tok, ids, show_emoji: bool = False) -> str:
 
 
 def generate_primoji(model, tok, prompt, max_tokens, temperature, top_k, device,
-                     use_tiers, show_emoji=False):
+                     use_tiers, show_emoji=False, top_p=0.9, rep_penalty=1.3, rep_window=50):
     from primoji.utils import SpecialTokens
     ids = tok.encode(prompt)
     if not ids:
         ids = [SpecialTokens.BOS]
     new_ids = _generate(model, ids, SpecialTokens.EOS, max_tokens,
-                        temperature, top_k, device, use_tiers)
+                        temperature, top_k, device, use_tiers,
+                        top_p=top_p, rep_penalty=rep_penalty, rep_window=rep_window)
     return _decode_with_emoji(tok, new_ids, show_emoji), new_ids
 
 
-def generate_bpe(model, tok, prompt, max_tokens, temperature, top_k, device):
+def generate_bpe(model, tok, prompt, max_tokens, temperature, top_k, device,
+                 top_p=0.9, rep_penalty=1.3, rep_window=50):
     ids = tok.encode(prompt).ids
     eos_id = tok.token_to_id("</s>")
-    new_ids = _generate(model, ids, eos_id, max_tokens, temperature, top_k, device)
+    new_ids = _generate(model, ids, eos_id, max_tokens, temperature, top_k, device,
+                        top_p=top_p, rep_penalty=rep_penalty, rep_window=rep_window)
     return tok.decode(new_ids), new_ids
 
 
@@ -202,14 +228,20 @@ def main() -> None:
     parser = argparse.ArgumentParser(description="Chat with a trained model")
     parser.add_argument("--model", type=str,
                         default=str(Path(__file__).parent.parent.parent / "models" / "experiment_500k" / "primoji_model.pt"))
-    parser.add_argument("--temperature", type=float, default=0.8)
+    parser.add_argument("--temperature", type=float, default=0.9)
     parser.add_argument("--top-k", type=int, default=40)
+    parser.add_argument("--top-p", type=float, default=0.9, help="Nucleus sampling threshold (default: 0.9)")
+    parser.add_argument("--rep-penalty", type=float, default=1.3, help="Repetition penalty (default: 1.3)")
+    parser.add_argument("--rep-window", type=int, default=50, help="Repetition penalty window (default: 50)")
     parser.add_argument("--max-tokens", type=int, default=150)
     parser.add_argument("--device", type=str, default=None)
     parser.add_argument("--trace", action="store_true", help="Show token tiers with colors (primoji only)")
     parser.add_argument("--tiers", action="store_true", help="Model has tier embeddings (v2+)")
     parser.add_argument("--bpe", action="store_true", help="Use Mistral BPE tokenizer instead of primoji")
     parser.add_argument("--1b", dest="one_b", action="store_true", help="Use 1B model config instead of 125M")
+    parser.add_argument("--model-size", type=str, default=None,
+                        choices=["125m", "1b", "primoji-125m", "primoji-1b", "primoji-wide-125m"],
+                        help="Model architecture (overrides --1b)")
     parser.add_argument("--emoji", action="store_true", help="Render emoji-tier tokens as Unicode glyphs")
     args = parser.parse_args()
 
@@ -222,10 +254,19 @@ def main() -> None:
             args.device = "cpu"
 
     # Model config
-    if args.one_b:
-        d_model, n_layers, n_heads, d_ff = 2048, 24, 16, 5461
+    ARCH = {
+        "125m":              (768, 12, 12, 3072),
+        "1b":                (2048, 24, 16, 5461),
+        "primoji-125m":      (384, 50, 6, 1536),
+        "primoji-1b":        (1024, 73, 16, 4096),
+        "primoji-wide-125m": (768, 12, 16, 3712),
+    }
+    if args.model_size:
+        d_model, n_layers, n_heads, d_ff = ARCH[args.model_size]
+    elif args.one_b:
+        d_model, n_layers, n_heads, d_ff = ARCH["1b"]
     else:
-        d_model, n_layers, n_heads, d_ff = 768, 12, 12, 3072
+        d_model, n_layers, n_heads, d_ff = ARCH["125m"]
 
     alias_map = None
     if args.bpe:
@@ -274,12 +315,16 @@ def main() -> None:
 
         if args.bpe:
             output, new_ids = generate_bpe(model, tok, prompt, args.max_tokens,
-                                            args.temperature, args.top_k, args.device)
+                                            args.temperature, args.top_k, args.device,
+                                            top_p=args.top_p, rep_penalty=args.rep_penalty,
+                                            rep_window=args.rep_window)
         else:
             output, new_ids = generate_primoji(model, tok, prompt, args.max_tokens,
                                                args.temperature, args.top_k, args.device,
                                                use_tiers=args.tiers,
-                                               show_emoji=args.emoji)
+                                               show_emoji=args.emoji,
+                                               top_p=args.top_p, rep_penalty=args.rep_penalty,
+                                               rep_window=args.rep_window)
 
         print(f"Model: {output}")
 

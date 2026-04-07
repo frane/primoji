@@ -313,23 +313,31 @@ def train(tokenizer_name: str, data_dir: Path, device: str,
         except Exception as e:
             print(f"Warning: could not build alias map: {e}")
 
-    # Model config
-    if model_size == "1b":
-        config = {
-            "vocab_size": vocab_size, "d_model": 2048, "n_layers": 24,
-            "n_heads": 16, "d_ff": 5461, "max_seq_len": seq_len,
-            "n_tiers": 5 if use_tiers else 0, "alias_map": alias_map,
-        }
-        max_lr, min_lr = 3e-4, 3e-5
-        eval_interval, log_interval = 500, 50
-    else:
-        config = {
-            "vocab_size": vocab_size, "d_model": 768, "n_layers": 12,
-            "n_heads": 12, "d_ff": 3072, "max_seq_len": seq_len,
-            "n_tiers": 5 if use_tiers else 0, "alias_map": alias_map,
-        }
-        max_lr, min_lr = 6e-4, 6e-5
-        eval_interval, log_interval = 200, 20
+    # Model configs
+    MODEL_CONFIGS = {
+        "125m": {"d_model": 768, "n_layers": 12, "n_heads": 12, "d_ff": 3072,
+                 "max_lr": 6e-4, "min_lr": 6e-5, "eval_interval": 200, "log_interval": 20},
+        "1b":   {"d_model": 2048, "n_layers": 24, "n_heads": 16, "d_ff": 5461,
+                 "max_lr": 3e-4, "min_lr": 3e-5, "eval_interval": 500, "log_interval": 50},
+        # Primoji-deep: half width, 4x depth, same total params
+        # Wies bottleneck: small vocab -> narrow is fine, depth helps composition
+        "primoji-125m": {"d_model": 384, "n_layers": 50, "n_heads": 6, "d_ff": 1536,
+                         "max_lr": 6e-4, "min_lr": 6e-5, "eval_interval": 200, "log_interval": 20},
+        "primoji-1b":   {"d_model": 1024, "n_layers": 73, "n_heads": 16, "d_ff": 4096,
+                         "max_lr": 3e-4, "min_lr": 3e-5, "eval_interval": 500, "log_interval": 50},
+        # Primoji-wide: same depth/width as standard, embedding savings -> larger FFN
+        # Matches BPE 125M total params (139M). FFN ratio 4.83x instead of 4x.
+        "primoji-wide-125m": {"d_model": 768, "n_layers": 12, "n_heads": 16, "d_ff": 3712,
+                              "max_lr": 6e-4, "min_lr": 6e-5, "eval_interval": 200, "log_interval": 20},
+    }
+    mc = MODEL_CONFIGS[model_size]
+    config = {
+        "vocab_size": vocab_size, "d_model": mc["d_model"], "n_layers": mc["n_layers"],
+        "n_heads": mc["n_heads"], "d_ff": mc["d_ff"], "max_seq_len": seq_len,
+        "n_tiers": 5 if use_tiers else 0, "alias_map": alias_map,
+    }
+    max_lr, min_lr = mc["max_lr"], mc["min_lr"]
+    eval_interval, log_interval = mc["eval_interval"], mc["log_interval"]
 
     # Training config
     warmup_steps = 2000
@@ -526,8 +534,10 @@ def main() -> None:
                         help="Enable tier embeddings + byte loss downweighting + compositional embeddings")
     parser.add_argument("--byte-weight", type=float, default=0.3,
                         help="Loss weight for byte-fallback tokens (default: 0.3)")
-    parser.add_argument("--model-size", choices=["125m", "1b"], default="125m",
-                        help="Model size: 125m (~122M params) or 1b (~1.1B params)")
+    parser.add_argument("--model-size",
+                        choices=["125m", "1b", "primoji-125m", "primoji-1b", "primoji-wide-125m"],
+                        default="125m",
+                        help="125m, 1b, primoji-125m (deep/narrow 122M), primoji-1b (deep/narrow 1.2B), primoji-wide-125m (139M, larger FFN)")
     args = parser.parse_args()
 
     if args.device is None:

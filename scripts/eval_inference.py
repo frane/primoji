@@ -166,6 +166,8 @@ def main() -> None:
     parser.add_argument("--tiers", action="store_true")
     parser.add_argument("--device", type=str, default=None)
     parser.add_argument("--1b", dest="one_b", action="store_true")
+    parser.add_argument("--model-size", type=str, default=None,
+                        choices=["125m", "1b", "primoji-125m", "primoji-1b", "primoji-wide-125m"])
     args = parser.parse_args()
 
     if args.device is None:
@@ -181,10 +183,15 @@ def main() -> None:
     state = torch.load(args.model, map_location="cpu", weights_only=True)
     v = state["tok_emb.embedding.weight"].shape[0]
 
-    if args.one_b:
-        d_model, n_layers, n_heads, d_ff = 2048, 24, 16, 5461
+    ARCH = {"125m": (768, 12, 12, 3072), "1b": (2048, 24, 16, 5461),
+            "primoji-125m": (384, 50, 6, 1536), "primoji-1b": (1024, 73, 16, 4096),
+            "primoji-wide-125m": (768, 12, 16, 3712)}
+    if args.model_size:
+        d_model, n_layers, n_heads, d_ff = ARCH[args.model_size]
+    elif args.one_b:
+        d_model, n_layers, n_heads, d_ff = ARCH["1b"]
     else:
-        d_model, n_layers, n_heads, d_ff = 768, 12, 12, 3072
+        d_model, n_layers, n_heads, d_ff = ARCH["125m"]
 
     model = GPT(vocab_size=v, d_model=d_model, n_layers=n_layers, n_heads=n_heads,
                 d_ff=d_ff, max_seq_len=1024, n_tiers=5 if args.tiers else 0,

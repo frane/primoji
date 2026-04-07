@@ -5,45 +5,61 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "primoji"
 version = "0.1.0"
-description = "Compositional pictographic tokenizer for LLM training"
+description = "A compositional semantic tokenizer for LLMs based on NSM primitives, emoji, and common word tokens"
 readme = "README.md"
 license = {text = "Apache-2.0"}
-requires-python = ">=3.11"
-authors = [{name = "Frane"}]
-keywords = ["tokenizer", "emoji", "nlp", "llm", "compositional", "pictographic"]
+requires-python = ">=3.10"
+authors = [{name = "Frane Bandov", email = "frane@offbyte.com"}]
+keywords = [
+    "tokenizer",
+    "tokenization",
+    "nlp",
+    "llm",
+    "language-model",
+    "semantic",
+    "compositional",
+    "emoji",
+    "nsm",
+]
 classifiers = [
     "Development Status :: 3 - Alpha",
     "Intended Audience :: Science/Research",
+    "Intended Audience :: Developers",
     "License :: OSI Approved :: Apache Software License",
+    "Operating System :: OS Independent",
     "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: 3.13",
     "Topic :: Scientific/Engineering :: Artificial Intelligence",
     "Topic :: Text Processing :: Linguistic",
+    "Typing :: Typed",
 ]
 dependencies = [
-    "spacy>=3.8,<4.0",
-    "emoji>=2.14,<3.0",
+    "emoji>=2.14",
 ]
 
 [project.optional-dependencies]
 dev = [
-    "pytest>=8.3,<9.0",
-    "black>=24.10,<25.0",
-    "ruff>=0.8,<1.0",
+    "pytest>=8.3",
+    "black>=24.10",
+    "ruff>=0.8",
+]
+build-dict = [
+    "spacy>=3.8",
+    "wordfreq>=3.0",
 ]
 train = [
-    "torch>=2.5,<3.0",
-    "tokenizers>=0.21,<1.0",
-]
-validate = [
-    "anthropic>=0.42,<1.0",
+    "torch>=2.5",
+    "tokenizers>=0.21",
+    "datasets>=3.0",
+    "numpy>=1.26",
 ]
 spelling = [
-    "symspellpy>=6.7,<7.0",
+    "symspellpy>=6.7",
 ]
-all = ["primoji[dev,train,spelling]"]
+all = ["primoji[dev,build-dict,train,spelling]"]
 
 [project.urls]
 Homepage = "https://github.com/frane/primoji"
