@@ -618,3 +618,51 @@ essentially closed.
    vocabulary size for 96% token coverage of FineWeb-Edu. The original
    10K was artificially small because articles were dropped, common words
    were missing, and the byte fallback rate was 7%.
+
+## 2026-04-17 Phase V8.3: Composer false positive cleanup
+
+### What changed
+
+V8.3's original plan was to replace the affix stripper with emoji2vec +
+WordNet + corpus embeddings. V8.2.1 already replaced it with proper
+derivational suffix rules, and V8.2.2 expanded common_words for byte-fallback
+words. But the V8.1 false positives (discover -> NOT+cover, present ->
+BEFORE+sent, layer -> lay+MORE, etc.) were still firing because the
+common_words expansion only captured byte_fallback words, not composer_rule
+words.
+
+Fix: added all 5,755 composer-rule words with corpus freq >= 50 to
+common_words.json. These are now single word tokens that resolve at
+dictionary lookup (step 6) before the composer ever sees them.
+
+### Results
+
+| Metric | Before | After |
+|--------|--------|-------|
+| Byte fallback | 3.86% | 3.80% |
+| Composer rule | 0.90% | 0.05% |
+| Vocab size | 26,343 | 32,098 |
+| common_words | 23,812 | 29,567 |
+| Dictionary | 98,857 | 118,379 |
+
+The composer now only fires on 0.05% of tokens -- genuinely novel/rare words
+that aren't in any dictionary layer. The old false positives (discover,
+present, layer, developer, researcher, etc.) are all single word tokens.
+
+### What we learned
+
+1. Vocab reached 32K, matching BPE's 32,768. This is not a coincidence --
+   it's the vocabulary size needed for ~96% token coverage of English
+   educational text. The difference: Primoji's 32K tokens are semantically
+   organized (emoji + primitives + word tokens + compositions), while BPE's
+   32K are arbitrary byte fragments.
+
+2. The emoji2vec + WordNet + corpus embedding plan from V8.3 original spec
+   was not needed. The combination of derivational suffix rules (V8.2.1)
+   and comprehensive common_words expansion (V8.2.2 + V8.3) achieved the
+   same goal more simply. The composer is now a thin fallback for rare
+   morphological variants, not the primary resolution path.
+
+3. The 0.05% composer residual (209K tokens) is acceptable. These are
+   genuinely novel combinations like "unaccented", "prereading",
+   "nonpartisan" where morphological decomposition is semantically correct.
