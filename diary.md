@@ -746,3 +746,23 @@ Generation is garbage (expected at 500 steps) but confirms:
 ### Full test suite
 
 615 tests pass.
+
+## 2026-04-17 Phase V8.7: Cloud training preparation
+
+### What changed
+
+Re-tokenized 500K FineWeb-Edu docs with V8 tokenizer:
+- 627M primoji tokens (vs V6's ~590M, more because function words now produce tokens)
+- Train: 565M tokens, Val: 63M tokens
+- Tokenization time: 21 minutes on M2 Pro
+
+Fixed meta.json for training script compatibility (primoji_vocab_size key,
+int64 byte counts).
+
+Uploaded all training data + code to HuggingFace:
+fbandov/primoji-v8-training-data (private dataset)
+
+Created run_v8_training.sh with commands for:
+- 3x 125M seeds (V8 primoji, --v2 --byte-weight 0.7)
+- 1x 1B (V8 primoji)
+- 1x 125M BPE 3-epoch baseline
