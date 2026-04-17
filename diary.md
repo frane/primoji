@@ -715,3 +715,34 @@ check + preposition-presence check).
 2. The distinction between "alias" and "word token" is purely about embedding
    computation: aliases get mean-of-primitives embeddings, word tokens get
    independent embeddings. Both encode as single tokens in the sequence.
+
+## 2026-04-17 Phase V8.5: Full rebuild and sanity check
+
+### Eval sentence retokenization
+
+| Metric | V6 | V8 | BPE |
+|--------|----|----|-----|
+| Tokens (1000 sents) | 36,076 | 34,280 | 33,118 |
+| Ratio to BPE | 1.089x | 1.035x | 1.000x |
+| Byte fallback (by words) | 6.9% | 3.56% | 0% |
+| Vocab size | 10,195 | 32,098 | 32,768 |
+
+V8 produces 1,796 fewer tokens than V6 on the same sentences. The
+compression ratio improved from 1.089x to 1.035x BPE -- nearly 1:1.
+
+The 3.56% byte fallback by words expands to 26.8% by tokens because each
+byte-fallback word produces ~7 tokens (START + UTF-8 bytes + END).
+
+### Sanity training (tiny model, M2 Pro)
+
+19.7M param model (256 dim, 4 heads, 4 layers), 500 steps, batch 8, seq 256.
+Loss: 10.545 -> 5.397 in 40 seconds on MPS. Val loss: 5.371.
+Generation is garbage (expected at 500 steps) but confirms:
+- Tokenizer output is trainable
+- Gradients flow through all token types
+- No OOV/UNK crashes
+- vocab_size=32,098 works in embedding table
+
+### Full test suite
+
+615 tests pass.
