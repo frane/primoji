@@ -417,3 +417,141 @@ case-preserved tokens shows 6.54%.
    the composer, or just expand the dictionary to cover all common
    derivations directly? Dictionary expansion is simpler and less error-prone
    but doesn't generalize to novel words.
+
+## 2026-04-17 Phase V8.2.1: Derivational suffix rules in composer
+
+### What changed
+
+Added 8 derivational suffix rules to the composer, after the existing
+comparative/superlative rules:
+
+| Suffix | Semantic | Example | Marker primitive |
+|--------|----------|---------|-----------------|
+| -or/-er (agent) | person who does X | creator -> CREATE + SOMEONE | SOMEONE |
+| -al | adjectival | dimensional -> dimension + KIND | KIND |
+| -ly | adverbial | quickly -> quick + LIKE_AS | LIKE_AS |
+| -tion/-sion | nominalizing | creation -> create + RESULT | RESULT |
+| -ness | quality | darkness -> dark + SOMETHING | SOMETHING |
+| -ful | full of | helpful -> help + HAVE | HAVE |
+| -able/-ible | capable | readable -> CAN + read | CAN |
+| -ment | result of | development -> develop + RESULT | RESULT |
+
+Also fixed: comparative rule now handles doubled consonants (hotter -> hot + MORE).
+Agent rule uses min_base=4 on stripped base to avoid arm->armor, man->manor, don->donor.
+
+### Results
+
+Testing on actual 6,266 byte-fallback words from top 21K:
+- 316 genuinely new resolutions (words that were byte_fallback before)
+- 497,955 tokens recovered
+- By type: 149 adverbial, 42 agent, 32 adjectival, 31 able, 25 nominalize,
+  20 ful, 18 quality
+
+False positive analysis on agent rule (-or/-er):
+- 42 total agent hits
+- Known FPs: sensor (base "sense" via restore-e), pastor (base "past"),
+  cursor (base "curse"), batter (base "bat" via doubled consonant),
+  sinner (base "sin" via doubled consonant)
+- FP rate: ~12% (5/42), all low-frequency words
+- All remaining FPs are words that should be in common_words.json directly
+
+Specific words verified:
+- creator -> [CREATE, SOMEONE] (correct)
+- instructor -> [TEACH, SOMEONE] (correct)
+- dimensional -> [dimension_word, KIND] (correct)
+- hotter -> [HOT, MORE] (was broken, now correct via comparative doubled-consonant fix)
+
+## 2026-04-17 Phase V8.2.2: common_words.json investigation and expansion
+
+### Root cause
+
+common_words.json (v0.4.0) was built from "wordfreq top 3K + FineWeb-Edu
+top 5K byte-fallback words." The FineWeb-Edu byte-fallback source was
+bf_words_500k.json, a static snapshot of 10,000 words that byte-fallbacked
+in an earlier tokenizer version. Words that resolved (even incorrectly) in
+that earlier version never made it into the byte-fallback list.
+
+"sum" (wordfreq rank 4,050): outside top 3K, so depended on the FineWeb-Edu
+BF list. But "sum" didn't byte-fallback in the earlier tokenizer (it was
+probably handled by a now-removed composition or dropped-word rule). So it
+was never added.
+
+"sensor" (wordfreq rank 8,089): outside top 3K and top 5K. Never appeared
+in bf_words_500k.json because it was resolved by some earlier mechanism.
+
+This is a build methodology bug, not a design choice. The common_words list
+should be built from current byte-fallback analysis, not from stale snapshots.
+
+### Fix
+
+Regenerated common_words.json from current byte-fallback analysis:
+- Keep all 7,741 existing words
+- Add 10,119 new alphabetic words with corpus freq >= 500 that currently
+  byte-fallback after all composer rules
+- New total: 17,860 words (v0.5.0)
+
+Filters applied: alphabetic only, length >= 2, freq >= 500, must currently
+be byte_fallback (not already handled by dictionary/composer/structural).
+
+### Results
+
+Dictionary rebuilt: 42,407 -> 77,553 entries (larger due to more base words
+generating more inflections in Layer 5).
+
+Vocab size: 10,272 -> 20,391 (10K new word token IDs from expanded
+common_words).
+
+**Byte fallback: 7.33% -> 3.88%**
+
+Full progress:
+| Stage | Byte fallback | Delta |
+|-------|--------------|-------|
+| V6 baseline | 7.33% | - |
+| V8.2-diag (structural fixes) | 6.54% | -0.79pp |
+| V8.2.1 (derivational rules) | ~6.4%* | ~-0.1pp |
+| V8.2.2 (common_words expansion) | 3.88% | -2.5pp |
+
+*Derivational rules alone recover 498K tokens, but many of those words
+also got added to common_words (which resolves first in the pipeline),
+so the independent contribution is smaller.
+
+### Tier distribution (final)
+
+| Tier | Tokens | Pct |
+|------|--------|-----|
+| word token | 318.2M | 70.9% |
+| structural | 66.6M | 14.8% |
+| primitive | 23.8M | 5.3% |
+| byte fallback | 17.4M | 3.9% |
+| emoji | 7.9M | 1.8% |
+| dict composed | 6.3M | 1.4% |
+| anchor | 4.6M | 1.0% |
+| composer rule | 4.0M | 0.9% |
+
+### What we learned
+
+1. The remaining 3.88% byte fallback is dominated by single uppercase
+   letters (C, J, B, D, S, E, R, P = list items, initials, variables).
+   These account for ~1.5% and are inherently un-coverable. The addressable
+   residual is ~2.4%.
+
+2. Vocab doubled from 10K to 20K. This is a significant change -- the
+   paper's architecture analysis assumed ~4K-10K vocab. The 20K vocab still
+   has a 94% smaller embedding table than BPE's 32K (20K * 1536 = 61MB
+   vs 32K * 4096 = 256MB), but the depth-vs-width argument is weaker.
+
+3. The derivational composer rules work but are mostly redundant with
+   common_words expansion. Their value is in handling novel OOV words that
+   aren't in common_words -- a long-tail benefit that's hard to measure
+   on the eval set.
+
+### Open questions
+
+1. Is 20K vocab too large? The original design targeted ~4K-10K. But
+   dropping articles in V6 was hiding the true vocabulary needs. With
+   function words as tokens and proper coverage, ~20K seems to be the
+   natural size. Need to verify the architectural implications still hold.
+
+2. The 3.88% byte fallback is close to the 3% target. Remaining is mostly
+   single letters and proper nouns. Should we add single-letter tokens?
+   That saves ~1.5pp but adds only 52 tokens (26 upper + 26 lower).
