@@ -202,28 +202,105 @@ Top real vocabulary gaps by frequency:
    current 7.11% byte fallback, leaving ~3-4% that needs dictionary
    expansion.
 
-## 2026-04-17 Phase V8.2 diagnostics: Seven structural bugs fixed
+## 2026-04-17 Phase V8.2 diagnostics: Seven structural bugs
 
 Commit: (see below)
 
-### Diagnostic findings
+### Diagnostic A: Morphological rule failures (step-by-step traces)
 
-**A) Morphological rule failures.** Three bugs found:
-1. Bootstrap/seed desync: "stop", "start", "little" existed in the runtime
-   bootstrap (dictionary.py) but not in _PRIMITIVE_SYNONYMS (build_dictionary.py).
-   Layer 5 inflection only operates on the seed, so "stops" was never generated.
-   Fix: added "stop" to END synonyms, "start" to BEGIN, "little" to SMALL.
-2. Missing derivational suffixes: Layer 5 only generates -s/-es/-ies/-ed/-d/-ing.
-   Does NOT generate -or, -al, -ly, -tion, -ness, -ful, -able, -ible, -ment.
-   "create" exists but "creator" doesn't. "dimension" exists but "dimensional"
-   doesn't. NOT fixed here -- this is a V8.2b dictionary expansion issue.
-3. Bogus inflections: "stoppeded", "stoppedings" generated because Layer 5
-   inflects already-inflected forms. NOT fixed here -- tracked for V8.2b.
+Each word traced through the full _encode_word pipeline:
 
-**B) Dictionary gaps (sum, sensor).** Pure misses. Neither word appears in any
-dictionary layer. "sense" is in common_words but "sensor" (a derivation) was
-never generated. "sum" is a common English word with no coverage at all.
-NOT fixed here -- V8.2b will address via expanded dictionary.
+**stops** (base: stop, suffix: -s)
+- Step 6 dict lookup("stops"): MATCH -> [1308] (END primitive)
+- Resolution: FIXED in this commit. "stop" was added to END primitive synonyms
+  in build_dictionary.py. Layer 5 then generated "stops" -> [END].
+- Bug was: "stop" existed in runtime bootstrap (dictionary.py) but NOT in
+  _PRIMITIVE_SYNONYMS, so the seed file never contained "stop" and Layer 5
+  never inflected it.
+
+**stopping** (base: stop, suffix: -ing) / **stopped** (base: stop, suffix: -ed)
+- Step 6 dict lookup: MATCH -> word token IDs.
+- These already worked because "stopping" and "stopped" were in common_words.json.
+- However, they produce bogus inflections in the seed: "stoppeded", "stoppedings"
+  etc., because Layer 5 inflects already-inflected forms. Bug not fixed yet.
+
+**creator** (base: create, suffix: -or)
+- Step 6 dict lookup("creator"): None (miss)
+- Step 7 COMMON_WORD_TOKENS: miss
+- Step 10 COMPOSER: no rule fires.
+  - Negation: "creator" doesn't start with un/in/im/dis/non.
+  - Temporal: doesn't start with pre/post/re.
+  - Comparative: doesn't end with -er or -est. **-or is not -er.** The composer
+    has no -or suffix rule at all.
+- Step 11: BYTE FALLBACK (9 tokens)
+- Root cause: The composer only has -er/-est (comparative/superlative). The -or
+  agentive suffix was in `_try_agent()` which was removed in V8.1. Even if it
+  hadn't been removed, it checked -er and -or but produced SOMEONE+base (wrong
+  semantics for "creator" which is better as CREATE+SOMEONE).
+- Actual fix needed: Either add "creator" to the dictionary directly, or add a
+  derivational suffix rule for -or that maps to base+SOMEONE.
+
+**instructor** (base: instruct, suffix: -or)
+- Same pipeline failure as "creator". Additionally, the negation rule tries
+  "in-" prefix, strips it to get "structor", which isn't in the dictionary.
+  So the negation check fires but fails (correct behavior).
+- Root cause: same as creator. No -or suffix rule.
+
+**dimensional** (base: dimension, suffix: -al)
+- Step 6 dict lookup("dimensional"): None (miss)
+- Step 10 COMPOSER: no rule fires.
+  - The composer has NO -al suffix rule. It only has: negation prefixes,
+    temporal prefixes, -er/-est comparative. The -al derivational suffix
+    is simply not implemented.
+- Step 11: BYTE FALLBACK (13 tokens)
+- Root cause: missing derivational suffix rule for -al.
+
+**possess** (standalone word)
+- Step 6 dict lookup("possess"): None
+- Step 7 COMMON_WORD_TOKENS: None
+- Step 10 COMPOSER: no rule fires (no applicable prefix or suffix)
+- Step 11: BYTE FALLBACK (9 tokens)
+- Root cause: "possess" is not in any layer of the dictionary. It is not
+  a primitive synonym, emoji, composition, anchor, or common word. It's a
+  common English word (freq 8,526 in corpus) that was simply omitted.
+
+**Summary of morphological bugs:**
+1. FIXED: bootstrap/seed desync for stop/start/little.
+2. NOT FIXED: no derivational suffix rules for -or, -al, -ly, -tion, -ness,
+   -ful, -able, -ible, -ment. The composer only has: negation prefixes,
+   temporal prefixes, comparative -er/-est. All other derivational morphology
+   is missing.
+3. NOT FIXED: Layer 5 inflects already-inflected forms (bogus entries).
+
+### Diagnostic B: Dictionary gaps (sum, sensor)
+
+Traced through all 5 layers of build_dictionary.py:
+
+**sum** (corpus freq: 10,939)
+- Layer 1 (emoji CLDR names): no emoji has "sum" in its name
+- Layer 2 (primitive synonyms): ADD = ["add", "addition"] -- "sum" not listed
+- Layer 3 (anchors): not a proper noun
+- Layer 4a (compositions): not manually composed
+- Layer 4a (auto/WordNet): not generated by WordNet script
+- Layer 4b (common_words.json): not in the 7,741-word list
+- Root cause: common_words.json was built from "wordfreq top 3K + FineWeb-Edu
+  top 5K byte-fallback words." "sum" at corpus frequency 10,939 should be in
+  the top 3K by wordfreq, but the common_words build script must have excluded
+  it (possibly filtered as a function word or abbreviation, or the wordfreq
+  source was more restrictive than expected). It's also a natural fit for the
+  ADD primitive synonym list.
+
+**sensor** (corpus freq: 11,575)
+- Same failure across all 5 layers as "sum."
+- Correction to initial analysis: "sensor" is NOT a derivation of "sense + -or".
+  "Sensor" is a standalone English noun borrowed from Latin sensus. "Sense" is
+  both a noun and a verb; "sensor" is not formed by productive English
+  derivation from "sense." My initial claim that "the -or derivational suffix
+  was never implemented" was incorrect as an explanation for this word -- the
+  real reason is that "sensor" is simply missing from all dictionary sources.
+- Root cause: same as "sum" -- the 7,741-word common_words.json is too small.
+  A word with corpus frequency 11,575 in 500K FineWeb-Edu docs is solidly
+  in the top 5K most common words and should have been included.
 
 **C) Possessive handling.** Preprocessor already split "'s" possessives into
 [base, "'s"], but "'s" then byte-fallbacked. Fixed: preprocessor now emits
@@ -265,55 +342,78 @@ mr, mrs, ms, dr, jr, sr, st, ave, blvd, ph.d, a.m, p.m, a.d, b.c, d.c.
 Vocab size: 10,195 -> 10,272 (+77: 67 structural + 10 common_words from V8.1)
 Dictionary: 42,372 -> 42,407 (+35 from SI units and new primitive synonyms)
 
-**Byte fallback: 7.11% -> 6.55%** (corrected for possessive tokens being
-miscounted as byte fallback in the frequency analysis)
+### Byte fallback reconciliation
 
-The improvement is smaller than hypothesized (0.56pp vs expected 2-3pp).
-Reason: the fixes address TYPE coverage (fewer unique words byte-fallback)
-but the highest-TOKEN-COUNT byte-fallback sources are single letters (c, p,
-b, d, e, j, s -- list items, variable names, page references) which account
-for ~2% of tokens and are not addressable by dictionary expansion.
+Pre-fix baseline was 7.11%, measured with the old preprocessor (no slash
+splitting, no possessive markers). Post-fix measurement used the new
+preprocessor which produces more total tokens (448.8M vs 447.9M) due to
+possessive markers and slash splitting. The honest comparison on equal
+footing: **7.33% -> 6.54%**, a **0.79pp improvement**.
 
-The remaining ~4.5% byte fallback that IS addressable comes from:
-- Real vocabulary gaps (sensor, sum, dimensional, creator, possess, etc.)
-- Decade words (1970s, 1960s, 1980s, 1990s)
-- Numbers with commas (1,000, 10,000, 100,000)
+Per-fix deltas (measured independently on 500K FineWeb-Edu docs):
 
-These will be covered by V8.2b dictionary expansion.
+| Fix | Tokens recovered | Delta (pp) |
+|-----|------------------|-----------:|
+| C: Possessives | 1,943,886 | +0.433 |
+| G: Abbreviations | 501,026 | +0.112 |
+| D: Slash compounds | 392,245 | +0.087 |
+| A-fix: stop/start/little | 281,196 | +0.063 |
+| E: Ordinals | 225,127 | +0.050 |
+| F: SI units | 209,898 | +0.047 |
+| **Total** | **3,553,378** | **+0.792** |
+
+The individual deltas sum to 0.792pp. The measured total drop is 0.79pp.
+These match (the tiny difference is rounding).
+
+The earlier claim of "7.11% -> 6.55% (corrected)" was wrong. What happened:
+the frequency counter lowercased all words, turning `<POSSESSIVE>` into
+`<possessive>`. classify_word("&lt;possessive>") = byte_fallback (case
+mismatch). So the counter attributed 1.94M possessive tokens to byte
+fallback, inflating the rate to 6.98%. I then "corrected" by subtracting
+those manually, getting 6.55%. The actual tokenizer was working correctly
+the whole time -- the measurement was wrong. Proper measurement with
+case-preserved tokens shows 6.54%.
 
 ### What we learned
 
-1. The possessive fix alone recovered 1.94M tokens (0.43% of all tokens).
-   Possessives are very common in FineWeb-Edu (educational text has lots of
-   "student's", "earth's", "country's").
+1. Possessives are the biggest single fix (0.43pp, 1.94M tokens). Educational
+   text is full of "student's", "earth's", "country's".
 
-2. Single letters dominate byte fallback by token count. 26 single letters
-   account for ~1.5M tokens combined. These are inherently un-coverable --
-   they're variable names, list markers, abbreviations, and page references.
-   They should stay as byte fallback.
+2. Single letters dominate the remaining byte fallback. The 26 single-letter
+   words (c, p, b, d, e, j, s, x, r, t, n, h, f, v, k, w, o, y, u, q, z)
+   plus underscore account for ~1.5M tokens (~0.33%). These are variable
+   names, list markers, abbreviations, and page references. They are inherently
+   un-coverable by dictionary expansion.
 
-3. Ordinals and SI units resolved cleanly but don't appear in the top
-   byte-fallback words by token count because they're spread across many
-   specific forms (19th, 20th, etc.) each with moderate frequency.
+3. The remaining addressable byte fallback (~5%) comes from:
+   - Real vocabulary gaps (sensor 11.6K, sum 10.9K, dimensional 9.8K,
+     possess 8.5K, creator 7.2K, instructor 6.5K, etc.)
+   - Decade words (1970s 10.5K, 1960s 10.4K, 1980s 10.1K)
+   - Numbers with commas (1,000 at 11.8K, 10,000, 100,000)
+   - Period-containing tokens not yet in abbreviations
 
-4. The slash fix helps "and/or" (30K tokens) but its impact is spread
-   across many compound forms.
+4. The morphological gap is real: the composer has no rules for -or, -al,
+   -ly, -tion, -ness, -ful, -able, -ible, -ment. Only negation prefixes,
+   temporal prefixes, and -er/-est comparative are implemented. This means
+   common derivations like creator, dimensional, traditionally, possession
+   all byte-fallback despite their base forms being in the dictionary.
 
-5. The real dictionary gap (vocab words like sensor, sum, creator) is
-   smaller than initially estimated. Most byte-fallback tokens are
-   structural artifacts, not vocabulary misses.
+5. common_words.json (7,741 entries) is too small. Words with corpus frequency
+   >10,000 (sum, sensor) are missing. The build source was "wordfreq top 3K
+   + FineWeb-Edu top 5K byte-fallback words" which apparently didn't capture
+   them. V8.2b needs to expand this substantially.
 
 ### Open questions
 
-1. Should single letters get dedicated token IDs? They're common enough
-   (c=122K, p=107K) but semantically empty. Current byte fallback handles
-   them in 5 tokens (START + byte + END). A dedicated token would save
-   4 tokens per occurrence. At 1.5M total occurrences, that's 6M tokens
-   saved. Worth doing? Or noise?
+1. Should single letters get dedicated token IDs? They're common (c=122K,
+   p=107K) but semantically empty. Byte fallback uses 5 tokens per letter
+   (START + byte + END). A dedicated token saves 4 tokens per occurrence.
 
-2. Decade words (1970s, 1960s) could be handled as digit sequence + "s"
-   suffix. Similar to ordinal handling. Not in scope for this commit but
-   straightforward to add.
+2. Decade words (1970s) could be handled as digit sequence + "s" suffix.
 
 3. Numbers with commas (1,000) need comma handling in the number tokenizer.
-   Currently the comma splits the number.
+
+4. Should V8.2b add derivational suffix rules (-or, -al, -tion, etc.) to
+   the composer, or just expand the dictionary to cover all common
+   derivations directly? Dictionary expansion is simpler and less error-prone
+   but doesn't generalize to novel words.
