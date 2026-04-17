@@ -555,3 +555,66 @@ so the independent contribution is smaller.
 2. The 3.88% byte fallback is close to the 3% target. Remaining is mostly
    single letters and proper nouns. Should we add single-letter tokens?
    That saves ~1.5pp but adds only 52 tokens (26 upper + 26 lower).
+
+## 2026-04-17 Phase V8.2b: Residual dictionary expansion
+
+### What changed
+
+Instead of LLM batch (no API key available), used rule-based decomposition
+plus direct word token expansion for 5,976 byte-fallback words at freq >= 300.
+
+**Decomposition strategies tried:**
+1. Extended prefix (micro-, bio-, geo-, thermo-, electro-, neuro-, photo-,
+   multi-, counter-, anti-, semi-): 4 matches. Low because most prefixed
+   words were already in common_words.
+2. Domain suffix (-ology, -ologist, -ography, -ism, -ist, -ity): 166 matches.
+   Good quality: climatology -> [climate, KNOW, STUDY], positivism -> [GOOD,
+   THINK, KIND], etc.
+3. Compound splitting: ABANDONED. Too many false positives even with strict
+   min-4-char-per-part filter. "theodor" -> the+odor, "coventry" -> cov+entry,
+   "quinine" -> qui+nine. The problem: common short words (the, in, on, or)
+   appear as substrings in many words.
+
+**Final approach:**
+- 170 rule-based compositions (24 pure-primitive, 146 with word-token bases)
+- 5,806 words added as word tokens to common_words.json
+- "able" and "capable" added as CAN primitive synonyms (fixed test failure)
+
+### Results
+
+| Metric | Before | After |
+|--------|--------|-------|
+| Byte fallback | 3.88% | 3.86% |
+| Vocab size | 20,391 | 26,343 |
+| Dictionary | 77,553 | 98,857 |
+| common_words | 17,860 | 23,812 |
+
+The 0.02pp improvement is negligible. The 5,800 new words at freq 300-499
+are individually too rare to move the byte fallback needle. The remaining
+3.86% is dominated by single letters (~1.5%), proper nouns (~0.5%), and
+number/punctuation artifacts (~0.5%). The addressable vocabulary gap is
+essentially closed.
+
+### What we learned
+
+1. Diminishing returns are steep. The jump from 7.33% to 3.88% (V8.2.2)
+   recovered 3.45pp. The jump from 3.88% to 3.86% (V8.2b) recovered 0.02pp
+   with 5,800 more word tokens. The per-word marginal value drops off a cliff
+   below freq 500.
+
+2. The LLM batch would have been wasted money. The ~6K words at freq 300-499
+   contribute 1.8M tokens (0.4% of corpus). Even perfect decomposition of all
+   of them would drop byte fallback by 0.4pp. The rule-based approach captured
+   170 of the best candidates; the remaining 5,800 are opaque words (proper
+   nouns, domain jargon, foreign borrowings) where primitive decomposition
+   would be forced and meaningless.
+
+3. Compound splitting is fundamentally broken without a compound dictionary
+   or morphological analyzer. The dictionary contains too many common short
+   words that match as false compound parts. Would need something like the
+   CELEX compound database or a trained compound splitter.
+
+4. The vocab doubled from 10K to 26K during V8.2. This is the honest
+   vocabulary size for 96% token coverage of FineWeb-Edu. The original
+   10K was artificially small because articles were dropped, common words
+   were missing, and the byte fallback rate was 7%.

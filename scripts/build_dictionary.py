@@ -108,6 +108,7 @@ _PRIMITIVE_SYNONYMS: dict[str, list[str]] = {
 
     # Logic (concept words, NOT grammar "not/if/can")
     "MAYBE": ["maybe", "perhaps", "possibly"],
+    "CAN": ["able", "capable"],
 
     # Intensifiers (concept words only)
     "MOMENT": ["moment"],
