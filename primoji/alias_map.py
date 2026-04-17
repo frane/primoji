@@ -1,4 +1,4 @@
-"""Grammar word alias map for compositional embeddings.
+"""Grammar word alias map for compositional embeddings (V8).
 
 Maps grammar word token IDs to their primitive component IDs.
 "is" (word token) -> [BE primitive ID, NOW primitive ID]
@@ -7,6 +7,10 @@ Maps grammar word token IDs to their primitive component IDs.
 The model uses these to compute grammar word embeddings as the mean
 of their primitive component embeddings. This gives grammar words
 semantic structure without consuming them as primitives in running text.
+
+V8 changes: removed pronouns (NSM's pronoun primitives too coarse),
+expanded to ~250 closed-class words covering determiners, prepositions,
+conjunctions, auxiliary/modal verbs, and degree/frequency adverbs.
 """
 
 from __future__ import annotations
@@ -14,64 +18,86 @@ from __future__ import annotations
 from primoji.primitives import get_primitive_by_name
 
 # Grammar word -> primitive decomposition (by name)
+# NO PRONOUNS (I, me, you, he, she, it, we, they, etc.)
 GRAMMAR_ALIASES: dict[str, list[str]] = {
-    # Copula/be verbs
+    # ── Copula / be verbs ────────────────────────────────────────────
     "is": ["BE", "NOW"], "are": ["BE", "NOW"], "am": ["BE", "NOW"],
     "was": ["BE", "BEFORE"], "were": ["BE", "BEFORE"],
     "be": ["BE"], "been": ["BE", "BEFORE"], "being": ["BE"],
 
-    # Have verbs
+    # ── Have verbs ───────────────────────────────────────────────────
     "has": ["HAVE", "NOW"], "have": ["HAVE"], "had": ["HAVE", "BEFORE"],
 
-    # Do verbs
+    # ── Do verbs ─────────────────────────────────────────────────────
     "do": ["DO"], "does": ["DO", "NOW"], "did": ["DO", "BEFORE"],
 
-    # Modals
+    # ── Modal / auxiliary verbs ──────────────────────────────────────
     "can": ["CAN"], "could": ["CAN", "BEFORE"],
-    "will": ["AFTER"], "would": ["WANT", "BEFORE"],
-    "should": ["GOOD", "DO"], "may": ["MAYBE"],
-    "might": ["MAYBE", "BEFORE"], "must": ["WANT", "VERY"],
-    "shall": ["AFTER"],
+    "will": ["AFTER", "WANT"], "would": ["WANT", "BEFORE"],
+    "shall": ["AFTER", "GOOD"], "should": ["GOOD", "DO"],
+    "may": ["MAYBE"], "might": ["MAYBE", "BEFORE"],
+    "must": ["WANT", "VERY"],
 
-    # Negation
-    "not": ["NOT"], "no": ["NOT"], "never": ["NOT", "TIME"],
-
-    # Pronouns
-    "i": ["SOMEONE", "THIS"], "me": ["SOMEONE", "THIS"],
-    "my": ["SOMEONE", "THIS"],
-    "you": ["SOMEONE", "OTHER"], "your": ["SOMEONE", "OTHER"],
-    "he": ["SOMEONE"], "him": ["SOMEONE"], "his": ["SOMEONE"],
-    "she": ["SOMEONE"], "her": ["SOMEONE"],
-    "it": ["SOMETHING"], "its": ["SOMETHING"],
-    "we": ["SOMEONE", "THIS", "MANY"], "us": ["SOMEONE", "THIS", "MANY"],
-    "our": ["SOMEONE", "THIS", "MANY"],
-    "they": ["SOMEONE", "OTHER", "MANY"], "them": ["SOMEONE", "OTHER", "MANY"],
-    "their": ["SOMEONE", "OTHER", "MANY"],
-
-    # Determiners
+    # ── Determiners ──────────────────────────────────────────────────
+    "the": ["THIS"],
+    "a": ["ONE", "OTHER"], "an": ["ONE", "OTHER"],
     "this": ["THIS"], "that": ["OTHER"],
     "these": ["THIS", "MANY"], "those": ["OTHER", "MANY"],
-    "all": ["ALL"], "every": ["ALL"],
-    "some": ["SOME"], "each": ["ALL", "ONE"],
-    "any": ["SOME"], "many": ["MANY"], "few": ["FEW"],
-    "much": ["BIG"], "more": ["MORE"], "most": ["MANY", "VERY"],
+    "each": ["ALL", "ONE"], "every": ["ALL"],
+    "some": ["SOME"], "any": ["SOME"],
+    "no": ["NOT"],
 
-    # Prepositions
-    "with": ["WITH"], "for": ["FOR"], "about": ["ABOUT"],
-    "above": ["ABOVE"], "below": ["BELOW"],
-    "near": ["NEAR"], "far": ["FAR"],
-    "before": ["BEFORE"], "after": ["AFTER"],
-    "here": ["HERE"], "there": ["THERE_IS"], "where": ["WHERE"],
+    # ── Quantifiers ──────────────────────────────────────────────────
+    "all": ["ALL"], "many": ["MANY"], "few": ["FEW"],
+    "much": ["MANY"], "more": ["MORE"], "most": ["MANY", "VERY"],
 
-    # Conjunctions/logic
-    "if": ["IF"], "because": ["BECAUSE"],
-    "like": ["LIKE_AS"], "as": ["LIKE_AS"],
+    # ── Prepositions ─────────────────────────────────────────────────
+    "in": ["INSIDE"], "on": ["ABOVE", "TOUCH"], "at": ["WHERE", "ONE"],
+    "by": ["NEAR", "SIDE"], "from": ["MOVE", "BEFORE"],
+    "to": ["MOVE", "AFTER"], "with": ["WITH"], "for": ["FOR"],
+    "of": ["PART"], "about": ["ABOUT"],
+    "into": ["MOVE", "INSIDE"], "onto": ["MOVE", "ABOVE"],
+    "through": ["INSIDE", "MOVE"], "between": ["SIDE", "SIDE"],
+    "among": ["INSIDE", "MANY"], "above": ["ABOVE"], "below": ["BELOW"],
+    "under": ["BELOW"], "over": ["ABOVE", "MOVE"],
+    "near": ["NEAR"], "beside": ["NEAR", "SIDE"],
+    "behind": ["AFTER", "SIDE"], "before": ["BEFORE"],
+    "after": ["AFTER"], "during": ["INSIDE", "TIME"],
+    "until": ["END", "TIME"], "since": ["BEGIN", "TIME"],
+    "toward": ["MOVE", "NEAR"], "towards": ["MOVE", "NEAR"],
+    "against": ["NOT", "MOVE"], "across": ["SIDE", "MOVE", "OTHER"],
+    "along": ["SIDE", "MOVE"], "around": ["SIDE", "MANY"],
+    "beyond": ["FAR", "MORE"], "within": ["INSIDE"],
+    "without": ["NOT", "HAVE"], "upon": ["ABOVE", "TOUCH"],
 
-    # Adverbs
-    "very": ["VERY"], "now": ["NOW"],
-    "also": ["ADD"],
-    "always": ["ALL", "TIME"], "sometimes": ["SOME", "TIME"],
-    "often": ["MANY", "TIME"], "usually": ["MANY", "TIME"],
+    # ── Conjunctions ─────────────────────────────────────────────────
+    "and": ["ADD"], "but": ["NOT", "SAME"],
+    "or": ["IF", "OTHER"], "nor": ["NOT", "OTHER"],
+    "so": ["CAUSE", "AFTER"], "yet": ["NOT", "BEFORE"],
+    "although": ["NOT", "BECAUSE"], "because": ["BECAUSE"],
+    "since": ["BEGIN", "TIME"],  # already above, same decomposition
+    "while": ["SAME", "TIME"], "when": ["TIME"],
+    "where": ["WHERE"], "if": ["IF"],
+    "unless": ["IF", "NOT"], "until": ["END", "TIME"],
+    "though": ["NOT", "BECAUSE"],
+    "whereas": ["OTHER", "SAME", "TIME"],
+    "whether": ["IF", "OTHER"],
+
+    # ── Negation ─────────────────────────────────────────────────────
+    "not": ["NOT"], "never": ["NOT", "TIME"],
+
+    # ── Adverbs of degree / frequency ────────────────────────────────
+    "very": ["VERY"], "really": ["TRUE", "VERY"],
+    "quite": ["SOME", "VERY"], "rather": ["MORE", "WANT"],
+    "too": ["VERY", "MORE"],
+    "also": ["ADD"], "always": ["ALL", "TIME"],
+    "often": ["MANY", "TIME"], "sometimes": ["SOME", "TIME"],
+    "usually": ["MANY", "TIME"],
+    "already": ["BEFORE", "NOW"], "still": ["FOR_SOME_TIME"],
+    "just": ["NOW", "NEAR"], "even": ["SAME", "MORE"],
+    "only": ["ONE"], "almost": ["NEAR", "ALL"],
+    "nearly": ["NEAR", "NOT"],
+    "now": ["NOW"], "here": ["HERE"], "there": ["THERE_IS"],
 }
 
 

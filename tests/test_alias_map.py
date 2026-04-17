@@ -42,8 +42,15 @@ class TestGrammarAliases:
     def test_not_maps_to_not(self) -> None:
         assert GRAMMAR_ALIASES["not"] == ["NOT"]
 
-    def test_they_maps_to_someone_other_many(self) -> None:
-        assert GRAMMAR_ALIASES["they"] == ["SOMEONE", "OTHER", "MANY"]
+    def test_pronouns_removed_in_v8(self) -> None:
+        """V8: pronouns removed from aliases (NSM primitives too coarse)."""
+        for pronoun in ["i", "me", "you", "he", "she", "it", "we", "they"]:
+            assert pronoun not in GRAMMAR_ALIASES
+
+    def test_prepositions_added_in_v8(self) -> None:
+        """V8: prepositions added as aliases."""
+        for prep in ["in", "on", "at", "to", "from", "of"]:
+            assert prep in GRAMMAR_ALIASES
 
     def test_disability_not_in_aliases(self) -> None:
         """Content word compositions should NOT be grammar aliases."""

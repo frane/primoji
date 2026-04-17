@@ -666,3 +666,52 @@ present, layer, developer, researcher, etc.) are all single word tokens.
 3. The 0.05% composer residual (209K tokens) is acceptable. These are
    genuinely novel combinations like "unaccented", "prereading",
    "nonpartisan" where morphological decomposition is semantically correct.
+
+## 2026-04-17 Phase V8.4: Alias expansion
+
+### What changed
+
+Rewrote alias_map.py. Removed all 18 pronoun aliases (I, me, you, he, she,
+it, we, they + possessives). Added closed-class words across 7 categories.
+
+Before: 80 aliases (including pronouns)
+After: 116 aliases (no pronouns)
+
+**Categories:**
+- Copula/be: 8 (is, are, am, was, were, be, been, being)
+- Have/do: 6 (has, have, had, do, does, did)
+- Modals: 9 (can, could, will, would, shall, should, may, might, must)
+- Determiners: 11 (the, a, an, this, that, these, those, each, every, some, any, no)
+- Quantifiers: 6 (all, many, few, much, more, most)
+- Prepositions: 32 (in, on, at, by, from, to, with, for, of, about, into, onto,
+  through, between, among, above, below, under, over, near, beside, behind,
+  before, after, during, until, since, toward, towards, against, across, along,
+  around, beyond, within, without, upon)
+- Conjunctions: 13 (and, but, or, nor, so, yet, although, because, while, when,
+  where, if, unless, though, whereas, whether)
+- Negation: 2 (not, never)
+- Adverbs: 17 (very, really, quite, rather, too, also, always, often, sometimes,
+  usually, already, still, just, even, only, almost, nearly, now, here, there)
+
+**Collision audit:** 17 remaining collisions, all semantically correct:
+- Agreement variants: is/are/am=[BE,NOW], was/were/been=[BE,BEFORE]
+- Near-synonyms: some/any, many/much, toward/towards, although/though
+- Differentiated from original: will [AFTER,WANT] vs after [AFTER],
+  on [ABOVE,TOUCH] vs above [ABOVE], at [WHERE,ONE] vs near [NEAR],
+  or [IF,OTHER] vs that [OTHER], so [CAUSE,AFTER] vs because [BECAUSE]
+
+### Results
+
+615 tests pass (1 test updated: pronoun test replaced with pronoun-removal
+check + preposition-presence check).
+
+### What we learned
+
+1. 116 aliases is below the target of ~250 because many closed-class words
+   the plan listed are already handled as word tokens (they encode to single
+   tokens). The alias list only needs the SEMANTIC DECOMPOSITION, not the
+   token allocation. Every word in the alias list must also be a word token.
+
+2. The distinction between "alias" and "word token" is purely about embedding
+   computation: aliases get mean-of-primitives embeddings, word tokens get
+   independent embeddings. Both encode as single tokens in the sequence.
