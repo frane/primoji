@@ -1,14 +1,14 @@
 """Lightweight text preprocessor for primoji tokenization.
 
-Handles Unicode normalization, contraction expansion, and word tokenization.
-Contractions are EXPANDED to full words ("won't" -> ["will", "not"]),
-not split into fragments ("wo" + "n't").
+Handles Unicode normalization, contraction expansion, possessive splitting,
+slash/hyphen compound splitting, and word tokenization.
 """
 
 from __future__ import annotations
 
 import re
 import unicodedata
+
 
 # Apostrophe variants to normalize
 APOSTROPHE_VARIANTS: dict[str, str] = {
@@ -100,8 +100,10 @@ class Preprocessor:
         1. Unicode NFC normalization
         2. Apostrophe variant normalization
         3. Word tokenization
-        4. Hyphen splitting ("insulin-deprived" -> ["insulin", "deprived"])
-        5. Contraction expansion ("won't" -> ["will", "not"])
+        4. Slash splitting ("and/or" -> ["and", "or"], URLs preserved)
+        5. Hyphen splitting ("insulin-deprived" -> ["insulin", "deprived"])
+        6. Contraction expansion ("won't" -> ["will", "not"])
+        7. Possessive splitting ("John's" -> ["John", "<POSSESSIVE>"])
         """
         text = self.normalize_unicode(text)
         text = re.sub(r"\s+", " ", text).strip()
@@ -112,11 +114,30 @@ class Preprocessor:
 
         result: list[str] = []
         for word in words:
-            # Split hyphens first, then expand contractions on each part
-            parts = self.split_hyphen(word)
-            for part in parts:
-                result.extend(self.expand_contraction(part))
+            # Split slashes first (but not in URLs), then hyphens, then contractions
+            slash_parts = self.split_slash(word)
+            for spart in slash_parts:
+                hyp_parts = self.split_hyphen(spart)
+                for part in hyp_parts:
+                    result.extend(self.expand_contraction(part))
         return result
+
+    @staticmethod
+    def split_slash(word: str) -> list[str]:
+        """Split slash-separated compounds into components.
+
+        "and/or" -> ["and", "or"]
+        "input/output" -> ["input", "output"]
+        "http://example.com" -> ["http://example.com"] (URL preserved)
+        "TCP/IP" -> ["TCP", "IP"]
+        """
+        if "/" not in word:
+            return [word]
+        # Don't split URLs (contains ://)
+        if "://" in word:
+            return [word]
+        parts = [p for p in word.split("/") if p]
+        return parts if parts else [word]
 
     @staticmethod
     def split_hyphen(word: str) -> list[str]:
@@ -154,11 +175,17 @@ class Preprocessor:
         if lower in CONTRACTION_EXPANSIONS:
             return CONTRACTION_EXPANSIONS[lower]
 
-        # Possessive 's: keep as structural token, don't expand
+        # Possessive 's: split into base + possessive marker
         if lower.endswith("'s"):
             base = word[:-2]
             if base:
-                return [base, "'s"]
+                return [base, "<POSSESSIVE>"]
+
+        # Plural possessive: workers' -> workers + possessive
+        if word.endswith("'") and len(word) > 1 and word[-2].isalpha():
+            base = word[:-1]
+            if base:
+                return [base, "<POSSESSIVE>"]
 
         # Unknown apostrophe pattern: return as-is
         return [word]

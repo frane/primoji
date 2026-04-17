@@ -38,7 +38,7 @@ def _compute_ids() -> dict[str, int]:
 
     flags_count = 259
     contractions_count = 27  # dead slots: kept for frozen layout compatibility
-    structural_count = 10 + 14 + 60  # digits + math ops + punctuation
+    structural_count = 10 + 14 + 60 + 2 + 38 + 27  # digits + math ops + punctuation + POSSESSIVE/ORDINAL + ordinals + abbreviations
 
     # Dynamic: anchors
     anchor_path = _DATA_DIR / "proper_noun_anchors.json"

@@ -25,10 +25,14 @@ from primoji.byte_fallback import (
 from primoji.primitives import get_primitive_by_id
 from primoji.utils import SpecialTokens, _IDS
 from primoji.vocabulary import (
+    ABBREVIATION_IDS,
     ANCHOR_TOKENS,
     COMMON_WORD_TOKENS,
     DIGIT_IDS,
     MATH_OP_IDS,
+    ORDINAL_ID,
+    ORDINAL_IDS,
+    POSSESSIVE_ID,
     PUNCTUATION_IDS,
 )
 
@@ -66,6 +70,13 @@ def _build_structural_names() -> dict[int, str]:
             names[tid] = op
     for p, tid in PUNCTUATION_IDS.items():
         names[tid] = p
+    # V8 additions
+    names[POSSESSIVE_ID] = "'s"
+    names[ORDINAL_ID] = "th"
+    for o, tid in ORDINAL_IDS.items():
+        names[tid] = o
+    for a, tid in ABBREVIATION_IDS.items():
+        names[tid] = a
     return names
 
 

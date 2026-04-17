@@ -65,7 +65,7 @@ _PRIMITIVE_SYNONYMS: dict[str, list[str]] = {
     "GOOD": ["good", "positive"],
     "BAD": ["bad", "negative"],
     "BIG": ["big", "large", "huge"],
-    "SMALL": ["small", "tiny", "minor"],
+    "SMALL": ["small", "tiny", "minor", "little"],
 
     # Mental verbs: the verb IS the concept
     "THINK": ["think", "thought"],
@@ -165,8 +165,8 @@ _PRIMITIVE_SYNONYMS: dict[str, list[str]] = {
     # Abstract
     "CAUSE": ["cause"],
     "RESULT": ["result", "outcome", "effect"],
-    "BEGIN": ["begin", "beginning"],
-    "END": ["ending", "finish", "terminate"],
+    "BEGIN": ["begin", "beginning", "start"],
+    "END": ["ending", "finish", "terminate", "stop"],
     "CONNECT": ["connect", "connection", "link", "join"],
     "ORDER": ["order", "sequence"],
     "SIMILAR": ["similar", "alike"],
@@ -274,6 +274,40 @@ _COMPOSITIONS: dict[str, list[str]] = {
     "doctor": ["SOMEONE", "LIVE", "GOOD"],
     "telephone": ["MACHINE", "SAY"],
     "television": ["MACHINE", "SEE"],
+    # SI unit abbreviations -> same primitives as their full words
+    "km": ["MEASURE", "PATH", "BIG"],        # kilometer
+    "cm": ["MEASURE", "PATH", "SMALL"],       # centimeter
+    "mm": ["MEASURE", "PATH"],                # millimeter
+    "m": ["MEASURE", "PATH"],                 # meter (context-dependent)
+    "kg": ["MEASURE", "HEAVY", "BIG"],        # kilogram
+    "g": ["MEASURE", "HEAVY"],                # gram
+    "mg": ["MEASURE", "HEAVY", "SMALL"],      # milligram
+    "ml": ["MEASURE", "WATER", "SMALL"],      # milliliter
+    "l": ["MEASURE", "WATER"],                # liter
+    "hz": ["MEASURE", "PATTERN"],             # hertz
+    "khz": ["MEASURE", "PATTERN", "BIG"],     # kilohertz
+    "mhz": ["MEASURE", "PATTERN", "BIG"],     # megahertz
+    "ghz": ["MEASURE", "PATTERN", "BIG"],     # gigahertz
+    "kw": ["MEASURE", "ENERGY", "BIG"],       # kilowatt
+    "mw": ["MEASURE", "ENERGY"],              # megawatt
+    "pa": ["MEASURE", "ENERGY"],              # pascal
+    "kpa": ["MEASURE", "ENERGY", "BIG"],      # kilopascal
+    "nm": ["MEASURE", "PATH"],                # nanometer
+    "ph": ["MEASURE", "SUBSTANCE"],           # pH
+    "db": ["MEASURE", "HEAR"],                # decibel
+    "mph": ["MEASURE", "MOVE"],               # miles per hour
+    "rpm": ["MEASURE", "PATTERN"],            # revolutions per minute
+    "bpm": ["MEASURE", "PATTERN"],            # beats per minute
+    "uv": ["LIGHT", "ENERGY"],               # ultraviolet
+    "ir": ["LIGHT", "HOT"],                   # infrared
+    "ac": ["ELECTRIC", "CHANGE"],             # alternating current
+    "dc": ["ELECTRIC"],                       # direct current
+    "dna": ["SUBSTANCE", "LIVE", "PATTERN"],  # DNA
+    "rna": ["SUBSTANCE", "LIVE"],             # RNA
+    "iv": ["SUBSTANCE", "INSIDE"],            # intravenous
+    "ct": ["IMAGE", "INSIDE"],                # CT scan
+    "mri": ["IMAGE", "INSIDE"],               # MRI
+
     # ALL grammar words are word tokens, NOT primitives.
     # Only technical/educational compositions remain here.
     "explained": ["SAY"],

@@ -165,6 +165,48 @@ PUNCTUATION_IDS: dict[str, int] = {
     p: _STRUCTURAL_BASE_ID + 24 + i for i, p in enumerate(_PUNCTUATION)
 }
 
+# ── Possessive & Ordinal markers (V8) ───────────────────────────────────────
+
+_MARKER_BASE: int = _STRUCTURAL_BASE_ID + 24 + len(_PUNCTUATION)  # after punctuation
+
+POSSESSIVE_ID: int = _MARKER_BASE
+ORDINAL_ID: int = _MARKER_BASE + 1
+
+# ── Ordinal number tokens (V8) ──────────────────────────────────────────────
+
+_ORDINAL_BASE: int = _MARKER_BASE + 2
+
+# 1st-31st (days of month), plus 40th,50th,...,100th (decades/centuries)
+_ORDINAL_LIST: list[str] = [
+    "1st", "2nd", "3rd", "4th", "5th", "6th", "7th", "8th", "9th", "10th",
+    "11th", "12th", "13th", "14th", "15th", "16th", "17th", "18th", "19th", "20th",
+    "21st", "22nd", "23rd", "24th", "25th", "26th", "27th", "28th", "29th", "30th",
+    "31st",
+    "40th", "50th", "60th", "70th", "80th", "90th", "100th",
+]
+
+ORDINAL_IDS: dict[str, int] = {
+    o: _ORDINAL_BASE + i for i, o in enumerate(_ORDINAL_LIST)
+}
+
+# ── Academic / English abbreviations (V8) ───────────────────────────────────
+
+_ABBREV_BASE: int = _ORDINAL_BASE + len(_ORDINAL_LIST)
+
+_ABBREVIATION_LIST: list[str] = [
+    # Forms as seen after word tokenization (trailing period stripped).
+    # Internal periods preserved: "e.g." -> "e.g", "Ph.D." -> "ph.d"
+    "pp", "cf", "ibid", "e.g", "i.e", "vs", "viz", "ff",
+    "vol", "ed", "approx", "etc", "mr", "mrs", "ms", "dr", "jr",
+    "sr", "st", "ave", "blvd",
+    # Period-containing forms (internal periods preserved by tokenizer)
+    "ph.d", "a.m", "p.m", "a.d", "b.c", "d.c",
+]
+
+ABBREVIATION_IDS: dict[str, int] = {
+    a: _ABBREV_BASE + i for i, a in enumerate(_ABBREVIATION_LIST)
+}
+
 BYTE_FALLBACK_OFFSET: int = _IDS["BYTE_OFFSET"]
 
 
@@ -233,6 +275,26 @@ class Vocabulary:
             self._token_to_id[punc] = tid
             self._id_to_token[tid] = punc
             self._id_to_description[tid] = f"Punctuation: {punc}"
+
+        # Possessive & ordinal markers
+        self._token_to_id["<POSSESSIVE>"] = POSSESSIVE_ID
+        self._id_to_token[POSSESSIVE_ID] = "<POSSESSIVE>"
+        self._id_to_description[POSSESSIVE_ID] = "Possessive marker"
+        self._token_to_id["<ORDINAL>"] = ORDINAL_ID
+        self._id_to_token[ORDINAL_ID] = "<ORDINAL>"
+        self._id_to_description[ORDINAL_ID] = "Ordinal marker"
+
+        # Ordinal tokens (1st-31st, 40th-100th by 10s)
+        for ordinal, tid in ORDINAL_IDS.items():
+            self._token_to_id[ordinal] = tid
+            self._id_to_token[tid] = ordinal
+            self._id_to_description[tid] = f"Ordinal: {ordinal}"
+
+        # Academic/English abbreviations
+        for abbrev, tid in ABBREVIATION_IDS.items():
+            self._token_to_id[abbrev] = tid
+            self._id_to_token[tid] = abbrev
+            self._id_to_description[tid] = f"Abbreviation: {abbrev}"
 
         # Special tokens
         for name, tid in SpecialTokens.ALL.items():

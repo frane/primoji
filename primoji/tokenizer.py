@@ -22,10 +22,14 @@ from primoji.preprocessor import Preprocessor
 from primoji.primitives import PRIMITIVES
 from primoji.utils import SpecialTokens, _IDS, normalize_text
 from primoji.vocabulary import (
+    ABBREVIATION_IDS,
     ANCHOR_TOKENS,
     COMMON_WORD_TOKENS,
     DIGIT_IDS,
     MATH_OP_IDS,
+    ORDINAL_ID,
+    ORDINAL_IDS,
+    POSSESSIVE_ID,
     PUNCTUATION_IDS,
     Vocabulary,
 )
@@ -104,10 +108,29 @@ class Tokenizer:
         Order: structural -> dictionary -> fuzzy -> composition -> bytes.
         Matches paper's described pipeline.
         """
+        # Structural: possessive marker (emitted by preprocessor)
+        if word == "<POSSESSIVE>":
+            return [POSSESSIVE_ID]
+
         # Structural: punctuation
         punc_id = PUNCTUATION_IDS.get(word)
         if punc_id is not None:
             return [punc_id]
+
+        # Structural: abbreviations (e.g., pp, cf., Dr.)
+        abbrev_id = ABBREVIATION_IDS.get(word)
+        if abbrev_id is not None:
+            return [abbrev_id]
+
+        # Structural: ordinals (1st, 2nd, ..., 31st, 40th, ..., 100th)
+        ordinal_id = ORDINAL_IDS.get(word.lower())
+        if ordinal_id is not None:
+            return [ordinal_id]
+
+        # Structural: higher ordinals (e.g., 42nd -> digits + ORDINAL marker)
+        ordinal_ids = self._try_ordinal(word)
+        if ordinal_ids is not None:
+            return ordinal_ids
 
         # Structural: numbers
         if word.replace(".", "", 1).isdigit():
@@ -146,6 +169,17 @@ class Tokenizer:
 
         # Stage 4: Byte fallback (universal, lossless)
         return encode_bytes(word)
+
+    @staticmethod
+    def _try_ordinal(word: str) -> list[int] | None:
+        """Try to encode an ordinal number (e.g., 42nd -> [4,2,ORDINAL])."""
+        import re
+        m = re.match(r'^(\d+)(st|nd|rd|th)$', word, re.IGNORECASE)
+        if m is None:
+            return None
+        digits = m.group(1)
+        from primoji.math_handler import tokenize_number
+        return tokenize_number(digits) + [ORDINAL_ID]
 
     def _encode_mixed(self, text: str) -> list[int]:
         """Encode text containing math expressions mixed with natural language."""
@@ -196,11 +230,26 @@ class Tokenizer:
         "tier3_anchor", "tier1b_word", "dict_composed",
         "symspell_fuzzy", "composer_rule", "byte_fallback".
 
-        Matches _encode_word pipeline order: dict -> fuzzy -> composition -> bytes.
+        Matches _encode_word pipeline order.
         """
+        # Structural: possessive marker
+        if word == "<POSSESSIVE>":
+            return "tier3_structural"
+
         # Structural: punctuation / digits / math ops
         if PUNCTUATION_IDS.get(word) is not None:
             return "tier3_structural"
+
+        # Structural: abbreviations
+        if ABBREVIATION_IDS.get(word) is not None:
+            return "tier3_structural"
+
+        # Structural: ordinals
+        if ORDINAL_IDS.get(word.lower()) is not None:
+            return "tier3_structural"
+        if self._try_ordinal(word) is not None:
+            return "tier3_structural"
+
         if word.replace(".", "", 1).isdigit():
             return "tier3_structural"
         if MATH_OP_IDS.get(word) is not None:
