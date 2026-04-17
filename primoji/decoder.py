@@ -27,7 +27,6 @@ from primoji.utils import SpecialTokens, _IDS
 from primoji.vocabulary import (
     ANCHOR_TOKENS,
     COMMON_WORD_TOKENS,
-    CONTRACTION_TOKENS,
     DIGIT_IDS,
     MATH_OP_IDS,
     PUNCTUATION_IDS,
@@ -58,10 +57,6 @@ def _build_word_names() -> dict[int, str]:
     return {v: k for k, v in COMMON_WORD_TOKENS.items()}
 
 
-def _build_contraction_names() -> dict[int, str]:
-    return {v: k for k, v in CONTRACTION_TOKENS.items()}
-
-
 def _build_structural_names() -> dict[int, str]:
     names: dict[int, str] = {}
     for ch, tid in DIGIT_IDS.items():
@@ -77,7 +72,6 @@ def _build_structural_names() -> dict[int, str]:
 _TIER1_NAMES: dict[int, str] = _build_tier1_names()
 _ANCHOR_NAMES: dict[int, str] = _build_anchor_names()
 _WORD_NAMES: dict[int, str] = _build_word_names()
-_CONTRACTION_NAMES: dict[int, str] = _build_contraction_names()
 _STRUCTURAL_NAMES: dict[int, str] = _build_structural_names()
 
 
@@ -170,11 +164,6 @@ class Decoder:
         word = _WORD_NAMES.get(tid)
         if word is not None:
             return word
-
-        # Contraction
-        contraction = _CONTRACTION_NAMES.get(tid)
-        if contraction is not None:
-            return contraction
 
         # Anchor
         anchor = _ANCHOR_NAMES.get(tid)

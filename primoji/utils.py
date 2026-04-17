@@ -37,7 +37,7 @@ def _compute_ids() -> dict[str, int]:
         emoji_count = 1200
 
     flags_count = 259
-    contractions_count = 27
+    contractions_count = 27  # dead slots: kept for frozen layout compatibility
     structural_count = 10 + 14 + 60  # digits + math ops + punctuation
 
     # Dynamic: anchors

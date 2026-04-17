@@ -165,7 +165,6 @@ def _build_bootstrap() -> dict[str, list[int]]:
         "photosynthesis": [_p("PLANT"), _p("HAVE"), _p("LIGHT")],
         "computer": [_p("MACHINE"), _p("THINK")],
         "internet": [_p("CONNECT"), _p("THERE_IS")],
-        "the": [], "a": [], "an": [],
         "explained": [_p("SAY")],
     }
 

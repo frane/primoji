@@ -79,27 +79,11 @@ for _i, _code in enumerate(_ISO_CODES):
     TIER3_FLAGS[_code] = _FLAG_BASE_ID + _i
     _FLAG_EMOJI_TO_ID[_flag] = _FLAG_BASE_ID + _i
 
-# ── Contraction Tokens ───────────────────────────────────────────────────────
-
-_CONTRACT_BASE: int = _IDS["CONTRACT_START"]
-
-_CONTRACTION_LIST: list[str] = [
-    "don't", "can't", "won't", "i'm", "it's", "isn't", "didn't", "doesn't",
-    "wasn't", "weren't", "couldn't", "wouldn't", "shouldn't", "haven't",
-    "hasn't", "i'll", "you're", "they're", "we're", "he's",
-    "'t", "'m", "'ll", "'ve", "'re", "'d", "'s",
-]
-
-CONTRACTION_TOKENS: dict[str, int] = {
-    c: _CONTRACT_BASE + i for i, c in enumerate(_CONTRACTION_LIST)
-}
-
-DEDICATED_CONTRACTIONS: set[str] = {
-    k for k in CONTRACTION_TOKENS if not k.startswith("'")
-}
-CONTRACTION_SUFFIXES: set[str] = {
-    k for k in CONTRACTION_TOKENS if k.startswith("'")
-}
+# ── Contraction Tokens (REMOVED in V8) ──────────────────────────────────────
+# The preprocessor expands all contractions before the tokenizer sees them,
+# so these 27 token IDs were never produced. Removed in V8 cleanup.
+# The 27 ID slots (CONTRACT_START .. CONTRACT_START+26) remain allocated
+# in the frozen layout to preserve downstream ID offsets.
 
 # ── Anchor Tokens (proper nouns from FineWeb-Edu) ────────────────────────────
 
@@ -219,12 +203,6 @@ class Vocabulary:
                 self._id_to_token[tid] = flag
                 self._id_to_description[tid] = f"Flag: {code}"
 
-        # Contractions
-        for c, tid in CONTRACTION_TOKENS.items():
-            self._token_to_id[c] = tid
-            self._id_to_token[tid] = c
-            self._id_to_description[tid] = f"Contraction: {c}"
-
         # Anchors
         for name, tid in ANCHOR_TOKENS.items():
             self._token_to_id[name] = tid
@@ -312,9 +290,6 @@ class Vocabulary:
         """Get the token ID for a punctuation character."""
         return PUNCTUATION_IDS.get(punc)
 
-    def get_contraction_id(self, contraction: str) -> int | None:
-        """Get the token ID for a contraction."""
-        return CONTRACTION_TOKENS.get(contraction.lower())
 
     def get_anchor_id(self, name: str) -> int | None:
         """Get the token ID for a proper noun anchor."""

@@ -274,21 +274,6 @@ _COMPOSITIONS: dict[str, list[str]] = {
     "doctor": ["SOMEONE", "LIVE", "GOOD"],
     "telephone": ["MACHINE", "SAY"],
     "television": ["MACHINE", "SEE"],
-    # Function words: empty = drop (these carry minimal semantic content)
-    "the": [], "a": [], "an": [], "of": [], "and": [], "to": [],
-    "in": [], "on": [], "at": [], "or": [], "but": [], "so": [],
-    "yet": [], "nor": [], "than": [], "then": [],
-    "by": [], "from": [], "into": [],
-    "over": [], "under": [], "among": [],
-    "during": [], "until": [], "since": [], "while": [],
-    "upon": [], "within": [], "without": [],
-    "across": [], "along": [], "around": [],
-    "behind": [], "beyond": [],
-    "also": [], "however": [], "although": [], "though": [],
-    "thus": [], "hence": [], "moreover": [], "furthermore": [],
-    "meanwhile": [], "nevertheless": [], "indeed": [],
-    "instead": [], "rather": [], "just": [],
-
     # ALL grammar words are word tokens, NOT primitives.
     # Only technical/educational compositions remain here.
     "explained": ["SAY"],
@@ -428,8 +413,6 @@ def main() -> None:
             ref = [_word_ref(w)]
             if w in entries:
                 existing = entries[w]
-                if existing == []:  # Don't override dropped words
-                    continue
                 # Don't override single-primitive mappings (keeps reverse lookup working)
                 if len(existing) == 1 and existing[0].get("type") == "primitive":
                     continue

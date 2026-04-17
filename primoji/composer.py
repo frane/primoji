@@ -42,7 +42,6 @@ class Composer:
         self._less_id = self._get_prim_id("LESS")     # ➖
         self._before_id = self._get_prim_id("BEFORE")  # ⏪
         self._after_id = self._get_prim_id("AFTER")    # ⏩
-        self._someone_id = self._get_prim_id("SOMEONE")  # 🧑
 
     @staticmethod
     def _get_prim_id(name: str) -> int | None:
@@ -92,10 +91,9 @@ class Composer:
         if ids is not None:
             return self._enforce_depth(ids, lower)
 
-        # 5. Agent suffix: -er, -or (person who does X)
-        ids = self._try_agent(lower)
-        if ids is not None:
-            return self._enforce_depth(ids, lower)
+        # Agent suffix (-er, -or) removed in V8: too many false positives
+        # (developer -> GROW+MORE, researcher -> STUDY+MORE, easter -> SIDE+MORE).
+        # V8.3 will add WordNet/emoji2vec to handle agent nouns properly.
 
         # Fallback: UNK
         return [SpecialTokens.UNK]
@@ -161,21 +159,6 @@ class Composer:
                 base_ids = self._dict.lookup(candidate)
                 if base_ids is not None and base_ids:
                     return base_ids + [self._more_id]
-
-        return None
-
-    def _try_agent(self, word: str) -> list[int] | None:
-        """Handle agent suffixes (-er, -or → person who does X)."""
-        if self._someone_id is None:
-            return None
-
-        for suffix in ("er", "or"):
-            if word.endswith(suffix) and len(word) > 3:
-                base = word[:-len(suffix)]
-                for candidate in (base, base + "e"):
-                    base_ids = self._dict.lookup(candidate)
-                    if base_ids is not None and base_ids:
-                        return [self._someone_id] + base_ids
 
         return None
 

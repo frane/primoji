@@ -20,7 +20,6 @@ from primoji.byte_fallback import BYTES_START_ID, BYTES_END_ID, BYTE_TOKEN_OFFSE
 from primoji.primitives import get_primitive_by_name
 from primoji.utils import SpecialTokens
 from primoji.vocabulary import (
-    CONTRACTION_TOKENS,
     DIGIT_IDS,
     PUNCTUATION_IDS,
     TIER1_DIRECT_EMOJI,
@@ -70,10 +69,11 @@ class TestExactEncoding:
         not_ids = tok.encode("not")
         assert ids == do_ids + not_ids
 
-    def test_articles_produce_nothing(self, tok: Tokenizer) -> None:
-        assert tok.encode("the") == []
-        assert tok.encode("a") == []
-        assert tok.encode("an") == []
+    def test_articles_are_word_tokens(self, tok: Tokenizer) -> None:
+        """Articles encode as single word tokens (V8: no longer dropped)."""
+        assert len(tok.encode("the")) == 1
+        assert len(tok.encode("a")) == 1
+        assert len(tok.encode("an")) == 1
 
     def test_digits_encode_individually(self, tok: Tokenizer) -> None:
         ids = tok.encode("42")
@@ -253,14 +253,12 @@ class TestClassifyWord:
     def test_classify_word_token(self, tok: Tokenizer) -> None:
         assert tok.classify_word("out") == "tier1b_word"
 
-    def test_classify_dropped(self, tok: Tokenizer) -> None:
-        assert tok.classify_word("the") == "dict_dropped"
+    def test_classify_article_as_word(self, tok: Tokenizer) -> None:
+        """Articles are word tokens in V8 (no longer dropped)."""
+        assert tok.classify_word("the") == "tier1b_word"
 
     def test_classify_composed(self, tok: Tokenizer) -> None:
         assert tok.classify_word("photosynthesis") == "dict_composed"
-
-    def test_classify_contraction(self, tok: Tokenizer) -> None:
-        assert tok.classify_word("don't") == "tier3_contraction"
 
     def test_classify_digit(self, tok: Tokenizer) -> None:
         assert tok.classify_word("42") == "tier3_structural"

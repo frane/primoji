@@ -15,7 +15,6 @@ from primoji.primitives import PRIMITIVES, get_primitive_by_name, get_primitive_
 from primoji.vocabulary import (
     TIER1_DIRECT_EMOJI,
     TIER2_PRIMITIVES,
-    CONTRACTION_TOKENS,
     DIGIT_IDS,
     MATH_OP_IDS,
     PUNCTUATION_IDS,

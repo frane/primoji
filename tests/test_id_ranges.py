@@ -14,7 +14,6 @@ from primoji.utils import _IDS
 from primoji.vocabulary import (
     ANCHOR_TOKENS,
     COMMON_WORD_TOKENS,
-    CONTRACTION_TOKENS,
     DIGIT_IDS,
     MATH_OP_IDS,
     PUNCTUATION_IDS,
@@ -32,7 +31,6 @@ class TestIDRangesNoOverlap:
             "emoji": set(TIER1_DIRECT_EMOJI.values()),
             "primitive": {p.id for p in PRIMITIVES},
             "flag": set(TIER3_FLAGS.values()),
-            "contraction": set(CONTRACTION_TOKENS.values()),
             "anchor": set(ANCHOR_TOKENS.values()),
             "word": set(COMMON_WORD_TOKENS.values()),
             "digit": set(DIGIT_IDS.values()),

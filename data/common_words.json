@@ -1,7 +1,7 @@
 {
   "version": "0.4.0",
   "source": "wordfreq top 3K + FineWeb-Edu top 5K byte-fallback words",
-  "total_count": 7731,
+  "total_count": 7741,
   "words": [
     "the",
     "to",
@@ -7733,6 +7733,16 @@
     "numerous",
     "zero",
     "capable",
-    "nearby"
+    "nearby",
+    "a",
+    "over",
+    "under",
+    "since",
+    "within",
+    "hence",
+    "moreover",
+    "furthermore",
+    "meanwhile",
+    "nevertheless"
   ]
 }

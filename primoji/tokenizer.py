@@ -24,7 +24,6 @@ from primoji.utils import SpecialTokens, _IDS, normalize_text
 from primoji.vocabulary import (
     ANCHOR_TOKENS,
     COMMON_WORD_TOKENS,
-    CONTRACTION_TOKENS,
     DIGIT_IDS,
     MATH_OP_IDS,
     PUNCTUATION_IDS,
@@ -39,11 +38,13 @@ _EMOJI_MAX = _PRIM_ID_START - 1
 class Tokenizer:
     """Primoji tokenizer: English text ↔ emoji token ID sequences.
 
-    Uses a 4-tier fallback pipeline that NEVER produces UNK tokens:
-      Tier 1: Exact dictionary lookup (~85% of tokens)
-      Tier 2: Contraction handling (dedicated tokens or apostrophe split)
-      Tier 3: Conservative SymSpell fuzzy match (optional)
-      Tier 4: UTF-8 byte fallback (universal safety net)
+    Pipeline (NEVER produces UNK tokens):
+      Stage 1: Dictionary lookup (emoji, primitives, word tokens, anchors)
+      Stage 2: SymSpell fuzzy match (edit dist 1, optional)
+      Stage 3: Composition rules (morphological: negation, temporal, comparative)
+      Stage 4: UTF-8 byte fallback (universal safety net)
+
+    Contractions are expanded by the preprocessor before the pipeline runs.
     """
 
     def __init__(self, fuzzy: bool = True) -> None:
@@ -68,14 +69,10 @@ class Tokenizer:
         return self._vocab.vocab_size
 
     def encode(self, text: str) -> list[int]:
-        """Encode text to token IDs using 4-tier pipeline.
+        """Encode text to token IDs.
 
-        Tier 1: Exact dictionary lookup (~85% of tokens)
-        Tier 2: Contraction handling (split or dedicated token)
-        Tier 3: Conservative SymSpell fuzzy match (edit dist 1, unique, 4+ chars)
-        Tier 4: UTF-8 byte fallback (zero information loss)
-
-        This method NEVER returns UNK tokens. Every input is encodable.
+        Pipeline: dictionary -> fuzzy -> composition -> byte fallback.
+        NEVER returns UNK tokens. Every input is encodable.
 
         Args:
             text: Input English text.
@@ -102,51 +99,52 @@ class Tokenizer:
         return ids
 
     def _encode_word(self, word: str) -> list[int]:
-        """Encode a single word through the 4-tier pipeline."""
-        # Check punctuation
+        """Encode a single word through the pipeline.
+
+        Order: structural -> dictionary -> fuzzy -> composition -> bytes.
+        Matches paper's described pipeline.
+        """
+        # Structural: punctuation
         punc_id = PUNCTUATION_IDS.get(word)
         if punc_id is not None:
             return [punc_id]
 
-        # Check if it's a number
+        # Structural: numbers
         if word.replace(".", "", 1).isdigit():
             from primoji.math_handler import tokenize_number
             return tokenize_number(word)
 
-        # Check contraction token
-        contraction_id = CONTRACTION_TOKENS.get(word.lower())
-        if contraction_id is not None:
-            return [contraction_id]
+        lower = word.lower()
 
-        # Tier 1: Exact dictionary lookup
-        result = self._dict.lookup(word.lower())
+        # Stage 1: Dictionary lookup (includes word tokens, compositions, emoji, primitives)
+        result = self._dict.lookup(lower)
         if result is not None:
             return result
 
-        # Tier 1b: Try composition rules (negation, temporal, comparative)
-        result = self._composer.compose(word.lower())
-        if result != [SpecialTokens.UNK]:
-            return result
-
-        # Common word token (Tier 1b)
-        word_id = COMMON_WORD_TOKENS.get(word.lower())
+        # Stage 1 fallback: common word tokens not yet in dictionary
+        word_id = COMMON_WORD_TOKENS.get(lower)
         if word_id is not None:
             return [word_id]
 
-        # Check anchor tokens (proper nouns — case-sensitive)
+        # Stage 1 fallback: anchor tokens (proper nouns, case-sensitive)
         anchor_id = ANCHOR_TOKENS.get(word)
         if anchor_id is not None:
             return [anchor_id]
 
-        # Tier 3: Fuzzy match (optional)
+        # Stage 2: Fuzzy match / spell correction (edit dist 1, unique, 4+ chars)
         if self._fuzzy:
-            corrected = self._fuzzy.correct(word.lower())
+            corrected = self._fuzzy.correct(lower)
             if corrected is not None:
                 result = self._dict.lookup(corrected)
                 if result is not None:
                     return result
 
-        # Tier 4: Byte fallback (universal — always works)
+        # Stage 3: Composition rules (negation, temporal, comparative)
+        result = self._composer.compose(lower)
+        if result != [SpecialTokens.UNK]:
+            return result
+
+        # Stage 4: Byte fallback (universal, lossless)
         return encode_bytes(word)
 
     def _encode_mixed(self, text: str) -> list[int]:
@@ -192,19 +190,15 @@ class Tokenizer:
         return self._vocab.describe(token_id)
 
     def classify_word(self, word: str) -> str:
-        """Classify which tier handles a single word, without encoding.
+        """Classify which pipeline stage handles a single word.
 
         Returns one of: "tier1_emoji", "tier2_primitive", "tier3_structural",
-        "tier3_contraction", "tier3_anchor", "dict_composed", "dict_dropped",
-        "composer_rule", "symspell_fuzzy", "byte_fallback".
+        "tier3_anchor", "tier1b_word", "dict_composed",
+        "symspell_fuzzy", "composer_rule", "byte_fallback".
 
-        Args:
-            word: A single word token.
-
-        Returns:
-            Tier label string.
+        Matches _encode_word pipeline order: dict -> fuzzy -> composition -> bytes.
         """
-        # Punctuation / digits / math ops
+        # Structural: punctuation / digits / math ops
         if PUNCTUATION_IDS.get(word) is not None:
             return "tier3_structural"
         if word.replace(".", "", 1).isdigit():
@@ -212,15 +206,11 @@ class Tokenizer:
         if MATH_OP_IDS.get(word) is not None:
             return "tier3_structural"
 
-        # Contraction token
-        if CONTRACTION_TOKENS.get(word.lower()) is not None:
-            return "tier3_contraction"
+        lower = word.lower()
 
-        # Dictionary lookup
-        result = self._dict.lookup(word.lower())
+        # Stage 1: Dictionary lookup
+        result = self._dict.lookup(lower)
         if result is not None:
-            if not result:
-                return "dict_dropped"  # articles (the, a, an)
             if len(result) == 1:
                 tid = result[0]
                 if 0 <= tid <= _EMOJI_MAX:
@@ -236,24 +226,24 @@ class Tokenizer:
             else:
                 return "dict_composed"
 
-        # Composer rules (negation, temporal, comparative)
-        composed = self._composer.compose(word.lower())
-        if composed != [SpecialTokens.UNK]:
-            return "composer_rule"
-
-        # Common word token (Tier 1b)
-        if COMMON_WORD_TOKENS.get(word.lower()) is not None:
+        # Stage 1 fallback: common word token
+        if COMMON_WORD_TOKENS.get(lower) is not None:
             return "tier1b_word"
 
-        # Anchor
+        # Stage 1 fallback: anchor
         if ANCHOR_TOKENS.get(word) is not None:
             return "tier3_anchor"
 
-        # Fuzzy match
+        # Stage 2: Fuzzy match
         if self._fuzzy:
-            corrected = self._fuzzy.correct(word.lower())
+            corrected = self._fuzzy.correct(lower)
             if corrected is not None and self._dict.lookup(corrected) is not None:
                 return "symspell_fuzzy"
+
+        # Stage 3: Composer rules
+        composed = self._composer.compose(lower)
+        if composed != [SpecialTokens.UNK]:
+            return "composer_rule"
 
         return "byte_fallback"
 
