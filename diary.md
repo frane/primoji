@@ -766,3 +766,101 @@ Created run_v8_training.sh with commands for:
 - 3x 125M seeds (V8 primoji, --v2 --byte-weight 0.7)
 - 1x 1B (V8 primoji)
 - 1x 125M BPE 3-epoch baseline
+
+## 2026-04-21/22 Phase V8.7: Cloud training (HuggingFace Jobs)
+
+### What happened
+
+Long series of failures before getting training working:
+
+1. **HF Spaces approach failed.** Spaces expect a web server on port 7860.
+   Training jobs with no HTTP endpoint get killed after ~30 min. Added a
+   Flask health server as workaround, but this is a hack. Spaces are not
+   for training.
+
+2. **HF Jobs API.** The correct approach. But the fine-grained token was
+   missing `job.write` permission. Then `space.write` permission. Required
+   user to update token permissions and add billing credits.
+
+3. **Data format bug.** Training script reads tokens as uint16 (V6 legacy),
+   but V8 tokenization wrote int32. Caused 2x token count and batch crashes.
+   Fixed by converting to uint16 (V8 vocab 32K fits in uint16).
+
+4. **Shell escaping hell.** Inline Python in bash command strings broke
+   repeatedly due to nested quoting. Fixed by uploading a standalone
+   bootstrap Python script to a separate HF repo and downloading it at
+   job start.
+
+5. **A100 availability.** 1B Primoji jobs kept failing with ERROR because
+   the single available A100 was occupied by 1B BPE. Relaunched 6 times
+   before it finally got a GPU.
+
+6. **3-epoch waste.** 125M jobs ran 3 epochs (training script default) when
+   1 epoch was sufficient. Discovered only after the jobs were 40% through.
+   Cancelled and relaunched with --max-steps for 1 epoch. The 3-epoch BPB
+   curves were saved from stdout logs before cancellation.
+
+7. **1B BPE was unnecessary.** Already have BPE baseline from V6. Let the
+   1B BPE run for 20 hours at ~$50 before realizing this. The 1B Primoji
+   (the new result we actually needed) kept getting blocked by it.
+
+### Cost
+
+Total HF spend as of April 22: ~$80-100 estimated. Breakdown:
+- A10G (125M jobs): ~15 hrs at $1.50/hr = ~$23
+- A100 (1B jobs + failed scheduling): ~7-10 hrs at $2.50/hr = ~$25
+- Wasted: 3-epoch 125M (~$15), unnecessary 1B BPE (~$50), failed jobs (~$5)
+- Space: $0.93
+
+### Training results (in progress)
+
+**125M Primoji V8 (1 epoch, 500K docs, 565M tokens):**
+BPB curve from first (3-epoch) run, evaluated at 1-epoch mark:
+- Step 17,200 (epoch 1.0): BPB 1.114
+- Matches BPE 125M at same data exposure (BPB 1.121)
+- Primoji beats BPE by 0.007 BPB at matched epochs
+
+Second run (1-epoch, will produce checkpoint):
+- Running, step 12,800, BPB 1.093 (74% done)
+- Will save model to fbandov/primoji-v8-125m-seed0
+
+**1B Primoji V8 (1 epoch, 500K docs, 565M tokens):**
+- Running, step 5,500/17,236, BPB 1.168 (32% done)
+- Severely undertrained (1.4x Chinchilla vs needed 20x)
+- Will save model to fbandov/primoji-v8-1b
+
+**1B BPE (1 epoch, completed):**
+- Final BPB: ~1.051
+- Model saved to fbandov/bpe-1b
+- Was unnecessary -- V6 had this baseline already
+
+### What we learned
+
+1. **HF Jobs, not Spaces, for training.** Spaces are for apps. Jobs are
+   for batch compute. Should have used Jobs from the start.
+
+2. **Always set --max-steps.** Never rely on the training script's default
+   epoch count. Calculate exactly: steps = tokens / (batch * seq_len).
+
+3. **Chinchilla matters.** 1B on 565M tokens (1.4x) is a waste. Need 20B
+   tokens for 1B. With 500K docs (~565M tokens), the Chinchilla-optimal
+   model is ~28M params (565M / 20). The 125M at 12x is reasonable but
+   not optimal. For the paper, the 125M comparison is the defensible result.
+
+4. **Shell escaping in HF Jobs is fragile.** Use bootstrap scripts uploaded
+   to a separate repo, not inline bash. Nested Python-in-bash-in-JSON
+   breaks at every quoting boundary.
+
+5. **Check billing before launching.** Estimate cost honestly. My estimates
+   were consistently 3-5x too low because I underestimated step time and
+   miscounted epochs.
+
+### Open questions
+
+1. Do we need multi-seed 125M for error bars? The current single-seed
+   result shows Primoji matching BPE. Reviewers will want error bars.
+   Each seed costs ~$20 on A10G. Three seeds = ~$60 more.
+
+2. Is the 1B result publishable at 1.4x Chinchilla? The comparison with
+   1B BPE at the same data is fair, but both are severely undertrained.
+   Reviewers may dismiss it.
