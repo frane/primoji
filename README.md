@@ -187,13 +187,14 @@ vocabulary boundaries.
 
 ## Paper
 
-[`paper.pdf`](paper.pdf)
+[`paper.pdf`](paper.pdf) (manuscript)
 
 ```bibtex
 @unpublished{bandov2026primoji,
   title  = {Primoji: Compositional Semantic Tokenization for Language Model Training},
   author = {Bandov, Frane},
   year   = {2026},
+  note   = {Manuscript},
 }
 ```
 
