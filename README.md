@@ -10,10 +10,10 @@ from primoji import Tokenizer
 tok = Tokenizer()
 ids = tok.encode("The teacher explained photosynthesis")
 tok.decode(ids)
-# 'teacher say photosynthesis'
+# 'the teacher say plant have light'
 
 tok.vocab_size
-# 10195
+# 32098
 ```
 
 ## Install
@@ -37,23 +37,18 @@ pip install "primoji[all]"          # everything (also includes dev tools)
 
 Primoji is a tokenizer that constructs token meanings compositionally. Instead
 of discovering subword units from corpus statistics like BPE, it ships with a
-fixed compositional vocabulary of about 10,000 tokens: 1,175 Unicode emoji,
-140 NSM semantic primitives, ~7,700 common word tokens, ~830 structural and
-geographic tokens (flags, anchors, punctuation, math), and 258 byte-fallback
-tokens. Rare and technical words decompose into short sequences of primitives
-(`[PLANT, HAVE, LIGHT]` for photosynthesis, `[WATER, CAUSE, AIR]` for
-evaporation). The encode pipeline never produces an UNK token.
+fixed compositional vocabulary of ~32,000 tokens: 1,175 Unicode emoji,
+140 NSM semantic primitives, ~29,500 common word tokens, ~900 structural tokens
+(flags, anchors, punctuation, math, ordinals, abbreviations, possessives), and
+258 byte-fallback tokens. Rare and technical words decompose into short
+sequences of primitives (`[PLANT, HAVE, LIGHT]` for photosynthesis,
+`[WATER, CAUSE, AIR]` for evaporation). The encode pipeline never produces
+an UNK token.
 
-When you might want it: research on tokenization, controlled experiments
-that need a vocabulary 3x smaller than BPE at near-parity compression,
-multilingual experiments where the primitive set transfers across languages
-by design, small-vocab architectures whose cost scales with vocabulary size,
-or educational and scientific text where compositional technical vocabulary
-is dense. It is not a drop-in BPE replacement for production English chatbots:
-generation is lossy at the word level (decoded text reconstructs concepts but
-not always exact surface forms), and creative or stylistic writing loses
-distinctions like "melancholy" vs "sadness" that BPE preserves as distinct
-tokens.
+At 125M parameters, Primoji achieves **1.083 BPB** vs BPE's **1.118 BPB**
+on FineWeb-Edu (0.035 advantage). At 1B parameters, the gap widens:
+Primoji **1.025 BPB** vs BPE **1.063 BPB** (0.038 advantage). Both
+comparisons use matched training data (500K FineWeb-Edu documents, 1 epoch).
 
 ## Quick start
 
@@ -65,34 +60,33 @@ tok = Tokenizer()
 # Encode and decode
 ids = tok.encode("Water evaporates when heated")
 print(ids)
-# [1266, ..., ...]
 print(tok.decode(ids))
 
 # Inspect a token
 print(tok.describe(ids[0]))
-# '💧 (ID 1266) — Tier 2 primitive: WATER — Liquid, fluid'
+# '... Tier 2 primitive: WATER'
 
-# Classify a word by which tier handles it
+# Classify a word by which pipeline stage handles it
 print(tok.classify_word("photosynthesis"))   # 'dict_composed'
 print(tok.classify_word("water"))            # 'tier2_primitive'
-print(tok.classify_word("the"))              # 'dict_dropped'
+print(tok.classify_word("the"))              # 'tier1b_word'
 print(tok.classify_word("Mediterranean"))    # 'tier3_anchor' or 'byte_fallback'
 
 # Vocabulary size
-print(tok.vocab_size)                        # 10195
+print(tok.vocab_size)                        # 32098
 ```
 
 ## Vocabulary structure
 
-Four tiers with strict encoding precedence. The model only ever sees integer
-IDs; the tier labels exist for diagnostics and the dictionary build.
+Encoding pipeline with strict stage precedence. The model only ever sees
+integer IDs; the tier labels exist for diagnostics and the dictionary build.
 
 | Tier | Count | Examples |
 |------|------:|----------|
-| 1a Direct emoji              | ~1,175 | 🐕 (dog), 🏠 (house), ☀️ (sun) |
-| 1b Common word tokens        | ~7,700 | government, important, however |
+| 1a Direct emoji              | ~1,175 | dog, house, sun |
+| 1b Common word tokens        | ~29,500 | government, discover, present |
 | 2  Compositional primitives  |    140 | PLANT, HAVE, LIGHT, MOVE, KNOW |
-| 3  Structural and geographic |   ~830 | 🇩🇪, 🇫🇷, punctuation, digits, math operators, NER anchors |
+| 3  Structural and geographic |   ~900 | flags, punctuation, digits, ordinals, abbreviations, possessives, anchors |
 | 4  UTF-8 byte fallback       |    258 | 256 byte tokens + 2 boundary markers |
 
 The 140 primitives are 65 canonical NSM primes from
@@ -101,28 +95,40 @@ Wierzbicka's Natural Semantic Metalanguage plus 75 domain expansions
 modifiers in compositions. Anchors are the top ~500 proper nouns extracted
 from FineWeb-Edu via spaCy NER.
 
-A note on emoji: the model never sees glyphs, only integer IDs. Tier 1a is
-just a convenient source of ~1,200 visually distinct token slots for concrete
-nouns. In generated output, emoji tokens decode to their English words
-("dog", "house", "sun"), not to Unicode emoji.
+The encoder pipeline processes each word through: structural tokens,
+dictionary lookup, common word tokens, anchors, SymSpell fuzzy match,
+morphological composition (negation, temporal, comparative, derivational
+suffixes), and byte fallback. Contractions are expanded by the preprocessor.
+Possessives, slashes, and hyphens are split.
+
+116 closed-class words (determiners, prepositions, conjunctions, modals,
+adverbs) have compositional alias embeddings: their model embeddings are
+computed as the mean of their primitive components. This gives grammar words
+semantic structure without dedicated primitive tokens.
+
+## Training results (V8)
+
+All models trained on 500K FineWeb-Edu documents, 1 epoch. Primoji uses
+tier embeddings, compositional alias embeddings, and byte-weight 0.7.
+
+| Model | Primoji BPB | BPE BPB | Gap |
+|-------|-------------|---------|-----|
+| 125M  | 1.083       | 1.118   | -0.035 |
+| 1B    | 1.025       | 1.063   | -0.038 |
+
+The Primoji advantage holds across scales. At 1B the gap widens slightly,
+suggesting compositional structure helps more as models get larger.
+
+Byte fallback rate: 3.8% of tokens by word count (words not in dictionary
+fall back to UTF-8 byte encoding).
+
+Compression ratio: 1.035x BPE (Primoji produces 3.5% more tokens than BPE
+for the same text).
 
 ## Configuration
 
-The dictionary, primitive set, and word list are all swappable. Five tunable
-dimensions:
-
-1. **Vocabulary size.** From ~5,300 tokens (~6% composed text) to ~18,000
-   tokens (~2% composed). Controls the trade-off between compression and
-   semantic-structure signal.
-2. **Composition depth.** Maximum number of primitives per concept. Default 5.
-3. **Primitive count.** Add domain-specific primitives (e.g.\ HEALTH for
-   medical text) without touching the rest of the system.
-4. **Composition rate.** A consequence of the above three.
-5. **Domain specialization.** A medical Primoji can have 3,000 medical
-   compositions on top of 10,000 general words. The dictionary build pipeline
-   accepts a target corpus and produces a corresponding word list.
-
-Rebuild the dictionary from sources:
+The dictionary, primitive set, and word list are all swappable. Rebuild
+the dictionary from sources:
 
 ```bash
 pip install "primoji[build-dict]"
@@ -131,10 +137,7 @@ python -m scripts.build_dictionary
 
 This regenerates `data/dictionary_seed.json` from layered sources: Unicode
 CLDR annotations, NSM primitive synonyms, NER anchors, WordNet
-auto-compositions. Layer precedence is fixed: primitive synonyms override
-emoji catalog entries, single-primitive word tokens override compositions to
-preserve reverse lookup, and ELCo and emoji2vec mappings supplement CLDR base
-entries.
+auto-compositions, and common word tokens.
 
 ## Training your own model
 
@@ -142,38 +145,34 @@ Reference training scripts for 125M and 1B GPT-style models live in
 `scripts/`:
 
 ```bash
-# Tokenize FineWeb-Edu shards (or any HuggingFace dataset)
+# Tokenize FineWeb-Edu (or any HuggingFace dataset)
 python -m scripts.prepare_training_data --n-docs 500000
 
-# Train 125M
-python -m scripts.train --tokenizer primoji --v2 --byte-weight 0.7
+# Train 125M (1 epoch, Chinchilla-aware: set --max-steps)
+python -m scripts.train --tokenizer primoji --v2 --byte-weight 0.7 \
+  --max-steps 17235
 
 # Train 1B with gradient accumulation
 python -m scripts.train --tokenizer primoji --model-size 1b \
-  --batch-size 4 --grad-accum 8 --v2 --byte-weight 0.7
+  --batch-size 4 --grad-accum 8 --v2 --byte-weight 0.7 --max-steps 17236
 
 # Train BPE baseline on the same data
-python -m scripts.train --tokenizer mistral
+python -m scripts.train --tokenizer mistral --max-steps 20970
 ```
 
-Bits-per-byte (BPB) is computed correctly across vocabulary sizes for fair
-cross-tokenizer comparison. See `scripts/train.py` for the full
-hyperparameter list.
+BPB is computed correctly across vocabulary sizes for fair cross-tokenizer
+comparison.
 
 ## Limitations
 
 - English only. The NSM primes are verified across 30+ language families,
-  but the dictionary, word list, and evaluation are all English. Multilingual
-  evaluation is future work.
+  but the dictionary, word list, and evaluation are all English.
 - Lossy at the word level. Known compositions decode exactly; novel
-  compositions decode to their primitive names, which is sufficient for
-  training-efficiency studies (BPB) but not for verbatim text generation
-  without an auxiliary surface-form mechanism.
+  compositions decode to their primitive names.
 - Designed for educational and scientific text. Compression and learning
-  benefits are strongest where vocabulary is compositional and
-  concept-dense. Conversational, creative, or code-heavy text will not see
-  the same gains.
-- Not yet tested at scale beyond 1B parameters.
+  benefits are strongest where vocabulary is compositional and concept-dense.
+- Generation quality is sensitive to sampling configuration. Recommended:
+  temp=0.9, top_p=0.9, rep_penalty=1.3.
 
 ## Tests
 
@@ -182,22 +181,20 @@ pip install "primoji[dev]"
 pytest
 ```
 
-616 tests covering encode/decode round-trips, byte-fallback coverage,
+615 tests covering encode/decode round-trips, byte-fallback coverage,
 compositional embedding correctness, ID-range invariants, and frozen
 vocabulary boundaries.
 
 ## Paper
 
-The full paper is included in this repository as
-[`paper.pdf`](paper.pdf). It is not yet on arXiv. If you reference this work,
-please cite as:
+Bandov, F. (2026). Primoji: Compositional Semantic Tokenization for Language
+Model Training. Manuscript.
 
 ```bibtex
 @unpublished{bandov2026primoji,
   title  = {Primoji: Compositional Semantic Tokenization for Language Model Training},
   author = {Bandov, Frane},
   year   = {2026},
-  note   = {Manuscript. \url{https://github.com/frane/primoji/blob/master/paper.pdf}},
 }
 ```
 

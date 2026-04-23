@@ -162,6 +162,8 @@ def main() -> None:
     parser.add_argument("--max-tokens", type=int, default=100)
     parser.add_argument("--temperature", type=float, default=0.8)
     parser.add_argument("--top-k", type=int, default=40)
+    parser.add_argument("--top-p", type=float, default=None)
+    parser.add_argument("--rep-penalty", type=float, default=1.0)
     parser.add_argument("--output", type=str, default=None)
     parser.add_argument("--tiers", action="store_true")
     parser.add_argument("--device", type=str, default=None)
@@ -218,13 +220,27 @@ def main() -> None:
                 tier_input = torch.tensor([tier_ints], dtype=torch.long, device=args.device)
             with torch.no_grad():
                 logits = model(ctx, tier_ids=tier_input)[0, -1, :].float().cpu()
+                # Repetition penalty
+                if args.rep_penalty > 1.0:
+                    for prev_id in set(generated[-50:]):
+                        logits[prev_id] /= args.rep_penalty
                 logits = logits / args.temperature
                 logits = torch.clamp(logits, -1e8, 1e8)
                 logits[logits.isnan()] = -1e8
-                topk_v, topk_i = torch.topk(logits, min(args.top_k, logits.size(-1)))
-                probs = F.softmax(topk_v, dim=-1)
-                idx = torch.multinomial(probs, 1).item()
-                nid = topk_i[idx].item()
+                # Top-p (nucleus) sampling
+                if args.top_p is not None:
+                    sorted_logits, sorted_idx = torch.sort(logits, descending=True)
+                    cum_probs = torch.cumsum(F.softmax(sorted_logits, dim=-1), dim=-1)
+                    mask = cum_probs - F.softmax(sorted_logits, dim=-1) >= args.top_p
+                    sorted_logits[mask] = -1e8
+                    probs = F.softmax(sorted_logits, dim=-1)
+                    idx = torch.multinomial(probs, 1).item()
+                    nid = sorted_idx[idx].item()
+                else:
+                    topk_v, topk_i = torch.topk(logits, min(args.top_k, logits.size(-1)))
+                    probs = F.softmax(topk_v, dim=-1)
+                    idx = torch.multinomial(probs, 1).item()
+                    nid = topk_i[idx].item()
             if nid == SpecialTokens.EOS:
                 break
             generated.append(nid)
