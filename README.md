@@ -185,19 +185,6 @@ pytest
 compositional embedding correctness, ID-range invariants, and frozen
 vocabulary boundaries.
 
-## Paper
-
-Bandov, F. (2026). Primoji: Compositional Semantic Tokenization for Language
-Model Training. Manuscript.
-
-```bibtex
-@unpublished{bandov2026primoji,
-  title  = {Primoji: Compositional Semantic Tokenization for Language Model Training},
-  author = {Bandov, Frane},
-  year   = {2026},
-}
-```
-
 ## License
 
 Apache 2.0. See `LICENSE`.
