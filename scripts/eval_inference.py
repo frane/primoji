@@ -181,9 +181,13 @@ def main() -> None:
             args.device = "cpu"
 
     tok = Tokenizer(fuzzy=False)
-    alias_map = build_alias_map(tok.encode)
     state = torch.load(args.model, map_location="cpu", weights_only=True)
     v = state["tok_emb.embedding.weight"].shape[0]
+
+    # Detect alias map from checkpoint (not all models have it)
+    has_aliases = "tok_emb._alias_toks" in state
+    alias_map = build_alias_map(tok.encode) if has_aliases else None
+    use_tiers = args.tiers and "tier_emb.weight" in state
 
     ARCH = {"125m": (768, 12, 12, 3072), "1b": (2048, 24, 16, 5461),
             "primoji-125m": (384, 50, 6, 1536), "primoji-1b": (1024, 73, 16, 4096),
@@ -196,7 +200,7 @@ def main() -> None:
         d_model, n_layers, n_heads, d_ff = ARCH["125m"]
 
     model = GPT(vocab_size=v, d_model=d_model, n_layers=n_layers, n_heads=n_heads,
-                d_ff=d_ff, max_seq_len=1024, n_tiers=5 if args.tiers else 0,
+                d_ff=d_ff, max_seq_len=1024, n_tiers=5 if use_tiers else 0,
                 alias_map=alias_map)
     model.load_state_dict(state)
     model = model.to(args.device).eval()
