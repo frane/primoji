@@ -764,7 +764,7 @@
     {
       "id": 1290,
       "name": "EQUAL",
-      "emoji": "⚖️",
+      "emoji": "≡",
       "layer": "2b",
       "category": "math",
       "description": "Equality, balance"
@@ -804,7 +804,7 @@
     {
       "id": 1295,
       "name": "LAW",
-      "emoji": "📜",
+      "emoji": "⚖️",
       "layer": "2b",
       "category": "social",
       "description": "Rule, governance, justice"
@@ -860,7 +860,7 @@
     {
       "id": 1302,
       "name": "POWER",
-      "emoji": "🔋",
+      "emoji": "👑",
       "layer": "2b",
       "category": "social",
       "description": "Force, authority, strength"
@@ -1084,7 +1084,7 @@
     {
       "id": 1330,
       "name": "LOVE",
-      "emoji": "💕",
+      "emoji": "❤️",
       "layer": "2b",
       "category": "emotion",
       "description": "Deep affection. [v0.2 NEW: FEEL+GOOD+VERY doesn't distinguish love from joy]"
@@ -1139,7 +1139,7 @@
     },
     {
       "name": "VISIBLE",
-      "emoji": "👓",
+      "emoji": "👀",
       "category": "perceptual",
       "description": "Visual perception, appearance, observable",
       "id": 1337,

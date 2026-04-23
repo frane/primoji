@@ -1,7 +1,7 @@
 {
   "version": "0.5.0",
   "source": "V8: wordfreq top 3K + FineWeb-Edu BF words freq>=300 (alpha, len>=3)",
-  "total_count": 29567,
+  "total_count": 29589,
   "words": [
     "the",
     "to",
@@ -29569,6 +29569,28 @@
     "smasher",
     "unexcused",
     "taxonomical",
-    "retransformation"
+    "retransformation",
+    "big",
+    "eighteen",
+    "eighty",
+    "eleven",
+    "kind",
+    "large",
+    "level",
+    "light",
+    "next",
+    "ninety",
+    "old",
+    "one",
+    "part",
+    "seventy",
+    "small",
+    "sort",
+    "symbol",
+    "top",
+    "twelve",
+    "two",
+    "type",
+    "way"
   ]
 }

@@ -348,13 +348,39 @@ def main() -> None:
 
     entries: dict[str, list[dict]] = {}
 
+    # V9: CLDR routing stoplist. Common words that must NOT trigger emoji
+    # routing even when they appear in a CLDR name. Prevents "one" -> 🔞,
+    # "two" -> 🕑, "way" -> 🌌, "top" -> 🎩, etc.
+    cldr_stoplist_path = _DATA_DIR / "v9_stoplist.json"
+    if cldr_stoplist_path.exists():
+        with open(cldr_stoplist_path) as f:
+            cldr_stoplist = set(json.load(f))
+        print(f"CLDR stoplist:            {len(cldr_stoplist):6d} words")
+    else:
+        cldr_stoplist = set()
+
+    # V9: Dead emoji filter. Emoji IDs with zero training signal.
+    dead_emoji_path = _DATA_DIR / "v9_dead_emoji.json"
+    if dead_emoji_path.exists():
+        with open(dead_emoji_path) as f:
+            dead_emoji_ids = set(json.load(f))
+        print(f"Dead emoji to skip:       {len(dead_emoji_ids):6d} IDs")
+    else:
+        dead_emoji_ids = set()
+
     # Layer 1: emoji words (lowest priority)
     # Only map words that appear in the emoji's CLDR name (as the full name
     # or a word within it). Don't map arbitrary community keywords like
     # "hello" -> 👋 (waving hand) since those produce bad decode output.
     l1_count = 0
+    l1_stopped = 0
+    l1_dead = 0
     word_to_best_emoji: dict[str, tuple[str, bool]] = {}
     for e in catalog["emoji"]:
+        # Skip dead emoji
+        if e["id"] in dead_emoji_ids:
+            l1_dead += 1
+            continue
         cldr_name = e["name"].lower()
         cldr_words = set(cldr_name.split())
         cldr_words.add(cldr_name)  # full name too
@@ -362,6 +388,10 @@ def main() -> None:
         for word in e.get("words", [e["name"]]):
             w = word.lower().strip()
             if not w or len(w) > 40 or len(w) < 2:
+                continue
+            # V9: skip stoplisted words
+            if w in cldr_stoplist:
+                l1_stopped += 1
                 continue
             # Only accept if word is the CLDR name or a word within it
             is_name = (w == cldr_name)
@@ -375,7 +405,7 @@ def main() -> None:
     for w, (emoji_char, _) in word_to_best_emoji.items():
         entries[w] = [_emoji_ref(emoji_char)]
         l1_count += 1
-    print(f"Layer 1 (emoji words):     {l1_count:6d}")
+    print(f"Layer 1 (emoji words):     {l1_count:6d} (stopped {l1_stopped}, dead {l1_dead})")
 
     # Layer 2: primitives (overrides Layer 1)
     l2_count, l2_overrides = 0, 0
